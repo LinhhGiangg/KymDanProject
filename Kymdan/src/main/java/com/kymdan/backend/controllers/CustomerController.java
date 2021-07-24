@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class CustomerController {
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
 
     @Autowired
-    AppAccountService appAccountService;
+    private AppAccountService appAccountService;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<?> registerNewCustomer(@RequestBody AccountDTO accountDTO) {

@@ -15,13 +15,13 @@ import org.springframework.stereotype.Service;
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
-    AppAccountRepository appAccountRepository;
+    private AppAccountRepository appAccountRepository;
 
     @Autowired
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
     @Autowired
-    AppAccountService appAccountService;
+    private AppAccountService appAccountService;
 
     @Autowired
     private PasswordEncoder bcryptEncoder;

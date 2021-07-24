@@ -1,28 +1,73 @@
-<div class="container-fluid" style="background-color: hsla(88, 50%, 53%, 0.76)">
-
+<div class="container-fluid" style="background-color: #f1f4fb">
   <div class="row">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-6">
-      <div class="table-responsive">
-        <div>
-          <table class="table table-striped">
-            <thead>
-            <tr class="row">
-              <th>Tên loại</th>
-              <th>Hình ảnh minh họa</th>
+    <div class="col-sm-1"></div>
+
+    <div class="col-sm-10">
+      <div class="row">
+        <div class="col-sm-3" style="background-color: white">
+          <div class="mt-3">
+            <p style="font-family: Averta,Helvetica,sans-serif; color: green; font-size: 25px; font-weight: bold">
+              <i class="fa fa-usd" aria-hidden="true"></i> Giá
+              (VNĐ)</p>
+            <h3 (click)="filter(1)"><i class="fa fa-arrow-circle-o-right" [hidden]="flagPosition === 1"></i>
+              <i class="fa fa-arrow-circle-right" aria-hidden="true" [hidden]="flagPosition !== 1"></i>
+              Dưới 10.000.000 đ</h3>
+            <h3 (click)="filter(2)"><i class="fa fa-arrow-circle-o-right" [hidden]="flagPosition === 2"></i>
+              <i class="fa fa-arrow-circle-right" aria-hidden="true" [hidden]="flagPosition !== 2"></i> 10.000.000 đ -
+              20.000.000 đ</h3>
+            <h3 (click)="filter(3)"><i class="fa fa-arrow-circle-o-right" [hidden]="flagPosition === 3"></i>
+              <i class="fa fa-arrow-circle-right" aria-hidden="true" [hidden]="flagPosition !== 3"></i> 20.000.000 đ -
+              30.000.000 đ</h3>
+            <h3 (click)="filter(4)"><i class="fa fa-arrow-circle-o-right" [hidden]="flagPosition === 4"></i>
+              <i class="fa fa-arrow-circle-right" aria-hidden="true" [hidden]="flagPosition !== 4"></i> 30.000.000 đ -
+              40.000.000 đ</h3>
+            <h3 (click)="filter(5)"><i class="fa fa-arrow-circle-o-right" [hidden]="flagPosition === 5"></i>
+              <i class="fa fa-arrow-circle-right" aria-hidden="true" [hidden]="flagPosition !== 5"></i> 40.000.000 đ -
+              50.000.000 đ</h3>
+            <h3 (click)="filter(6)"><i class="fa fa-arrow-circle-o-right" [hidden]="flagPosition === 6"></i>
+              <i class="fa fa-arrow-circle-right" aria-hidden="true" [hidden]="flagPosition !== 6"></i>
+              Trên 50.000.000 đ</h3>
+          </div>
+        </div>
+
+        <div class="col-sm-9" style="background-color: white">
+          <table class="table mt-1" *ngIf="productList.length !== 0">
+            <tr class="row" *ngFor="let element of productList">
+              <td class="col-sm-3">
+                <img width="100%" src="{{element.url}}" alt="">
+              </td>
+              <td class="col-sm-9">
+                <div class="row">
+                  <div class="col-sm-9">
+                    <h1 style="color: green">{{element.name}}</h1>
+                    <h2 style="color: #b90000">{{element.price | currency}} VNĐ</h2>
+                    <h3><i class="fa fa-hand-o-right" aria-hidden="true"></i> {{element.description}}</h3>
+                    <h3><i class="fa fa-hand-o-right" aria-hidden="true"></i> Công nghệ CoolTouch™ giúp vỏ nệm luôn mát
+                      mẻ
+                    </h3>
+                    <h3><i class="fa fa-hand-o-right" aria-hidden="true"></i> Số lượng : {{element.amount}} sản phẩm
+                    </h3>
+                  </div>
+
+                  <div class="col-sm-3">
+                    <div style="background-color: rgba(0,106,211,0.27); border-radius: 5px">
+                      <h3 style="margin-left: 3%"><strong><i class="fa fa-briefcase" aria-hidden="true"></i> Hàng chính
+                        hãng</strong></h3>
+                    </div>
+                  </div>
+                </div>
+              </td>
             </tr>
-            </thead>
-            <tbody>
-            <tr class="row" *ngFor="let element of productTypeList">
-              <td><h1>{{element.typeName}}</h1></td>
-              <td><img src="{{element.url}}"></td>
-            </tr>
-            </tbody>
           </table>
+
+          <div *ngIf="productList.length === 0">
+            <h1 style="color: red; font-weight: bold; text-align: center">Không có sản phẩm phù hợp</h1>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-3"></div>
+
+    <div class="col-sm-1"></div>
   </div>
 
   <div class="clearfix"></div>
@@ -30,20 +75,21 @@
   <div style="text-align: center">
     <div class="row">
       <div class="col-sm-12">
-        <h3 style="color: #fff; font-size: 45px; padding: 75px 0 25px 0 ; font-family: Arima Madurai, cursive">Độ dày của nệm KYMDAN</h3>
+        <h3 style="color: green; font-size: 45px; padding: 75px 0 25px 0 ; font-family: Arima Madurai, cursive">Độ dày
+          của nệm KYMDAN</h3>
       </div>
     </div>
 
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
-        <p><span style="font-size: 25px; color: #fff">
-      <span style="font-family: arial, helvetica, sans-serif">Nệm&nbsp;<strong>(mattress)</strong>&nbsp;<strong>KYMDAN
-        Deluxe</strong>&nbsp;có cấu trúc gồm các lỗ vuông to ở phần chân nệm trong
-        khi bề mặt nệm là các lỗ tròn nhỏ được phân bố đều, rộng khắp bề
-        mặt giúp gia tăng tác dụng của sự thông thoáng nhờ tăng cường diện
-        tích tiếp xúc.
-      </span></span>
+        <p><span style="font-size: 25px; color: green">
+        <span style="font-family: arial, helvetica, sans-serif">Nệm&nbsp;<strong>(mattress)</strong>&nbsp;<strong>KYMDAN
+          Deluxe</strong>&nbsp;có cấu trúc gồm các lỗ vuông to ở phần chân nệm trong
+          khi bề mặt nệm là các lỗ tròn nhỏ được phân bố đều, rộng khắp bề
+          mặt giúp gia tăng tác dụng của sự thông thoáng nhờ tăng cường diện
+          tích tiếp xúc.
+        </span></span>
         </p>
       </div>
       <div class="col-sm-2"></div>
@@ -51,7 +97,7 @@
 
     <div class="row">
       <div class="col-sm-12">
-        <div align="center" style="padding-top: 20px; color: #fff">
+        <div align="center" style="padding-top: 20px; color: green">
           <img src="assets/do_day_nem_kymdan.gif" alt="" style="width: 50%;">
         </div>
       </div>
@@ -59,14 +105,14 @@
 
     <div class="row">
       <div class="col-sm-12">
-        <div align="center" style="padding: 35px 0 15px 0; color: #fff">
-    <span style="font-size: 25px">
-      <span style="font-family: comic sans ms, cursive;">
-        <span
-          style="font-family: arial, helvetica, sans-serif"><strong>Các kích thước độ dày của Nệm&nbsp;KYMDAN</strong>
+        <div align="center" style="padding: 35px 0 15px 0; color: green">
+      <span style="font-size: 25px">
+        <span style="font-family: comic sans ms, cursive;">
+          <span
+            style="font-family: arial, helvetica, sans-serif"><strong>Các kích thước độ dày của Nệm&nbsp;KYMDAN</strong>
+          </span>
         </span>
-      </span>
-    </span><br>
+      </span><br>
         </div>
       </div>
     </div>
@@ -81,18 +127,16 @@
 
     <div class="row">
       <div class="col-sm-12">
-        <div align="center" style="padding: 35px 0 25px 0; color: #fff">
-  				<span style="font-size: 25px;"> <span
-            style="font-family: comic sans ms, cursive;"> <span
-            style="font-family: arial, helvetica, sans-serif;"> <strong>Các
-  								kích thước chiều ngang (rộng) của Nệm&nbsp;KYMDAN</strong>
-  					</span>
-  				</span>
-  				</span><br>
+        <div align="center" style="padding: 35px 0 25px 0; color: green">
+    				<span style="font-size: 25px;"> <span
+              style="font-family: comic sans ms, cursive;"> <span
+              style="font-family: arial, helvetica, sans-serif;"> <strong>Các
+    								kích thước chiều ngang (rộng) của Nệm&nbsp;KYMDAN</strong>
+    					</span>
+    				</span>
+    				</span><br>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="clearfix"></div>
 </div>

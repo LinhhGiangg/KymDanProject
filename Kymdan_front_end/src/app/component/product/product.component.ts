@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductTypeService} from '../../service/product-type.service';
+import {ProductService} from '../../service/product.service';
 
 @Component({
   selector: 'app-product',
@@ -7,24 +7,34 @@ import {ProductTypeService} from '../../service/product-type.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  protected productTypeList;
+  protected productList = [];
+  protected flagPosition;
 
   constructor(
-    protected productTypeService: ProductTypeService,
+    protected productService: ProductService,
   ) {
   }
 
   ngOnInit() {
-    this.productTypeService.getAllProductTypeService().subscribe(
+    this.productService.findProductByTypeName(1).subscribe(
       (data) => {
-        this.productTypeList = data;
+        this.productList = data;
       },
       () => {
-        // const NOTICE = 'Không tìm thấy trang ';
-        // this.router.navigate(['notice-page', {message: NOTICE}]).then(r => {});
       },
       () => {
       });
   }
 
+  filter(value) {
+    this.flagPosition = value;
+    this.productService.findProductByTypeAndPrice(1, value).subscribe(
+      (data) => {
+        this.productList = data;
+      },
+      () => {
+      },
+      () => {
+      });
+  }
 }

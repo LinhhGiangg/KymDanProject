@@ -23,9 +23,6 @@ public class ProductType {
     @Column(name = "type_name", columnDefinition = "VARCHAR(50)")
     private String typeName;
 
-    @Column(name = "url", columnDefinition = "VARCHAR(250)")
-    private String url;
-
     // relationship
 
     @OneToMany(mappedBy = "productType", cascade = CascadeType.ALL)

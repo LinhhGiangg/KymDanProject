@@ -46,6 +46,9 @@ public class Product {
     @Column(name = "amount", columnDefinition = "VARCHAR(250)")
     private String amount;
 
+    @Column(name = "url", columnDefinition = "VARCHAR(250)")
+    private String url;
+
     // relationship
 
     @ManyToOne(cascade = CascadeType.ALL)

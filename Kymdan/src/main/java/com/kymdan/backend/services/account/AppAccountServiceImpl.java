@@ -20,13 +20,13 @@ import javax.mail.internet.MimeMessage;
 public class AppAccountServiceImpl implements AppAccountService {
 
     @Autowired
-    AppAccountRepository appAccountRepository;
+    private AppAccountRepository appAccountRepository;
 
     @Autowired
-    AppRoleRepository appRoleRepository;
+    private AppRoleRepository appRoleRepository;
 
     @Autowired
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
     @Autowired
     private PasswordEncoder bcryptEncoder;
