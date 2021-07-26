@@ -49,4 +49,12 @@ public class Employee {
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<OrderProduct> orderList;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<Promotion> promotionList;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<Coupon> couponList;
 }

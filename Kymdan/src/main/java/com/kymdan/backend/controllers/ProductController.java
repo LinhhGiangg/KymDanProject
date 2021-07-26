@@ -28,4 +28,10 @@ public class ProductController {
         List<Product> productList = this.productService.filterProductByTypeAndPrice(typeID, price);
         return new ResponseEntity<>(productList, HttpStatus.OK);
     }
+
+    @GetMapping("/view/{productID}")
+    public ResponseEntity<Product> findProductByID(@PathVariable Long productID) {
+        Product product = this.productService.findProductByID(productID);
+        return new ResponseEntity<>(product, HttpStatus.OK);
+    }
 }

@@ -1,6 +1,5 @@
 package com.kymdan.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
@@ -34,14 +33,14 @@ public class AppAccount {
     private AppRole appRole;
 
     @OneToOne(mappedBy = "appAccount", cascade = CascadeType.ALL)
-    @JsonBackReference
-    private AppAdmin appAdmin;
-
-    @OneToOne(mappedBy = "appAccount", cascade = CascadeType.ALL)
     @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     private Employee employee;
 
     @OneToOne(mappedBy = "appAccount", cascade = CascadeType.ALL)
     @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     private Customer customer;
+
+    @OneToOne(mappedBy = "appAccount", cascade = CascadeType.ALL)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+    private Shipper shipper;
 }

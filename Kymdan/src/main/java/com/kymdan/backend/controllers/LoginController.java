@@ -60,8 +60,6 @@ public class LoginController {
 
         switch (role) {
             case "Admin":
-                fullName = account.getAppAdmin().getFullName();
-                break;
             case "Employee":
                 fullName = account.getEmployee().getFullName();
                 break;

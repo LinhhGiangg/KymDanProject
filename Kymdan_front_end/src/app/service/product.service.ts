@@ -20,4 +20,8 @@ export class ProductService {
   findProductByTypeAndPrice(typeID, price): Observable<any> {
     return this.http.get(this.API + '/list/' + typeID + '/' + price);
   }
+
+  findProductByID(productID): Observable<any> {
+    return this.http.get(this.API + '/view/' + productID);
+  }
 }

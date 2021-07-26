@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../service/product.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -9,14 +10,16 @@ import {ProductService} from '../../service/product.service';
 export class ProductComponent implements OnInit {
   protected productList = [];
   protected flagPosition;
+  private type = 1;
 
   constructor(
     protected productService: ProductService,
+    public router: Router,
   ) {
   }
 
   ngOnInit() {
-    this.productService.findProductByTypeName(1).subscribe(
+    this.productService.findProductByTypeName(this.type).subscribe(
       (data) => {
         this.productList = data;
       },
@@ -28,7 +31,7 @@ export class ProductComponent implements OnInit {
 
   filter(value) {
     this.flagPosition = value;
-    this.productService.findProductByTypeAndPrice(1, value).subscribe(
+    this.productService.findProductByTypeAndPrice(this.type, value).subscribe(
       (data) => {
         this.productList = data;
       },
@@ -36,5 +39,10 @@ export class ProductComponent implements OnInit {
       },
       () => {
       });
+  }
+
+  viewProduct(id) {
+    this.router.navigate(['buy', {productID: id}]).then(r => {
+    });
   }
 }

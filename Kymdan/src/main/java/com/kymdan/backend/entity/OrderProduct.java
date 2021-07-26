@@ -30,6 +30,9 @@ public class OrderProduct {
     @Column(name = "booking_date", columnDefinition = "DATE")
     private LocalDate bookingDate;
 
+    @Column(name = "delivery_date", columnDefinition = "DATE")
+    private LocalDate deliveryDate;
+
     @Column(name = "status", columnDefinition = "VARCHAR(50)")
     private String status;
 
@@ -52,4 +55,12 @@ public class OrderProduct {
     @OneToMany(mappedBy = "orderProduct", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<OrderDetail> orderDetailList;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shipper_id", referencedColumnName = "id", columnDefinition = "BIGINT")
+    private Shipper shipper;
+
+    @OneToOne
+    @JoinColumn(name = "receipt_id", referencedColumnName = "id", columnDefinition = "BIGINT")
+    private Receipt receipt;
 }

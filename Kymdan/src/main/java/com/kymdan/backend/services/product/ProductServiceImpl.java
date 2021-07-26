@@ -48,4 +48,9 @@ public class ProductServiceImpl implements ProductService {
 
         return result;
     }
+
+    @Override
+    public Product findProductByID(Long id) {
+        return this.productRepository.findById(id).orElse(null);
+    }
 }
