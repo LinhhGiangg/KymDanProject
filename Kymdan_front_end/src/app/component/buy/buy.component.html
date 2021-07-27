@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color: #f1f4fb">
+<div class="container-fluid" style="background-color: rgba(0,128,0,0.15)">
   <div class="row">
     <div class="col-sm-1"></div>
 
@@ -11,9 +11,100 @@
         <div class="col-sm-6">
           <h1 style="font-family: Averta,Helvetica,sans-serif; font-weight: bold; color: green">{{product.name}}</h1>
           <h2 style="font-family: Averta,Helvetica,sans-serif; font-weight: bold; color: red">
-            Giá : {{product.price | currency}} VNĐ</h2>
-          <div style="border: 1px solid blue">
+            Giá : {{realPrice | currency}} VNĐ</h2>
+          <div style="border: 1px solid green">
             <h3 style="font-weight: bold; margin: 2% 0 0 5%">Kích thước (cm) :</h3>
+            <div class="row">
+              <div class="size" [hidden]="flagSize === 1" (click)="chooseSize(1)">
+                <h4 style="margin: 7px 15px 10px 27px">120 x 200</h4>
+              </div>
+              <div class="size" [hidden]="flagSize !== 1" style="background-color: rgba(0,128,0,0.55)">
+                <h4 style="margin: 7px 15px 10px 27px">120 x 200</h4>
+              </div>
+
+              <div class="size" [hidden]="flagSize === 2" (click)="chooseSize(2)">
+                <h4 style="margin: 7px 15px 10px 27px">140 x 200</h4>
+              </div>
+              <div class="size" [hidden]="flagSize !== 2" style="background-color: rgba(0,128,0,0.55)">
+                <h4 style="margin: 7px 15px 10px 27px">140 x 200</h4>
+              </div>
+
+              <div class="size" [hidden]="flagSize === 3" (click)="chooseSize(3)">
+                <h4 style="margin: 7px 15px 10px 27px">160 x 200</h4>
+              </div>
+              <div class="size" [hidden]="flagSize !== 3" style="background-color: rgba(0,128,0,0.55)">
+                <h4 style="margin: 7px 15px 10px 27px">160 x 200</h4>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="size" [hidden]="flagSize === 4" (click)="chooseSize(4)">
+                <h4 style="margin: 7px 15px 10px 27px">180 x 200</h4>
+              </div>
+              <div class="size" [hidden]="flagSize !== 4" style="background-color: rgba(0,128,0,0.55)">
+                <h4 style="margin: 7px 15px 10px 27px">180 x 200</h4>
+              </div>
+
+              <div class="size" [hidden]="flagSize === 5" (click)="chooseSize(5)">
+                <h4 style="margin: 7px 15px 10px 27px">200 x 200</h4>
+              </div>
+              <div class="size" [hidden]="flagSize !== 5" style="background-color: rgba(0,128,0,0.55)">
+                <h4 style="margin: 7px 15px 10px 27px">200 x 200</h4>
+              </div>
+            </div>
+
+            <h3 style="font-weight: bold; margin: 2% 0 0 5%">Độ dày (cm) :</h3>
+
+            <div class="row">
+              <div class="size" [hidden]="flagThick === 1" (click)="chooseThick(1)">
+                <h4 style="margin: 7px 15px 10px 55px">5</h4>
+              </div>
+              <div class="size" [hidden]="flagThick !== 1" style="background-color: rgba(0,128,0,0.55)">
+                <h4 style="margin: 7px 15px 10px 55px">5</h4>
+              </div>
+
+              <div class="size" [hidden]="flagThick === 2" (click)="chooseThick(2)">
+                <h4 style="margin: 7px 15px 10px 55px">10</h4>
+              </div>
+              <div class="size" [hidden]="flagThick !== 2" style="background-color: rgba(0,128,0,0.55)">
+                <h4 style="margin: 7px 15px 10px 55px">10</h4>
+              </div>
+
+              <div class="size" [hidden]="flagThick === 3" (click)="chooseThick(3)">
+                <h4 style="margin: 7px 15px 10px 55px">15</h4>
+              </div>
+              <div class="size" [hidden]="flagThick !== 3" style="background-color: rgba(0,128,0,0.55)">
+                <h4 style="margin: 7px 15px 10px 55px">15</h4>
+              </div>
+            </div>
+
+            <hr style="border: 0.5px solid green; margin-top: 33px">
+
+            <div class="row mb-3">
+              <div class="col-sm-6">
+                <h3 style="font-weight: bold; margin: 2% 0 0 11%">Số lượng :</h3>
+                <h3 style="font-weight: bold; margin: 2% 0 0 11%">
+                  <i class="fa fa-minus-square" aria-hidden="true" style="font-size: 25px"
+                     (click)="changeAmount(1)"></i>
+                  <span class="ml-3 mr-3" style="font-size: 25px; color: green">{{amount}}</span>
+                  <i class="fa fa-plus-square" aria-hidden="true" style="font-size: 25px"
+                     (click)="changeAmount(2)"></i>
+                </h3>
+              </div>
+              <div class="col-sm-6">
+                <h3 style="font-weight: bold; margin: 2% 0 0 17%">Tình trạng :</h3>
+                <div class="status ml-5">
+                  <h4 style="color: green; margin: 4px 0 0 17px">Còn hàng</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center mt-5">
+            <button class="btn-success" (click)="saveCart()"
+                    style="width: 90%; height: 50px; border-radius: 10px; border: 1px solid green">
+              <span style="font-size: 22px">Mua ngay</span>
+            </button>
           </div>
         </div>
       </div>
@@ -22,73 +113,47 @@
     <div class="col-sm-1"></div>
   </div>
 
-  <div class="clearfix"></div>
-
-  <div style="text-align: center">
-    <div class="row">
-      <div class="col-sm-12">
-        <h3 style="color: green; font-size: 45px; padding: 75px 0 25px 0 ; font-family: Arima Madurai, cursive">Độ dày
-          của nệm KYMDAN</h3>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <div class="row justify-content-center mt-5">
+        <h1 style="font-weight: bold; color: green">Tại sao lại chọn Kymdan Khai Nguyên</h1>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-8">
-        <p><span style="font-size: 25px; color: green">
-        <span style="font-family: arial, helvetica, sans-serif">Nệm&nbsp;<strong>(mattress)</strong>&nbsp;<strong>KYMDAN
-          Deluxe</strong>&nbsp;có cấu trúc gồm các lỗ vuông to ở phần chân nệm trong
-          khi bề mặt nệm là các lỗ tròn nhỏ được phân bố đều, rộng khắp bề
-          mặt giúp gia tăng tác dụng của sự thông thoáng nhờ tăng cường diện
-          tích tiếp xúc.
-        </span></span>
-        </p>
-      </div>
-      <div class="col-sm-2"></div>
-    </div>
+      <div class="row">
+        <div class="col-sm-3" style="text-align: center">
+          <img src="https://vuanem.com/image/footer/footer_top_1.png">
+          <h3 style="font-size: 20px">60 giây</h3>
+          <h2 style="font-weight: bold; margin-top: -22px">chọn nệm</h2>
+          <h4 style="font-family: Averta,Helvetica,sans-serif">Cùng Kymdan Khai Nguyên đi tìm chiếc nệm phù hợp nhất với
+            bạn và gia đình chỉ trong vài bước đơn giản</h4>
+        </div>
 
-    <div class="row">
-      <div class="col-sm-12">
-        <div align="center" style="padding-top: 20px; color: green">
-          <img src="assets/do_day_nem_kymdan.gif" alt="" style="width: 50%;">
+        <div class="col-sm-3" style="text-align: center">
+          <img src="https://vuanem.com/image/footer/footer_top_2.png">
+          <h3 style="font-size: 20px">365 đêm</h3>
+          <h2 style="font-weight: bold; margin-top: -22px">nằm thử</h2>
+          <h4 style="font-family: Averta,Helvetica,sans-serif">Hãy “làm quen” với người bạn đồng hành trong hành trình
+            đi tìm giấc mơ đẹp nào</h4>
+        </div>
+
+        <div class="col-sm-3" style="text-align: center">
+          <img src="https://vuanem.com/image/footer/footer_top_31.png">
+          <h3 style="font-size: 20px">Trả góp</h3>
+          <h2 style="font-weight: bold; margin-top: -22px">0% lãi suất</h2>
+          <h4 style="font-family: Averta,Helvetica,sans-serif">Ngủ ngon mà vẫn dày ví, xua tan nỗi lo tài chính khi sử
+            dụng những sản phẩm cao cấp, chất lượng</h4>
+        </div>
+
+        <div class="col-sm-3" style="text-align: center">
+          <img src="https://vuanem.com/image/footer/footer_top_4.png">
+          <h3 style="font-size: 20px">Vận chuyển</h3>
+          <h2 style="font-weight: bold; margin-top: -22px">miễn phí</h2>
+          <h4 style="font-family: Averta,Helvetica,sans-serif">Giao hàng tận giường, miễn phí các đơn hàng từ 1.000.000đ
+            trở lên đối với tất cả sản phẩm</h4>
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-sm-12">
-        <div align="center" style="padding: 35px 0 15px 0; color: green">
-      <span style="font-size: 25px">
-        <span style="font-family: comic sans ms, cursive;">
-          <span
-            style="font-family: arial, helvetica, sans-serif"><strong>Các kích thước độ dày của Nệm&nbsp;KYMDAN</strong>
-          </span>
-        </span>
-      </span><br>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-12">
-        <div align="center">
-          <img src="assets/do_rong_nem_kymdan.gif" alt="" style="width: 50%;">
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-12">
-        <div align="center" style="padding: 35px 0 25px 0; color: green">
-    				<span style="font-size: 25px;"> <span
-              style="font-family: comic sans ms, cursive;"> <span
-              style="font-family: arial, helvetica, sans-serif;"> <strong>Các
-    								kích thước chiều ngang (rộng) của Nệm&nbsp;KYMDAN</strong>
-    					</span>
-    				</span>
-    				</span><br>
-        </div>
-      </div>
-    </div>
+    <div class="col-sm-1"></div>
   </div>
 </div>

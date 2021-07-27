@@ -18,4 +18,5 @@ public class AppUserDTO {
     String address;
     String phone;
     String email;
+    String role;
 }

@@ -2,11 +2,14 @@ package com.kymdan.backend.services.account;
 
 import com.kymdan.backend.entity.AppAccount;
 import com.kymdan.backend.entity.Customer;
+import com.kymdan.backend.entity.Employee;
 import com.kymdan.backend.model.AccountDTO;
+import com.kymdan.backend.model.AppUserDTO;
 import com.kymdan.backend.model.MessageDTO;
 import com.kymdan.backend.repository.AppAccountRepository;
 import com.kymdan.backend.repository.AppRoleRepository;
 import com.kymdan.backend.repository.CustomerRepository;
+import com.kymdan.backend.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -27,6 +30,9 @@ public class AppAccountServiceImpl implements AppAccountService {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @Autowired
     private PasswordEncoder bcryptEncoder;
@@ -125,5 +131,58 @@ public class AppAccountServiceImpl implements AppAccountService {
     @Override
     public AppAccount findByUsername(String username) {
         return this.appAccountRepository.findByUsername(username);
+    }
+
+    @Override
+    public Customer findCustomerByName(String name) {
+        return this.customerRepository.findByFullName(name);
+    }
+
+    @Override
+    public Employee findEmployeeByName(String name) {
+        return this.employeeRepository.findByFullName(name);
+    }
+
+    @Override
+    public MessageDTO editInformation(AppUserDTO appUserDTO) {
+        MessageDTO messageDTO = new MessageDTO();
+
+        try {
+            if (appUserDTO.getRole().equals("Customer")) {
+                Customer customer = this.customerRepository.findByEmail(appUserDTO.getEmail());
+                customer.setBirthday(appUserDTO.getBirthday());
+                customer.setAddress(appUserDTO.getAddress());
+                customer.setPhone(appUserDTO.getPhone());
+                this.customerRepository.save(customer);
+            } else {
+                Employee employee = this.employeeRepository.findByEmail(appUserDTO.getEmail());
+                employee.setBirthday(appUserDTO.getBirthday());
+                employee.setAddress(appUserDTO.getAddress());
+                employee.setPhone(appUserDTO.getPhone());
+                this.employeeRepository.save(employee);
+            }
+
+            messageDTO.setMessage("Sửa thông tin tài khoản thành công !");
+        } catch (Exception e) {
+            messageDTO.setMessage("Lỗi hệ thống ! Vui lòng thử lại sau !");
+        }
+
+        return messageDTO;
+    }
+
+    @Override
+    public MessageDTO editPassword(String username, String oldPassword, String newPassword) {
+        MessageDTO messageDTO = new MessageDTO();
+        AppAccount account = findByUsername(username);
+
+        if (bcryptEncoder.matches(oldPassword, account.getPassword())) {
+            account.setPassword(bcryptEncoder.encode(newPassword));
+            this.appAccountRepository.save(account);
+            messageDTO.setMessage("Thay đổi mật khẩu thành công !");
+        } else {
+            messageDTO.setMessage("Sai mật khẩu ! Vui lòng thử lại sau !");
+        }
+
+        return messageDTO;
     }
 }

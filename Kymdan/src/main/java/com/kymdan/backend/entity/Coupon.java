@@ -36,5 +36,5 @@ public class Coupon {
 
     @OneToMany(mappedBy = "coupon", cascade = CascadeType.ALL)
     @JsonBackReference
-    private List<CouponDetail> couponDetailList;
+    private List<CouponDetail>  couponDetailList;
 }

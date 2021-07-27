@@ -4,7 +4,7 @@ import {HomeComponent} from './component/home/home.component';
 import {ProductComponent} from './component/product/product.component';
 import {LoginComponent} from './component/login/login.component';
 import {RegisterComponent} from './component/register/register.component';
-import {InformationCustomerComponent} from './component/information-customer/information-customer.component';
+import {InformationComponent} from './component/information/information.component';
 import {BuyComponent} from './component/buy/buy.component';
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'product', component: ProductComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'customer/information', component: InformationCustomerComponent},
+  {path: 'information', component: InformationComponent},
   {path: 'buy', component: BuyComponent},
 ];
 

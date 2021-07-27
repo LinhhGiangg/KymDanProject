@@ -25,12 +25,8 @@
 
           <div class="dropdown-menu dropdown-menu-right"
                aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#" id="accountDetails" [routerLink]="['/customer/information']"
-               *ngIf="currentUser.role == 'Customer'">Thông tin tài khoản</a>
-            <a class="dropdown-item" href="#" id="accountAdminDetails" [routerLink]="['/admin/information']"
-               *ngIf="currentUser.role == 'Admin'">Thông tin tài khoản</a>
-            <a class="dropdown-item" href="#" id="accountEmployeeDetails" [routerLink]="['/employee/information']"
-               *ngIf="currentUser.role == 'Employee'">Thông tin tài khoản</a>
+            <a class="dropdown-item" href="#" id="accountDetails" [routerLink]="['/information']">
+              Thông tin tài khoản</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" (click)="logout()">Đăng xuất</a>
           </div>

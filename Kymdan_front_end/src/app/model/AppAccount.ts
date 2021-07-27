@@ -1,5 +1,6 @@
 export class AppAccount {
-  id: number;
+  id : number;
+  role: string;
   username: string;
   password: string;
   fullName: string;

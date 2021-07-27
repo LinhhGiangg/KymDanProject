@@ -24,6 +24,9 @@ public class CouponDetail {
     @Column(name = "price", columnDefinition = "VARCHAR(50)")
     private String price;
 
+    @Column(name = "size", columnDefinition = "VARCHAR(50)")
+    private String size;
+
     // relationship
 
     @ManyToOne(cascade = CascadeType.ALL)

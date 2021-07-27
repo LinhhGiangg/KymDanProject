@@ -24,4 +24,8 @@ export class ProductService {
   findProductByID(productID): Observable<any> {
     return this.http.get(this.API + '/view/' + productID);
   }
+
+  saveCart(customerID, productID, productInformation): Observable<any> {
+    return this.http.get(this.API + '/save-cart/' + customerID + '/' + productID + '/' + productInformation);
+  }
 }

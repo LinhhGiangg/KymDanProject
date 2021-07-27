@@ -23,10 +23,16 @@ public class OrderDetail {
     @Column(name = "amount", columnDefinition = "VARCHAR(250)")
     private String amount;
 
+    @Column(name = "size", columnDefinition = "VARCHAR(250)")
+    private String size;
+
+    @Column(name = "real_price", columnDefinition = "VARCHAR(250)")
+    private String realPrice;
+
     // relationship
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_id", referencedColumnName = "id", columnDefinition = "BIGINT")
+    @JoinColumn(name = "order_product_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private OrderProduct orderProduct;
 
     @OneToOne(mappedBy = "orderDetail", cascade = CascadeType.ALL)

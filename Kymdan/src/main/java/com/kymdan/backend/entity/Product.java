@@ -65,4 +65,8 @@ public class Product {
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     private OrderManufactureDetail orderManufactureDetail;
+
+    @OneToOne
+    @JoinColumn(name = "cart_detail_id", referencedColumnName = "id", columnDefinition = "BIGINT")
+    private CartDetail cartDetail;
 }

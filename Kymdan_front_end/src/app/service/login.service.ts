@@ -46,4 +46,16 @@ export class LoginService {
     localStorage.removeItem('token');
     this.currentUserSubject.next(null);
   }
+
+  getInformation(name, role): Observable<any> {
+    return this.http.get(this.API + '/information/' + name + '/' + role);
+  }
+
+  editInformation(newInformation): Observable<any> {
+    return this.http.post(this.API + '/edit-information', newInformation, {headers: {skip: 'true'}});
+  }
+
+  editPassword(username, oldPassword, newPassword): Observable<any> {
+    return this.http.get(this.API + '/edit-password/' + username + '/' + oldPassword + '/' + newPassword);
+  }
 }

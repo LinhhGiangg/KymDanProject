@@ -1,11 +1,13 @@
 package com.kymdan.backend.services.product;
 
 import com.kymdan.backend.entity.Product;
+import com.kymdan.backend.model.MessageDTO;
 import com.kymdan.backend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -52,5 +54,14 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product findProductByID(Long id) {
         return this.productRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public MessageDTO saveCart(Long customerID, Long productID, String productInformation) {
+        MessageDTO messageDTO = new MessageDTO();
+        String[] information = productInformation.split(",");
+
+
+        return null;
     }
 }

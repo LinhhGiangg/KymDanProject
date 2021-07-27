@@ -15,8 +15,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {RegisterComponent} from './component/register/register.component';
-import {InformationCustomerComponent} from './component/information-customer/information-customer.component';
-import {EditPasswordCustomerComponent} from './component/edit-password-customer/edit-password-customer.component';
+import {InformationComponent} from './component/information/information.component';
+import {EditPasswordComponent} from './component/edit-password/edit-password.component';
 import {BuyComponent} from './component/buy/buy.component';
 
 @NgModule({
@@ -28,8 +28,8 @@ import {BuyComponent} from './component/buy/buy.component';
     ProductComponent,
     LoginComponent,
     RegisterComponent,
-    InformationCustomerComponent,
-    EditPasswordCustomerComponent,
+    InformationComponent,
+    EditPasswordComponent,
     BuyComponent
   ],
   imports: [

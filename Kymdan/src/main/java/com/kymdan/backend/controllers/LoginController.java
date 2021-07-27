@@ -2,12 +2,16 @@ package com.kymdan.backend.controllers;
 
 import com.kymdan.backend.config.JwtTokenUtil;
 import com.kymdan.backend.entity.AppAccount;
+import com.kymdan.backend.entity.Customer;
+import com.kymdan.backend.entity.Employee;
+import com.kymdan.backend.model.AppUserDTO;
 import com.kymdan.backend.model.CurrentAccountDTO;
 import com.kymdan.backend.model.LoginDTO;
 import com.kymdan.backend.model.MessageDTO;
-import com.kymdan.backend.repository.AppAccountRepository;
+import com.kymdan.backend.services.account.AppAccountService;
 import com.kymdan.backend.services.account.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -29,7 +33,7 @@ public class LoginController {
     private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
-    AppAccountRepository appAccountRepository;
+    AppAccountService appAccountService;
 
     @Autowired
     private JwtUserDetailsService userDetailsService;
@@ -41,7 +45,7 @@ public class LoginController {
     public ResponseEntity<?> login(@RequestBody LoginDTO loginRequest) throws Exception {
         String username = loginRequest.getUsername();
         String password = loginRequest.getPassword();
-        AppAccount account = appAccountRepository.findByUsername(username);
+        AppAccount account = appAccountService.findByUsername(username);
 
         // check account
         if (account == null || !bcryptEncoder.matches(password, account.getPassword())) {
@@ -79,5 +83,23 @@ public class LoginController {
         } catch (BadCredentialsException e) {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
+    }
+
+    @GetMapping("/information/{name}/{role}")
+    public ResponseEntity<?> getInformationByName(@PathVariable String name, @PathVariable String role) {
+        if (role.equals("Customer")) {
+            return new ResponseEntity<>(this.appAccountService.findCustomerByName(name), HttpStatus.OK);
+        } else return new ResponseEntity<>(this.appAccountService.findEmployeeByName(name), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/edit-information")
+    public ResponseEntity<?> editInformation(@RequestBody AppUserDTO appUserDTO) {
+        return ResponseEntity.ok(appAccountService.editInformation(appUserDTO));
+    }
+
+    @GetMapping("/edit-password/{username}/{oldPassword}/{newPassword}")
+    public ResponseEntity<?> editPassword(@PathVariable String username, @PathVariable String oldPassword,
+                                          @PathVariable String newPassword) {
+        return ResponseEntity.ok(appAccountService.editPassword(username, oldPassword, newPassword));
     }
 }
