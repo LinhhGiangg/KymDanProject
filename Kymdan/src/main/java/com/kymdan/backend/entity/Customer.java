@@ -43,15 +43,11 @@ public class Customer {
 
     // relationship
 
-    @OneToOne
-    @JoinColumn(name = "app_account_id", referencedColumnName = "id", columnDefinition = "BIGINT")
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     private AppAccount appAccount;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<OrderProduct> orderList;
-
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
-    private Cart cart;
 }

@@ -1,6 +1,8 @@
 package com.kymdan.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +28,7 @@ public class Cart {
     @JsonBackReference
     private List<CartDetail> cartDetailList;
 
-    @OneToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "id", columnDefinition = "BIGINT")
-    private Customer customer;
+    @OneToOne(mappedBy = "cart", cascade = CascadeType.ALL)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+    private AppAccount appAccount;
 }

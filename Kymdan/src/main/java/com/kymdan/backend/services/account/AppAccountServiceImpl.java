@@ -3,13 +3,11 @@ package com.kymdan.backend.services.account;
 import com.kymdan.backend.entity.AppAccount;
 import com.kymdan.backend.entity.Customer;
 import com.kymdan.backend.entity.Employee;
+import com.kymdan.backend.entity.Shipper;
 import com.kymdan.backend.model.AccountDTO;
 import com.kymdan.backend.model.AppUserDTO;
 import com.kymdan.backend.model.MessageDTO;
-import com.kymdan.backend.repository.AppAccountRepository;
-import com.kymdan.backend.repository.AppRoleRepository;
-import com.kymdan.backend.repository.CustomerRepository;
-import com.kymdan.backend.repository.EmployeeRepository;
+import com.kymdan.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -35,6 +33,9 @@ public class AppAccountServiceImpl implements AppAccountService {
     private EmployeeRepository employeeRepository;
 
     @Autowired
+    private ShipperRepository shipperRepository;
+
+    @Autowired
     private PasswordEncoder bcryptEncoder;
 
     @Autowired
@@ -45,22 +46,22 @@ public class AppAccountServiceImpl implements AppAccountService {
         MessageDTO messageDTO = new MessageDTO();
 
         try {
-            AppAccount newAccount = new AppAccount();
-            newAccount.setAppRole(appRoleRepository.findByRoleName("Customer"));
-            newAccount.setUsername(accountDTO.getUsername());
-            newAccount.setPassword(bcryptEncoder.encode(accountDTO.getPassword()));
-            this.appAccountRepository.save(newAccount);
             Customer newCustomer = new Customer();
-            AppAccount account = this.appAccountRepository.findByUsername(accountDTO.getUsername());
             newCustomer.setFullName(accountDTO.getUsername());
             newCustomer.setGender(accountDTO.getAppUser().getGender());
             newCustomer.setBirthday(accountDTO.getAppUser().getBirthday());
             newCustomer.setAddress(accountDTO.getAppUser().getAddress());
             newCustomer.setPhone(accountDTO.getAppUser().getPhone());
             newCustomer.setEmail(accountDTO.getAppUser().getEmail());
-            newCustomer.setAppAccount(account);
-
             this.customerRepository.save(newCustomer);
+
+            AppAccount newAccount = new AppAccount();
+            newAccount.setAppRole(appRoleRepository.findByRoleName("Customer"));
+            newAccount.setUsername(accountDTO.getUsername());
+            newAccount.setPassword(bcryptEncoder.encode(accountDTO.getPassword()));
+            newAccount.setCustomer(this.customerRepository.findByFullName(accountDTO.getUsername()));
+            this.appAccountRepository.save(newAccount);
+
             messageDTO.setMessage("Đăng ký tài khoản thành công !");
             sendEmailForCustomer(accountDTO);
         } catch (Exception e) {
@@ -144,6 +145,11 @@ public class AppAccountServiceImpl implements AppAccountService {
     }
 
     @Override
+    public Shipper findShipperByName(String name) {
+        return this.shipperRepository.findByFullName(name);
+    }
+
+    @Override
     public MessageDTO editInformation(AppUserDTO appUserDTO) {
         MessageDTO messageDTO = new MessageDTO();
 
@@ -154,7 +160,14 @@ public class AppAccountServiceImpl implements AppAccountService {
                 customer.setAddress(appUserDTO.getAddress());
                 customer.setPhone(appUserDTO.getPhone());
                 this.customerRepository.save(customer);
-            } else {
+            } else if (appUserDTO.getRole().equals("Shipper")) {
+                Shipper shipper = this.shipperRepository.findByEmail(appUserDTO.getEmail());
+                shipper.setBirthday(appUserDTO.getBirthday());
+                shipper.setAddress(appUserDTO.getAddress());
+                shipper.setPhone(appUserDTO.getPhone());
+                this.shipperRepository.save(shipper);
+            }
+            else {
                 Employee employee = this.employeeRepository.findByEmail(appUserDTO.getEmail());
                 employee.setBirthday(appUserDTO.getBirthday());
                 employee.setAddress(appUserDTO.getAddress());

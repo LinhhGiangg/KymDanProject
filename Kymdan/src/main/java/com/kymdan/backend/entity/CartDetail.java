@@ -20,13 +20,10 @@ public class CartDetail {
     @Column(name = "id", columnDefinition = "BIGINT")
     private Long id;
 
-    @Column(name = "amount", columnDefinition = "VARCHAR(250)")
+    @Column(name = "amount", columnDefinition = "VARCHAR(50)")
     private String amount;
 
-    @Column(name = "size", columnDefinition = "VARCHAR(250)")
-    private String size;
-
-    @Column(name = "real_price", columnDefinition = "VARCHAR(250)")
+    @Column(name = "real_price", columnDefinition = "VARCHAR(50)")
     private String realPrice;
 
     // relationship

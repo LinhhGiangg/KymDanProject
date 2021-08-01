@@ -17,29 +17,16 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/list/{typeID}")
+    @GetMapping("/view/{typeID}")
     public ResponseEntity<List<Product>> findProductByType(@PathVariable Long typeID) {
         List<Product> productList = this.productService.findProductByType(typeID);
         return new ResponseEntity<>(productList, HttpStatus.OK);
     }
 
-    @GetMapping("/list/{typeID}/{price}")
-    public ResponseEntity<List<Product>> filterProductByTypeAndPrice(@PathVariable Long typeID,
-                                                                     @PathVariable long price) {
-        List<Product> productList = this.productService.filterProductByTypeAndPrice(typeID, price);
-        return new ResponseEntity<>(productList, HttpStatus.OK);
-    }
-
-    @GetMapping("/view/{productID}")
-    public ResponseEntity<Product> findProductByID(@PathVariable Long productID) {
-        Product product = this.productService.findProductByID(productID);
-        return new ResponseEntity<>(product, HttpStatus.OK);
-    }
-
-    @GetMapping("/save-cart/{customerID}/{productID}/{productInformation}")
-    public ResponseEntity<?> saveCart(@PathVariable Long customerID, @PathVariable Long productID,
+    @GetMapping("/save-cart/{userName}/{productID}/{productInformation}")
+    public ResponseEntity<?> saveCart(@PathVariable String userName, @PathVariable Long productID,
                                       @PathVariable String productInformation) {
-        return new ResponseEntity<>(this.productService.saveCart(customerID, productID, productInformation),
+        return new ResponseEntity<>(this.productService.saveCart(userName, productID, productInformation),
                 HttpStatus.OK);
     }
 }

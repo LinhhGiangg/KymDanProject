@@ -18,12 +18,12 @@ export class LoginComponent implements OnInit {
     public loginService: LoginService,
     public router: Router,
     public el: ElementRef,
-    private activedRouter: ActivatedRoute
+    private activatedRouter: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
-    this.activedRouter.params.subscribe(data => {
+    this.activatedRouter.params.subscribe(data => {
       this.message = data.message;
     });
 
@@ -47,7 +47,13 @@ export class LoginComponent implements OnInit {
           } else {
             this.user = data;
             this.loginService.broadcastLoginChange(this.user);
-            this.router.navigateByUrl('');
+            if (this.user.role === 'Customer') {
+              this.router.navigateByUrl('');
+            } else if (this.user.role === 'Employee') {
+              this.router.navigateByUrl('/product-management');
+            } else if (this.user.role === 'Shipper') {
+              this.router.navigateByUrl('/order-product');
+            }
           }
         }, error => {
           this.message = 'Sai email hoặc password';

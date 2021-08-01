@@ -5,5 +5,9 @@ import com.kymdan.backend.entity.ProductType;
 import java.util.List;
 
 public interface ProductTypeService {
-    List<ProductType> findAll();
+    List<ProductType> findAllProductType();
+
+    List<ProductType> filterProductTypeByPrice(long price);
+
+    ProductType findProductTypeByID(Long typeID);
 }

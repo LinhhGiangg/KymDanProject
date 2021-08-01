@@ -1,5 +1,7 @@
 package com.kymdan.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,13 +20,13 @@ public class PromotionDetail {
     @Column(name = "id", columnDefinition = "BIGINT")
     private Long id;
 
-    @Column(name = "discount", columnDefinition = "VARCHAR(250)")
+    @Column(name = "discount", columnDefinition = "VARCHAR(50)")
     private String discount;
 
     // relationship
 
-    @OneToOne
-    @JoinColumn(name = "product_type_id", referencedColumnName = "id", columnDefinition = "BIGINT")
+    @OneToOne(mappedBy = "promotionDetail", cascade = CascadeType.ALL)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     private ProductType productType;
 
     @ManyToOne(cascade = CascadeType.ALL)

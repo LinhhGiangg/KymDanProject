@@ -1,7 +1,5 @@
 package com.kymdan.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +21,7 @@ public class AppAccount {
     @Column(name = "username", columnDefinition = "VARCHAR(50)")
     private String username;
 
-    @Column(name = "password", columnDefinition = "VARCHAR(255)")
+    @Column(name = "password", columnDefinition = "VARCHAR(250)")
     private String password;
 
     // relationship
@@ -32,15 +30,19 @@ public class AppAccount {
     @JoinColumn(name = "app_role_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private AppRole appRole;
 
-    @OneToOne(mappedBy = "appAccount", cascade = CascadeType.ALL)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+    @OneToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private Employee employee;
 
-    @OneToOne(mappedBy = "appAccount", cascade = CascadeType.ALL)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+    @OneToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private Customer customer;
 
-    @OneToOne(mappedBy = "appAccount", cascade = CascadeType.ALL)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+    @OneToOne
+    @JoinColumn(name = "shipper_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private Shipper shipper;
+
+    @OneToOne
+    @JoinColumn(name = "cart_id", referencedColumnName = "id", columnDefinition = "BIGINT")
+    private Cart cart;
 }

@@ -24,7 +24,7 @@ public class Receipt {
     @Column(name = "create_date", columnDefinition = "DATE")
     private LocalDate createDate;
 
-    @Column(name = "total_money", columnDefinition = "VARCHAR(250)")
+    @Column(name = "total_money", columnDefinition = "VARCHAR(50)")
     private String totalMoney;
 
     // relationship

@@ -21,7 +21,7 @@ public class OrderProduct {
     @Column(name = "id", columnDefinition = "BIGINT")
     private Long id;
 
-    @Column(name = "receiver", columnDefinition = "VARCHAR(250)")
+    @Column(name = "receiver", columnDefinition = "VARCHAR(50)")
     private String receiver;
 
     @Column(name = "receiver_phone", columnDefinition = "VARCHAR(50)")

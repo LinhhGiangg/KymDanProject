@@ -1,6 +1,8 @@
 package com.kymdan.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,11 +32,11 @@ public class Coupon {
     @JoinColumn(name = "employee_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private Employee employee;
 
-    @OneToOne
-    @JoinColumn(name = "order_manufacture_id", referencedColumnName = "id", columnDefinition = "BIGINT")
+    @OneToOne(mappedBy = "coupon", cascade = CascadeType.ALL)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     private OrderManufacture orderManufacture;
 
     @OneToMany(mappedBy = "coupon", cascade = CascadeType.ALL)
     @JsonBackReference
-    private List<CouponDetail>  couponDetailList;
+    private List<CouponDetail> couponDetailList;
 }

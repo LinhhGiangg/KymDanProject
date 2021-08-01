@@ -3,6 +3,7 @@ package com.kymdan.backend.services.account;
 import com.kymdan.backend.entity.AppAccount;
 import com.kymdan.backend.entity.Customer;
 import com.kymdan.backend.entity.Employee;
+import com.kymdan.backend.entity.Shipper;
 import com.kymdan.backend.model.AccountDTO;
 import com.kymdan.backend.model.AppUserDTO;
 import com.kymdan.backend.model.MessageDTO;
@@ -15,6 +16,8 @@ public interface AppAccountService {
     Customer findCustomerByName(String name);
 
     Employee findEmployeeByName(String name);
+
+    Shipper findShipperByName(String name);
 
     MessageDTO editInformation(AppUserDTO appUserDTO);
 

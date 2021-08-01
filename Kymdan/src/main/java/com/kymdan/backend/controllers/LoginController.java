@@ -2,8 +2,6 @@ package com.kymdan.backend.controllers;
 
 import com.kymdan.backend.config.JwtTokenUtil;
 import com.kymdan.backend.entity.AppAccount;
-import com.kymdan.backend.entity.Customer;
-import com.kymdan.backend.entity.Employee;
 import com.kymdan.backend.model.AppUserDTO;
 import com.kymdan.backend.model.CurrentAccountDTO;
 import com.kymdan.backend.model.LoginDTO;
@@ -63,9 +61,11 @@ public class LoginController {
         String fullName;
 
         switch (role) {
-            case "Admin":
             case "Employee":
                 fullName = account.getEmployee().getFullName();
+                break;
+            case "Shipper":
+                fullName = account.getShipper().getFullName();
                 break;
             default:
                 fullName = account.getCustomer().getFullName();
@@ -87,9 +87,14 @@ public class LoginController {
 
     @GetMapping("/information/{name}/{role}")
     public ResponseEntity<?> getInformationByName(@PathVariable String name, @PathVariable String role) {
-        if (role.equals("Customer")) {
-            return new ResponseEntity<>(this.appAccountService.findCustomerByName(name), HttpStatus.OK);
-        } else return new ResponseEntity<>(this.appAccountService.findEmployeeByName(name), HttpStatus.OK);
+        switch (role) {
+            case "Employee":
+                return new ResponseEntity<>(this.appAccountService.findEmployeeByName(name), HttpStatus.OK);
+            case "Shipper":
+                return new ResponseEntity<>(this.appAccountService.findShipperByName(name), HttpStatus.OK);
+            default:
+                return new ResponseEntity<>(this.appAccountService.findCustomerByName(name), HttpStatus.OK);
+        }
     }
 
     @PostMapping(value = "/edit-information")

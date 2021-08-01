@@ -21,7 +21,7 @@ public class Promotion {
     @Column(name = "id", columnDefinition = "BIGINT")
     private Long id;
 
-    @Column(name = "name", columnDefinition = "VARCHAR(250)")
+    @Column(name = "name", columnDefinition = "VARCHAR(50)")
     private String name;
 
     @Column(name = "start_date", columnDefinition = "DATE")

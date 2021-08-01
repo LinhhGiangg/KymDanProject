@@ -18,6 +18,9 @@ import {RegisterComponent} from './component/register/register.component';
 import {InformationComponent} from './component/information/information.component';
 import {EditPasswordComponent} from './component/edit-password/edit-password.component';
 import {BuyComponent} from './component/buy/buy.component';
+import {NoticePageComponent} from './component/notice-page/notice-page.component';
+import {ProductManagementComponent} from './component/product-management/product-management.component';
+import {OrderProductComponent} from './component/order-product/order-product.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import {BuyComponent} from './component/buy/buy.component';
     RegisterComponent,
     InformationComponent,
     EditPasswordComponent,
-    BuyComponent
+    BuyComponent,
+    NoticePageComponent,
+    ProductManagementComponent,
+    OrderProductComponent
   ],
   imports: [
     BrowserModule,

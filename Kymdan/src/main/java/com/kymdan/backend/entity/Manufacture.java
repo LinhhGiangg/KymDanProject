@@ -20,16 +20,16 @@ public class Manufacture {
     @Column(name = "id", columnDefinition = "BIGINT")
     private Long id;
 
-    @Column(name = "name", columnDefinition = "VARCHAR(250)")
+    @Column(name = "name", columnDefinition = "VARCHAR(50)")
     private String name;
 
-    @Column(name = "address", columnDefinition = "VARCHAR(250)")
+    @Column(name = "address", columnDefinition = "VARCHAR(50)")
     private String address;
 
-    @Column(name = "mail", columnDefinition = "VARCHAR(250)")
+    @Column(name = "mail", columnDefinition = "VARCHAR(50)")
     private String mail;
 
-    @Column(name = "phone", columnDefinition = "VARCHAR(250)")
+    @Column(name = "phone", columnDefinition = "VARCHAR(50)")
     private String phone;
 
     // relationship

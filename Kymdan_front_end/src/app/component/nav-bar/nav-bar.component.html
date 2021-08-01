@@ -45,7 +45,7 @@
       <div class="row" style="font-size: 17px; margin-top: 12%">
         <a routerLink="/">TRANG CHỦ <span class="sr-only">(current)</span></a>
         <a [routerLink]="['/product']" style="margin: 0 25px">SẢN PHẨM</a>
-        <a [routerLink]="['/cart']">GIỎ HÀNG</a>
+        <a [routerLink]="['/cart']" *ngIf="currentUser && currentUser.role === 'Customer'">GIỎ HÀNG</a>
       </div>
     </div>
   </div>

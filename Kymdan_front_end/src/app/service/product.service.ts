@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
+  protected readonly APIType: string = 'http://localhost:8080/productType';
   protected readonly API: string = 'http://localhost:8080/product';
 
   constructor(
@@ -13,19 +14,23 @@ export class ProductService {
   ) {
   }
 
-  findProductByTypeName(typeID): Observable<any> {
-    return this.http.get(this.API + '/list/' + typeID);
+  findAllProductType(): Observable<any> {
+    return this.http.get(this.APIType + '/list');
   }
 
-  findProductByTypeAndPrice(typeID, price): Observable<any> {
-    return this.http.get(this.API + '/list/' + typeID + '/' + price);
+  findProductTypeByPrice(price): Observable<any> {
+    return this.http.get(this.APIType + '/list/' + price);
   }
 
-  findProductByID(productID): Observable<any> {
-    return this.http.get(this.API + '/view/' + productID);
+  findProductTypeByID(typeID): Observable<any> {
+    return this.http.get(this.APIType + '/find/' + typeID);
   }
 
-  saveCart(customerID, productID, productInformation): Observable<any> {
-    return this.http.get(this.API + '/save-cart/' + customerID + '/' + productID + '/' + productInformation);
+  findProductByTypeID(typeID): Observable<any> {
+    return this.http.get(this.API + '/view/' + typeID);
+  }
+
+  saveCart(userName, productID, productInformation): Observable<any> {
+    return this.http.get(this.API + '/save-cart/' + userName + '/' + productID + '/' + productInformation);
   }
 }

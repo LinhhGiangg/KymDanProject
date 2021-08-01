@@ -1,0 +1,18 @@
+h1 {
+  font-size: 35px;
+  color: red;
+}
+
+h3 {
+  font-size: 25px;
+  color: green;
+}
+
+button {
+  width: 25%;
+  font-size: 25px;
+  border-radius: 10px;
+  border: 1px solid green;
+  margin-top: 5px;
+  padding: 5px;
+}

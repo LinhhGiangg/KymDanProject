@@ -1,8 +1,6 @@
 package com.kymdan.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +23,21 @@ public class ProductType {
     @Column(name = "type_name", columnDefinition = "VARCHAR(50)")
     private String typeName;
 
+    @Column(name = "description", columnDefinition = "VARCHAR(250)")
+    private String description;
+
+    @Column(name = "image1", columnDefinition = "VARCHAR(250)")
+    private String image1;
+
+    @Column(name = "image2", columnDefinition = "VARCHAR(250)")
+    private String image2;
+
+    @Column(name = "image3", columnDefinition = "VARCHAR(250)")
+    private String image3;
+
+    @Column(name = "price", columnDefinition = "VARCHAR(50)")
+    private String price;
+
     // relationship
 
     @OneToMany(mappedBy = "productType", cascade = CascadeType.ALL)
@@ -35,7 +48,7 @@ public class ProductType {
     @JoinColumn(name = "manufacture_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private Manufacture manufacture;
 
-    @OneToOne(mappedBy = "productType", cascade = CascadeType.ALL)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+    @OneToOne
+    @JoinColumn(name = "promotion_detail_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private PromotionDetail promotionDetail;
 }
