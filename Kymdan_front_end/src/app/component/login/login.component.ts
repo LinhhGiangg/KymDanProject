@@ -9,16 +9,16 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  user;
-  message;
+  public loginForm: FormGroup;
+  public user;
+  public message;
 
   constructor(
     public formBuilder: FormBuilder,
     public loginService: LoginService,
     public router: Router,
     public el: ElementRef,
-    private activatedRouter: ActivatedRoute
+    public activatedRouter: ActivatedRoute
   ) {
   }
 
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
             if (this.user.role === 'Customer') {
               this.router.navigateByUrl('');
             } else if (this.user.role === 'Employee') {
-              this.router.navigateByUrl('/product-management');
+              this.router.navigateByUrl('/product-type-management');
             } else if (this.user.role === 'Shipper') {
               this.router.navigateByUrl('/order-product');
             }

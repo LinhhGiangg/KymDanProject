@@ -11,7 +11,7 @@ export class LoginService {
   readonly API = 'http://localhost:8080/login';
 
   name: Subject<string> = new Subject();
-  private currentUserSubject: BehaviorSubject<AppAccount>;
+  public currentUserSubject: BehaviorSubject<AppAccount>;
   public currentUser: Observable<AppAccount>;
   parsingUser;
 

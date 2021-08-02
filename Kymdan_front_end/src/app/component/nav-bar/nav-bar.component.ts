@@ -7,7 +7,7 @@ import {LoginService} from '../../service/login.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  currentUser;
+  public currentUser;
 
   constructor(public loginService: LoginService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

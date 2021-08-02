@@ -9,4 +9,5 @@ export class ProductType {
   image2: string;
   image3: string;
   price: string;
+  name: string;
 }

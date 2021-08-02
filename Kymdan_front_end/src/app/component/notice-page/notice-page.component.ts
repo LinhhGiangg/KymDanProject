@@ -7,7 +7,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
   styleUrls: ['./notice-page.component.css']
 })
 export class NoticePageComponent implements OnInit {
-  private message;
+  public message;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,

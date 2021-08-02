@@ -12,8 +12,8 @@ insert into kymdan.customer (id, full_name, gender, birthday, address, phone, em
 
 # account
 insert into kymdan.app_account (id, `password`, username, app_role_id, employee_id) values (1, '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 'HLG', 1, 1);
-insert into kymdan.app_account (id, `password`, username, app_role_id, customer_id) values (2, '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 'Shipper', 2, 1);
-insert into kymdan.app_account (id, `password`, username, app_role_id, shipper_id) values (3, '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 'SPJ', 3, 1);
+insert into kymdan.app_account (id, `password`, username, app_role_id, shipper_id) values (2, '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 'Shipper', 2, 1);
+insert into kymdan.app_account (id, `password`, username, app_role_id, customer_id) values (3, '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 'SPJ', 3, 1);
 
 # product type
 insert into kymdan.product_type (id, type_name, image1, image2, image3, `description`, price) values (1, 'Nệm (mattress) KYMDAN Deluxe', 'https://vuanem.com/image/products/1264/280/QFwfaB9Uz9pK6RyO41cmcIUk7Gy8YCP7GBZGgT65.jpg', 'https://www.kymdan.com/attachment.do?file=attachment/6542/nem_kymdan_deluxe_02.jpg', 'https://www.kymdan.com/attachment.do?file=attachment/6140/nem%20kymdan%20deluxe.jpg', 'Chất liệu TEMPUR® được NASA công nhận,Giúp giảm đau tại các điểm chịu lực,Công nghệ CoolTouch™ giúp vỏ nệm luôn mát mẻ', '15000000');

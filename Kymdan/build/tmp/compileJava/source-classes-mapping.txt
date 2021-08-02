@@ -16,8 +16,8 @@ com/kymdan/backend/repository/OrderDetailRepository.java
  com.kymdan.backend.repository.OrderDetailRepository
 com/kymdan/backend/controllers/AppAccountController.java
  com.kymdan.backend.controllers.AppAccountController
-com/kymdan/backend/repository/ProductTypeRepository.java
- com.kymdan.backend.repository.ProductTypeRepository
+com/kymdan/backend/services/product/ProductServiceImpl.java
+ com.kymdan.backend.services.product.ProductServiceImpl
 com/kymdan/backend/services/order_detail/OrderDetailServiceImpl.java
  com.kymdan.backend.services.order_detail.OrderDetailServiceImpl
 com/kymdan/backend/model/CurrentAccountDTO.java
@@ -26,8 +26,8 @@ com/kymdan/backend/services/order_product/OrderProductService.java
  com.kymdan.backend.services.order_product.OrderProductService
 com/kymdan/backend/repository/CartDetailRepository.java
  com.kymdan.backend.repository.CartDetailRepository
-com/kymdan/backend/controllers/ProductTypeController.java
- com.kymdan.backend.controllers.ProductTypeController
+com/kymdan/backend/entity/PromotionDetail.java
+ com.kymdan.backend.entity.PromotionDetail
 com/kymdan/backend/model/LoginDTO.java
  com.kymdan.backend.model.LoginDTO
 com/kymdan/backend/services/employee/EmployeeService.java
@@ -64,20 +64,20 @@ com/kymdan/backend/controllers/CustomerController.java
  com.kymdan.backend.controllers.CustomerController
 com/kymdan/backend/repository/AppAccountRepository.java
  com.kymdan.backend.repository.AppAccountRepository
-com/kymdan/backend/entity/CouponDetail.java
- com.kymdan.backend.entity.CouponDetail
-com/kymdan/backend/entity/ProductType.java
- com.kymdan.backend.entity.ProductType
-com/kymdan/backend/services/product_type/ProductTypeService.java
- com.kymdan.backend.services.product_type.ProductTypeService
+com/kymdan/backend/controllers/LoginController.java
+ com.kymdan.backend.controllers.LoginController
+com/kymdan/backend/services/account/AppAccountServiceImpl.java
+ com.kymdan.backend.services.account.AppAccountServiceImpl
+com/kymdan/backend/services/customer/CustomerServiceImpl.java
+ com.kymdan.backend.services.customer.CustomerServiceImpl
 com/kymdan/backend/entity/OrderProduct.java
  com.kymdan.backend.entity.OrderProduct
 com/kymdan/backend/entity/Coupon.java
  com.kymdan.backend.entity.Coupon
-com/kymdan/backend/entity/Product.java
- com.kymdan.backend.entity.Product
-com/kymdan/backend/entity/PromotionDetail.java
- com.kymdan.backend.entity.PromotionDetail
+com/kymdan/backend/repository/CartRepository.java
+ com.kymdan.backend.repository.CartRepository
+com/kymdan/backend/entity/Customer.java
+ com.kymdan.backend.entity.Customer
 com/kymdan/backend/entity/AppAccount.java
  com.kymdan.backend.entity.AppAccount
 com/kymdan/backend/services/account/AppAccountService.java
@@ -90,8 +90,8 @@ com/kymdan/backend/repository/EmployeeRepository.java
  com.kymdan.backend.repository.EmployeeRepository
 com/kymdan/backend/entity/OrderManufacture.java
  com.kymdan.backend.entity.OrderManufacture
-com/kymdan/backend/services/product_type/ProductTypeServiceImpl.java
- com.kymdan.backend.services.product_type.ProductTypeServiceImpl
+com/kymdan/backend/services/customer/CustomerService.java
+ com.kymdan.backend.services.customer.CustomerService
 com/kymdan/backend/entity/Receipt.java
  com.kymdan.backend.entity.Receipt
 com/kymdan/backend/entity/Cart.java
@@ -104,25 +104,27 @@ com/kymdan/backend/entity/Shipper.java
  com.kymdan.backend.entity.Shipper
 com/kymdan/backend/services/account/JwtUserDetailsService.java
  com.kymdan.backend.services.account.JwtUserDetailsService
-com/kymdan/backend/entity/OrderDetail.java
- com.kymdan.backend.entity.OrderDetail
-com/kymdan/backend/entity/Customer.java
- com.kymdan.backend.entity.Customer
-com/kymdan/backend/entity/OrderManufactureDetail.java
- com.kymdan.backend.entity.OrderManufactureDetail
-com/kymdan/backend/services/product/ProductServiceImpl.java
- com.kymdan.backend.services.product.ProductServiceImpl
-com/kymdan/backend/repository/CartRepository.java
- com.kymdan.backend.repository.CartRepository
+com/kymdan/backend/entity/ProductType.java
+ com.kymdan.backend.entity.ProductType
+com/kymdan/backend/entity/CouponDetail.java
+ com.kymdan.backend.entity.CouponDetail
 com/kymdan/backend/repository/ProductRepository.java
  com.kymdan.backend.repository.ProductRepository
-com/kymdan/backend/services/customer/CustomerService.java
- com.kymdan.backend.services.customer.CustomerService
+com/kymdan/backend/entity/OrderManufactureDetail.java
+ com.kymdan.backend.entity.OrderManufactureDetail
+com/kymdan/backend/entity/OrderDetail.java
+ com.kymdan.backend.entity.OrderDetail
 com/kymdan/backend/entity/CartDetail.java
  com.kymdan.backend.entity.CartDetail
-com/kymdan/backend/services/customer/CustomerServiceImpl.java
- com.kymdan.backend.services.customer.CustomerServiceImpl
-com/kymdan/backend/controllers/LoginController.java
- com.kymdan.backend.controllers.LoginController
-com/kymdan/backend/services/account/AppAccountServiceImpl.java
- com.kymdan.backend.services.account.AppAccountServiceImpl
+com/kymdan/backend/entity/Product.java
+ com.kymdan.backend.entity.Product
+com/kymdan/backend/model/ProductTypeDTO.java
+ com.kymdan.backend.model.ProductTypeDTO
+com/kymdan/backend/services/product_type/ProductTypeService.java
+ com.kymdan.backend.services.product_type.ProductTypeService
+com/kymdan/backend/repository/ProductTypeRepository.java
+ com.kymdan.backend.repository.ProductTypeRepository
+com/kymdan/backend/controllers/ProductTypeController.java
+ com.kymdan.backend.controllers.ProductTypeController
+com/kymdan/backend/services/product_type/ProductTypeServiceImpl.java
+ com.kymdan.backend.services.product_type.ProductTypeServiceImpl

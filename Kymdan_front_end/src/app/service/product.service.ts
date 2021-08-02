@@ -6,11 +6,11 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  protected readonly APIType: string = 'http://localhost:8080/productType';
-  protected readonly API: string = 'http://localhost:8080/product';
+  public readonly APIType: string = 'http://localhost:8080/productType';
+  public readonly API: string = 'http://localhost:8080/product';
 
   constructor(
-    protected http: HttpClient
+    public http: HttpClient
   ) {
   }
 
@@ -28,6 +28,10 @@ export class ProductService {
 
   findProductByTypeID(typeID): Observable<any> {
     return this.http.get(this.API + '/view/' + typeID);
+  }
+
+  addNewProductType(productType): Observable<any> {
+    return this.http.post(this.APIType + '/add', productType, {headers: {skip: 'true'}});
   }
 
   saveCart(userName, productID, productInformation): Observable<any> {

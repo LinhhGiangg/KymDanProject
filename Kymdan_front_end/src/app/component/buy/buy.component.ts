@@ -13,22 +13,22 @@ import {ProductType} from '../../model/ProductType';
   styleUrls: ['./buy.component.css']
 })
 export class BuyComponent implements OnInit {
-  private message;
-  private role = 'Nothing';
-  private userName;
-  private typeID;
-  private informationProduct;
-  private flagSize = 1;
-  private flagThick = 1;
-  private amount = 1;
-  private realPrice: number;
-  private price: number;
-  private product = new Product();
-  private productType = new ProductType();
+  public message;
+  public role = 'Nothing';
+  public userName;
+  public typeID;
+  public informationProduct;
+  public flagSize = 1;
+  public flagThick = 1;
+  public amount = 1;
+  public realPrice: number;
+  public price: number;
+  public product = new Product();
+  public productType = new ProductType();
 
   constructor(
-    private activedRouter: ActivatedRoute,
-    protected productService: ProductService,
+    public activatedRouter: ActivatedRoute,
+    public productService: ProductService,
     public loginService: LoginService,
     public router: Router,
     public dialog: MatDialog,
@@ -41,7 +41,7 @@ export class BuyComponent implements OnInit {
       this.userName = this.loginService.currentUserValue.username;
     }
 
-    this.activedRouter.params.subscribe(data => {
+    this.activatedRouter.params.subscribe(data => {
       this.typeID = data.typeID;
     });
 
@@ -88,9 +88,9 @@ export class BuyComponent implements OnInit {
       }
     } else {
       // tslint:disable-next-line:radix
-      // if (this.amount < Number.parseInt(this.product.amount)) {
+      // if (this.amount < Number.parseInt(this.product-type.amount)) {
       //   this.amount = this.amount + 1;
-      // } else this.openNoticePage('Hiện tại mặt hàng này chỉ còn ' + this.product.amount + ' sản phẩm !')
+      // } else this.openNoticePage('Hiện tại mặt hàng này chỉ còn ' + this.product-type.amount + ' sản phẩm !')
     }
   }
 
@@ -99,7 +99,7 @@ export class BuyComponent implements OnInit {
     // this.productService.saveCart(this.userName, this.typeID, this.informationProduct).subscribe(
     //   (data) => {
     //     this.openNoticePage(data.message);
-    //     this.router.navigate(['product', {}]).then(r => {
+    //     this.router.navigate(['product-type', {}]).then(r => {
     //     });
     //   },
     //   () => {

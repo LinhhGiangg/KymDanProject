@@ -1,6 +1,8 @@
 package com.kymdan.backend.controllers;
 
 import com.kymdan.backend.entity.ProductType;
+import com.kymdan.backend.model.MessageDTO;
+import com.kymdan.backend.model.ProductTypeDTO;
 import com.kymdan.backend.services.product_type.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,5 +34,14 @@ public class ProductTypeController {
     public ResponseEntity<ProductType> findProductTypeByID(@PathVariable Long typeID) {
         ProductType productType = this.productTypeService.findProductTypeByID(typeID);
         return new ResponseEntity<>(productType, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/add")
+    public ResponseEntity<?> addNewProductType(@RequestBody ProductTypeDTO productTypeDTO) {
+        if (productTypeService.findProductTypeByName(productTypeDTO.getTypeName()) != null) {
+            return ResponseEntity.ok(new MessageDTO("Loại sản phẩm này đã có !"));
+        } else {
+            return ResponseEntity.ok(productTypeService.save(productTypeDTO));
+        }
     }
 }

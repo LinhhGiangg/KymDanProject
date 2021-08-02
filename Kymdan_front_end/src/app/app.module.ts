@@ -9,7 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {NavBarComponent} from './component/nav-bar/nav-bar.component';
 import {FooterComponent} from './component/footer/footer.component';
 import {HomeComponent} from './component/home/home.component';
-import {ProductComponent} from './component/product/product.component';
+import {ProductTypeComponent} from './component/product-type/product-type.component';
 import {LoginComponent} from './component/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -19,8 +19,9 @@ import {InformationComponent} from './component/information/information.componen
 import {EditPasswordComponent} from './component/edit-password/edit-password.component';
 import {BuyComponent} from './component/buy/buy.component';
 import {NoticePageComponent} from './component/notice-page/notice-page.component';
-import {ProductManagementComponent} from './component/product-management/product-management.component';
+import {ProductTypeManagementComponent} from './component/product-type-management/product-type-management.component';
 import {OrderProductComponent} from './component/order-product/order-product.component';
+import {AddProductTypeComponent} from './component/add-product-type/add-product-type.component';
 
 @NgModule({
   declarations: [
@@ -28,15 +29,16 @@ import {OrderProductComponent} from './component/order-product/order-product.com
     NavBarComponent,
     FooterComponent,
     HomeComponent,
-    ProductComponent,
+    ProductTypeComponent,
     LoginComponent,
     RegisterComponent,
     InformationComponent,
     EditPasswordComponent,
     BuyComponent,
     NoticePageComponent,
-    ProductManagementComponent,
-    OrderProductComponent
+    ProductTypeManagementComponent,
+    OrderProductComponent,
+    AddProductTypeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,8 @@
 package com.kymdan.backend.services.product_type;
 
 import com.kymdan.backend.entity.ProductType;
+import com.kymdan.backend.model.MessageDTO;
+import com.kymdan.backend.model.ProductTypeDTO;
 import com.kymdan.backend.repository.ProductTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +45,22 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     @Override
     public ProductType findProductTypeByID(Long typeID) {
         return this.productTypeRepository.findById(typeID).orElse(null);
+    }
+
+    @Override
+    public ProductType findProductTypeByName(String name) {
+        return this.productTypeRepository.findByTypeName(name);
+    }
+
+    @Override
+    public MessageDTO save(ProductTypeDTO productTypeDTO) {
+        ProductType productType = new ProductType();
+        productType.setTypeName(productTypeDTO.getTypeName());
+        productType.setDescription(productTypeDTO.getDescription());
+        productType.setImage1(productTypeDTO.getImage());
+        productType.setPrice(productTypeDTO.getPrice());
+        this.productTypeRepository.save(productType);
+
+        return new MessageDTO("Thành công !");
     }
 }

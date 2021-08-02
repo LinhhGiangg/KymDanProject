@@ -43,9 +43,18 @@
     </div>
     <div class="col-sm-3">
       <div class="row" style="font-size: 17px; margin-top: 12%">
-        <a routerLink="/">TRANG CHỦ <span class="sr-only">(current)</span></a>
-        <a [routerLink]="['/product']" style="margin: 0 25px">SẢN PHẨM</a>
+        <a routerLink="/">TRANG CHỦ</a>
+
+        <a [routerLink]="['/product-type']" style="margin: 0 25px"
+           *ngIf="!currentUser || currentUser.role === 'Customer'">SẢN PHẨM</a>
+
         <a [routerLink]="['/cart']" *ngIf="currentUser && currentUser.role === 'Customer'">GIỎ HÀNG</a>
+
+        <a [routerLink]="['/product-type-management']" style="margin: 0 25px"
+           *ngIf="currentUser && currentUser.role === 'Employee'">QUẢN LÝ KHO</a>
+
+        <a [routerLink]="['/order-product']" style="margin: 0 25px"
+           *ngIf="currentUser && currentUser.role === 'Shipper'">QUẢN LÝ ĐƠN HÀNG</a>
       </div>
     </div>
   </div>

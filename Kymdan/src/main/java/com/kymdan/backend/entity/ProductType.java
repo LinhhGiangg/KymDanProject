@@ -20,7 +20,7 @@ public class ProductType {
     @Column(name = "id", columnDefinition = "BIGINT")
     private Long id;
 
-    @Column(name = "type_name", columnDefinition = "VARCHAR(50)")
+    @Column(name = "type_name", columnDefinition = "VARCHAR(250)")
     private String typeName;
 
     @Column(name = "description", columnDefinition = "VARCHAR(250)")
