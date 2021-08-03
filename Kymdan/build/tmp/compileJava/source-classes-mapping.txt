@@ -120,10 +120,10 @@ com/kymdan/backend/entity/Product.java
  com.kymdan.backend.entity.Product
 com/kymdan/backend/model/ProductTypeDTO.java
  com.kymdan.backend.model.ProductTypeDTO
-com/kymdan/backend/services/product_type/ProductTypeService.java
- com.kymdan.backend.services.product_type.ProductTypeService
 com/kymdan/backend/repository/ProductTypeRepository.java
  com.kymdan.backend.repository.ProductTypeRepository
+com/kymdan/backend/services/product_type/ProductTypeService.java
+ com.kymdan.backend.services.product_type.ProductTypeService
 com/kymdan/backend/controllers/ProductTypeController.java
  com.kymdan.backend.controllers.ProductTypeController
 com/kymdan/backend/services/product_type/ProductTypeServiceImpl.java

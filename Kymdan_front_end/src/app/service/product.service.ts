@@ -34,6 +34,10 @@ export class ProductService {
     return this.http.post(this.APIType + '/add', productType, {headers: {skip: 'true'}});
   }
 
+  editProductType(productType): Observable<any> {
+    return this.http.post(this.APIType + '/edit', productType, {headers: {skip: 'true'}});
+  }
+
   saveCart(userName, productID, productInformation): Observable<any> {
     return this.http.get(this.API + '/save-cart/' + userName + '/' + productID + '/' + productInformation);
   }

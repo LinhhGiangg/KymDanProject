@@ -1,0 +1,95 @@
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <form (ngSubmit)="onSubmitAdd()" [formGroup]="formCreate">
+
+      <div class="text-center">
+        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" style="color: green" id="add">
+          <strong style="font-size: 25px">Thêm mới loại sản phẩm</strong>
+        </h3>
+
+        <mat-error *ngIf="message">{{message}}</mat-error>
+      </div>
+
+      <div>
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Tên loại</mat-label>
+            <input matInput formControlName="typeName">
+            <mat-error *ngIf="formCreate.controls.typeName.errors?.required">Tên loại không đươc để trống.
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls.typeName.errors?.minlength">Tên loại có tối thiểu 5 kí tự.
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls.typeName.errors?.maxlength">Tên loại có tối đa 250 kí tự.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Đặc tính 1</mat-label>
+            <input matInput formControlName="description1">
+            <mat-error *ngIf="formCreate.controls.description1.errors?.required">Mô tả này không đươc để trống.
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls.description1.errors?.maxlength">Mô tả tối đa 80 kí tự.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Đặc tính 2</mat-label>
+            <input matInput formControlName="description2">
+            <mat-error *ngIf="formCreate.controls.description2.errors?.maxlength">Mô tả tối đa 80 kí tự.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Đặc tính 3</mat-label>
+            <input matInput formControlName="description3">
+            <mat-error *ngIf="formCreate.controls.description3.errors?.maxlength">Mô tả tối đa 80 kí tự.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Giá niêm yết (VNĐ)</mat-label>
+            <input matInput formControlName="price">
+            <mat-error *ngIf="formCreate.controls.price.errors?.required">Giá niêm yết không đươc để trống.
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls.price.errors?.pattern">
+              Giá niêm yết phải là số và thấp nhất là 10.000.000 VNĐ, cao nhất là 100.000.000 VNĐ
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <p>Hình ảnh minh họa : </p>
+        </div>
+
+        <div class="row mb-1">
+          <input type="file" formControlName="image" (change)="choosePhoto($event.target)"/>
+          <img style="width: 100%; height: 205px" *ngIf="selectedImage.name != null" src="assets/{{selectedImage.name}}"
+               alt="" class="mt-1">
+          <p class="text-danger"
+             *ngIf="formCreate.controls.image.errors?.required">
+            Hình ảnh minh họa không được để trống !
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Thêm mới</button>
+            <button type="button" class="btn btn-warning ml-3" (click)="closeAdd()">Hủy</button>
+          </div>
+          <div class="col-sm-3"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-2"></div>
+</div>

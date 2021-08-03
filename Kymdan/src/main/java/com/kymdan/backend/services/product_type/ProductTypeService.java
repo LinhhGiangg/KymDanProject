@@ -16,4 +16,6 @@ public interface ProductTypeService {
     ProductType findProductTypeByName(String name);
 
     MessageDTO save(ProductTypeDTO productTypeDTO);
+
+    MessageDTO edit(ProductTypeDTO productTypeDTO);
 }

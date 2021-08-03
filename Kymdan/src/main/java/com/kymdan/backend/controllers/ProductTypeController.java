@@ -44,4 +44,9 @@ public class ProductTypeController {
             return ResponseEntity.ok(productTypeService.save(productTypeDTO));
         }
     }
+
+    @PostMapping(value = "/edit")
+    public ResponseEntity<?> editNewProductType(@RequestBody ProductTypeDTO productTypeDTO) {
+        return ResponseEntity.ok(productTypeService.edit(productTypeDTO));
+    }
 }

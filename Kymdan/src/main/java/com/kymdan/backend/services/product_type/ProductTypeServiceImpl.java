@@ -25,17 +25,21 @@ public class ProductTypeServiceImpl implements ProductTypeService {
         List<ProductType> result = new ArrayList<>();
         List<ProductType> productTypeList = this.productTypeRepository.findAll();
 
-        for (ProductType productType : productTypeList) {
-            if (price == 6) {
-                if (Long.parseLong(productType.getPrice()) >= (50000000)) {
+        if (price == 7) {
+            result = productTypeList;
+        } else {
+            for (ProductType productType : productTypeList) {
+                if (price == 6) {
+                    if (Long.parseLong(productType.getPrice()) >= (50000000)) {
+                        result.add(productType);
+                    }
+                    continue;
+                }
+
+                if (((price - 1) * 10000000) <= Long.parseLong(productType.getPrice())
+                        && Long.parseLong(productType.getPrice()) <= (price * 10000000)) {
                     result.add(productType);
                 }
-                continue;
-            }
-
-            if (((price - 1) * 10000000) <= Long.parseLong(productType.getPrice())
-                    && Long.parseLong(productType.getPrice()) <= (price * 10000000)) {
-                result.add(productType);
             }
         }
 
@@ -56,6 +60,17 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     public MessageDTO save(ProductTypeDTO productTypeDTO) {
         ProductType productType = new ProductType();
         productType.setTypeName(productTypeDTO.getTypeName());
+        productType.setDescription(productTypeDTO.getDescription());
+        productType.setImage1(productTypeDTO.getImage());
+        productType.setPrice(productTypeDTO.getPrice());
+        this.productTypeRepository.save(productType);
+
+        return new MessageDTO("Thành công !");
+    }
+
+    @Override
+    public MessageDTO edit(ProductTypeDTO productTypeDTO) {
+        ProductType productType = this.productTypeRepository.findByTypeName(productTypeDTO.getTypeName());
         productType.setDescription(productTypeDTO.getDescription());
         productType.setImage1(productTypeDTO.getImage());
         productType.setPrice(productTypeDTO.getPrice());
