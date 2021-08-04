@@ -23,6 +23,7 @@ import {ProductTypeManagementComponent} from './component/product/product-type-m
 import {OrderProductComponent} from './component/shipper/order-product/order-product.component';
 import {AddProductTypeComponent} from './component/product/add-product-type/add-product-type.component';
 import {EditProductTypeComponent} from './component/product/edit-product-type/edit-product-type.component';
+import {DeleteProductTypeComponent} from './component/product/delete-product-type/delete-product-type.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {EditProductTypeComponent} from './component/product/edit-product-type/ed
     ProductTypeManagementComponent,
     OrderProductComponent,
     AddProductTypeComponent,
-    EditProductTypeComponent
+    EditProductTypeComponent,
+    DeleteProductTypeComponent
   ],
   imports: [
     BrowserModule,

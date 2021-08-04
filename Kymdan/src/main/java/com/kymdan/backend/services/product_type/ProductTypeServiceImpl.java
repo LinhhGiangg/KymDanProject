@@ -62,10 +62,12 @@ public class ProductTypeServiceImpl implements ProductTypeService {
         productType.setTypeName(productTypeDTO.getTypeName());
         productType.setDescription(productTypeDTO.getDescription());
         productType.setImage1(productTypeDTO.getImage());
+        productType.setImage2("https://www.kymdan.com/attachment.do?file=attachment/6542/nem_kymdan_deluxe_02.jpg");
+        productType.setImage3("https://www.kymdan.com/attachment.do?file=attachment/6140/nem%20kymdan%20deluxe.jpg");
         productType.setPrice(productTypeDTO.getPrice());
         this.productTypeRepository.save(productType);
 
-        return new MessageDTO("Thành công !");
+        return new MessageDTO("Thêm thành công !");
     }
 
     @Override
@@ -76,6 +78,17 @@ public class ProductTypeServiceImpl implements ProductTypeService {
         productType.setPrice(productTypeDTO.getPrice());
         this.productTypeRepository.save(productType);
 
-        return new MessageDTO("Thành công !");
+        return new MessageDTO("Sửa thành công !");
+    }
+
+    @Override
+    public MessageDTO delete(String name) {
+        ProductType productType = this.productTypeRepository.findByTypeName(name);
+        if (productType.getProductList().size() == 0) {
+            this.productTypeRepository.delete(productType);
+            return new MessageDTO("Xóa thành công !");
+        } else {
+            return new MessageDTO("Loại này có sản phẩm đang trưng bày nên không thể xóa !");
+        }
     }
 }

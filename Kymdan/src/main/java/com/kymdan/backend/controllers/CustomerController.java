@@ -21,7 +21,8 @@ public class CustomerController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<?> registerNewCustomer(@RequestBody AccountDTO accountDTO) {
         if (appAccountService.findByUsername(accountDTO.getUsername()) != null) {
-            return ResponseEntity.ok(new MessageDTO("Tên đăng nhập này đã được đăng kí ! Vui lòng điền tên đăng nhập khác !"));
+            return ResponseEntity.ok
+                    (new MessageDTO("Tên đăng nhập này đã được đăng kí ! Vui lòng điền tên đăng nhập khác !"));
         } else if (customerService.findByEmail(accountDTO.getAppUser().getEmail()) != null) {
             return ResponseEntity.ok(new MessageDTO("Email này đã được đăng kí ! Vui lòng nhập email khác !"));
         } else {

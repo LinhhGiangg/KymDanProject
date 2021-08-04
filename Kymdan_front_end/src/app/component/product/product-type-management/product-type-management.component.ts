@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductService} from '../../../service/product.service';
+import {ProductTypeService} from '../../../service/product-type.service';
 import {ProductType} from '../../../model/ProductType';
 import {MatDialog} from '@angular/material/dialog';
 import {AddProductTypeComponent} from '../add-product-type/add-product-type.component';
-import {ActivatedRoute} from '@angular/router';
 import {EditProductTypeComponent} from '../edit-product-type/edit-product-type.component';
+import {DeleteProductTypeComponent} from '../delete-product-type/delete-product-type.component';
 
 @Component({
   selector: 'app-product-type-management',
@@ -16,18 +16,13 @@ export class ProductTypeManagementComponent implements OnInit {
   public message;
 
   constructor(
-    public productService: ProductService,
+    public productTypeService: ProductTypeService,
     public dialog: MatDialog,
-    public activatedRouter: ActivatedRoute,
   ) {
   }
 
   ngOnInit(): void {
-    this.activatedRouter.params.subscribe(data => {
-      this.message = data.message;
-    });
-
-    this.productService.findAllProductType().subscribe(
+    this.productTypeService.findAll().subscribe(
       (data) => {
         this.productTypeList = data;
       },
@@ -52,10 +47,20 @@ export class ProductTypeManagementComponent implements OnInit {
       disableClose: true
     });
 
-    dialogRefAdd.afterClosed().subscribe(result => {
+    dialogRefAdd.afterClosed().subscribe(() => {
       this.ngOnInit();
-      this.message = result;
     })
+  }
+
+  edit(id) {
+    this.productTypeService.findByID(id).subscribe(
+      (data) => {
+        this.editProductType(data)
+      },
+      () => {
+      },
+      () => {
+      });
   }
 
   editProductType(data) {
@@ -67,20 +72,25 @@ export class ProductTypeManagementComponent implements OnInit {
       disableClose: true
     });
 
-    dialogRefEdit.afterClosed().subscribe(result => {
+    dialogRefEdit.afterClosed().subscribe(() => {
       this.ngOnInit();
-      this.message = result;
     })
   }
 
-  edit(id) {
-    this.productService.findProductTypeByID(id).subscribe(
-      (data) => {
-        this.editProductType(data)
-      },
-      () => {
-      },
-      () => {
-      });
+  delete(typeName) {
+    this.message = '';
+    const dialogRefDelete = this.dialog.open(DeleteProductTypeComponent, {
+      width: '690px',
+      height: '180px',
+      data: {dataNeed: typeName},
+      disableClose: true
+    });
+
+    dialogRefDelete.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    })
+  }
+
+  view(id) {
   }
 }

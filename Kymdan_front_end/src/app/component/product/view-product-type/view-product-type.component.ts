@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductService} from '../../../service/product.service';
+import {ProductTypeService} from '../../../service/product-type.service';
 import {Router} from '@angular/router';
 import {ProductType} from '../../../model/ProductType';
 
@@ -13,13 +13,13 @@ export class ViewProductTypeComponent implements OnInit {
   public flagPosition;
 
   constructor(
-    public productService: ProductService,
+    public productService: ProductTypeService,
     public router: Router,
   ) {
   }
 
   ngOnInit() {
-    this.productService.findAllProductType().subscribe(
+    this.productService.findAll().subscribe(
       (data) => {
         this.productTypeList = data;
       },
@@ -37,7 +37,7 @@ export class ViewProductTypeComponent implements OnInit {
 
   filter(value) {
     this.flagPosition = value;
-    this.productService.findProductTypeByPrice(value).subscribe(
+    this.productService.findByPrice(value).subscribe(
       (data) => {
         this.productTypeList = data;
       },

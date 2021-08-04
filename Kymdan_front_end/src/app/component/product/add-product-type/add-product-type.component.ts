@@ -1,9 +1,10 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MatDialogRef} from '@angular/material/dialog';
-import {ProductService} from '../../../service/product.service';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {ProductTypeService} from '../../../service/product-type.service';
 import {Router} from '@angular/router';
 import {ProductType} from '../../../model/ProductType';
+import {NoticePageComponent} from '../../config/notice-page/notice-page.component';
 
 @Component({
   selector: 'app-add-product-type',
@@ -19,11 +20,12 @@ export class AddProductTypeComponent implements OnInit {
   public selectedImage = new ProductType();
 
   constructor(
-    public productService: ProductService,
+    public productTypeService: ProductTypeService,
     public dialogRef: MatDialogRef<AddProductTypeComponent>,
     public formBuilder: FormBuilder,
     public el: ElementRef,
     public router: Router,
+    public dialog: MatDialog,
   ) {
   }
 
@@ -48,14 +50,21 @@ export class AddProductTypeComponent implements OnInit {
         price: this.formCreate.value.price,
       };
 
-      this.productService.addNewProductType(this.productType)
+      this.productTypeService.addNew(this.productType)
         .subscribe(data => {
           this.message = data.message;
-          if (this.message === 'Thành công !') {
-            this.router.navigate(['product-type-management', {message: ''}]).then(r => {
+          const dialogRefNotice = this.dialog.open(NoticePageComponent, {
+            width: '555px',
+            height: '180px',
+            data: {message: this.message},
+            disableClose: true
+          });
+
+          dialogRefNotice.afterClosed().subscribe(() => {
+            this.router.navigate(['/product-type-management', {message: ''}]).then(() => {
             });
-            this.dialogRef.close('Thêm mới loại thành công !')
-          }
+            this.dialogRef.close()
+          })
         });
     } else {
       for (const key of Object.keys(this.formCreate.controls)) {
@@ -66,10 +75,6 @@ export class AddProductTypeComponent implements OnInit {
         }
       }
     }
-  }
-
-  closeAdd() {
-    this.dialogRef.close('')
   }
 
   choosePhoto(image) {
@@ -83,5 +88,6 @@ export class AddProductTypeComponent implements OnInit {
       fileReader.readAsDataURL(file.files[0]);
       this.selectedImage = file.files[0];
     }
+    // sửa lỗi cancel
   }
 }

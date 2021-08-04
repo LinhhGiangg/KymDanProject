@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  public readonly APIType: string = 'http://localhost:8080/productType';
   public readonly API: string = 'http://localhost:8080/product';
 
   constructor(
@@ -14,28 +13,8 @@ export class ProductService {
   ) {
   }
 
-  findAllProductType(): Observable<any> {
-    return this.http.get(this.APIType + '/list');
-  }
-
-  findProductTypeByPrice(price): Observable<any> {
-    return this.http.get(this.APIType + '/list/' + price);
-  }
-
-  findProductTypeByID(typeID): Observable<any> {
-    return this.http.get(this.APIType + '/find/' + typeID);
-  }
-
   findProductByTypeID(typeID): Observable<any> {
     return this.http.get(this.API + '/view/' + typeID);
-  }
-
-  addNewProductType(productType): Observable<any> {
-    return this.http.post(this.APIType + '/add', productType, {headers: {skip: 'true'}});
-  }
-
-  editProductType(productType): Observable<any> {
-    return this.http.post(this.APIType + '/edit', productType, {headers: {skip: 'true'}});
   }
 
   saveCart(userName, productID, productInformation): Observable<any> {

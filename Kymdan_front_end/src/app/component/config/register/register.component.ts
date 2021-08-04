@@ -3,6 +3,8 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 import {Router} from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {CustomerService} from '../../../service/customer.service';
+import {NoticePageComponent} from '../notice-page/notice-page.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +16,7 @@ export class RegisterComponent implements OnInit {
   public user;
   public account;
   public message;
+  public notice;
 
   public matcher = new ErrorStateMatcher();
 
@@ -21,7 +24,8 @@ export class RegisterComponent implements OnInit {
     public formBuilder: FormBuilder,
     public customerService: CustomerService,
     public router: Router,
-    public el: ElementRef
+    public el: ElementRef,
+    public dialog: MatDialog,
   ) {
   }
 
@@ -30,7 +34,7 @@ export class RegisterComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50),
         // tslint:disable-next-line:max-line-length
         Validators.pattern('^([aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+(\\s[aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+)*)$')]],
-      email: ['', [Validators.required, Validators.pattern('^[a-z][a-z0-9_\\.]{2,30}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$')]],
+      email: ['', [Validators.required, Validators.pattern('^[a-z][a-z0-9_\\.]{0,30}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$')]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]],
       phone: ['', [Validators.required, Validators.pattern('((09|03|07|08|05)+([0-9]{8})\\b)')]],
@@ -56,12 +60,24 @@ export class RegisterComponent implements OnInit {
     };
 
     if (this.registerForm.valid) {
+      this.message = 'Vui lòng chờ !';
       this.customerService.register(this.account)
         .subscribe(data => {
           this.message = data.message;
-          if (this.message === 'Đăng ký tài khoản thành công !') {
-            this.router.navigate(['login', {message: this.message}]).then(r => {
+          if (data.message === 'Đăng ký tài khoản thành công !') {
+            this.notice = data.message;
+            this.message = '';
+            const dialogRefNotice = this.dialog.open(NoticePageComponent, {
+              width: '555px',
+              height: '180px',
+              data: {message: this.notice},
+              disableClose: true
             });
+
+            dialogRefNotice.afterClosed().subscribe(() => {
+              this.router.navigate(['login', {message: ''}]).then(() => {
+              });
+            })
           }
         });
     } else {

@@ -19,25 +19,25 @@ public class ProductTypeController {
     private ProductTypeService productTypeService;
 
     @GetMapping("/list")
-    public ResponseEntity<List<ProductType>> findAllProductType() {
+    public ResponseEntity<List<ProductType>> findAll() {
         List<ProductType> productTypeList = this.productTypeService.findAllProductType();
         return new ResponseEntity<>(productTypeList, HttpStatus.OK);
     }
 
     @GetMapping("/list/{price}")
-    public ResponseEntity<List<ProductType>> filterProductTypeByPrice(@PathVariable Long price) {
+    public ResponseEntity<List<ProductType>> filterByPrice(@PathVariable Long price) {
         List<ProductType> productTypeList = this.productTypeService.filterProductTypeByPrice(price);
         return new ResponseEntity<>(productTypeList, HttpStatus.OK);
     }
 
     @GetMapping("/find/{typeID}")
-    public ResponseEntity<ProductType> findProductTypeByID(@PathVariable Long typeID) {
+    public ResponseEntity<ProductType> findByID(@PathVariable Long typeID) {
         ProductType productType = this.productTypeService.findProductTypeByID(typeID);
         return new ResponseEntity<>(productType, HttpStatus.OK);
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity<?> addNewProductType(@RequestBody ProductTypeDTO productTypeDTO) {
+    public ResponseEntity<?> addNew(@RequestBody ProductTypeDTO productTypeDTO) {
         if (productTypeService.findProductTypeByName(productTypeDTO.getTypeName()) != null) {
             return ResponseEntity.ok(new MessageDTO("Loại sản phẩm này đã có !"));
         } else {
@@ -46,7 +46,12 @@ public class ProductTypeController {
     }
 
     @PostMapping(value = "/edit")
-    public ResponseEntity<?> editNewProductType(@RequestBody ProductTypeDTO productTypeDTO) {
+    public ResponseEntity<?> edit(@RequestBody ProductTypeDTO productTypeDTO) {
         return ResponseEntity.ok(productTypeService.edit(productTypeDTO));
+    }
+
+    @GetMapping("/delete/{typeName}")
+    public ResponseEntity<?> delete(@PathVariable String typeName) {
+        return ResponseEntity.ok(productTypeService.delete(typeName));
     }
 }

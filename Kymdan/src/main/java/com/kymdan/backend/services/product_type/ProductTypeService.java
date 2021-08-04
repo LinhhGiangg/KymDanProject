@@ -18,4 +18,6 @@ public interface ProductTypeService {
     MessageDTO save(ProductTypeDTO productTypeDTO);
 
     MessageDTO edit(ProductTypeDTO productTypeDTO);
+
+    MessageDTO delete(String name);
 }

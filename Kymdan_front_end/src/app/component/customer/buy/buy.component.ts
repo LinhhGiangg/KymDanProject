@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProductService} from '../../../service/product.service';
 import {LoginService} from '../../../service/login.service';
 import {MatDialog} from '@angular/material/dialog';
 import {NoticePageComponent} from '../../config/notice-page/notice-page.component';
 import {Product} from '../../../model/Product';
 import {ProductType} from '../../../model/ProductType';
+import {ProductService} from '../../../service/product.service';
+import {ProductTypeService} from '../../../service/product-type.service';
 
 @Component({
   selector: 'app-buy',
@@ -29,6 +30,7 @@ export class BuyComponent implements OnInit {
   constructor(
     public activatedRouter: ActivatedRoute,
     public productService: ProductService,
+    public productTypeService: ProductTypeService,
     public loginService: LoginService,
     public router: Router,
     public dialog: MatDialog,
@@ -45,7 +47,7 @@ export class BuyComponent implements OnInit {
       this.typeID = data.typeID;
     });
 
-    this.productService.findProductTypeByID(this.typeID).subscribe(
+    this.productTypeService.findByID(this.typeID).subscribe(
       (data) => {
         this.productType = data;
       },

@@ -11,6 +11,7 @@ import {ProductTypeManagementComponent} from './component/product/product-type-m
 import {OrderProductComponent} from './component/shipper/order-product/order-product.component';
 import {AddProductTypeComponent} from './component/product/add-product-type/add-product-type.component';
 import {EditProductTypeComponent} from './component/product/edit-product-type/edit-product-type.component';
+import {DeleteProductTypeComponent} from './component/product/delete-product-type/delete-product-type.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'order-product', component: OrderProductComponent},
   {path: 'add-product-type', component: AddProductTypeComponent},
   {path: 'edit-product-type', component: EditProductTypeComponent},
+  {path: 'delete-product-type', component: DeleteProductTypeComponent},
 ];
 
 @NgModule({
