@@ -32,7 +32,7 @@ export class DeleteProductTypeComponent implements OnInit {
     this.productTypeService.delete(this.typeName).subscribe(data => {
       this.message = data.message;
       const dialogRefNotice = this.dialog.open(NoticePageComponent, {
-        width: '555px',
+        width: '696px',
         height: '180px',
         data: {message: this.message},
         disableClose: true

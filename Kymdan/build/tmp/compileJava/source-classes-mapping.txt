@@ -66,8 +66,8 @@ com/kymdan/backend/repository/AppAccountRepository.java
  com.kymdan.backend.repository.AppAccountRepository
 com/kymdan/backend/controllers/LoginController.java
  com.kymdan.backend.controllers.LoginController
-com/kymdan/backend/services/account/AppAccountServiceImpl.java
- com.kymdan.backend.services.account.AppAccountServiceImpl
+com/kymdan/backend/controllers/CustomerController.java
+ com.kymdan.backend.controllers.CustomerController
 com/kymdan/backend/services/customer/CustomerServiceImpl.java
  com.kymdan.backend.services.customer.CustomerServiceImpl
 com/kymdan/backend/entity/OrderProduct.java
@@ -126,5 +126,5 @@ com/kymdan/backend/services/product_type/ProductTypeService.java
  com.kymdan.backend.services.product_type.ProductTypeService
 com/kymdan/backend/controllers/ProductTypeController.java
  com.kymdan.backend.controllers.ProductTypeController
-com/kymdan/backend/controllers/CustomerController.java
- com.kymdan.backend.controllers.CustomerController
+com/kymdan/backend/services/account/AppAccountServiceImpl.java
+ com.kymdan.backend.services.account.AppAccountServiceImpl

@@ -5,6 +5,7 @@ import {AppAccount} from '../../../model/AppAccount';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {EditPasswordComponent} from '../edit-password/edit-password.component';
+import {NoticePageComponent} from '../../config/notice-page/notice-page.component';
 
 @Component({
   selector: 'app-information-customer',
@@ -16,6 +17,7 @@ export class InformationComponent implements OnInit {
   public role;
   public user = new AppAccount();
   public message;
+  public notice;
   public flagEdit = false;
   public editForm: FormGroup;
   public newInformation;
@@ -74,9 +76,18 @@ export class InformationComponent implements OnInit {
     if (this.editForm.valid) {
       this.loginService.editInformation(this.newInformation)
         .subscribe(data => {
-          this.message = data.message;
-          this.flagEdit = false;
-          this.ngOnInit()
+          this.notice = data.message;
+          const dialogRefNotice = this.dialog.open(NoticePageComponent, {
+            width: '555px',
+            height: '180px',
+            data: {message: this.notice},
+            disableClose: true
+          });
+
+          dialogRefNotice.afterClosed().subscribe(() => {
+            this.flagEdit = false;
+            this.ngOnInit();
+          })
         });
     } else {
       for (const key of Object.keys(this.editForm.controls)) {

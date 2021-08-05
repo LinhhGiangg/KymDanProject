@@ -16,8 +16,9 @@ export class EditProductTypeComponent implements OnInit {
   public productType;
   public productTypeNeed;
   public message;
-  public checkImage = false;
+  public checkImage;
   public image;
+  public count = 0;
   public imgSrc: string;
   public selectedImage = new ProductType();
 
@@ -51,7 +52,7 @@ export class EditProductTypeComponent implements OnInit {
 
   onSubmitEdit() {
     if (this.formEdit.valid) {
-      if (this.checkImage) {
+      if (this.checkImage || this.count !== 0) {
         this.image = 'assets/' + this.image;
       }
       this.productType = {
@@ -90,6 +91,7 @@ export class EditProductTypeComponent implements OnInit {
   }
 
   choosePhoto(image) {
+    this.checkImage = false;
     const file = image;
     if (file.files[0] && file.files[0].type.match('image*')) {
       const fileReader = new FileReader();
@@ -99,9 +101,8 @@ export class EditProductTypeComponent implements OnInit {
       fileReader.readAsDataURL(file.files[0]);
       this.selectedImage = file.files[0];
       this.image = this.selectedImage.name;
-    } {
-      this.checkImage = false;
+      this.checkImage = true;
+      this.count += 1;
     }
-    // sửa lỗi cancel
   }
 }

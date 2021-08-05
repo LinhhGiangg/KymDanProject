@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="391113ff-e529-4d69-911a-7775e8d587ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/delete-product-type/delete-product-type.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/delete-product-type/delete-product-type.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/delete-product-type/delete-product-type.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/service/product-type.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -14,30 +10,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/controllers/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/controllers/CustomerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/controllers/ProductTypeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/controllers/ProductTypeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/product_type/ProductTypeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/product_type/ProductTypeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/product_type/ProductTypeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/product_type/ProductTypeServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/account/AppAccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/account/AppAccountServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/controllers/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/controllers/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/controllers/ProductTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/controllers/ProductTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/product_type/ProductTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/product_type/ProductTypeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/product_type/ProductTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/product_type/ProductTypeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/config/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/config/register/register.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/config/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/config/register/register.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/customer/buy/buy.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/customer/buy/buy.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/individual/information/information.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/individual/information/information.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/account/AppAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/account/AppAccountServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/add-product-type/add-product-type.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/add-product-type/add-product-type.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/add-product-type/add-product-type.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/add-product-type/add-product-type.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/edit-product-type/edit-product-type.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/edit-product-type/edit-product-type.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/delete-product-type/delete-product-type.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/delete-product-type/delete-product-type.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/edit-product-type/edit-product-type.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/edit-product-type/edit-product-type.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/product-type-management/product-type-management.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/product-type-management/product-type-management.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/product-type-management/product-type-management.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/product-type-management/product-type-management.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/view-product-type/view-product-type.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/view-product-type/view-product-type.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/view-product-type/view-product-type.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/product/view-product-type/view-product-type.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/service/product.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/service/product.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,6 +159,7 @@
       <workItem from="1627913360153" duration="3376000" />
       <workItem from="1627997096928" duration="2147000" />
       <workItem from="1628041471005" duration="11951000" />
+      <workItem from="1628146545625" duration="6556000" />
     </task>
     <task id="LOCAL-00001" summary="up begin merge">
       <created>1611823206431</created>
@@ -248,54 +228,54 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1627202467000" />
-    <state width="1493" height="149" key="GridCell.Tab.0.bottom" timestamp="1628096807249">
+    <state width="1493" height="125" key="GridCell.Tab.0.bottom" timestamp="1628160534441">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="149" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1628096807249" />
-    <state width="1493" height="149" key="GridCell.Tab.0.center" timestamp="1628096807249">
+    <state width="1493" height="125" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1628160534441" />
+    <state width="1493" height="125" key="GridCell.Tab.0.center" timestamp="1628160534441">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="149" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1628096807249" />
-    <state width="1493" height="149" key="GridCell.Tab.0.left" timestamp="1628096807249">
+    <state width="1493" height="125" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1628160534441" />
+    <state width="1493" height="125" key="GridCell.Tab.0.left" timestamp="1628160534441">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="149" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1628096807249" />
-    <state width="1493" height="149" key="GridCell.Tab.0.right" timestamp="1628096807249">
+    <state width="1493" height="125" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1628160534441" />
+    <state width="1493" height="125" key="GridCell.Tab.0.right" timestamp="1628160534441">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="149" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1628096807249" />
-    <state width="1493" height="149" key="GridCell.Tab.1.bottom" timestamp="1628096807249">
+    <state width="1493" height="125" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1628160534441" />
+    <state width="1493" height="125" key="GridCell.Tab.1.bottom" timestamp="1628160534441">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="149" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1628096807249" />
-    <state width="1493" height="149" key="GridCell.Tab.1.center" timestamp="1628096807249">
+    <state width="1493" height="125" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1628160534441" />
+    <state width="1493" height="125" key="GridCell.Tab.1.center" timestamp="1628160534441">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="149" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1628096807249" />
-    <state width="1493" height="149" key="GridCell.Tab.1.left" timestamp="1628096807249">
+    <state width="1493" height="125" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1628160534441" />
+    <state width="1493" height="125" key="GridCell.Tab.1.left" timestamp="1628160534441">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="149" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1628096807249" />
-    <state width="1493" height="149" key="GridCell.Tab.1.right" timestamp="1628096807249">
+    <state width="1493" height="125" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1628160534441" />
+    <state width="1493" height="125" key="GridCell.Tab.1.right" timestamp="1628160534441">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="149" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1628096807249" />
-    <state width="1493" height="257" key="GridCell.Tab.2.bottom" timestamp="1627911158882">
+    <state width="1493" height="125" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1628160534441" />
+    <state width="1493" height="99" key="GridCell.Tab.2.bottom" timestamp="1628159387283">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="257" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1627911158882" />
-    <state width="1493" height="257" key="GridCell.Tab.2.center" timestamp="1627911158881">
+    <state width="1493" height="99" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1628159387283" />
+    <state width="1493" height="99" key="GridCell.Tab.2.center" timestamp="1628159387283">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="257" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1627911158881" />
-    <state width="1493" height="257" key="GridCell.Tab.2.left" timestamp="1627911158881">
+    <state width="1493" height="99" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1628159387283" />
+    <state width="1493" height="99" key="GridCell.Tab.2.left" timestamp="1628159387283">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="257" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1627911158881" />
-    <state width="1493" height="257" key="GridCell.Tab.2.right" timestamp="1627911158882">
+    <state width="1493" height="99" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1628159387283" />
+    <state width="1493" height="99" key="GridCell.Tab.2.right" timestamp="1628159387283">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="257" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1627911158882" />
+    <state width="1493" height="99" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1628159387283" />
     <state x="277" y="56" key="SettingsEditor" timestamp="1627011484868">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

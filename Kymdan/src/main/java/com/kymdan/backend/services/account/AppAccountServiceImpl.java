@@ -49,7 +49,7 @@ public class AppAccountServiceImpl implements AppAccountService {
             Customer newCustomer = new Customer();
             newCustomer.setFullName(accountDTO.getUsername());
             newCustomer.setGender(accountDTO.getAppUser().getGender());
-            newCustomer.setBirthday(accountDTO.getAppUser().getBirthday());
+            newCustomer.setBirthday(accountDTO.getAppUser().getBirthday().plusDays(1));
             newCustomer.setAddress(accountDTO.getAppUser().getAddress());
             newCustomer.setPhone(accountDTO.getAppUser().getPhone());
             newCustomer.setEmail(accountDTO.getAppUser().getEmail());
@@ -156,20 +156,26 @@ public class AppAccountServiceImpl implements AppAccountService {
         try {
             if (appUserDTO.getRole().equals("Customer")) {
                 Customer customer = this.customerRepository.findByEmail(appUserDTO.getEmail());
-                customer.setBirthday(appUserDTO.getBirthday());
+                if (!appUserDTO.getBirthday().equals(customer.getBirthday())) {
+                    customer.setBirthday(appUserDTO.getBirthday().plusDays(1));
+                }
                 customer.setAddress(appUserDTO.getAddress());
                 customer.setPhone(appUserDTO.getPhone());
                 this.customerRepository.save(customer);
             } else if (appUserDTO.getRole().equals("Shipper")) {
                 Shipper shipper = this.shipperRepository.findByEmail(appUserDTO.getEmail());
-                shipper.setBirthday(appUserDTO.getBirthday());
+                if (!appUserDTO.getBirthday().equals(shipper.getBirthday())) {
+                    shipper.setBirthday(appUserDTO.getBirthday().plusDays(1));
+                }
                 shipper.setAddress(appUserDTO.getAddress());
                 shipper.setPhone(appUserDTO.getPhone());
                 this.shipperRepository.save(shipper);
             }
             else {
                 Employee employee = this.employeeRepository.findByEmail(appUserDTO.getEmail());
-                employee.setBirthday(appUserDTO.getBirthday());
+                if (!appUserDTO.getBirthday().equals(employee.getBirthday())) {
+                    employee.setBirthday(appUserDTO.getBirthday().plusDays(1));
+                }
                 employee.setAddress(appUserDTO.getAddress());
                 employee.setPhone(appUserDTO.getPhone());
                 this.employeeRepository.save(employee);

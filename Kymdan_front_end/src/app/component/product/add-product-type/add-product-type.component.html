@@ -74,8 +74,11 @@
           <input type="file" formControlName="image" (change)="choosePhoto($event.target)"/>
           <img style="width: 100%; height: 205px" *ngIf="selectedImage.name != null" src="assets/{{selectedImage.name}}"
                alt="" class="mt-1">
+          <img style="width: 100%; height: 205px" *ngIf="selectedImage.name == null && imageName != null"
+               src="assets/{{imageName}}"
+               alt="" class="mt-1">
           <p class="text-danger"
-             *ngIf="formCreate.controls.image.errors?.required">
+             *ngIf="imageName == null">
             Hình ảnh minh họa không được để trống !
           </p>
         </div>

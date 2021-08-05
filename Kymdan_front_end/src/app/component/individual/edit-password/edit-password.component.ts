@@ -1,9 +1,10 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MatDialogRef} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {Router} from '@angular/router';
 import {LoginService} from '../../../service/login.service';
+import {NoticePageComponent} from '../../config/notice-page/notice-page.component';
 
 @Component({
   selector: 'app-edit-password-customer',
@@ -12,6 +13,7 @@ import {LoginService} from '../../../service/login.service';
 })
 export class EditPasswordComponent implements OnInit {
   public username;
+  public message;
   public editForm: FormGroup;
 
   public matcher = new ErrorStateMatcher();
@@ -22,6 +24,7 @@ export class EditPasswordComponent implements OnInit {
     public el: ElementRef,
     public router: Router,
     public loginService: LoginService,
+    public dialog: MatDialog,
   ) {
   }
 
@@ -53,7 +56,19 @@ export class EditPasswordComponent implements OnInit {
     if (this.editForm.valid) {
       this.loginService.editPassword(this.username, this.editForm.value.oldPassword, this.editForm.value.newPassword)
         .subscribe(data => {
-          this.dialogRef.close(data.message);
+          this.message = data.message;
+          const dialogRefNotice = this.dialog.open(NoticePageComponent, {
+            width: '555px',
+            height: '180px',
+            data: {message: this.message},
+            disableClose: true
+          });
+
+          dialogRefNotice.afterClosed().subscribe(() => {
+            this.router.navigate(['/information', {message: ''}]).then(() => {
+            });
+            this.dialogRef.close()
+          })
         });
     } else {
       for (const key of Object.keys(this.editForm.controls)) {

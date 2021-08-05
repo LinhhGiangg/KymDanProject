@@ -15,6 +15,7 @@ export class AddProductTypeComponent implements OnInit {
   public formCreate: FormGroup;
   public productType;
   public message;
+  public imageName;
   public checkImage = false;
   public imgSrc: string;
   public selectedImage = new ProductType();
@@ -36,17 +37,17 @@ export class AddProductTypeComponent implements OnInit {
       description2: ['', [Validators.maxLength(80)]],
       description3: ['', [Validators.maxLength(80)]],
       price: ['', [Validators.required, Validators.pattern('^([1-9]{1})([0-9]{7})$')]],
-      image: ['', [Validators.required]],
+      image: [''],
     });
   }
 
   onSubmitAdd() {
-    if (this.formCreate.valid) {
+    if (this.formCreate.valid && this.imageName != null) {
       this.productType = {
         typeName: this.formCreate.value.typeName,
         description:
           this.formCreate.value.description1 + ',' + this.formCreate.value.description2 + ',' + this.formCreate.value.description3,
-        image: 'assets/' + this.selectedImage.name,
+        image: 'assets/' + this.imageName,
         price: this.formCreate.value.price,
       };
 
@@ -87,7 +88,7 @@ export class AddProductTypeComponent implements OnInit {
       };
       fileReader.readAsDataURL(file.files[0]);
       this.selectedImage = file.files[0];
+      this.imageName = this.selectedImage.name
     }
-    // sửa lỗi cancel
   }
 }
