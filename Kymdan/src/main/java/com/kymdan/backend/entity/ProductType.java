@@ -48,7 +48,7 @@ public class ProductType {
     @JoinColumn(name = "manufacture_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private Manufacture manufacture;
 
-    @OneToOne
-    @JoinColumn(name = "promotion_detail_id", referencedColumnName = "id", columnDefinition = "BIGINT")
-    private PromotionDetail promotionDetail;
+    @OneToMany(mappedBy = "productType", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<PromotionDetail> promotionDetailList;
 }

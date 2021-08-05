@@ -29,7 +29,7 @@ public class OrderManufactureDetail {
     @JoinColumn(name = "order_manufacture_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private OrderManufacture orderManufacture;
 
-    @OneToOne(mappedBy = "orderManufactureDetail", cascade = CascadeType.ALL)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private Product product;
 }

@@ -41,8 +41,4 @@ public class AppAccount {
     @OneToOne
     @JoinColumn(name = "shipper_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private Shipper shipper;
-
-    @OneToOne
-    @JoinColumn(name = "cart_id", referencedColumnName = "id", columnDefinition = "BIGINT")
-    private Cart cart;
 }

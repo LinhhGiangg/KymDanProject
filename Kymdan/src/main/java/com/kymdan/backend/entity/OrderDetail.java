@@ -32,7 +32,7 @@ public class OrderDetail {
     @JoinColumn(name = "order_product_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private OrderProduct orderProduct;
 
-    @OneToOne(mappedBy = "orderDetail", cascade = CascadeType.ALL)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private Product product;
 }

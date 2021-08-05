@@ -1,11 +1,13 @@
 package com.kymdan.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity(name = "product")
@@ -43,19 +45,15 @@ public class Product {
     @JoinColumn(name = "product_type_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private ProductType productType;
 
-    @OneToOne
-    @JoinColumn(name = "order_detail_id", referencedColumnName = "id", columnDefinition = "BIGINT")
-    private OrderDetail orderDetail;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<OrderDetail> orderDetailList;
 
-    @OneToOne
-    @JoinColumn(name = "coupon_detail_id", referencedColumnName = "id", columnDefinition = "BIGINT")
-    private CouponDetail couponDetail;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<OrderManufactureDetail> orderManufactureDetailList;
 
-    @OneToOne
-    @JoinColumn(name = "order_manufacture_id", referencedColumnName = "id", columnDefinition = "BIGINT")
-    private OrderManufactureDetail orderManufactureDetail;
-
-    @OneToOne
-    @JoinColumn(name = "cart_detail_id", referencedColumnName = "id", columnDefinition = "BIGINT")
-    private CartDetail cartDetail;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<CouponDetail> couponDetailList;
 }

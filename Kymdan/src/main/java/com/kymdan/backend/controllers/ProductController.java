@@ -22,11 +22,4 @@ public class ProductController {
         List<Product> productList = this.productService.findProductByType(typeID);
         return new ResponseEntity<>(productList, HttpStatus.OK);
     }
-
-    @GetMapping("/save-cart/{userName}/{productID}/{productInformation}")
-    public ResponseEntity<?> saveCart(@PathVariable String userName, @PathVariable Long productID,
-                                      @PathVariable String productInformation) {
-        return new ResponseEntity<>(this.productService.saveCart(userName, productID, productInformation),
-                HttpStatus.OK);
-    }
 }

@@ -32,7 +32,7 @@ public class CouponDetail {
     @JoinColumn(name = "coupon_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private Coupon coupon;
 
-    @OneToOne(mappedBy = "couponDetail", cascade = CascadeType.ALL)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", referencedColumnName = "id", columnDefinition = "BIGINT")
     private Product product;
 }
