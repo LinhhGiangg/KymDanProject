@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <div id="info-bar" class="row text-white">
+    <div class="col-sm-9 d-flex align-items-center">
+      <ul class="list-inline">
+        <li class="list-inline-item pr-2"><i class="fa fa-map-marker p-1"></i> 33b A Ma Khê, P. Tân Lập, Tp. Buôn Ma
+          Thuột, Tỉnh Đắk Lắk
+        </li>
+        <li class="list-inline-item"><i class="fa fa-phone p-1"></i> 0915 816 129</li>
+        <li class="list-inline-item"><i class="fa fa-clock-o p-1"></i> Thứ 2 - Thứ 7 từ 8:00 đến 21:00</li>
+      </ul>
+    </div>
+    <div class="col-sm-3 d-flex align-items-center">
+      <ul class="list-inline ml-auto" *ngIf="!taiKhoanHienTai">
+        <li class="list-inline-item pr-2"><i class="fa fa-lock p-1"></i><a routerLink="/dang-nhap"> Đăng nhập</a></li>
+        <li class="list-inline-item"><i class="fa fa-plus p-1"></i><a routerLink="/dang-ky"> Đăng ký</a></li>
+      </ul>
+
+      <ul class="list-inline ml-auto" *ngIf="taiKhoanHienTai">
+        <li class="list-inline-item dropdown show">
+          <a class="dropdown-toggle nav-link p-0" href="#"
+             id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span><i class="fa fa-user p-1"></i> {{taiKhoanHienTai.hoTen}} </span>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right"
+               aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#" id="accountDetails" [routerLink]="['/thong-tin']">
+              Thông tin tài khoản</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" (click)="dangXuat()">Đăng xuất</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-9">
+      <a><img style="height: 100px" src="assets/logo.png" alt="icon" routerLink=""></a>
+    </div>
+    <div class="col-sm-3">
+      <div class="row" style="font-size: 17px; margin-top: 12%">
+        <a routerLink="/">TRANG CHỦ</a>
+
+        <a [routerLink]="['/danh-sach-loai']" style="margin: 0 25px"
+           *ngIf="!taiKhoanHienTai || taiKhoanHienTai.quyen === 'Khách Hàng'">SẢN PHẨM</a>
+
+        <a [routerLink]="['/gio-hang']" *ngIf="taiKhoanHienTai && taiKhoanHienTai.quyen === 'Khách Hàng'">GIỎ HÀNG</a>
+
+        <a [routerLink]="['/quan-ly-loai']" style="margin: 0 25px"
+           *ngIf="taiKhoanHienTai && taiKhoanHienTai.quyen === 'Nhân Viên'">QUẢN LÝ KHO</a>
+
+        <a [routerLink]="['/chuyen-hang']" style="margin: 0 25px"
+           *ngIf="taiKhoanHienTai && taiKhoanHienTai.quyen === 'Nhân Viên Giao Hàng'">QUẢN LÝ ĐƠN HÀNG</a>
+      </div>
+    </div>
+  </div>
+</div>

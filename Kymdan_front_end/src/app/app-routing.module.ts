@@ -1,31 +1,33 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {HomeComponent} from './component/config/home/home.component';
-import {ViewProductTypeComponent} from './component/product/view-product-type/view-product-type.component';
-import {LoginComponent} from './component/config/login/login.component';
-import {RegisterComponent} from './component/config/register/register.component';
-import {InformationComponent} from './component/individual/information/information.component';
-import {BuyComponent} from './component/customer/buy/buy.component';
-import {NoticePageComponent} from './component/config/notice-page/notice-page.component';
-import {ProductTypeManagementComponent} from './component/product/product-type-management/product-type-management.component';
-import {OrderProductComponent} from './component/shipper/order-product/order-product.component';
-import {AddProductTypeComponent} from './component/product/add-product-type/add-product-type.component';
-import {EditProductTypeComponent} from './component/product/edit-product-type/edit-product-type.component';
-import {DeleteProductTypeComponent} from './component/product/delete-product-type/delete-product-type.component';
+import {TrangChuComponent} from './component/cau-hinh/trang-chu/trang-chu.component';
+import {DanhSachLoaiComponent} from './component/loai-san-pham/danh-sach-loai/danh-sach-loai.component';
+import {DangNhapComponent} from './component/cau-hinh/dang-nhap/dang-nhap.component';
+import {DangKyComponent} from './component/khach-hang/dang-ky/dang-ky.component';
+import {ThongTinComponent} from './component/ca-nhan/thong-tin/thong-tin.component';
+import {MuaHangComponent} from './component/khach-hang/mua-hang/mua-hang.component';
+import {ThongBaoComponent} from './component/cau-hinh/thong-bao/thong-bao.component';
+import {QuanLyLoaiComponent} from './component/loai-san-pham/quan-ly-loai/quan-ly-loai.component';
+import {ChuyenHangComponent} from './component/nhan-vien-giao-hang/chuyen-hang/chuyen-hang.component';
+import {TaoMoiLoaiComponent} from './component/loai-san-pham/tao-moi-loai/tao-moi-loai.component';
+import {SuaLoaiComponent} from './component/loai-san-pham/sua-loai/sua-loai.component';
+import {XoaLoaiComponent} from './component/loai-san-pham/xoa-loai/xoa-loai.component';
+import {SuaMatKhauComponent} from './component/ca-nhan/sua-mat-khau/sua-mat-khau.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'view-product-type', component: ViewProductTypeComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'information', component: InformationComponent},
-  {path: 'buy', component: BuyComponent},
-  {path: 'notice', component: NoticePageComponent},
-  {path: 'product-type-management', component: ProductTypeManagementComponent},
-  {path: 'order-product', component: OrderProductComponent},
-  {path: 'add-product-type', component: AddProductTypeComponent},
-  {path: 'edit-product-type', component: EditProductTypeComponent},
-  {path: 'delete-product-type', component: DeleteProductTypeComponent},
+  {path: '', component: TrangChuComponent},
+  {path: 'danh-sach-loai', component: DanhSachLoaiComponent},
+  {path: 'dang-nhap', component: DangNhapComponent},
+  {path: 'dang-ky', component: DangKyComponent},
+  {path: 'thong-tin', component: ThongTinComponent},
+  {path: 'sua-mat-khau', component: SuaMatKhauComponent},
+  {path: 'mua-hang', component: MuaHangComponent},
+  {path: 'thong-bao', component: ThongBaoComponent},
+  {path: 'quan-ly-loai', component: QuanLyLoaiComponent},
+  {path: 'chuyen-hang', component: ChuyenHangComponent},
+  {path: 'them-loai', component: TaoMoiLoaiComponent},
+  {path: 'sua-loai', component: SuaLoaiComponent},
+  {path: 'xoa-loai', component: XoaLoaiComponent},
 ];
 
 @NgModule({

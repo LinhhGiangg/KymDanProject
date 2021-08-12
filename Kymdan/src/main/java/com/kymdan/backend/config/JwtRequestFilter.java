@@ -1,6 +1,6 @@
 package com.kymdan.backend.config;
 
-import com.kymdan.backend.services.account.JwtUserDetailsService;
+import com.kymdan.backend.services.tai_khoan.JwtUserDetailsService;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

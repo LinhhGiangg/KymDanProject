@@ -6,43 +6,43 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import {HttpClientModule} from '@angular/common/http';
-import {NavBarComponent} from './component/config/nav-bar/nav-bar.component';
-import {FooterComponent} from './component/config/footer/footer.component';
-import {HomeComponent} from './component/config/home/home.component';
-import {ViewProductTypeComponent} from './component/product/view-product-type/view-product-type.component';
-import {LoginComponent} from './component/config/login/login.component';
+import {NavBarComponent} from './component/cau-hinh/nav-bar/nav-bar.component';
+import {FooterComponent} from './component/cau-hinh/footer/footer.component';
+import {TrangChuComponent} from './component/cau-hinh/trang-chu/trang-chu.component';
+import {DanhSachLoaiComponent} from './component/loai-san-pham/danh-sach-loai/danh-sach-loai.component';
+import {DangNhapComponent} from './component/cau-hinh/dang-nhap/dang-nhap.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
-import {RegisterComponent} from './component/config/register/register.component';
-import {InformationComponent} from './component/individual/information/information.component';
-import {EditPasswordComponent} from './component/individual/edit-password/edit-password.component';
-import {BuyComponent} from './component/customer/buy/buy.component';
-import {NoticePageComponent} from './component/config/notice-page/notice-page.component';
-import {ProductTypeManagementComponent} from './component/product/product-type-management/product-type-management.component';
-import {OrderProductComponent} from './component/shipper/order-product/order-product.component';
-import {AddProductTypeComponent} from './component/product/add-product-type/add-product-type.component';
-import {EditProductTypeComponent} from './component/product/edit-product-type/edit-product-type.component';
-import {DeleteProductTypeComponent} from './component/product/delete-product-type/delete-product-type.component';
+import {DangKyComponent} from './component/khach-hang/dang-ky/dang-ky.component';
+import {ThongTinComponent} from './component/ca-nhan/thong-tin/thong-tin.component';
+import {SuaMatKhauComponent} from './component/ca-nhan/sua-mat-khau/sua-mat-khau.component';
+import {MuaHangComponent} from './component/khach-hang/mua-hang/mua-hang.component';
+import {ThongBaoComponent} from './component/cau-hinh/thong-bao/thong-bao.component';
+import {QuanLyLoaiComponent} from './component/loai-san-pham/quan-ly-loai/quan-ly-loai.component';
+import {ChuyenHangComponent} from './component/nhan-vien-giao-hang/chuyen-hang/chuyen-hang.component';
+import {TaoMoiLoaiComponent} from './component/loai-san-pham/tao-moi-loai/tao-moi-loai.component';
+import {SuaLoaiComponent} from './component/loai-san-pham/sua-loai/sua-loai.component';
+import {XoaLoaiComponent} from './component/loai-san-pham/xoa-loai/xoa-loai.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     FooterComponent,
-    HomeComponent,
-    ViewProductTypeComponent,
-    LoginComponent,
-    RegisterComponent,
-    InformationComponent,
-    EditPasswordComponent,
-    BuyComponent,
-    NoticePageComponent,
-    ProductTypeManagementComponent,
-    OrderProductComponent,
-    AddProductTypeComponent,
-    EditProductTypeComponent,
-    DeleteProductTypeComponent
+    TrangChuComponent,
+    DanhSachLoaiComponent,
+    DangNhapComponent,
+    DangKyComponent,
+    ThongTinComponent,
+    SuaMatKhauComponent,
+    MuaHangComponent,
+    ThongBaoComponent,
+    QuanLyLoaiComponent,
+    ChuyenHangComponent,
+    TaoMoiLoaiComponent,
+    SuaLoaiComponent,
+    XoaLoaiComponent
   ],
   imports: [
     BrowserModule,
