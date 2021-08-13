@@ -9,7 +9,7 @@ import java.util.List;
 public interface LoaiSanPhamService {
     List<LoaiSanPham> xemTatCa();
 
-    List<LoaiSanPham> locTheoGia(long mucGia);
+    List<?> locTheoGia(long mucGia);
 
     LoaiSanPham timBangMaLoai(String maLoai);
 
@@ -20,4 +20,8 @@ public interface LoaiSanPhamService {
     ThongBaoDTO sua(LoaiSanPhamDTO loaiSanPhamDTO);
 
     ThongBaoDTO xoa(String ten);
+
+    List<LoaiSanPham> xemLoaiMoi();
+
+    List<LoaiSanPham> xemLoaiBanChay();
 }

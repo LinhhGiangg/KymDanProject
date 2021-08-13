@@ -1,9 +1,11 @@
 package com.kymdan.backend.services.loai_san_pham;
 
 import com.kymdan.backend.entity.LoaiSanPham;
+import com.kymdan.backend.entity.SanPham;
 import com.kymdan.backend.model.ThongBaoDTO;
 import com.kymdan.backend.model.LoaiSanPhamDTO;
 import com.kymdan.backend.repository.LoaiSanPhamRepository;
+import com.kymdan.backend.repository.SanPhamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,35 +18,39 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
     @Autowired
     private LoaiSanPhamRepository loaiSanPhamRepository;
 
+    @Autowired
+    private SanPhamRepository sanPhamRepository;
+
     @Override
     public List<LoaiSanPham> xemTatCa() {
         return this.loaiSanPhamRepository.findAll();
     }
 
     @Override
-    public List<LoaiSanPham> locTheoGia(long mucGia) {
-        List<LoaiSanPham> ketQua = new ArrayList<>();
+    public List<?> locTheoGia(long mucGia) {
+        List<SanPham> ketQua = new ArrayList<>();
         List<LoaiSanPham> tatCaLoai = this.loaiSanPhamRepository.findAll();
+        List<SanPham> tatCaSanPham = this.sanPhamRepository.findAll();
 
-//        if (mucGia == 7) {
-//            ketQua = tatCaLoai;
-//        } else {
-//            for (LoaiSanPham loaiSanPham : tatCaLoai) {
-//                if (mucGia == 6) {
-//                    if (Long.parseLong(loaiSanPham.getPrice()) >= (50000000)) {
-//                        result.add(loaiSanPham);
-//                    }
-//                    continue;
-//                }
-//
-//                if (((price - 1) * 10000000) <= Long.parseLong(loaiSanPham.getPrice())
-//                        && Long.parseLong(loaiSanPham.getPrice()) <= (price * 10000000)) {
-//                    result.add(loaiSanPham);
-//                }
-//            }
-//        }
+        if (mucGia == 7) {
+            return tatCaLoai;
+        } else {
+            for (SanPham sanPham : tatCaSanPham) {
+                if (mucGia == 6) {
+                    if (Long.parseLong(sanPham.getGia()) >= (50000000)) {
+                        ketQua.add(sanPham);
+                    }
+                    continue;
+                }
 
-        return tatCaLoai;
+                if (((mucGia - 1) * 10000000) <= Long.parseLong(sanPham.getGia())
+                        && Long.parseLong(sanPham.getGia()) <= (mucGia * 10000000)) {
+                    ketQua.add(sanPham);
+                }
+            }
+        }
+
+        return ketQua;
     }
 
     @Override
@@ -92,5 +98,49 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
         } else {
             return new ThongBaoDTO("Loại này có sản phẩm đang trưng bày nên không thể xóa !");
         }
+    }
+
+    @Override
+    public List<LoaiSanPham> xemLoaiMoi() {
+        List<LoaiSanPham> ketQua = new ArrayList<>();
+        List<LoaiSanPham> tatCaLoai = this.loaiSanPhamRepository.findAll();
+        LoaiSanPham loaiSanPham;
+        int min;
+        for (int i = 0; i < 5; i++) {
+            loaiSanPham = tatCaLoai.get(0);
+            min = LocalDate.now().compareTo(loaiSanPham.getNgayTao());
+            for (int j = 1; j < tatCaLoai.size(); j++) {
+                if (LocalDate.now().compareTo(tatCaLoai.get(j).getNgayTao()) < min) {
+                    loaiSanPham = tatCaLoai.get(j);
+                    min = LocalDate.now().compareTo(tatCaLoai.get(j).getNgayTao());
+                }
+            }
+            ketQua.add(loaiSanPham);
+            tatCaLoai.remove(loaiSanPham);
+        }
+
+        return ketQua;
+    }
+
+    @Override
+    public List<LoaiSanPham> xemLoaiBanChay() {
+        List<LoaiSanPham> ketQua = new ArrayList<>();
+        List<LoaiSanPham> tatCaLoai = this.loaiSanPhamRepository.findAll();
+        LoaiSanPham loaiSanPham;
+        Integer max;
+        for (int i = 0; i < 5; i++) {
+            loaiSanPham = tatCaLoai.get(0);
+            max = tatCaLoai.get(0).getLuotXem();
+            for (int j = 1; j < tatCaLoai.size(); j++) {
+                if (tatCaLoai.get(j).getLuotXem() > max) {
+                    loaiSanPham = tatCaLoai.get(j);
+                    max = tatCaLoai.get(j).getLuotXem();
+                }
+            }
+            ketQua.add(loaiSanPham);
+            tatCaLoai.remove(loaiSanPham);
+        }
+
+        return ketQua;
     }
 }

@@ -118,11 +118,11 @@ com/kymdan/backend/entity/ChiTietDonHang.java
  com.kymdan.backend.entity.ChiTietDonHang
 com/kymdan/backend/entity/ChiTietPhieuNhap.java
  com.kymdan.backend.entity.ChiTietPhieuNhap
-com/kymdan/backend/services/loai_san_pham/LoaiSanPhamServiceImpl.java
- com.kymdan.backend.services.loai_san_pham.LoaiSanPhamServiceImpl
-com/kymdan/backend/controllers/LoaiSanPhamController.java
- com.kymdan.backend.controllers.LoaiSanPhamController
-com/kymdan/backend/services/loai_san_pham/LoaiSanPhamService.java
- com.kymdan.backend.services.loai_san_pham.LoaiSanPhamService
 com/kymdan/backend/model/LoaiSanPhamDTO.java
  com.kymdan.backend.model.LoaiSanPhamDTO
+com/kymdan/backend/services/loai_san_pham/LoaiSanPhamService.java
+ com.kymdan.backend.services.loai_san_pham.LoaiSanPhamService
+com/kymdan/backend/controllers/LoaiSanPhamController.java
+ com.kymdan.backend.controllers.LoaiSanPhamController
+com/kymdan/backend/services/loai_san_pham/LoaiSanPhamServiceImpl.java
+ com.kymdan.backend.services.loai_san_pham.LoaiSanPhamServiceImpl

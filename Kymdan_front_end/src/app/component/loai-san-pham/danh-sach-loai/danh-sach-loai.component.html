@@ -39,7 +39,23 @@
         </div>
 
         <div class="col-sm-9" style="background-color: white">
-          <table class="table mt-1" *ngIf="danhSachLoai.length !== 0">
+          <div class="row mt-3">
+            <div class="col-sm-8">
+              <button class="btn btn-success" (click)="lamMoi()">Tất cả sản phẩm</button>
+            </div>
+            <div class="col-sm-4">
+              <div class="row">
+                <button class="btn btn-success" (click)="xemLoaiMoi()">Sản phẩm mới</button>
+                <button class="btn btn-success ml-3" (click)="xemLoaiBanChay()">Sản phẩm bán chạy</button>
+              </div>
+              <div class="row mt-1">
+<!--                <input type="text" class="form-control" style="width: 98%"-->
+<!--                       placeholder="Tìm kiếm sản phẩm theo tên">-->
+              </div>
+            </div>
+          </div>
+
+          <table class="table mt-1" *ngIf="danhSachLoai && danhSachLoai.length !== 0">
             <tr class="row" *ngFor="let element of danhSachLoai">
               <td class="col-sm-3">
                 <img style="width: 100%" src="{{element.hinh1}}" alt="" (click)="xemSanPham(element.ma)">
@@ -56,6 +72,12 @@
                     </h3>
                     <h3 *ngIf="element.moTa3">
                       <i class="fa fa-hand-o-right" aria-hidden="true"></i> {{element.moTa3}}
+                    </h3>
+                    <h3 *ngIf="!kiemTraBanChay"><i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                      <span style="color: green"> Số lượt xem : </span>{{element.luotXem}}
+                    </h3>
+                    <h3 *ngIf="kiemTraBanChay"><i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                      <span style="color: green"> Ngày nhập : </span>{{element.ngayTao}}
                     </h3>
                   </div>
 

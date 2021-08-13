@@ -25,8 +25,8 @@ public class LoaiSanPhamController {
     }
 
     @GetMapping("/locTheoGia/{gia}")
-    public ResponseEntity<List<LoaiSanPham>> locTheoGia(@PathVariable long gia) {
-        List<LoaiSanPham> ketQua = this.loaiSanPhamService.locTheoGia(gia);
+    public ResponseEntity<List<?>> locTheoGia(@PathVariable long gia) {
+        List<?> ketQua = this.loaiSanPhamService.locTheoGia(gia);
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
 
@@ -55,5 +55,17 @@ public class LoaiSanPhamController {
     @GetMapping("/xoa/{ten}")
     public ResponseEntity<?> delete(@PathVariable String ten) {
         return ResponseEntity.ok(loaiSanPhamService.xoa(ten));
+    }
+
+    @GetMapping("/xemLoaiMoi")
+    public ResponseEntity<List<LoaiSanPham>> xemLoaiMoi() {
+        List<LoaiSanPham> ketQua = this.loaiSanPhamService.xemLoaiMoi();
+        return new ResponseEntity<>(ketQua, HttpStatus.OK);
+    }
+
+    @GetMapping("/xemLoaiBanChay")
+    public ResponseEntity<List<LoaiSanPham>> xemLoaiBanChay() {
+        List<LoaiSanPham> ketQua = this.loaiSanPhamService.xemLoaiBanChay();
+        return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
 }

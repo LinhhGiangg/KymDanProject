@@ -32,7 +32,7 @@ export class TaoMoiLoaiComponent implements OnInit {
 
   ngOnInit(): void {
     this.formTaoMoi = this.formBuilder.group({
-      ma: ['', [Validators.required]],
+      ma: ['', [Validators.required, Validators.pattern('^(KD-)[0-9]{3}$')]],
       ten: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(250)]],
       moTa1: ['', [Validators.required, Validators.maxLength(80)]],
       moTa2: ['', [Validators.maxLength(80)]],
