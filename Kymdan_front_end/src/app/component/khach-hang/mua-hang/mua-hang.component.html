@@ -5,86 +5,86 @@
     <div class="col-sm-10" style="background-color: white">
       <div class="row">
         <div class="col-sm-6">
-          <img width="100%" height="450px" src="{{productType.image1}}" alt="">
+          <img width="100%" height="450px" src="{{loaiSanPham.hinh1}}" alt="">
 
           <div class="row mt-2 mb-1">
             <div class="col-sm-6">
-              <img width="100%" src="{{productType.image2}}" alt="">
+              <img width="100%" src="{{loaiSanPham.hinh2}}" alt="">
             </div>
             <div class="col-sm-6">
-              <img width="100%" src="{{productType.image3}}" alt="">
+              <img width="100%" src="{{loaiSanPham.hinh3}}" alt="">
             </div>
           </div>
         </div>
 
         <div class="col-sm-6">
           <h1 style="font-family: Averta,Helvetica,sans-serif; font-weight: bold; color: green">
-            {{productType.typeName}}
+            {{loaiSanPham.ten}}
           </h1>
-          <h2 style="font-family: Averta,Helvetica,sans-serif; font-weight: bold; color: red">
-            Giá : {{realPrice | currency}} VNĐ</h2>
+          <p style="font-family: Averta,Helvetica,sans-serif; font-size: 15px"><del>{{gia}} VND</del></p>
+          <h1 style="font-family: Averta,Helvetica,sans-serif; color: red; font-weight: bold">{{giaBan}} VND</h1>
           <div style="border: 1px solid green">
             <h3 style="font-weight: bold; margin: 2% 0 0 5%">Kích thước (cm) :</h3>
             <div class="row">
-              <div class="size" [hidden]="flagSize === 1" (click)="chooseSize(1)">
-                <h4 style="margin: 7px 15px 10px 27px">120 x 200</h4>
+              <div class="size" [hidden]="kichThuoc === '120x200'" (click)="chonKichThuoc('120x200')">
+                <h4 style="margin: 7px 15px 10px 27px">120x200</h4>
               </div>
-              <div class="size" [hidden]="flagSize !== 1" style="background-color: rgba(0,128,0,0.55)">
-                <h4 style="margin: 7px 15px 10px 27px">120 x 200</h4>
-              </div>
-
-              <div class="size" [hidden]="flagSize === 2" (click)="chooseSize(2)">
-                <h4 style="margin: 7px 15px 10px 27px">140 x 200</h4>
-              </div>
-              <div class="size" [hidden]="flagSize !== 2" style="background-color: rgba(0,128,0,0.55)">
-                <h4 style="margin: 7px 15px 10px 27px">140 x 200</h4>
+              <div class="size" [hidden]="kichThuoc !== '120x200'" style="background-color: rgba(0,128,0,0.55)">
+                <h4 style="margin: 7px 15px 10px 27px">120x200</h4>
               </div>
 
-              <div class="size" [hidden]="flagSize === 3" (click)="chooseSize(3)">
-                <h4 style="margin: 7px 15px 10px 27px">160 x 200</h4>
+              <div class="size" [hidden]="kichThuoc === '140x200'" (click)="chonKichThuoc('140x200')">
+                <h4 style="margin: 7px 15px 10px 27px">140x200</h4>
               </div>
-              <div class="size" [hidden]="flagSize !== 3" style="background-color: rgba(0,128,0,0.55)">
-                <h4 style="margin: 7px 15px 10px 27px">160 x 200</h4>
+              <div class="size" [hidden]="kichThuoc !== '140x200'" style="background-color: rgba(0,128,0,0.55)">
+                <h4 style="margin: 7px 15px 10px 27px">140x200</h4>
+              </div>
+
+              <div class="size" [hidden]="kichThuoc === '160x200'" (click)="chonKichThuoc('160x200')">
+                <h4 style="margin: 7px 15px 10px 27px">160x200</h4>
+              </div>
+              <div class="size" [hidden]="kichThuoc !== '160x200'" style="background-color: rgba(0,128,0,0.55)">
+                <h4 style="margin: 7px 15px 10px 27px">160x200</h4>
               </div>
             </div>
 
             <div class="row mt-2">
-              <div class="size" [hidden]="flagSize === 4" (click)="chooseSize(4)">
-                <h4 style="margin: 7px 15px 10px 27px">180 x 200</h4>
+              <div class="size" [hidden]="kichThuoc === '180x200'" (click)="chonKichThuoc('180x200')">
+                <h4 style="margin: 7px 15px 10px 27px">180x200</h4>
               </div>
-              <div class="size" [hidden]="flagSize !== 4" style="background-color: rgba(0,128,0,0.55)">
-                <h4 style="margin: 7px 15px 10px 27px">180 x 200</h4>
+              <div class="size" [hidden]="kichThuoc !== '180x200'" style="background-color: rgba(0,128,0,0.55)">
+                <h4 style="margin: 7px 15px 10px 27px">180x200</h4>
               </div>
 
-              <div class="size" [hidden]="flagSize === 5" (click)="chooseSize(5)">
-                <h4 style="margin: 7px 15px 10px 27px">200 x 200</h4>
+              <div class="size" [hidden]="kichThuoc === '200x200'" (click)="chonKichThuoc('200x200')">
+                <h4 style="margin: 7px 15px 10px 27px">200x200</h4>
               </div>
-              <div class="size" [hidden]="flagSize !== 5" style="background-color: rgba(0,128,0,0.55)">
-                <h4 style="margin: 7px 15px 10px 27px">200 x 200</h4>
+              <div class="size" [hidden]="kichThuoc !== '200x200'" style="background-color: rgba(0,128,0,0.55)">
+                <h4 style="margin: 7px 15px 10px 27px">200x200</h4>
               </div>
             </div>
 
             <h3 style="font-weight: bold; margin: 2% 0 0 5%">Độ dày (cm) :</h3>
 
             <div class="row">
-              <div class="size" [hidden]="flagThick === 1" (click)="chooseThick(1)">
+              <div class="size" [hidden]="doDay === '5'" (click)="chonDoDay('5')">
                 <h4 style="margin: 7px 15px 10px 55px">5</h4>
               </div>
-              <div class="size" [hidden]="flagThick !== 1" style="background-color: rgba(0,128,0,0.55)">
+              <div class="size" [hidden]="doDay !== '5'" style="background-color: rgba(0,128,0,0.55)">
                 <h4 style="margin: 7px 15px 10px 55px">5</h4>
               </div>
 
-              <div class="size" [hidden]="flagThick === 2" (click)="chooseThick(2)">
+              <div class="size" [hidden]="doDay === '10'" (click)="chonDoDay('10')">
                 <h4 style="margin: 7px 15px 10px 55px">10</h4>
               </div>
-              <div class="size" [hidden]="flagThick !== 2" style="background-color: rgba(0,128,0,0.55)">
+              <div class="size" [hidden]="doDay !== '10'" style="background-color: rgba(0,128,0,0.55)">
                 <h4 style="margin: 7px 15px 10px 55px">10</h4>
               </div>
 
-              <div class="size" [hidden]="flagThick === 3" (click)="chooseThick(3)">
+              <div class="size" [hidden]="doDay === '15'" (click)="chonDoDay('15')">
                 <h4 style="margin: 7px 15px 10px 55px">15</h4>
               </div>
-              <div class="size" [hidden]="flagThick !== 3" style="background-color: rgba(0,128,0,0.55)">
+              <div class="size" [hidden]="doDay !== '15'" style=" background-color: rgba(0,128,0,0.55)">
                 <h4 style="margin: 7px 15px 10px 55px">15</h4>
               </div>
             </div>
@@ -96,10 +96,10 @@
                 <h3 style="font-weight: bold; margin: 2% 0 0 11%">Số lượng :</h3>
                 <h3 style="font-weight: bold; margin: 2% 0 0 11%">
                   <i class="fa fa-minus-square" aria-hidden="true" style="font-size: 25px"
-                     (click)="changeAmount(1)"></i>
-                  <span class="ml-3 mr-3" style="font-size: 25px; color: green">{{amount}}</span>
+                     (click)="chonSoLuong(1)"></i>
+                  <span class="ml-3 mr-3" style="font-size: 25px; color: green">{{soLuong}}</span>
                   <i class="fa fa-plus-square" aria-hidden="true" style="font-size: 25px"
-                     (click)="changeAmount(2)"></i>
+                     (click)="chonSoLuong(2)"></i>
                 </h3>
               </div>
               <div class="col-sm-6">
@@ -112,23 +112,23 @@
           </div>
 
           <div class="row justify-content-center mt-5">
-            <button class="btn-success" *ngIf="role !== 'Employee' && role !== 'Customer'"
-                    (click)="openNoticePage('Cần đăng nhập trước khi mua sản phẩm !')"
+            <button class="btn-success" *ngIf="quyen !== 'Employee' && quyen !== 'Customer'"
+                    (click)="hienThongBao('Cần đăng nhập trước khi mua sản phẩm !')"
                     style="width: 90%; height: 50px; border-radius: 10px; border: 1px solid green">
               <span style="font-size: 22px">Mua ngay</span>
             </button>
 
-            <button class="btn-success" *ngIf="role === 'Employee'"
+            <button class="btn-success" *ngIf="quyen === 'Employee'"
                     style="width: 90%; height: 50px; border-radius: 10px; border: 1px solid green">
               <span style="font-size: 22px">Mua ngay</span>
             </button>
 
-            <button class="btn-success" (click)="saveCart()" *ngIf="role === 'Customer'"
+            <button class="btn-success" (click)="luuGioHang()" *ngIf="quyen === 'Customer'"
                     style="width: 45%; height: 50px; border-radius: 10px; border: 1px solid green; margin-right: 15px">
               <span style="font-size: 22px">Thêm giỏ hàng</span>
             </button>
 
-            <button class="btn-success" *ngIf="role === 'Customer'"
+            <button class="btn-success" *ngIf="quyen === 'Customer'"
                     style="width: 45%; height: 50px; border-radius: 10px; border: 1px solid green;
                     background-color: rgba(255,0,0,0.77)">
               <span style="font-size: 22px">Mua ngay</span>

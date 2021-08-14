@@ -5,5 +5,9 @@ import com.kymdan.backend.entity.SanPham;
 import java.util.List;
 
 public interface SanPhamService {
-    List<SanPham> timBangMaLoai(String maLoai);
+    List<SanPham> locTheoMaLoai(String maLoai);
+
+    SanPham sanPhamDauTien(String thongTin);
+
+    SanPham chonSanPham(String thongTin);
 }

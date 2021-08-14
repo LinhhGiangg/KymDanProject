@@ -29,24 +29,19 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
     @Override
     public List<?> locTheoGia(long mucGia) {
         List<SanPham> ketQua = new ArrayList<>();
-        List<LoaiSanPham> tatCaLoai = this.loaiSanPhamRepository.findAll();
         List<SanPham> tatCaSanPham = this.sanPhamRepository.findAll();
 
-        if (mucGia == 7) {
-            return tatCaLoai;
-        } else {
-            for (SanPham sanPham : tatCaSanPham) {
-                if (mucGia == 6) {
-                    if (Long.parseLong(sanPham.getGia()) >= (50000000)) {
-                        ketQua.add(sanPham);
-                    }
-                    continue;
-                }
-
-                if (((mucGia - 1) * 10000000) <= Long.parseLong(sanPham.getGia())
-                        && Long.parseLong(sanPham.getGia()) <= (mucGia * 10000000)) {
+        for (SanPham sanPham : tatCaSanPham) {
+            if (mucGia == 6) {
+                if (Long.parseLong(sanPham.getGia()) >= (50000000)) {
                     ketQua.add(sanPham);
                 }
+                continue;
+            }
+
+            if (((mucGia - 1) * 10000000) <= Long.parseLong(sanPham.getGia())
+                    && Long.parseLong(sanPham.getGia()) <= (mucGia * 10000000)) {
+                ketQua.add(sanPham);
             }
         }
 
@@ -139,6 +134,20 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
             }
             ketQua.add(loaiSanPham);
             tatCaLoai.remove(loaiSanPham);
+        }
+
+        return ketQua;
+    }
+
+    @Override
+    public List<LoaiSanPham> timTheoTen(String ten) {
+        List<LoaiSanPham> ketQua = new ArrayList<>();
+        List<LoaiSanPham> tatCaLoai = this.loaiSanPhamRepository.findAll();
+
+        for (LoaiSanPham loaiSanPham : tatCaLoai) {
+            if (loaiSanPham.getTen().toLowerCase().contains(ten.toLowerCase())) {
+                ketQua.add(loaiSanPham);
+            }
         }
 
         return ketQua;

@@ -14,54 +14,108 @@ import {LoaiSanPhamService} from '../../../service/loai-san-pham.service';
   styleUrls: ['./mua-hang.component.css']
 })
 export class MuaHangComponent implements OnInit {
-  public message;
-  public role = 'Nothing';
-  public userName;
-  public typeID;
-  public informationProduct;
-  public flagSize = 1;
-  public flagThick = 1;
-  public amount = 1;
-  public realPrice: number;
-  public price: number;
-  public product = new SanPham();
-  public productType = new LoaiSanPham();
 
   constructor(
     public activatedRouter: ActivatedRoute,
-    public productService: SanPhamService,
-    public productTypeService: LoaiSanPhamService,
-    public loginService: DangNhapService,
+    public sanPhamService: SanPhamService,
+    public loaiSanPhamService: LoaiSanPhamService,
+    public dangNhapService: DangNhapService,
     public router: Router,
     public dialog: MatDialog,
   ) {
   }
+  public thongBao;
+  public quyen = 'Nothing';
+  public tenDangNhap;
+  public maLoai;
+  public thongTinSanPham;
+  public soLuong = 1;
+  public gia: string;
+  public giaBan: string;
+  public kichThuoc = '120x200';
+  public doDay = '5';
+  public sanPham = new SanPham();
+  public loaiSanPham = new LoaiSanPham();
+
+  private static hienThiGia(thongTin) {
+    let hangTrieu;
+    let hangNgan;
+    // tslint:disable-next-line:radix
+    hangTrieu = (Number.parseInt(thongTin) / 1000000).toString().split('.')[0] + '';
+    // tslint:disable-next-line:radix
+    hangNgan = ((Number.parseInt(thongTin) - Number.parseInt(hangTrieu) * 1000000) / 1000).toString().split('.')[0] + '';
+    if (hangNgan === '0') {
+      return hangTrieu + ',000,000'
+      // tslint:disable-next-line:radix
+    } else if (Number.parseInt(hangNgan) < 10) {
+      return hangTrieu + ',00' + hangNgan + ',000';
+      // tslint:disable-next-line:radix
+    } else if (Number.parseInt(hangNgan) < 100) {
+      return hangTrieu + ',0' + hangNgan + ',000';
+    } else {
+      return hangTrieu + ',' + hangNgan + ',000';
+    }
+  }
 
   ngOnInit(): void {
-    if (this.loginService.thongTinNguoiDungHienTai != null) {
-      this.role = this.loginService.thongTinNguoiDungHienTai.quyen;
-      this.userName = this.loginService.thongTinNguoiDungHienTai.tenDangNhap;
+    if (this.dangNhapService.thongTinNguoiDungHienTai != null) {
+      this.quyen = this.dangNhapService.thongTinNguoiDungHienTai.quyen;
+      this.tenDangNhap = this.dangNhapService.thongTinNguoiDungHienTai.tenDangNhap;
     }
 
-    this.activatedRouter.params.subscribe(data => {
-      this.typeID = data.typeID;
+    this.activatedRouter.params.subscribe(duLieu => {
+      this.maLoai = duLieu.maLoai;
     });
 
-    this.productTypeService.timBangMaLoai(this.typeID).subscribe(
-      (data) => {
-        this.productType = data;
+    this.thongTinSanPham = this.maLoai + ',120x200,5';
+
+    this.loaiSanPhamService.timBangMaLoai(this.maLoai).subscribe(
+      (duLieu) => {
+        this.loaiSanPham = duLieu;
       },
       () => {
       },
       () => {
       });
 
-    this.productService.timBangMaLoai(this.typeID).subscribe(
-      (data) => {
-        this.product = data;
-        // tslint:disable-next-line:radix
-        this.price = Number.parseInt(this.product.gia);
-        this.realPrice = this.price;
+    this.sanPhamDauTien(this.thongTinSanPham)
+  }
+
+  sanPhamDauTien(thongTinSanPham) {
+    this.sanPhamService.sanPhamDauTien(thongTinSanPham).subscribe(
+      (duLieu) => {
+        this.sanPham = duLieu;
+      },
+      () => {
+      },
+      () => {
+        if (this.sanPham != null) {
+          // @ts-ignore
+          this.gia = MuaHangComponent.hienThiGia(this.sanPham.gia);
+          // tslint:disable-next-line:radix
+          this.giaBan =
+            // tslint:disable-next-line:radix
+            (Number.parseInt(this.sanPham.gia) - (Number.parseInt(this.sanPham.gia) * Number.parseInt(this.sanPham.giamGia) / 100)) + '';
+          // @ts-ignore
+          this.giaBan = MuaHangComponent.hienThiGia(this.giaBan);
+          this.kichThuoc = this.sanPham.rong + 'x200';
+          this.doDay = this.sanPham.cao;
+        }
+      });
+  }
+
+  chonSanPham(thongTinSanPham) {
+    // xử lý lượt xem
+    // xử lý mua khi chưa đăng nhập, login xong trả lại vị trí bđ
+    this.sanPhamService.chonSanPham(thongTinSanPham).subscribe(
+      (duLieu) => {
+        this.sanPham = duLieu;
+        if (this.sanPham.gia) {
+          // tslint:disable-next-line:radix
+          // this.gia = Number.parseInt(this.sanPham.gia);
+          // tslint:disable-next-line:radix
+          // this.giaBan = this.gia - (this.gia * Number.parseInt(this.sanPham.giamGia) / 100);
+        }
       },
       () => {
       },
@@ -69,57 +123,44 @@ export class MuaHangComponent implements OnInit {
       });
   }
 
-  chooseSize(size) {
-    this.flagSize = size;
-    if (size !== 1 || this.flagThick !== 1) {
-      this.realPrice = this.price + (this.price * this.flagSize * 0.12) + (this.price * this.flagThick * 0.12);
-    } else this.realPrice = this.price;
+  chonKichThuoc(kichThuoc) {
+    this.kichThuoc = kichThuoc;
   }
 
-  chooseThick(thick) {
-    this.flagThick = thick;
-    if (thick !== 1 || this.flagSize !== 1) {
-      this.realPrice = this.price + (this.price * this.flagSize * 0.12) + (this.price * this.flagThick * 0.12);
-    } else this.realPrice = this.price;
+  chonDoDay(doDay) {
+    this.doDay = doDay;
   }
 
-  changeAmount(value) {
-    if (value === 1) {
-      if (this.amount >= 2) {
-        this.amount = this.amount - 1;
+  chonSoLuong(soLuong) {
+    if (soLuong === 1) {
+      if (this.soLuong >= 2) {
+        this.soLuong = this.soLuong - 1;
       }
     } else {
       // tslint:disable-next-line:radix
-      // if (this.amount < Number.parseInt(this.view-loai-san-pham-type.amount)) {
-      //   this.amount = this.amount + 1;
-      // } else this.openNoticePage('Hiện tại mặt hàng này chỉ còn ' + this.view-loai-san-pham-type.amount + ' sản phẩm !')
+      if (this.soLuong < Number.parseInt(this.sanPham.soLuong)) {
+        this.soLuong = this.soLuong + 1;
+      } else this.hienThongBao('Hiện tại mặt hàng này chỉ còn ' + this.sanPham.soLuong + ' sản phẩm !')
     }
   }
 
-  saveCart() {
-    this.informationProduct = this.amount + ',' + this.realPrice;
-    // this.productService.saveCart(this.userName, this.typeID, this.informationProduct).subscribe(
-    //   (data) => {
-    //     this.openNoticePage(data.message);
-    //     this.router.navigate(['view-loai-san-pham-type', {}]).then(r => {
-    //     });
-    //   },
-    //   () => {
-    //   },
-    //   () => {
-    //   });
+  luuGioHang() {
   }
 
-  openNoticePage(value) {
-    this.message = value;
+  hienThongBao(thongBao) {
+    this.thongBao = thongBao;
     const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
       width: '555px',
       height: '180px',
-      data: {message: this.message},
+      data: {thongBao: this.thongBao},
       disableClose: true
     });
 
-    dialogRefNotice.afterClosed().subscribe(result => {
+    dialogRefNotice.afterClosed().subscribe(() => {
+      if (this.thongBao === 'Cần đăng nhập trước khi mua sản phẩm !') {
+        this.router.navigate(['/dang-nhap', {message: ''}]).then(() => {
+        });
+      }
     })
   }
 }

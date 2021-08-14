@@ -14,16 +14,64 @@ public class SanPhamServiceImpl implements SanPhamService {
     private SanPhamRepository sanPhamRepository;
 
     @Override
-    public List<SanPham> timBangMaLoai(String maLoai) {
-        List<SanPham> sanPhamCanTim = new ArrayList<>();
+    public List<SanPham> locTheoMaLoai(String maLoai) {
         List<SanPham> tatCaSanPham = this.sanPhamRepository.findAll();
+        List<SanPham> ketQua = new ArrayList<>();
 
         for (SanPham sanPham : tatCaSanPham) {
             if (sanPham.getLoaiSanPham().getMa().equals(maLoai)) {
-                sanPhamCanTim.add(sanPham);
+                ketQua.add(sanPham);
             }
         }
 
-        return sanPhamCanTim;
+        return ketQua;
+    }
+
+    @Override
+    public SanPham sanPhamDauTien(String thongTin) {
+        List<SanPham> tatCaSanPham = this.sanPhamRepository.findAll();
+        List<SanPham> cungLoai = new ArrayList<>();
+        SanPham ketQua = null;
+        String maLoai = thongTin.split(",")[0];
+
+        for (SanPham sanPham : tatCaSanPham) {
+            if (sanPham.getLoaiSanPham().getMa().equals(maLoai)) {
+                cungLoai.add(sanPham);
+                if (sanPham.getRong().equals("120") && sanPham.getCao().equals("5")) {
+                    ketQua = sanPham;
+                }
+            }
+        }
+
+        if (ketQua == null && cungLoai.size() != 0) {
+            ketQua = cungLoai.get(0);
+            long giaThapNhat = Long.parseLong(ketQua.getGia());
+            for (SanPham sanPham : cungLoai) {
+                if (Long.parseLong(ketQua.getGia()) < giaThapNhat) {
+                    giaThapNhat = Long.parseLong(ketQua.getGia());
+                    ketQua = sanPham;
+                }
+            }
+        }
+
+        return ketQua;
+    }
+
+    @Override
+    public SanPham chonSanPham(String thongTin) {
+        List<SanPham> tatCaSanPham = this.sanPhamRepository.findAll();
+        String maLoai = thongTin.split(",")[0];
+        String rong = thongTin.split(",")[1].split("x")[0];
+        String cao = thongTin.split(",")[2];
+
+        for (SanPham sanPham : tatCaSanPham) {
+            if (sanPham.getLoaiSanPham().getMa().equals(maLoai)
+                    && sanPham.getRong().equals(rong)
+                    && sanPham.getCao().equals(cao)) {
+                return sanPham;
+            }
+        }
+
+        return null;
     }
 }

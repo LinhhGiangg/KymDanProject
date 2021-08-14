@@ -44,4 +44,8 @@ export class LoaiSanPhamService {
   xemLoaiBanChay(): Observable<any> {
     return this.http.get(this.API + '/xemLoaiBanChay');
   }
+
+  timTheoTen(ten): Observable<any> {
+    return this.http.get(this.API + '/timTheoTen/' + ten);
+  }
 }

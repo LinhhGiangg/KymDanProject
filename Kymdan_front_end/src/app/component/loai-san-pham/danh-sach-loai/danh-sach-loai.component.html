@@ -7,7 +7,7 @@
         <div class="col-sm-3" style="background-color: white">
           <div class="mt-3">
             <p style="font-family: Averta,Helvetica,sans-serif; color: green; font-size: 25px; font-weight: bold">
-              <i class="fa fa-usd" aria-hidden="true"></i> Giá (VNĐ)</p>
+              Giá (VNĐ)</p>
 
             <h3 (click)="locTheoGia(2)"><i class="fa fa-arrow-circle-o-right" [hidden]="viTri === 2"></i>
               <i class="fa fa-arrow-circle-right" aria-hidden="true" [hidden]="viTri !== 2"></i>
@@ -31,10 +31,6 @@
             <h3 (click)="locTheoGia(6)"><i class="fa fa-arrow-circle-o-right" [hidden]="viTri === 6"></i>
               <i class="fa fa-arrow-circle-right" aria-hidden="true" [hidden]="viTri !== 6"></i>
               <a [routerLink]="['/danh-sach-loai']" style="color: black; margin-left: 7px">Trên 50.000.000 đ</a></h3>
-
-            <h3 (click)="locTheoGia(7)"><i class="fa fa-arrow-circle-o-right" [hidden]="viTri === 7"></i>
-              <i class="fa fa-arrow-circle-right" aria-hidden="true" [hidden]="viTri !== 7"></i>
-              <a [routerLink]="['/danh-sach-loai']" style="color: black; margin-left: 7px">Tất cả</a></h3>
           </div>
         </div>
 
@@ -48,9 +44,20 @@
                 <button class="btn btn-success" (click)="xemLoaiMoi()">Sản phẩm mới</button>
                 <button class="btn btn-success ml-3" (click)="xemLoaiBanChay()">Sản phẩm bán chạy</button>
               </div>
-              <div class="row mt-1">
-<!--                <input type="text" class="form-control" style="width: 98%"-->
-<!--                       placeholder="Tìm kiếm sản phẩm theo tên">-->
+            </div>
+          </div>
+
+          <div class="row mt-1">
+            <div class="col-sm-8"></div>
+            <div class="col-sm-4">
+              <div class="search-box" style="width: 100%">
+                <div class="input-group">
+                  <a class="input-group-addon">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </a>
+                  <input type="text" class="form-control" [(ngModel)]="tenCanTim" (ngModelChange)="timTheoTen()"
+                         placeholder="Tìm kiếm sản phẩm theo tên">
+                </div>
               </div>
             </div>
           </div>
@@ -64,7 +71,7 @@
                 <div class="row">
                   <div class="col-sm-9">
                     <h1 (click)="xemSanPham(element.ma)">
-                      <a [routerLink]="['/xem-san-pham']" style="color: green">{{element.ten}}</a>
+                      <a [routerLink]="['/mua-hang']" style="color: green">{{element.ten}}</a>
                     </h1>
                     <h3><i class="fa fa-hand-o-right" aria-hidden="true"></i> {{element.moTa1}}</h3>
                     <h3 *ngIf="element.moTa2">

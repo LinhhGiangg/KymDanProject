@@ -13,8 +13,16 @@ export class SanPhamService {
   ) {
   }
 
-  timBangMaLoai(maLoai): Observable<any> {
-    return this.http.get(this.API + '/timBangMaLoai/' + maLoai);
+  locTheoMaLoai(maLoai): Observable<any> {
+    return this.http.get(this.API + '/locTheoMaLoai/' + maLoai);
+  }
+
+  sanPhamDauTien(thongTin): Observable<any> {
+    return this.http.get(this.API + '/sanPhamDauTien/' + thongTin);
+  }
+
+  chonSanPham(thongTin): Observable<any> {
+    return this.http.get(this.API + '/chonSanPham/' + thongTin);
   }
 
   saveCart(userName, productID, productInformation): Observable<any> {

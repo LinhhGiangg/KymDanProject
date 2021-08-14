@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {LoaiSanPhamService} from '../../../service/loai-san-pham.service';
 import {Router} from '@angular/router';
 import {LoaiSanPham} from '../../../model/LoaiSanPham';
+import {SanPhamService} from '../../../service/san-pham.service';
+import {ThongBaoComponent} from '../../cau-hinh/thong-bao/thong-bao.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-danh-sach-loai',
@@ -11,16 +14,23 @@ import {LoaiSanPham} from '../../../model/LoaiSanPham';
 export class DanhSachLoaiComponent implements OnInit {
   public danhSachLoai = [new LoaiSanPham()];
   public viTri;
+  public thongBao;
+  public tenCanTim = '';
   public danhSachLoc = false;
   public kiemTraBanChay = false;
 
   constructor(
     public loaiSanPhamService: LoaiSanPhamService,
+    public sanPhamService: SanPhamService,
     public router: Router,
+    public dialog: MatDialog,
   ) {
   }
 
   ngOnInit() {
+    this.tenCanTim = '';
+    this.danhSachLoc = false;
+    this.kiemTraBanChay = false;
     this.loaiSanPhamService.xemTatCa().subscribe(
       (duLieu) => {
         this.danhSachLoai = duLieu;
@@ -54,11 +64,6 @@ export class DanhSachLoaiComponent implements OnInit {
     //       this.danhSachLoai[i].moTa3 = this.danhSachLoai[i].moTa.split(',')[2];
     //     }
     //   });
-  }
-
-  xemSanPham(ma) {
-    this.router.navigate(['mua-hang', {maLoai: ma}]).then(() => {
-    });
   }
 
   xemLoaiMoi() {
@@ -98,8 +103,52 @@ export class DanhSachLoaiComponent implements OnInit {
   }
 
   lamMoi() {
-    this.danhSachLoc = false;
-    this.kiemTraBanChay = false;
     this.ngOnInit();
+  }
+
+  timTheoTen() {
+    if (this.tenCanTim !== '') {
+      this.loaiSanPhamService.timTheoTen(this.tenCanTim).subscribe(
+        (duLieu) => {
+          this.danhSachLoai = duLieu;
+        },
+        () => {
+        },
+        () => {
+          // tslint:disable-next-line:prefer-for-of
+          for (let i = 0; i < this.danhSachLoai.length; i++) {
+            this.danhSachLoai[i].moTa1 = this.danhSachLoai[i].moTa.split(',')[0];
+            this.danhSachLoai[i].moTa2 = this.danhSachLoai[i].moTa.split(',')[1];
+            this.danhSachLoai[i].moTa3 = this.danhSachLoai[i].moTa.split(',')[2];
+          }
+        });
+    } else this.lamMoi()
+  }
+
+  xemSanPham(ma) {
+    this.sanPhamService.locTheoMaLoai(ma).subscribe(
+      (duLieu) => {
+        if (duLieu.length !== 0) {
+          this.router.navigate(['mua-hang', {maLoai: ma}]).then(() => {
+          });
+        } else {
+          this.thongBao = 'Hiện tại loại này chưa có sản phẩm !';
+          const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
+            width: '555px',
+            height: '180px',
+            data: {thongBao: this.thongBao},
+            disableClose: true
+          });
+
+          dialogRefNotice.afterClosed().subscribe(() => {
+            this.router.navigate(['/danh-sach-loai', {message: ''}]).then(() => {
+            });
+          })
+        }
+      },
+      () => {
+      },
+      () => {
+      });
   }
 }
