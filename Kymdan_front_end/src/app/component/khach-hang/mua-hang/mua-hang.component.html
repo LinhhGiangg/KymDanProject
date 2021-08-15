@@ -112,23 +112,23 @@
           </div>
 
           <div class="row justify-content-center mt-5">
-            <button class="btn-success" *ngIf="quyen !== 'Employee' && quyen !== 'Customer'"
+            <button class="btn-success" *ngIf="quyen !== 'Nhân Viên' && quyen !== 'Khách Hàng'"
                     (click)="hienThongBao('Cần đăng nhập trước khi mua sản phẩm !')"
                     style="width: 90%; height: 50px; border-radius: 10px; border: 1px solid green">
               <span style="font-size: 22px">Mua ngay</span>
             </button>
 
-            <button class="btn-success" *ngIf="quyen === 'Employee'"
+            <button class="btn-success" *ngIf="quyen === 'Nhân Viên'"
                     style="width: 90%; height: 50px; border-radius: 10px; border: 1px solid green">
               <span style="font-size: 22px">Mua ngay</span>
             </button>
 
-            <button class="btn-success" (click)="luuGioHang()" *ngIf="quyen === 'Customer'"
+            <button class="btn-success" (click)="luuGioHang()" *ngIf="quyen === 'Khách Hàng'"
                     style="width: 45%; height: 50px; border-radius: 10px; border: 1px solid green; margin-right: 15px">
               <span style="font-size: 22px">Thêm giỏ hàng</span>
             </button>
 
-            <button class="btn-success" *ngIf="quyen === 'Customer'"
+            <button class="btn-success" *ngIf="quyen === 'Khách Hàng'"
                     style="width: 45%; height: 50px; border-radius: 10px; border: 1px solid green;
                     background-color: rgba(255,0,0,0.77)">
               <span style="font-size: 22px">Mua ngay</span>

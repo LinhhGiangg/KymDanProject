@@ -43,6 +43,7 @@ public class SanPhamServiceImpl implements SanPhamService {
             }
         }
 
+
         if (ketQua == null && cungLoai.size() != 0) {
             ketQua = cungLoai.get(0);
             long giaThapNhat = Long.parseLong(ketQua.getGia());
@@ -61,7 +62,7 @@ public class SanPhamServiceImpl implements SanPhamService {
     public SanPham chonSanPham(String thongTin) {
         List<SanPham> tatCaSanPham = this.sanPhamRepository.findAll();
         String maLoai = thongTin.split(",")[0];
-        String rong = thongTin.split(",")[1].split("x")[0];
+        String rong = thongTin.split(",")[1];
         String cao = thongTin.split(",")[2];
 
         for (SanPham sanPham : tatCaSanPham) {

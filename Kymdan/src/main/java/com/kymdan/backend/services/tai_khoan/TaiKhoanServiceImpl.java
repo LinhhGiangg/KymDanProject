@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.util.List;
 
 @Service
 public class TaiKhoanServiceImpl implements TaiKhoanService {
@@ -56,7 +57,7 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
             this.khachHangRepository.save(khachHangMoi);
 
             TaiKhoan newAccount = new TaiKhoan();
-            newAccount.setQuyen(quyenRepository.findByTen("Customer"));
+            newAccount.setQuyen(quyenRepository.findByTen("Khách Hàng"));
             newAccount.setTenDangNhap(taiKhoanDTO.getTenDangNhap());
             newAccount.setMatKhau(bcryptEncoder.encode(taiKhoanDTO.getMatKhau()));
             newAccount.setKhachHang(this.khachHangRepository.findByTen(taiKhoanDTO.getTenDangNhap()));
@@ -131,7 +132,13 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
 
     @Override
     public TaiKhoan timBangTenDangNhap(String tenDangNhap) {
-        return this.taiKhoanRepository.findByTenDangNhap(tenDangNhap);
+        List<TaiKhoan> tatCaTaiKhoan = this.taiKhoanRepository.findAll();
+        for (TaiKhoan taiKhoan : tatCaTaiKhoan) {
+            if (taiKhoan.getTenDangNhap().equals(tenDangNhap)) {
+                return taiKhoan;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -154,17 +161,19 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
         ThongBaoDTO thongBaoDTO = new ThongBaoDTO();
 
         try {
-            if (thongTinDTO.getQuyen().equals("Customer")) {
+            if (thongTinDTO.getQuyen().equals("Khách Hàng")) {
                 KhachHang khachHang = this.khachHangRepository.findByEmail(thongTinDTO.getEmail());
-                if (!thongTinDTO.getNgaySinh().equals(khachHang.getNgaySinh())) {
+                if (!thongTinDTO.getNgaySinh().equals(khachHang.getNgaySinh())
+                        || thongTinDTO.getGioiTinh().equals("có thay đổi")) {
                     khachHang.setNgaySinh(thongTinDTO.getNgaySinh().plusDays(1));
                 }
                 khachHang.setDiaChi(thongTinDTO.getDiaChi());
                 khachHang.setSoDienThoai(thongTinDTO.getSoDienThoai());
                 this.khachHangRepository.save(khachHang);
-            } else if (thongTinDTO.getQuyen().equals("Shipper")) {
+            } else if (thongTinDTO.getQuyen().equals("Nhân Viên Giao Hàng")) {
                 NhanVienGiaoHang nhanVienGiaoHang = this.nhanVienGiaoHangRepository.findByEmail(thongTinDTO.getEmail());
-                if (!thongTinDTO.getNgaySinh().equals(nhanVienGiaoHang.getNgaySinh())) {
+                if (!thongTinDTO.getNgaySinh().equals(nhanVienGiaoHang.getNgaySinh())
+                        || thongTinDTO.getGioiTinh().equals("có thay đổi")) {
                     nhanVienGiaoHang.setNgaySinh(thongTinDTO.getNgaySinh().plusDays(1));
                 }
                 nhanVienGiaoHang.setDiaChi(thongTinDTO.getDiaChi());
@@ -173,7 +182,9 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
             }
             else {
                 NhanVien nhanVien = this.nhanVienRepository.findByEmail(thongTinDTO.getEmail());
-                if (!thongTinDTO.getNgaySinh().equals(nhanVien.getNgaySinh())) {
+                System.out.println(thongTinDTO.getNgaySinh());
+                if (!thongTinDTO.getNgaySinh().equals(nhanVien.getNgaySinh())
+                        || thongTinDTO.getGioiTinh().equals("có thay đổi")) {
                     nhanVien.setNgaySinh(thongTinDTO.getNgaySinh().plusDays(1));
                 }
                 nhanVien.setDiaChi(thongTinDTO.getDiaChi());

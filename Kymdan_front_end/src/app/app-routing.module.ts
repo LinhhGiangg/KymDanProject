@@ -13,21 +13,31 @@ import {TaoMoiLoaiComponent} from './component/loai-san-pham/tao-moi-loai/tao-mo
 import {SuaLoaiComponent} from './component/loai-san-pham/sua-loai/sua-loai.component';
 import {XoaLoaiComponent} from './component/loai-san-pham/xoa-loai/xoa-loai.component';
 import {SuaMatKhauComponent} from './component/ca-nhan/sua-mat-khau/sua-mat-khau.component';
+import {DatHangComponent} from './component/khach-hang/dat-hang/dat-hang.component';
 
 const routes: Routes = [
   {path: '', component: TrangChuComponent},
-  {path: 'danh-sach-loai', component: DanhSachLoaiComponent},
+  {path: 'thong-bao', component: ThongBaoComponent},
   {path: 'dang-nhap', component: DangNhapComponent},
   {path: 'dang-ky', component: DangKyComponent},
+
+  // Thông tin tài khoản
   {path: 'thong-tin', component: ThongTinComponent},
   {path: 'sua-mat-khau', component: SuaMatKhauComponent},
+
+  // Khách Hàng
+  {path: 'danh-sach-loai', component: DanhSachLoaiComponent},
   {path: 'mua-hang', component: MuaHangComponent},
-  {path: 'thong-bao', component: ThongBaoComponent},
+  {path: 'dat-hang', component: DatHangComponent},
+
+  // Nhân Viên
   {path: 'quan-ly-loai', component: QuanLyLoaiComponent},
-  {path: 'chuyen-hang', component: ChuyenHangComponent},
   {path: 'them-loai', component: TaoMoiLoaiComponent},
   {path: 'sua-loai', component: SuaLoaiComponent},
   {path: 'xoa-loai', component: XoaLoaiComponent},
+
+  // Nhân Viên Giao Hàng
+  {path: 'chuyen-hang', component: ChuyenHangComponent},
 ];
 
 @NgModule({

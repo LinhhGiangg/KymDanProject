@@ -48,4 +48,8 @@ export class LoaiSanPhamService {
   timTheoTen(ten): Observable<any> {
     return this.http.get(this.API + '/timTheoTen/' + ten);
   }
+
+  tangLuotXem(maLoai): Observable<any> {
+    return this.http.get(this.API + '/tangLuotXem/' + maLoai);
+  }
 }

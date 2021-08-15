@@ -74,4 +74,9 @@ public class LoaiSanPhamController {
         List<LoaiSanPham> ketQua = this.loaiSanPhamService.timTheoTen(ten);
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
+
+    @GetMapping("/tangLuotXem/{maLoai}")
+    public ResponseEntity<?> tangLuotXem(@PathVariable String maLoai) {
+        return ResponseEntity.ok(loaiSanPhamService.tangLuotXem(maLoai));
+    }
 }

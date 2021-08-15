@@ -24,8 +24,4 @@ export class SanPhamService {
   chonSanPham(thongTin): Observable<any> {
     return this.http.get(this.API + '/chonSanPham/' + thongTin);
   }
-
-  saveCart(userName, productID, productInformation): Observable<any> {
-    return this.http.get(this.API + '/save-cart/' + userName + '/' + productID + '/' + productInformation);
-  }
 }

@@ -152,4 +152,14 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
 
         return ketQua;
     }
+
+    @Override
+    public ThongBaoDTO tangLuotXem(String maLoai) {
+        LoaiSanPham loaiSanPham = this.loaiSanPhamRepository.findById(maLoai).orElse(null);
+        if (loaiSanPham != null) {
+            loaiSanPham.setLuotXem(loaiSanPham.getLuotXem() + 1);
+            this.loaiSanPhamRepository.save(loaiSanPham);
+        }
+        return new ThongBaoDTO("OK");
+    }
 }

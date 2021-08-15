@@ -92,5 +92,6 @@ export class QuanLyLoaiComponent implements OnInit {
   }
 
   view(maLoai) {
+    console.log(maLoai)
   }
 }

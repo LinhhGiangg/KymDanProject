@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {DangNhapService} from '../../../service/dang-nhap.service';
+import {TaiKhoanService} from '../../../service/tai-khoan.service';
 import {TaiKhoan} from '../../../model/TaiKhoan';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
@@ -15,6 +15,7 @@ import {ThongBaoComponent} from '../../cau-hinh/thong-bao/thong-bao.component';
 export class ThongTinComponent implements OnInit {
   public tenDangNhap;
   public quyen;
+  public ngaySinhBanDau;
   public nguoiDung = new TaiKhoan();
   public thongBao;
   public canhBao;
@@ -24,7 +25,7 @@ export class ThongTinComponent implements OnInit {
 
   constructor(
     public formBuilder: FormBuilder,
-    public dangNhapService: DangNhapService,
+    public taiKhoanService: TaiKhoanService,
     public router: Router,
     public el: ElementRef,
     public dialog: MatDialog
@@ -33,23 +34,22 @@ export class ThongTinComponent implements OnInit {
 
   ngOnInit() {
     this.formSuaThongTin = this.formBuilder.group({
-      hoTen: [''],
       email: [''],
-      matKhau: [''],
       soDienThoai: ['', [Validators.required, Validators.pattern('((09|03|07|08|05)+([0-9]{8})\\b)')]],
       ngaySinh: ['', [Validators.required, this.kiemTraTuoi]],
       diaChi: ['', [Validators.required]],
       gioiTinh: ['', [Validators.required]],
     });
-    this.tenDangNhap = this.dangNhapService.thongTinNguoiDungHienTai.tenDangNhap;
-    this.quyen = this.dangNhapService.thongTinNguoiDungHienTai.quyen;
-    this.dangNhapService.xemThongTin(this.tenDangNhap, this.quyen).subscribe(duLieu => {
+    this.tenDangNhap = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
+    this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
+    this.taiKhoanService.xemThongTin(this.tenDangNhap, this.quyen).subscribe(duLieu => {
       this.nguoiDung = duLieu;
       this.formSuaThongTin.patchValue(duLieu);
     });
   }
 
   suaThongTin() {
+    this.ngaySinhBanDau = this.formSuaThongTin.value.ngaySinh;
     this.xacNhanSua = true;
     this.ngOnInit();
     this.thongBao = ''
@@ -64,17 +64,19 @@ export class ThongTinComponent implements OnInit {
 
   suaDuLieu() {
     this.thongTinMoi = {
+      email: this.formSuaThongTin.value.email,
       soDienThoai: this.formSuaThongTin.value.soDienThoai,
-      hoTen: this.formSuaThongTin.value.hoTen,
       ngaySinh: this.formSuaThongTin.value.ngaySinh,
       diaChi: this.formSuaThongTin.value.diaChi,
       gioiTinh: this.formSuaThongTin.value.gioiTinh,
-      email: this.formSuaThongTin.value.email,
       quyen: this.quyen
     };
 
     if (this.formSuaThongTin.valid) {
-      this.dangNhapService.suaThongTin(this.thongTinMoi)
+      if (this.ngaySinhBanDau !== this.thongTinMoi.ngaySinh) {
+        this.thongTinMoi.gioiTinh = 'có thay đổi';
+      }
+      this.taiKhoanService.suaThongTin(this.thongTinMoi)
         .subscribe(duLieu => {
           this.canhBao = duLieu.thongBao;
           const dialogRefNotice = this.dialog.open(ThongBaoComponent, {

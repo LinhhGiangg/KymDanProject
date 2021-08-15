@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {Router} from '@angular/router';
-import {DangNhapService} from '../../../service/dang-nhap.service';
+import {TaiKhoanService} from '../../../service/tai-khoan.service';
 import {ThongBaoComponent} from '../../cau-hinh/thong-bao/thong-bao.component';
 
 @Component({
@@ -23,13 +23,13 @@ export class SuaMatKhauComponent implements OnInit {
     public formBuilder: FormBuilder,
     public el: ElementRef,
     public router: Router,
-    public dangNhapService: DangNhapService,
+    public taiKhoanService: TaiKhoanService,
     public dialog: MatDialog,
   ) {
   }
 
   ngOnInit() {
-    this.tenDangNhap = this.dangNhapService.thongTinNguoiDungHienTai.tenDangNhap;
+    this.tenDangNhap = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
     this.formSuaMatKhau = this.formBuilder.group({
       matKhauCu: ['', [Validators.required]],
       matKhauMoi: ['', [Validators.required]],
@@ -54,7 +54,7 @@ export class SuaMatKhauComponent implements OnInit {
 
   sua() {
     if (this.formSuaMatKhau.valid) {
-      this.dangNhapService.suaMatKhau(this.tenDangNhap, this.formSuaMatKhau.value.matKhauCu, this.formSuaMatKhau.value.matKhauMoi)
+      this.taiKhoanService.suaMatKhau(this.tenDangNhap, this.formSuaMatKhau.value.matKhauCu, this.formSuaMatKhau.value.matKhauMoi)
         .subscribe(duLieu => {
           this.thongBao = duLieu.thongBao;
           const dialogRefNotice = this.dialog.open(ThongBaoComponent, {

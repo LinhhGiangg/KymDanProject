@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {DangNhapService} from '../../../service/dang-nhap.service';
+import {TaiKhoanService} from '../../../service/tai-khoan.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ThongBaoComponent} from '../../cau-hinh/thong-bao/thong-bao.component';
 import {SanPham} from '../../../model/SanPham';
@@ -19,15 +19,17 @@ export class MuaHangComponent implements OnInit {
     public activatedRouter: ActivatedRoute,
     public sanPhamService: SanPhamService,
     public loaiSanPhamService: LoaiSanPhamService,
-    public dangNhapService: DangNhapService,
+    public taiKhoanService: TaiKhoanService,
     public router: Router,
     public dialog: MatDialog,
   ) {
   }
+
   public thongBao;
   public quyen = 'Nothing';
   public tenDangNhap;
-  public maLoai;
+  public maLoai = '';
+  public duLieuDauVao;
   public thongTinSanPham;
   public soLuong = 1;
   public gia: string;
@@ -58,16 +60,24 @@ export class MuaHangComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.dangNhapService.thongTinNguoiDungHienTai != null) {
-      this.quyen = this.dangNhapService.thongTinNguoiDungHienTai.quyen;
-      this.tenDangNhap = this.dangNhapService.thongTinNguoiDungHienTai.tenDangNhap;
+    if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
+      this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
+      this.tenDangNhap = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
     }
 
     this.activatedRouter.params.subscribe(duLieu => {
-      this.maLoai = duLieu.maLoai;
+      this.duLieuDauVao = duLieu.thongTin;
+      this.maLoai = this.duLieuDauVao.split(',')[0];
+      if (this.duLieuDauVao.split(',').length > 1) {
+        this.thongTinSanPham =
+          this.maLoai + ',' + this.duLieuDauVao.split(',')[1].split('x')[0] + ',' +
+          this.duLieuDauVao.split(',')[2];
+        this.chonSanPham(this.thongTinSanPham);
+        this.soLuong = this.duLieuDauVao.split(',')[3];
+      } else {
+        this.sanPhamDauTien(this.maLoai)
+      }
     });
-
-    this.thongTinSanPham = this.maLoai + ',120x200,5';
 
     this.loaiSanPhamService.timBangMaLoai(this.maLoai).subscribe(
       (duLieu) => {
@@ -77,8 +87,6 @@ export class MuaHangComponent implements OnInit {
       },
       () => {
       });
-
-    this.sanPhamDauTien(this.thongTinSanPham)
   }
 
   sanPhamDauTien(thongTinSanPham) {
@@ -104,31 +112,42 @@ export class MuaHangComponent implements OnInit {
       });
   }
 
-  chonSanPham(thongTinSanPham) {
-    // xử lý lượt xem
-    // xử lý mua khi chưa đăng nhập, login xong trả lại vị trí bđ
-    this.sanPhamService.chonSanPham(thongTinSanPham).subscribe(
-      (duLieu) => {
-        this.sanPham = duLieu;
-        if (this.sanPham.gia) {
-          // tslint:disable-next-line:radix
-          // this.gia = Number.parseInt(this.sanPham.gia);
-          // tslint:disable-next-line:radix
-          // this.giaBan = this.gia - (this.gia * Number.parseInt(this.sanPham.giamGia) / 100);
-        }
-      },
-      () => {
-      },
-      () => {
-      });
-  }
-
   chonKichThuoc(kichThuoc) {
     this.kichThuoc = kichThuoc;
+    this.thongTinSanPham = this.maLoai + ',' + this.kichThuoc.split('x')[0] + ',' + this.doDay;
+    this.chonSanPham(this.thongTinSanPham)
   }
 
   chonDoDay(doDay) {
     this.doDay = doDay;
+    this.thongTinSanPham = this.maLoai + ',' + this.kichThuoc.split('x')[0] + ',' + this.doDay;
+    this.chonSanPham(this.thongTinSanPham)
+  }
+
+  chonSanPham(thongTinSanPham) {
+    this.sanPhamService.chonSanPham(thongTinSanPham).subscribe(
+      (duLieu) => {
+        this.sanPham = duLieu;
+      },
+      () => {
+      },
+      () => {
+        if (this.sanPham != null) {
+          // @ts-ignore
+          this.gia = MuaHangComponent.hienThiGia(this.sanPham.gia);
+          // tslint:disable-next-line:radix
+          this.giaBan =
+            // tslint:disable-next-line:radix
+            (Number.parseInt(this.sanPham.gia) - (Number.parseInt(this.sanPham.gia) * Number.parseInt(this.sanPham.giamGia) / 100)) + '';
+          // @ts-ignore
+          this.giaBan = MuaHangComponent.hienThiGia(this.giaBan);
+          this.kichThuoc = this.sanPham.rong + 'x200';
+          this.doDay = this.sanPham.cao;
+        } else {
+          this.hienThongBao('Sản phẩm này hiện tại đang hết hàng ! Vui lòng chọn sản phẩm khác !');
+          this.sanPhamDauTien(this.maLoai)
+        }
+      });
   }
 
   chonSoLuong(soLuong) {
@@ -140,7 +159,9 @@ export class MuaHangComponent implements OnInit {
       // tslint:disable-next-line:radix
       if (this.soLuong < Number.parseInt(this.sanPham.soLuong)) {
         this.soLuong = this.soLuong + 1;
-      } else this.hienThongBao('Hiện tại mặt hàng này chỉ còn ' + this.sanPham.soLuong + ' sản phẩm !')
+      } else {
+        this.hienThongBao('Hiện tại mặt hàng này chỉ còn ' + this.sanPham.soLuong + ' sản phẩm !')
+      }
     }
   }
 
@@ -148,17 +169,17 @@ export class MuaHangComponent implements OnInit {
   }
 
   hienThongBao(thongBao) {
-    this.thongBao = thongBao;
+    this.thongBao = this.maLoai + ',' + thongBao + ',' + this.thongTinSanPham;
     const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
       width: '555px',
-      height: '180px',
-      data: {thongBao: this.thongBao},
+      height: '205px',
+      data: {thongBao: this.thongBao.split(',')[1]},
       disableClose: true
     });
 
     dialogRefNotice.afterClosed().subscribe(() => {
-      if (this.thongBao === 'Cần đăng nhập trước khi mua sản phẩm !') {
-        this.router.navigate(['/dang-nhap', {message: ''}]).then(() => {
+      if (this.thongBao.split(',')[1] === 'Cần đăng nhập trước khi mua sản phẩm !') {
+        this.router.navigate(['/dang-nhap', {thongTin: this.thongTinSanPham + ',' + this.soLuong}]).then(() => {
         });
       }
     })

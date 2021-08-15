@@ -129,7 +129,16 @@ export class DanhSachLoaiComponent implements OnInit {
     this.sanPhamService.locTheoMaLoai(ma).subscribe(
       (duLieu) => {
         if (duLieu.length !== 0) {
-          this.router.navigate(['mua-hang', {maLoai: ma}]).then(() => {
+          this.loaiSanPhamService.tangLuotXem(ma).subscribe(
+            (ketQua) => {
+              this.thongBao = ketQua;
+            },
+            () => {
+            },
+            () => {
+            });
+
+          this.router.navigate(['mua-hang', {thongTin: ma}]).then(() => {
           });
         } else {
           this.thongBao = 'Hiện tại loại này chưa có sản phẩm !';

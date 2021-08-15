@@ -3,7 +3,6 @@ export class TaiKhoan {
   quyen: string;
   tenDangNhap: string;
   matKhau: string;
-  hoTen: string;
   token: string;
   email: string;
   soDienThoai: string;

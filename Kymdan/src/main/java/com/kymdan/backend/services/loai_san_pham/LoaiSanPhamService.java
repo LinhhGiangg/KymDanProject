@@ -26,4 +26,6 @@ public interface LoaiSanPhamService {
     List<LoaiSanPham> xemLoaiBanChay();
 
     List<LoaiSanPham> timTheoTen(String ten);
+
+    ThongBaoDTO tangLuotXem(String maLoai);
 }

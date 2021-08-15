@@ -35,7 +35,7 @@ export class SuaLoaiComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRouter.params.subscribe(duLieu => {
+    this.activatedRouter.params.subscribe(() => {
       this.duLieuCu = this.duLieu.thongTin;
     });
 

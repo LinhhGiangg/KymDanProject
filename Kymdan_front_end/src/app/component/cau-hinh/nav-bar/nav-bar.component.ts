@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DangNhapService} from '../../../service/dang-nhap.service';
+import {TaiKhoanService} from '../../../service/tai-khoan.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,19 +9,19 @@ import {DangNhapService} from '../../../service/dang-nhap.service';
 export class NavBarComponent implements OnInit {
   public taiKhoanHienTai;
 
-  constructor(public dangNhapService: DangNhapService) {
+  constructor(public taiKhoanService: TaiKhoanService) {
     this.taiKhoanHienTai = JSON.parse(localStorage.getItem('taiKhoanHienTai'));
   }
 
   ngOnInit() {
-    this.dangNhapService.hoTen.subscribe(duLieu => {
+    this.taiKhoanService.hoTen.subscribe(duLieu => {
       this.taiKhoanHienTai = duLieu;
     });
   }
 
   dangXuat() {
-    this.dangNhapService.dangXuat();
+    this.taiKhoanService.dangXuat();
     this.taiKhoanHienTai = null;
-    this.dangNhapService.broadcastLoginChange(this.taiKhoanHienTai);
+    this.taiKhoanService.broadcastLoginChange(this.taiKhoanHienTai);
   }
 }
