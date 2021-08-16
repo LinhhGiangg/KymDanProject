@@ -25,6 +25,10 @@ import {TaoMoiLoaiComponent} from './component/loai-san-pham/tao-moi-loai/tao-mo
 import {SuaLoaiComponent} from './component/loai-san-pham/sua-loai/sua-loai.component';
 import {XoaLoaiComponent} from './component/loai-san-pham/xoa-loai/xoa-loai.component';
 import {DatHangComponent} from './component/khach-hang/dat-hang/dat-hang.component';
+import { DanhSachSanPhamComponent } from './component/san-pham/danh-sach-san-pham/danh-sach-san-pham.component';
+import { ThemSanPhamComponent } from './component/san-pham/them-san-pham/them-san-pham.component';
+import { SuaSanPhamComponent } from './component/san-pham/sua-san-pham/sua-san-pham.component';
+import { XoaSanPhamComponent } from './component/san-pham/xoa-san-pham/xoa-san-pham.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,11 @@ import {DatHangComponent} from './component/khach-hang/dat-hang/dat-hang.compone
     TaoMoiLoaiComponent,
     SuaLoaiComponent,
     XoaLoaiComponent,
-    DatHangComponent
+    DatHangComponent,
+    DanhSachSanPhamComponent,
+    ThemSanPhamComponent,
+    SuaSanPhamComponent,
+    XoaSanPhamComponent
   ],
   imports: [
     BrowserModule,

@@ -39,7 +39,7 @@ public class LoaiSanPham {
     @JsonBackReference
     private List<SanPham> danhSachSanPham;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "ma_nha_cung_cap", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
     private NhaCungCap nhaCungCap;
 

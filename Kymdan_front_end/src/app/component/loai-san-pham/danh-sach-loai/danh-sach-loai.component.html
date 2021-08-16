@@ -63,28 +63,28 @@
           </div>
 
           <table class="table mt-1" *ngIf="danhSachLoai && danhSachLoai.length !== 0">
-            <tr class="row" *ngFor="let element of danhSachLoai">
+            <tr class="row" *ngFor="let phanTu of danhSachLoai">
               <td class="col-sm-3">
-                <img style="width: 100%" src="{{element.hinh1}}" alt="" (click)="xemSanPham(element.ma)">
+                <img style="width: 100%" src="{{phanTu.hinh1}}" alt="" (click)="xemSanPham(phanTu.ma)">
               </td>
               <td class="col-sm-9">
                 <div class="row">
                   <div class="col-sm-9">
-                    <h1 (click)="xemSanPham(element.ma)">
-                      <a [routerLink]="['/mua-hang']" style="color: green">{{element.ten}}</a>
+                    <h1 (click)="xemSanPham(phanTu.ma)">
+                      <a [routerLink]="['/mua-hang']" style="color: green">{{phanTu.ten}}</a>
                     </h1>
-                    <h3><i class="fa fa-hand-o-right" aria-hidden="true"></i> {{element.moTa1}}</h3>
-                    <h3 *ngIf="element.moTa2">
-                      <i class="fa fa-hand-o-right" aria-hidden="true"></i> {{element.moTa2}}
+                    <h3><i class="fa fa-hand-o-right" aria-hidden="true"></i> {{phanTu.moTa1}}</h3>
+                    <h3 *ngIf="phanTu.moTa2">
+                      <i class="fa fa-hand-o-right" aria-hidden="true"></i> {{phanTu.moTa2}}
                     </h3>
-                    <h3 *ngIf="element.moTa3">
-                      <i class="fa fa-hand-o-right" aria-hidden="true"></i> {{element.moTa3}}
+                    <h3 *ngIf="phanTu.moTa3">
+                      <i class="fa fa-hand-o-right" aria-hidden="true"></i> {{phanTu.moTa3}}
                     </h3>
                     <h3 *ngIf="!kiemTraBanChay"><i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                      <span style="color: green"> Số lượt xem : </span>{{element.luotXem}}
+                      <span style="color: green"> Số lượt xem : </span>{{phanTu.luotXem}}
                     </h3>
                     <h3 *ngIf="kiemTraBanChay"><i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                      <span style="color: green"> Ngày nhập : </span>{{element.ngayTao}}
+                      <span style="color: green"> Ngày nhập : </span>{{phanTu.ngayTao}}
                     </h3>
                   </div>
 

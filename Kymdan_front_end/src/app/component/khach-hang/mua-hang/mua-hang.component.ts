@@ -47,15 +47,15 @@ export class MuaHangComponent implements OnInit {
     // tslint:disable-next-line:radix
     hangNgan = ((Number.parseInt(thongTin) - Number.parseInt(hangTrieu) * 1000000) / 1000).toString().split('.')[0] + '';
     if (hangNgan === '0') {
-      return hangTrieu + ',000,000'
+      return hangTrieu + '.000.000'
       // tslint:disable-next-line:radix
     } else if (Number.parseInt(hangNgan) < 10) {
-      return hangTrieu + ',00' + hangNgan + ',000';
+      return hangTrieu + '.00' + hangNgan + '.000';
       // tslint:disable-next-line:radix
     } else if (Number.parseInt(hangNgan) < 100) {
-      return hangTrieu + ',0' + hangNgan + ',000';
+      return hangTrieu + '.0' + hangNgan + '.000';
     } else {
-      return hangTrieu + ',' + hangNgan + ',000';
+      return hangTrieu + '.' + hangNgan + '.000';
     }
   }
 
@@ -108,6 +108,7 @@ export class MuaHangComponent implements OnInit {
           this.giaBan = MuaHangComponent.hienThiGia(this.giaBan);
           this.kichThuoc = this.sanPham.rong + 'x200';
           this.doDay = this.sanPham.cao;
+          this.thongTinSanPham = this.maLoai + ',' + this.sanPham.rong + ',' + this.sanPham.cao
         }
       });
   }
@@ -183,5 +184,11 @@ export class MuaHangComponent implements OnInit {
         });
       }
     })
+  }
+
+  muaHang() {
+    const THONG_TIN = this.tenDangNhap + ',' + this.thongTinSanPham + ',' + this.soLuong;
+    this.router.navigate(['/dat-hang', {thongTin: THONG_TIN}]).then(() => {
+    });
   }
 }

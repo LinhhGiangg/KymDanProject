@@ -27,22 +27,22 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let element of danhSachLoai ; let i = index">
-          <td style="width: 100px; font-size: 17px">{{element.ma}}</td>
-          <td style="width: 350px; font-size: 17px">{{element.ten}}</td>
+        <tr *ngFor="let phanTu of danhSachLoai ; let i = index">
+          <td style="width: 100px; font-size: 17px">{{phanTu.ma}}</td>
+          <td style="width: 350px; font-size: 17px">{{phanTu.ten}}</td>
           <td style="width: 370px; text-align: left">
-            - {{element.moTa1}} <br><br>
-            <span *ngIf="element.moTa2">- {{element.moTa2}}</span> <br><br>
-            <span *ngIf="element.moTa3">- {{element.moTa3}}</span>
+            - {{phanTu.moTa1}} <br><br>
+            <span *ngIf="phanTu.moTa2">- {{phanTu.moTa2}}</span> <br><br>
+            <span *ngIf="phanTu.moTa3">- {{phanTu.moTa3}}</span>
           </td>
-          <td><img src="{{element.hinh1}}" style="width: 90%; height: 250px"></td>
+          <td><img src="{{phanTu.hinh1}}" style="width: 90%; height: 250px"></td>
           <td>
-            <a [routerLink]="['/quan-ly-loai']" (click)="view(element.ma)"
+            <a [routerLink]="['/danh-sach-san-pham']" (click)="view(phanTu.ma)"
                class="view" title="Xem chi tiết" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
             <a class="edit" title="Sửa" data-toggle="tooltip" [routerLink]="['/quan-ly-loai']">
-              <i class="material-icons" (click)="sua(element.ma)">&#xE254;</i></a>
+              <i class="material-icons" (click)="sua(phanTu.ma)">&#xE254;</i></a>
             <a class="delete" title="Xóa" data-toggle="tooltip" [routerLink]="['/quan-ly-loai']">
-              <i class="material-icons" (click)="xoa(element.ten)">&#xE872;</i></a>
+              <i class="material-icons" (click)="xoa(phanTu.ten)">&#xE872;</i></a>
           </td>
         </tr>
         </tbody>

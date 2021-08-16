@@ -24,4 +24,8 @@ export class SanPhamService {
   chonSanPham(thongTin): Observable<any> {
     return this.http.get(this.API + '/chonSanPham/' + thongTin);
   }
+
+  xoa(ma): Observable<any> {
+    return this.http.get(this.API + '/xoa/' + ma);
+  }
 }

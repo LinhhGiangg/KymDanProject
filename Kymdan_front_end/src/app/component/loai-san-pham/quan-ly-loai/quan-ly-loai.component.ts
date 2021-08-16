@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {TaoMoiLoaiComponent} from '../tao-moi-loai/tao-moi-loai.component';
 import {SuaLoaiComponent} from '../sua-loai/sua-loai.component';
 import {XoaLoaiComponent} from '../xoa-loai/xoa-loai.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-quan-ly-loai',
@@ -18,6 +19,7 @@ export class QuanLyLoaiComponent implements OnInit {
   constructor(
     public loaiSanPhamService: LoaiSanPhamService,
     public dialog: MatDialog,
+    public router: Router,
   ) {
   }
 
@@ -92,6 +94,7 @@ export class QuanLyLoaiComponent implements OnInit {
   }
 
   view(maLoai) {
-    console.log(maLoai)
+    this.router.navigate(['/danh-sach-san-pham', {thongTin: maLoai}]).then(() => {
+    });
   }
 }

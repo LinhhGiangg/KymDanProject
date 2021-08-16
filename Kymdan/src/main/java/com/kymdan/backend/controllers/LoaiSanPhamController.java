@@ -43,13 +43,13 @@ public class LoaiSanPhamController {
         } else if (loaiSanPhamService.timBangTen(loaiSanPhamDTO.getTen()) != null){
             return ResponseEntity.ok(new ThongBaoDTO("Tên " + loaiSanPhamDTO.getTen() + " đã được đăng ký !"));
         } else {
-            return ResponseEntity.ok(loaiSanPhamService.taoMoi(loaiSanPhamDTO));
+            return ResponseEntity.ok(this.loaiSanPhamService.taoMoi(loaiSanPhamDTO));
         }
     }
 
     @PostMapping(value = "/sua")
     public ResponseEntity<?> sua(@RequestBody LoaiSanPhamDTO loaiSanPhamDTO) {
-        return ResponseEntity.ok(loaiSanPhamService.sua(loaiSanPhamDTO));
+        return ResponseEntity.ok(this.loaiSanPhamService.sua(loaiSanPhamDTO));
     }
 
     @GetMapping("/xoa/{ten}")
@@ -77,6 +77,6 @@ public class LoaiSanPhamController {
 
     @GetMapping("/tangLuotXem/{maLoai}")
     public ResponseEntity<?> tangLuotXem(@PathVariable String maLoai) {
-        return ResponseEntity.ok(loaiSanPhamService.tangLuotXem(maLoai));
+        return ResponseEntity.ok(this.loaiSanPhamService.tangLuotXem(maLoai));
     }
 }

@@ -118,7 +118,7 @@
               <span style="font-size: 22px">Mua ngay</span>
             </button>
 
-            <button class="btn-success" *ngIf="quyen === 'Nhân Viên'"
+            <button class="btn-success" *ngIf="quyen === 'Nhân Viên'" (click)="muaHang()"
                     style="width: 90%; height: 50px; border-radius: 10px; border: 1px solid green">
               <span style="font-size: 22px">Mua ngay</span>
             </button>
@@ -128,7 +128,7 @@
               <span style="font-size: 22px">Thêm giỏ hàng</span>
             </button>
 
-            <button class="btn-success" *ngIf="quyen === 'Khách Hàng'"
+            <button class="btn-success" *ngIf="quyen === 'Khách Hàng'" (click)="muaHang()"
                     style="width: 45%; height: 50px; border-radius: 10px; border: 1px solid green;
                     background-color: rgba(255,0,0,0.77)">
               <span style="font-size: 22px">Mua ngay</span>
@@ -177,7 +177,7 @@
           <img src="https://vuanem.com/image/footer/footer_top_4.png">
           <h3 style="font-size: 20px">Vận chuyển</h3>
           <h2 style="font-weight: bold; margin-top: -22px">miễn phí</h2>
-          <h4 style="font-family: Averta,Helvetica,sans-serif">Giao hàng tận giường, miễn phí các đơn hàng từ 1.000.000đ
+          <h4 style="font-family: Averta,Helvetica,sans-serif">Giao hàng tận giường, miễn phí các đơn hàng từ 10.000.000đ
             trở lên đối với tất cả sản phẩm</h4>
         </div>
       </div>

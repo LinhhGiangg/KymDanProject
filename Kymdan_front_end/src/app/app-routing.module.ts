@@ -14,6 +14,10 @@ import {SuaLoaiComponent} from './component/loai-san-pham/sua-loai/sua-loai.comp
 import {XoaLoaiComponent} from './component/loai-san-pham/xoa-loai/xoa-loai.component';
 import {SuaMatKhauComponent} from './component/ca-nhan/sua-mat-khau/sua-mat-khau.component';
 import {DatHangComponent} from './component/khach-hang/dat-hang/dat-hang.component';
+import {DanhSachSanPhamComponent} from './component/san-pham/danh-sach-san-pham/danh-sach-san-pham.component';
+import {XoaSanPhamComponent} from './component/san-pham/xoa-san-pham/xoa-san-pham.component';
+import {ThemSanPhamComponent} from './component/san-pham/them-san-pham/them-san-pham.component';
+import {SuaSanPhamComponent} from './component/san-pham/sua-san-pham/sua-san-pham.component';
 
 const routes: Routes = [
   {path: '', component: TrangChuComponent},
@@ -35,6 +39,10 @@ const routes: Routes = [
   {path: 'them-loai', component: TaoMoiLoaiComponent},
   {path: 'sua-loai', component: SuaLoaiComponent},
   {path: 'xoa-loai', component: XoaLoaiComponent},
+  {path: 'danh-sach-san-pham', component: DanhSachSanPhamComponent},
+  {path: 'them-san-pham', component: ThemSanPhamComponent},
+  {path: 'sua-san-pham', component: SuaSanPhamComponent},
+  {path: 'xoa-san-pham', component: XoaSanPhamComponent},
 
   // Nhân Viên Giao Hàng
   {path: 'chuyen-hang', component: ChuyenHangComponent},

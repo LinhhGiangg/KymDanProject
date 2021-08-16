@@ -1,6 +1,7 @@
 package com.kymdan.backend.services.san_pham;
 
 import com.kymdan.backend.entity.SanPham;
+import com.kymdan.backend.model.ThongBaoDTO;
 import com.kymdan.backend.repository.SanPhamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,5 +75,11 @@ public class SanPhamServiceImpl implements SanPhamService {
         }
 
         return null;
+    }
+
+    @Override
+    public ThongBaoDTO xoa(String ma) {
+        this.sanPhamRepository.deleteById(ma);
+        return new ThongBaoDTO("Xóa thành công !");
     }
 }

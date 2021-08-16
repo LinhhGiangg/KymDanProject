@@ -32,7 +32,7 @@ public class SanPham {
 
     // relationship
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "ma_loai_san_pham", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
     private LoaiSanPham loaiSanPham;
 

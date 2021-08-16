@@ -34,4 +34,9 @@ public class SanPhamController {
         SanPham sanPham = this.sanPhamService.chonSanPham(thongTin);
         return new ResponseEntity<>(sanPham, HttpStatus.OK);
     }
+
+    @GetMapping("/xoa/{ma}")
+    public ResponseEntity<?> xoaSanPham(@PathVariable String ma) {
+        return ResponseEntity.ok(this.sanPhamService.xoa(ma));
+    }
 }
