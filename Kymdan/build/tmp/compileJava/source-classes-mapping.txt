@@ -20,8 +20,8 @@ com/kymdan/backend/services/tai_khoan/TaiKhoanService.java
  com.kymdan.backend.services.tai_khoan.TaiKhoanService
 com/kymdan/backend/entity/NhaCungCap.java
  com.kymdan.backend.entity.NhaCungCap
-com/kymdan/backend/controllers/LoaiSanPhamController.java
- com.kymdan.backend.controllers.LoaiSanPhamController
+com/kymdan/backend/entity/ChiTietKhuyenMai.java
+ com.kymdan.backend.entity.ChiTietKhuyenMai
 com/kymdan/backend/model/TaiKhoanDTO.java
  com.kymdan.backend.model.TaiKhoanDTO
 com/kymdan/backend/entity/HoaDon.java
@@ -104,25 +104,27 @@ com/kymdan/backend/repository/NhanVienRepository.java
  com.kymdan.backend.repository.NhanVienRepository
 com/kymdan/backend/entity/ChiTietDatHang.java
  com.kymdan.backend.entity.ChiTietDatHang
-com/kymdan/backend/services/san_pham/SanPhamServiceImpl.java
- com.kymdan.backend.services.san_pham.SanPhamServiceImpl
+com/kymdan/backend/entity/LoaiSanPham.java
+ com.kymdan.backend.entity.LoaiSanPham
 com/kymdan/backend/services/loai_san_pham/LoaiSanPhamServiceImpl.java
  com.kymdan.backend.services.loai_san_pham.LoaiSanPhamServiceImpl
 com/kymdan/backend/repository/LoaiSanPhamRepository.java
  com.kymdan.backend.repository.LoaiSanPhamRepository
-com/kymdan/backend/services/san_pham/SanPhamService.java
- com.kymdan.backend.services.san_pham.SanPhamService
+com/kymdan/backend/entity/SanPham.java
+ com.kymdan.backend.entity.SanPham
 com/kymdan/backend/entity/ChiTietDonHang.java
  com.kymdan.backend.entity.ChiTietDonHang
 com/kymdan/backend/entity/ChiTietPhieuNhap.java
  com.kymdan.backend.entity.ChiTietPhieuNhap
 com/kymdan/backend/services/loai_san_pham/LoaiSanPhamService.java
  com.kymdan.backend.services.loai_san_pham.LoaiSanPhamService
-com/kymdan/backend/entity/ChiTietKhuyenMai.java
- com.kymdan.backend.entity.ChiTietKhuyenMai
 com/kymdan/backend/controllers/SanPhamController.java
  com.kymdan.backend.controllers.SanPhamController
-com/kymdan/backend/entity/SanPham.java
- com.kymdan.backend.entity.SanPham
-com/kymdan/backend/entity/LoaiSanPham.java
- com.kymdan.backend.entity.LoaiSanPham
+com/kymdan/backend/services/san_pham/SanPhamService.java
+ com.kymdan.backend.services.san_pham.SanPhamService
+com/kymdan/backend/model/SanPhamDTO.java
+ com.kymdan.backend.model.SanPhamDTO
+com/kymdan/backend/controllers/LoaiSanPhamController.java
+ com.kymdan.backend.controllers.LoaiSanPhamController
+com/kymdan/backend/services/san_pham/SanPhamServiceImpl.java
+ com.kymdan.backend.services.san_pham.SanPhamServiceImpl

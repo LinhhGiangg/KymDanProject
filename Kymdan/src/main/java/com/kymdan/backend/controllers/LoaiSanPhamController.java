@@ -38,9 +38,9 @@ public class LoaiSanPhamController {
 
     @PostMapping(value = "/taoMoi")
     public ResponseEntity<?> taoMoi(@RequestBody LoaiSanPhamDTO loaiSanPhamDTO) {
-        if (loaiSanPhamService.timBangMaLoai(loaiSanPhamDTO.getMa()) != null) {
+        if (this.loaiSanPhamService.timBangMaLoai(loaiSanPhamDTO.getMa()) != null) {
             return ResponseEntity.ok(new ThongBaoDTO("Mã " + loaiSanPhamDTO.getMa() + " đã được đăng ký !"));
-        } else if (loaiSanPhamService.timBangTen(loaiSanPhamDTO.getTen()) != null){
+        } else if (this.loaiSanPhamService.timBangTen(loaiSanPhamDTO.getTen()) != null){
             return ResponseEntity.ok(new ThongBaoDTO("Tên " + loaiSanPhamDTO.getTen() + " đã được đăng ký !"));
         } else {
             return ResponseEntity.ok(this.loaiSanPhamService.taoMoi(loaiSanPhamDTO));
@@ -54,7 +54,7 @@ public class LoaiSanPhamController {
 
     @GetMapping("/xoa/{ten}")
     public ResponseEntity<?> delete(@PathVariable String ten) {
-        return ResponseEntity.ok(loaiSanPhamService.xoa(ten));
+        return ResponseEntity.ok(this.loaiSanPhamService.xoa(ten));
     }
 
     @GetMapping("/xemLoaiMoi")

@@ -1,7 +1,9 @@
 package com.kymdan.backend.services.san_pham;
 
 import com.kymdan.backend.entity.SanPham;
+import com.kymdan.backend.model.SanPhamDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
+import com.kymdan.backend.repository.LoaiSanPhamRepository;
 import com.kymdan.backend.repository.SanPhamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ import java.util.List;
 public class SanPhamServiceImpl implements SanPhamService {
     @Autowired
     private SanPhamRepository sanPhamRepository;
+
+    @Autowired
+    private LoaiSanPhamRepository loaiSanPhamRepository;
 
     @Override
     public List<SanPham> locTheoMaLoai(String maLoai) {
@@ -81,5 +86,52 @@ public class SanPhamServiceImpl implements SanPhamService {
     public ThongBaoDTO xoa(String ma) {
         this.sanPhamRepository.deleteById(ma);
         return new ThongBaoDTO("Xóa thành công !");
+    }
+
+    @Override
+    public SanPham timBangMa(String ma) {
+        return this.sanPhamRepository.findById(ma).orElse(null);
+    }
+
+    @Override
+    public ThongBaoDTO sua(SanPhamDTO sanPhamDTO) {
+        SanPham sanPham = this.sanPhamRepository.findById(sanPhamDTO.getMa()).orElse(null);
+        if (sanPham != null) {
+            sanPham.setGia(sanPhamDTO.getGia());
+            sanPham.setSoLuong(sanPhamDTO.getSoLuong());
+            sanPham.setGiamGia(sanPhamDTO.getGiamGia());
+            this.sanPhamRepository.save(sanPham);
+            return new ThongBaoDTO("Sửa thành công !");
+        } else return new ThongBaoDTO("Lỗi hệ thống ! Vui lòng thử lại sau !");
+    }
+
+    @Override
+    public ThongBaoDTO taoMoi(SanPhamDTO sanPhamDTO) {
+        SanPham sanPham = new SanPham();
+        sanPham.setMa(sanPhamDTO.getMa());
+        sanPham.setDai("200");
+        sanPham.setRong(sanPhamDTO.getKichThuoc().split("x")[0]);
+        sanPham.setCao(sanPhamDTO.getDoDay());
+        sanPham.setGia(sanPhamDTO.getGia());
+        sanPham.setSoLuong(sanPhamDTO.getSoLuong());
+        sanPham.setGiamGia(sanPhamDTO.getGiamGia());
+        sanPham.setLoaiSanPham(this.loaiSanPhamRepository.findById(sanPhamDTO.getMaLoai()).orElse(null));
+        this.sanPhamRepository.save(sanPham);
+        return new ThongBaoDTO("Tạo mới thành công !");
+    }
+
+    @Override
+    public ThongBaoDTO timBangKichThuoc(SanPhamDTO sanPhamDTO) {
+        List<SanPham> tatCaSanPham = this.sanPhamRepository.findAll();
+        for (SanPham sanPham : tatCaSanPham) {
+            if (sanPham.getLoaiSanPham().getMa().equals(sanPhamDTO.getMaLoai())
+                    && sanPham.getRong().equals(sanPhamDTO.getKichThuoc().split("x")[0])
+                    && sanPham.getCao().equals(sanPhamDTO.getDoDay())) {
+                return new ThongBaoDTO("Kích thước " + sanPhamDTO.getKichThuoc() +
+                        "x" + sanPhamDTO.getDoDay() + " của loại này đã được đăng ký !");
+            }
+        }
+
+        return null;
     }
 }

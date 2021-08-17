@@ -35,11 +35,6 @@ insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-014', '160', '200', '15', '18730000', '10', '8', 'KD-111');
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-015', '180', '200', '15', '19350000', '15', '8', 'KD-111');
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-016', '200', '200', '15', '21080000', '1', '8', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-017', '120', '200', '20', '17360000', '6', '8', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-018', '140', '200', '20', '19250000', '7', '8', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-019', '160', '200', '20', '20290000', '5', '8', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-020', '180', '200', '20', '22670000', '3', '8', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-021', '200', '200', '20', '24560000', '1', '8', 'KD-111');
 
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-022', '120', '200', '5', '25000000', '5', '8', 'KD-222');
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-023', '140', '200', '5', '26460000', '4', '8', 'KD-222');
@@ -53,10 +48,6 @@ insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-031', '140', '200', '15', '2726000', '1', '8', 'KD-222');
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-032', '160', '200', '15', '28730000', '10', '8', 'KD-222');
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-033', '180', '200', '15', '29350000', '15', '8', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-034', '120', '200', '20', '27360000', '6', '8', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-035', '140', '200', '20', '29250000', '7', '8', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-036', '160', '200', '20', '30290000', '5', '8', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-037', '180', '200', '20', '32670000', '3', '8', 'KD-222');
 
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-038', '120', '200', '5', '35000000', '8', '8', 'KD-333');
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-039', '140', '200', '5', '37140000', '3', '8', 'KD-333');
@@ -70,10 +61,6 @@ insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-047', '140', '200', '15', '38730000', '4', '8', 'KD-333');
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-048', '160', '200', '15', '39350000', '12', '8', 'KD-333');
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-049', '200', '200', '15', '41080000', '10', '8', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-050', '120', '200', '20', '39250000', '4', '8', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-051', '140', '200', '20', '40290000', '5', '8', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-052', '160','200', '20', '42670000', '8', '8', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-054', '200', '200', '20', '44560000', '1', '8', 'KD-333');
 
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-055', '120', '200', '5', '45000000', '5', '8', 'KD-444');
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-056', '160', '200', '5', '47140000', '2', '8', 'KD-444');
@@ -87,10 +74,6 @@ insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-064', '160', '200', '15', '48730000', '10', '8', 'KD-444');
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-065', '180', '200', '15', '49350000', '15', '8', 'KD-444');
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-066', '200', '200', '15', '51080000', '1', '8', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-067', '120', '200', '20', '47360000', '6', '8', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-068', '160', '200', '20', '50290000', '5', '8', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-069', '180', '200', '20', '52670000', '3', '8', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-070', '200', '200', '20', '54560000', '1', '8', 'KD-444');
 
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-071', '120', '200', '5', '55000000', '1', '8', 'KD-555');
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-072', '140', '200', '5', '56460000', '3', '8', 'KD-555');
@@ -104,7 +87,3 @@ insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-080', '140', '200', '15', '5726000', '6', '8', 'KD-555');
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-081', '160', '200', '15', '58730000', '10', '8', 'KD-555');
 insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-082', '180', '200', '15', '59350000', '15', '8', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-083', '120', '200', '20', '57360000', '5', '8', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-084', '140', '200', '20', '59250000', '8', '8', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-085', '160', '200', '20', '60290000', '5', '8', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, gia, so_luong, giam_gia, ma_loai_san_pham) values ('SP-086', '180', '200', '20', '62670000', '3', '8', 'KD-555');

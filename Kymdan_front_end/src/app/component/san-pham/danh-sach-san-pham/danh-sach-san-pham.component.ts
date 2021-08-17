@@ -70,8 +70,8 @@ export class DanhSachSanPhamComponent implements OnInit {
     this.thongBao = '';
     const dialogRefAdd = this.dialog.open(ThemSanPhamComponent, {
       width: '750px',
-      height: '690px',
-      data: {thongTin: ''},
+      height: '505px',
+      data: {thongTin: this.maLoai},
       disableClose: true
     });
 
@@ -80,22 +80,22 @@ export class DanhSachSanPhamComponent implements OnInit {
     })
   }
 
-  sua(maLoai) {
-    // this.loaiSanPhamService.timBangMaLoai(maLoai).subscribe(
-    //   (duLieu) => {
-    //     this.taoFormSua(duLieu)
-    //   },
-    //   () => {
-    //   },
-    //   () => {
-    //   });
+  sua(ma) {
+    this.sanPhamService.timBangMa(ma).subscribe(
+      (duLieu) => {
+        this.taoFormSua(duLieu)
+      },
+      () => {
+      },
+      () => {
+      });
   }
 
   taoFormSua(duLieu) {
     this.thongBao = '';
     const dialogRefEdit = this.dialog.open(SuaSanPhamComponent, {
       width: '750px',
-      height: '690px',
+      height: '430px',
       data: {thongTin: duLieu},
       disableClose: true
     });
@@ -109,7 +109,7 @@ export class DanhSachSanPhamComponent implements OnInit {
     this.thongBao = '';
     const dialogRefDelete = this.dialog.open(XoaSanPhamComponent, {
       width: '690px',
-      height: '180px',
+      height: '195px',
       data: {thongTin: ma + ',' + this.maLoai},
       disableClose: true
     });

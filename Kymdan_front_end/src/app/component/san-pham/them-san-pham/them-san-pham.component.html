@@ -1,1 +1,89 @@
-<p>them-san-pham works!</p>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <form (ngSubmit)="taoMoi()" [formGroup]="formTaoMoi">
+
+      <div class="text-center">
+        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" style="color: green" id="add">
+          <strong style="font-size: 25px">Tạo mới sản phẩm</strong>
+        </h3>
+
+        <mat-error *ngIf="thongBao && thongBao != 'Tạo mới thành công !'">{{thongBao}}</mat-error>
+      </div>
+
+      <div>
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Mã loại</mat-label>
+            <input matInput formControlName="ma">
+            <mat-error *ngIf="formTaoMoi.controls.ma.errors?.required">Mã loại không đươc để trống.
+            </mat-error>
+            <mat-error *ngIf="formTaoMoi.controls.ma.errors?.pattern">
+              Mã loại không đúng quy định. Mã loại có dạng SP-XXX với X là số từ 0 đến 9.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Kích thước</mat-label>
+            <input matInput formControlName="kichThuoc">
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Độ dày</mat-label>
+            <input matInput formControlName="doDay">
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Giá (VND)</mat-label>
+            <input matInput formControlName="gia">
+            <mat-error *ngIf="formTaoMoi.controls.gia.errors?.required">Giá không đươc để trống.
+            </mat-error>
+            <mat-error *ngIf="formTaoMoi.controls.gia.errors?.pattern">
+              Giá sản phẩm phải là số nguyên lớn hơn 1.000.000 và nhỏ hơn 100.000.000 VND.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Số lượng</mat-label>
+            <input matInput formControlName="soLuong">
+            <mat-error *ngIf="formTaoMoi.controls.soLuong.errors?.required">Số lượng không đươc để trống.
+            </mat-error>
+            <mat-error *ngIf="formTaoMoi.controls.soLuong.errors?.pattern">
+              Số lượng phải là số nguyên lớn hơn 0.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Giảm giá (%)</mat-label>
+            <input matInput formControlName="giamGia">
+            <mat-error *ngIf="formTaoMoi.controls.giamGia.errors?.required">Giảm giá không đươc để trống.
+            </mat-error>
+            <mat-error *ngIf="formTaoMoi.controls.giamGia.errors?.pattern">
+              % giảm giá phải là số nguyên lớn hơn hoặc bằng 0 và nhỏ hơn 100.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Cập nhật</button>
+            <button type="button" class="btn btn-warning ml-3" (click)="huy()">Hủy</button>
+          </div>
+          <div class="col-sm-3"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-2"></div>
+</div>

@@ -28,4 +28,16 @@ export class SanPhamService {
   xoa(ma): Observable<any> {
     return this.http.get(this.API + '/xoa/' + ma);
   }
+
+  timBangMa(ma): Observable<any> {
+    return this.http.get(this.API + '/timBangMa/' + ma);
+  }
+
+  sua(sanPham): Observable<any> {
+    return this.http.post(this.API + '/sua', sanPham, {headers: {skip: 'true'}});
+  }
+
+  taoMoi(sanPham): Observable<any> {
+    return this.http.post(this.API + '/taoMoi', sanPham, {headers: {skip: 'true'}});
+  }
 }

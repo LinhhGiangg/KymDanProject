@@ -21,8 +21,16 @@
           <h1 style="font-family: Averta,Helvetica,sans-serif; font-weight: bold; color: green">
             {{loaiSanPham.ten}}
           </h1>
-          <p style="font-family: Averta,Helvetica,sans-serif; font-size: 15px"><del>{{gia}} VND</del></p>
-          <h1 style="font-family: Averta,Helvetica,sans-serif; color: red; font-weight: bold">{{giaBan}} VND</h1>
+          <p style="font-family: Averta,Helvetica,sans-serif; font-size: 15px" *ngIf="sanPham.giamGia != 0">
+            <del>{{gia}} VND</del></p>
+          <h1 style="font-family: Averta,Helvetica,sans-serif; color: red; font-weight: bold"
+              *ngIf="sanPham.giamGia != 0">
+            {{giaBan}} VND
+          </h1>
+          <h1 style="font-family: Averta,Helvetica,sans-serif; color: red; font-weight: bold"
+              *ngIf="sanPham.giamGia == 0">
+            {{gia}} VND
+          </h1>
           <div style="border: 1px solid green">
             <h3 style="font-weight: bold; margin: 2% 0 0 5%">Kích thước (cm) :</h3>
             <div class="row">

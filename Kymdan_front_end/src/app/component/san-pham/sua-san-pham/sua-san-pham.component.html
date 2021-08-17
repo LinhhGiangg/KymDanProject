@@ -1,1 +1,77 @@
-<p>sua-san-pham works!</p>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <form (ngSubmit)="suaDuLieu()" [formGroup]="formSua">
+
+      <div class="text-center">
+        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" style="color: green" id="add">
+          <strong style="font-size: 25px">Sửa thông tin sản phẩm</strong>
+        </h3>
+
+        <mat-error *ngIf="thongBao && thongBao != 'Sửa thành công !'">{{thongBao}}</mat-error>
+      </div>
+
+      <div>
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Mã loại</mat-label>
+            <input matInput formControlName="ma" readonly>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Kích thước (cm)</mat-label>
+            <input matInput value="{{duLieuCu.rong + ' x ' + duLieuCu.dai + ' x ' + duLieuCu.cao}}" readonly>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Giá (VND)</mat-label>
+            <input matInput formControlName="gia">
+            <mat-error *ngIf="formSua.controls.gia.errors?.required">Giá không đươc để trống.
+            </mat-error>
+            <mat-error *ngIf="formSua.controls.gia.errors?.pattern">
+              Giá sản phẩm phải là số nguyên lớn hơn 1.000.000 và nhỏ hơn 100.000.000 VND.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Số lượng</mat-label>
+            <input matInput formControlName="soLuong">
+            <mat-error *ngIf="formSua.controls.soLuong.errors?.required">Số lượng không đươc để trống.
+            </mat-error>
+            <mat-error *ngIf="formSua.controls.soLuong.errors?.pattern">
+              Số lượng phải là số nguyên lớn hơn 0.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Giảm giá (%)</mat-label>
+            <input matInput formControlName="giamGia">
+            <mat-error *ngIf="formSua.controls.giamGia.errors?.required">Giảm giá không đươc để trống.
+            </mat-error>
+            <mat-error *ngIf="formSua.controls.giamGia.errors?.pattern">
+              % giảm giá phải là số nguyên lớn hơn hoặc bằng 0 và nhỏ hơn 100.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Cập nhật</button>
+            <button type="button" class="btn btn-warning ml-3" (click)="huy()">Hủy</button>
+          </div>
+          <div class="col-sm-3"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
