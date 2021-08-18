@@ -21,16 +21,39 @@
           <h1 style="font-family: Averta,Helvetica,sans-serif; font-weight: bold; color: green">
             {{loaiSanPham.ten}}
           </h1>
-          <p style="font-family: Averta,Helvetica,sans-serif; font-size: 15px" *ngIf="sanPham.giamGia != 0">
-            <del>{{gia}} VND</del></p>
-          <h1 style="font-family: Averta,Helvetica,sans-serif; color: red; font-weight: bold"
-              *ngIf="sanPham.giamGia != 0">
-            {{giaBan}} VND
-          </h1>
-          <h1 style="font-family: Averta,Helvetica,sans-serif; color: red; font-weight: bold"
-              *ngIf="sanPham.giamGia == 0">
-            {{gia}} VND
-          </h1>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <p style="font-family: Averta,Helvetica,sans-serif; font-size: 15px" *ngIf="sanPham.giamGia != 0">
+                <del>{{gia}} VND</del></p>
+              <h1 style="font-family: Averta,Helvetica,sans-serif; color: red; font-weight: bold"
+                  *ngIf="sanPham.giamGia != 0">
+                {{giaBan}} VND
+              </h1>
+              <h1 style="font-family: Averta,Helvetica,sans-serif; color: red; font-weight: bold"
+                  *ngIf="sanPham.giamGia == 0">
+                {{gia}} VND
+              </h1>
+            </div>
+            <div class="col-sm-6" style="position: relative; text-align: right">
+              <p style="font-size: 15px; margin-left: 250px; margin-top: 14px; position: absolute">
+                -
+              </p>
+              <p style="font-size: 15px; margin-left: 255px; margin-top: 14px; position: absolute"
+                 *ngIf="sanPham.giamGia > 9">
+                {{sanPham.giamGia}}
+              </p>
+              <p style="font-size: 15px; margin-left: 260px; margin-top: 14px; position: absolute"
+                 *ngIf="sanPham.giamGia < 10">
+                {{sanPham.giamGia}}
+              </p>
+              <p style="font-size: 15px; margin-left: 273px; margin-top: 14px; position: absolute">
+                %
+              </p>
+              <i class="fa fa-bookmark" aria-hidden="true" style="font-size: 63px; color: red"></i>
+            </div>
+          </div>
+
           <div style="border: 1px solid green">
             <h3 style="font-weight: bold; margin: 2% 0 0 5%">Kích thước (cm) :</h3>
             <div class="row">
@@ -103,10 +126,10 @@
               <div class="col-sm-6">
                 <h3 style="font-weight: bold; margin: 2% 0 0 11%">Số lượng :</h3>
                 <h3 style="font-weight: bold; margin: 2% 0 0 11%">
-                  <i class="fa fa-minus-square" aria-hidden="true" style="font-size: 25px"
+                  <i class="fa fa-minus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
                      (click)="chonSoLuong(1)"></i>
                   <span class="ml-3 mr-3" style="font-size: 25px; color: green">{{soLuong}}</span>
-                  <i class="fa fa-plus-square" aria-hidden="true" style="font-size: 25px"
+                  <i class="fa fa-plus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
                      (click)="chonSoLuong(2)"></i>
                 </h3>
               </div>

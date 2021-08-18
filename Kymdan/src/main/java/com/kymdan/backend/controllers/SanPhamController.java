@@ -58,7 +58,8 @@ public class SanPhamController {
         if (this.sanPhamService.timBangMa(sanPhamDTO.getMa()) != null) {
             return ResponseEntity.ok(new ThongBaoDTO("Mã " + sanPhamDTO.getMa() + " đã được đăng ký !"));
         } else if (this.sanPhamService.timBangKichThuoc(sanPhamDTO) != null){
-            return ResponseEntity.ok(this.sanPhamService.timBangKichThuoc(sanPhamDTO));
+            return ResponseEntity.ok(new ThongBaoDTO("Kích thước " + sanPhamDTO.getKichThuoc() +
+                    "x" + sanPhamDTO.getDoDay() + " của loại này đã được đăng ký !"));
         } else {
             return ResponseEntity.ok(this.sanPhamService.taoMoi(sanPhamDTO));
         }

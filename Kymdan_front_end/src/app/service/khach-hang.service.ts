@@ -14,4 +14,8 @@ export class KhachHangService {
   dangKy(taiKhoan): Observable<any> {
     return this.http.post(this.API + '/dangKy', taiKhoan, {headers: {skip: 'true'}});
   }
+
+  timBangTen(ten): Observable<any> {
+    return this.http.get(this.API + '/timBangTen/' + ten);
+  }
 }

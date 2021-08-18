@@ -70,7 +70,7 @@ export class DanhSachSanPhamComponent implements OnInit {
     this.thongBao = '';
     const dialogRefAdd = this.dialog.open(ThemSanPhamComponent, {
       width: '750px',
-      height: '505px',
+      height: '460px',
       data: {thongTin: this.maLoai},
       disableClose: true
     });

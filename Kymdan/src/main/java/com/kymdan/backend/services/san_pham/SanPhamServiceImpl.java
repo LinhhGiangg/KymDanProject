@@ -121,14 +121,13 @@ public class SanPhamServiceImpl implements SanPhamService {
     }
 
     @Override
-    public ThongBaoDTO timBangKichThuoc(SanPhamDTO sanPhamDTO) {
+    public SanPham timBangKichThuoc(SanPhamDTO sanPhamDTO) {
         List<SanPham> tatCaSanPham = this.sanPhamRepository.findAll();
         for (SanPham sanPham : tatCaSanPham) {
             if (sanPham.getLoaiSanPham().getMa().equals(sanPhamDTO.getMaLoai())
                     && sanPham.getRong().equals(sanPhamDTO.getKichThuoc().split("x")[0])
                     && sanPham.getCao().equals(sanPhamDTO.getDoDay())) {
-                return new ThongBaoDTO("Kích thước " + sanPhamDTO.getKichThuoc() +
-                        "x" + sanPhamDTO.getDoDay() + " của loại này đã được đăng ký !");
+                return sanPham;
             }
         }
 

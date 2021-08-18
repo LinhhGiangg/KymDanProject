@@ -15,4 +15,9 @@ public class KhachHangServiceImpl implements KhachHangService {
     public KhachHang timBangEmail(String email) {
         return this.khachHangRepository.findByEmail(email);
     }
+
+    @Override
+    public KhachHang timBangTen(String ten) {
+        return this.khachHangRepository.findByTen(ten);
+    }
 }

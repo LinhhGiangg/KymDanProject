@@ -24,18 +24,24 @@
           </mat-form-field>
         </div>
 
-        <div class="row">
-          <mat-form-field>
-            <mat-label>Kích thước</mat-label>
-            <input matInput formControlName="kichThuoc">
-          </mat-form-field>
+        <div class="row mt-2 mb-2">
+          <label>Kích thước :</label>
+          <select style="margin-left: 15px;border-radius: 5px" formControlName="kichThuoc">
+            <option>120x200</option>
+            <option>140x200</option>
+            <option>160x200</option>
+            <option>180x200</option>
+            <option>200x200</option>
+          </select>
         </div>
 
         <div class="row">
-          <mat-form-field>
-            <mat-label>Độ dày</mat-label>
-            <input matInput formControlName="doDay">
-          </mat-form-field>
+          <label>Độ dày :</label>
+          <select style="margin-left: 40px;border-radius: 5px" formControlName="doDay">
+            <option>5</option>
+            <option>10</option>
+            <option>15</option>
+          </select>
         </div>
 
         <div class="row">
@@ -77,7 +83,7 @@
         <div class="row mt-2">
           <div class="col-sm-3"></div>
           <div class="col-sm-6 d-flex justify-content-center">
-            <button type="submit" class="btn btn-success">Cập nhật</button>
+            <button type="submit" class="btn btn-success">Tạo mới</button>
             <button type="button" class="btn btn-warning ml-3" (click)="huy()">Hủy</button>
           </div>
           <div class="col-sm-3"></div>

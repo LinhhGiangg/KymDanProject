@@ -35,8 +35,8 @@ export class ThemSanPhamComponent implements OnInit {
     this.formTaoMoi = this.formBuilder.group({
       ma: ['', [Validators.required, Validators.pattern('^(SP-)[0-9]{3}$')]],
       maLoai: [this.maLoai],
-      kichThuoc: ['', [Validators.required]],
-      doDay: ['', [Validators.required]],
+      kichThuoc: ['120x200'],
+      doDay: ['5'],
       gia: ['', [Validators.required, Validators.pattern('^([1-9]{1})([0-9]{6,7})$')]],
       soLuong: ['', [Validators.required, Validators.pattern('^([1-9]{1})([0-9]*)$')]],
       giamGia: ['', [Validators.required, Validators.pattern('^([0-9]{1})([0-9]?)$')]],

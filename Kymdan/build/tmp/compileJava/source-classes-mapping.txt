@@ -24,8 +24,8 @@ com/kymdan/backend/entity/ChiTietKhuyenMai.java
  com.kymdan.backend.entity.ChiTietKhuyenMai
 com/kymdan/backend/model/TaiKhoanDTO.java
  com.kymdan.backend.model.TaiKhoanDTO
-com/kymdan/backend/entity/HoaDon.java
- com.kymdan.backend.entity.HoaDon
+com/kymdan/backend/controllers/SanPhamController.java
+ com.kymdan.backend.controllers.SanPhamController
 com/kymdan/backend/repository/DonHangRepository.java
  com.kymdan.backend.repository.DonHangRepository
 com/kymdan/backend/repository/DatHangRepository.java
@@ -34,8 +34,8 @@ com/kymdan/backend/entity/TaiKhoan.java
  com.kymdan.backend.entity.TaiKhoan
 com/kymdan/backend/entity/PhieuNhap.java
  com.kymdan.backend.entity.PhieuNhap
-com/kymdan/backend/services/khach_hang/KhachHangServiceImpl.java
- com.kymdan.backend.services.khach_hang.KhachHangServiceImpl
+com/kymdan/backend/entity/ChiTietDonHang.java
+ com.kymdan.backend.entity.ChiTietDonHang
 com/kymdan/backend/repository/QuyenRepository.java
  com.kymdan.backend.repository.QuyenRepository
 com/kymdan/backend/services/tai_khoan/TaiKhoanServiceImpl.java
@@ -62,8 +62,8 @@ com/kymdan/backend/config/JwtRequestFilter.java
  com.kymdan.backend.config.JwtRequestFilter
 com/kymdan/backend/services/don_hang/DonHangService.java
  com.kymdan.backend.services.don_hang.DonHangService
-com/kymdan/backend/entity/DonHang.java
- com.kymdan.backend.entity.DonHang
+com/kymdan/backend/services/san_pham/SanPhamService.java
+ com.kymdan.backend.services.san_pham.SanPhamService
 com/kymdan/backend/entity/NhanVienGiaoHang.java
  com.kymdan.backend.entity.NhanVienGiaoHang
 com/kymdan/backend/entity/Quyen.java
@@ -72,8 +72,8 @@ com/kymdan/backend/entity/KhuyenMai.java
  com.kymdan.backend.entity.KhuyenMai
 com/kymdan/backend/config/WebSecurityConfig.java
  com.kymdan.backend.config.WebSecurityConfig
-com/kymdan/backend/services/khach_hang/KhachHangService.java
- com.kymdan.backend.services.khach_hang.KhachHangService
+com/kymdan/backend/entity/DonHang.java
+ com.kymdan.backend.entity.DonHang
 com/kymdan/backend/controllers/DonHangController.java
  com.kymdan.backend.controllers.DonHangController
 com/kymdan/backend/repository/KhuyenMaiRepository.java
@@ -86,8 +86,8 @@ com/kymdan/backend/repository/NhaCungCapRepository.java
  com.kymdan.backend.repository.NhaCungCapRepository
 com/kymdan/backend/entity/DatHang.java
  com.kymdan.backend.entity.DatHang
-com/kymdan/backend/controllers/KhachHangController.java
- com.kymdan.backend.controllers.KhachHangController
+com/kymdan/backend/entity/HoaDon.java
+ com.kymdan.backend.entity.HoaDon
 com/kymdan/backend/services/don_hang/DonHangServiceImpl.java
  com.kymdan.backend.services.don_hang.DonHangServiceImpl
 com/kymdan/backend/repository/ChiTietDatHangRepository.java
@@ -112,19 +112,19 @@ com/kymdan/backend/repository/LoaiSanPhamRepository.java
  com.kymdan.backend.repository.LoaiSanPhamRepository
 com/kymdan/backend/entity/SanPham.java
  com.kymdan.backend.entity.SanPham
-com/kymdan/backend/entity/ChiTietDonHang.java
- com.kymdan.backend.entity.ChiTietDonHang
+com/kymdan/backend/services/san_pham/SanPhamServiceImpl.java
+ com.kymdan.backend.services.san_pham.SanPhamServiceImpl
 com/kymdan/backend/entity/ChiTietPhieuNhap.java
  com.kymdan.backend.entity.ChiTietPhieuNhap
 com/kymdan/backend/services/loai_san_pham/LoaiSanPhamService.java
  com.kymdan.backend.services.loai_san_pham.LoaiSanPhamService
-com/kymdan/backend/controllers/SanPhamController.java
- com.kymdan.backend.controllers.SanPhamController
-com/kymdan/backend/services/san_pham/SanPhamService.java
- com.kymdan.backend.services.san_pham.SanPhamService
 com/kymdan/backend/model/SanPhamDTO.java
  com.kymdan.backend.model.SanPhamDTO
 com/kymdan/backend/controllers/LoaiSanPhamController.java
  com.kymdan.backend.controllers.LoaiSanPhamController
-com/kymdan/backend/services/san_pham/SanPhamServiceImpl.java
- com.kymdan.backend.services.san_pham.SanPhamServiceImpl
+com/kymdan/backend/controllers/KhachHangController.java
+ com.kymdan.backend.controllers.KhachHangController
+com/kymdan/backend/services/khach_hang/KhachHangService.java
+ com.kymdan.backend.services.khach_hang.KhachHangService
+com/kymdan/backend/services/khach_hang/KhachHangServiceImpl.java
+ com.kymdan.backend.services.khach_hang.KhachHangServiceImpl

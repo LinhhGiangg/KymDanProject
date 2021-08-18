@@ -114,12 +114,14 @@ export class MuaHangComponent implements OnInit {
   }
 
   chonKichThuoc(kichThuoc) {
+    this.soLuong = 1;
     this.kichThuoc = kichThuoc;
     this.thongTinSanPham = this.maLoai + ',' + this.kichThuoc.split('x')[0] + ',' + this.doDay;
     this.chonSanPham(this.thongTinSanPham)
   }
 
   chonDoDay(doDay) {
+    this.soLuong = 1;
     this.doDay = doDay;
     this.thongTinSanPham = this.maLoai + ',' + this.kichThuoc.split('x')[0] + ',' + this.doDay;
     this.chonSanPham(this.thongTinSanPham)
@@ -187,7 +189,7 @@ export class MuaHangComponent implements OnInit {
   }
 
   muaHang() {
-    const THONG_TIN = this.tenDangNhap + ',' + this.thongTinSanPham + ',' + this.soLuong;
+    const THONG_TIN = this.tenDangNhap + ',' + this.loaiSanPham.ma + ',' + this.sanPham.ma + ',' + this.soLuong;
     this.router.navigate(['/dat-hang', {thongTin: THONG_TIN}]).then(() => {
     });
   }

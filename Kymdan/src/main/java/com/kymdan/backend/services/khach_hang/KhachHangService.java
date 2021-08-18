@@ -4,4 +4,6 @@ import com.kymdan.backend.entity.KhachHang;
 
 public interface KhachHangService {
     KhachHang timBangEmail(String email);
+
+    KhachHang timBangTen(String ten);
 }

@@ -42,9 +42,11 @@
                 </mat-label>
                 <input *ngIf="!xacNhanSua" matInput value="{{nguoiDung.soDienThoai}}" readonly>
                 <input matInput formControlName="soDienThoai" *ngIf="xacNhanSua">
-                <mat-error *ngIf="formSuaThongTin.controls.soDienThoai.errors?.required">Điện thoại không đươc để trống.
+                <mat-error *ngIf="formSuaThongTin.controls.soDienThoai.errors?.required">
+                  Số điện thoại không đươc để trống.
                 </mat-error>
-                <mat-error *ngIf="formSuaThongTin.controls.soDienThoai.errors?.pattern">Điện thoại không đúng định dạng.
+                <mat-error *ngIf="formSuaThongTin.controls.soDienThoai.errors?.pattern">
+                  Số điện thoại không đúng định dạng.
                 </mat-error>
               </mat-form-field>
             </div>

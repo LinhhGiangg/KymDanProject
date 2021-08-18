@@ -1,10 +1,13 @@
 package com.kymdan.backend.controllers;
 
+import com.kymdan.backend.entity.KhachHang;
+import com.kymdan.backend.entity.LoaiSanPham;
 import com.kymdan.backend.model.TaiKhoanDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
 import com.kymdan.backend.services.tai_khoan.TaiKhoanService;
 import com.kymdan.backend.services.khach_hang.KhachHangService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +31,11 @@ public class KhachHangController {
         } else {
             return ResponseEntity.ok(taiKhoanService.taoTaiKhoan(taiKhoanDTO));
         }
+    }
+
+    @GetMapping("/timBangTen/{ten}")
+    public ResponseEntity<KhachHang> timBangTen(@PathVariable String ten) {
+        KhachHang khachHang = this.khachHangService.timBangTen(ten);
+        return new ResponseEntity<>(khachHang, HttpStatus.OK);
     }
 }

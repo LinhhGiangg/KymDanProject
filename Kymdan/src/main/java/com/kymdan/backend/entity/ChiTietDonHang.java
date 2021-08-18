@@ -17,7 +17,7 @@ public class ChiTietDonHang {
     // relationship
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ma_don_hang", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @JoinColumn(name = "ma_don_hang", referencedColumnName = "ma", columnDefinition = "INT")
     private DonHang donHang;
 
     @ManyToOne(cascade = CascadeType.ALL)

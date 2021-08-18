@@ -1,150 +1,122 @@
-<!--<div class="container-fluid bg-white">-->
-<!--  <div class="row border" style="border-radius: 20px">-->
-<!--    <div class="col-sm-6"><img src="assets/sanPham2.jpg" alt="" style="width: 100%"></div>-->
-<!--    <div class="col-sm-6 pt-1">-->
-<!--      <div class="d-flex justify-content-center">-->
-<!--        <h1>Đăng ký tài khoản</h1>-->
-<!--      </div>-->
+<div class="container-fluid bg-white">
+  <div class="row border" style="border-radius: 20px">
+    <div class="col-sm-6 pt-1">
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+          <h1>Thông tin khách hàng</h1>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
 
-<!--      <div class="p-0">-->
-<!--        <form (ngSubmit)="dangKy()" [formGroup]="formDangKy">-->
-<!--          <div class="row">-->
-<!--            <div class="col-sm-2"></div>-->
-<!--            <div class="col-sm-8">-->
-<!--              <mat-form-field class="example-full-width">-->
-<!--                <mat-label>Tên đăng nhập</mat-label>-->
-<!--                <input matInput formControlName="tenDangNhap">-->
-<!--                <mat-error *ngIf="formDangKy.controls.tenDangNhap.errors?.required">Tên đăng nhập không đươc để trống.-->
-<!--                </mat-error>-->
-<!--                <mat-error *ngIf="formDangKy.controls.tenDangNhap.errors?.pattern">Tên đăng nhập không đúng định dạng.-->
-<!--                </mat-error>-->
-<!--                <mat-error *ngIf="formDangKy.controls.tenDangNhap.errors?.minlength">Tên đăng nhập tối thiểu 5 kí tự.-->
-<!--                </mat-error>-->
-<!--                <mat-error *ngIf="formDangKy.controls.tenDangNhap.errors?.maxlength">Tên đăng nhập tối đa 50 kí tự.-->
-<!--                </mat-error>-->
-<!--              </mat-form-field>-->
-<!--            </div>-->
-<!--            <div class="col-sm-2"></div>-->
-<!--          </div>-->
+      <div class="p-0">
+        <form (ngSubmit)="xacNhanThongTin()" [formGroup]="formDatHang">
+          <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+              <mat-form-field class="example-full-width">
+                <mat-label>Họ tên người nhận</mat-label>
+                <input matInput formControlName="ten">
+                <mat-error *ngIf="formDatHang.controls.ten.errors?.required">
+                  Họ tên người nhận không đươc để trống.
+                </mat-error>
+                <mat-error *ngIf="formDatHang.controls.ten.errors?.pattern">
+                  Họ tên người nhận không đúng định dạng.
+                </mat-error>
+                <mat-error *ngIf="formDatHang.controls.ten.errors?.minlength">Họ tên người nhận tối thiểu 5 kí tự.
+                </mat-error>
+                <mat-error *ngIf="formDatHang.controls.ten.errors?.maxlength">Họ tên người nhận tối đa 50 kí tự.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
 
-<!--          <div class="row">-->
-<!--            <div class="col-sm-2"></div>-->
-<!--            <div class="col-sm-8">-->
-<!--              <mat-form-field class="example-full-width">-->
-<!--                <mat-label>Email</mat-label>-->
-<!--                <input matInput formControlName="email">-->
-<!--                <mat-error *ngIf="formDangKy.controls.email.errors?.required">Email không được để trống.</mat-error>-->
-<!--                <mat-error *ngIf="formDangKy.controls.email.errors?.pattern">Sai định dạng email.</mat-error>-->
-<!--              </mat-form-field>-->
-<!--            </div>-->
-<!--            <div class="col-sm-2"></div>-->
-<!--          </div>-->
+          <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+              <mat-form-field class="example-full-width">
+                <mat-label>Số điện thoại</mat-label>
+                <input matInput formControlName="soDienThoai">
+                <mat-error *ngIf="formDatHang.controls.soDienThoai.errors?.required">Số điện thoại không đươc để trống.
+                </mat-error>
+                <mat-error *ngIf="formDatHang.controls.soDienThoai.errors?.pattern">Số điện thoại không đúng định dạng.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
 
-<!--          <div class="row">-->
-<!--            <div class="col-sm-2"></div>-->
-<!--            <div class="col-sm-8">-->
-<!--              <mat-form-field class="example-full-width">-->
-<!--                <mat-label>Mật khẩu</mat-label>-->
-<!--                <input type="password" matInput formControlName="matKhau">-->
-<!--                <mat-error *ngIf="formDangKy.controls.matKhau.errors?.required">Mật khẩu không được để trống.-->
-<!--                </mat-error>-->
-<!--              </mat-form-field>-->
-<!--            </div>-->
-<!--            <div class="col-sm-2"></div>-->
-<!--          </div>-->
+          <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+              <mat-form-field class="example-full-width">
+                <mat-label>Địa chỉ</mat-label>
+                <input matInput formControlName="diaChi">
+                <mat-error *ngIf="formDatHang.controls.diaChi.errors?.required">Địa chỉ không đươc để trống.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
 
-<!--          <div class="row">-->
-<!--            <div class="col-sm-2"></div>-->
-<!--            <div class="col-sm-8">-->
-<!--              <mat-form-field class="example-full-width">-->
-<!--                <mat-label>Xác nhận mật khẩu</mat-label>-->
-<!--                <input type="password" matInput formControlName="xacNhanMatKhau" [errorStateMatcher]="soTrung">-->
-<!--                <mat-error *ngIf="formDangKy.controls.xacNhanMatKhau.errors?.required">Xác nhận mật khẩu không đươc-->
-<!--                  để trống.-->
-<!--                </mat-error>-->
-<!--                <mat-error *ngIf="formDangKy.controls.xacNhanMatKhau.errors?.confirmedValidator">-->
-<!--                  Mật khẩu không trùng khớp.-->
-<!--                </mat-error>-->
-<!--              </mat-form-field>-->
-<!--            </div>-->
-<!--            <div class="col-sm-2"></div>-->
-<!--          </div>-->
+          <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
+                <mat-error *ngIf="formDatHang.controls.email.errors?.required">Email không được để trống.</mat-error>
+                <mat-error *ngIf="formDatHang.controls.email.errors?.pattern">Sai định dạng email.</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
 
-<!--          <div class="row">-->
-<!--            <div class="col-sm-2"></div>-->
-<!--            <div class="col-sm-8">-->
-<!--              <mat-form-field class="example-full-width">-->
-<!--                <mat-label>Số điện thoại</mat-label>-->
-<!--                <input matInput formControlName="soDienThoai">-->
-<!--                <mat-error *ngIf="formDangKy.controls.soDienThoai.errors?.required">Điện thoại không đươc để trống.-->
-<!--                </mat-error>-->
-<!--                <mat-error *ngIf="formDangKy.controls.soDienThoai.errors?.pattern">Điện thoại không đúng định dạng.-->
-<!--                </mat-error>-->
-<!--              </mat-form-field>-->
-<!--            </div>-->
-<!--            <div class="col-sm-2"></div>-->
-<!--          </div>-->
+          <div class="row mt-1 d-flex justify-content-center" style="margin: -15px 0 5px 0">
+            <mat-error *ngIf="thongBao">{{thongBao}}</mat-error>
+          </div>
 
-<!--          <div class="row">-->
-<!--            <div class="col-sm-2"></div>-->
-<!--            <div class="col-sm-8">-->
-<!--              <mat-form-field>-->
-<!--                <mat-label>Ngày sinh</mat-label>-->
-<!--                <input matInput [matDatepicker]="picker" formControlName="ngaySinh">-->
-<!--                <mat-error *ngIf="formDangKy.controls.ngaySinh.errors?.required">Ngày sinh không đươc để trống.-->
-<!--                </mat-error>-->
-<!--                <mat-error *ngIf="formDangKy.controls.ngaySinh.errors?.ageError">Tuổi phải lớn hơn 16 và nhỏ hơn 150.-->
-<!--                </mat-error>-->
-<!--                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-<!--                <mat-datepicker #picker></mat-datepicker>-->
-<!--              </mat-form-field>-->
-<!--            </div>-->
-<!--            <div class="col-sm-2"></div>-->
-<!--          </div>-->
+          <div class="row pb-3 mt-2">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+              <button mat-button class="btn btn-success" style="width: 143px; margin-right: 15px; margin-left: 14%">
+                Tiếp tục mua sắm
+              </button>
+              <button mat-button class="btn btn-success" style="background-color: rgba(255,0,0,0.77)">
+                Thanh toán
+              </button>
 
-<!--          <div class="row">-->
-<!--            <div class="col-sm-2"></div>-->
-<!--            <div class="col-sm-8">-->
-<!--              <mat-form-field class="example-full-width">-->
-<!--                <mat-label>Địa chỉ</mat-label>-->
-<!--                <input matInput formControlName="diaChi">-->
-<!--                <mat-error *ngIf="formDangKy.controls.diaChi.errors?.required">Địa chỉ không đươc để trống.-->
-<!--                </mat-error>-->
-<!--              </mat-form-field>-->
-<!--            </div>-->
-<!--            <div class="col-sm-2"></div>-->
-<!--          </div>-->
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
 
-<!--          <div class="row">-->
-<!--            <div class="col-sm-2"></div>-->
-<!--            <div class="col-sm-8">-->
-<!--              <mat-form-field>-->
-<!--                <mat-label>Giới tính</mat-label>-->
-<!--                <mat-select formControlName="gioiTinh">-->
-<!--                  <mat-option value='Nam'>Nam</mat-option>-->
-<!--                  <mat-option value='Nữ'>Nữ</mat-option>-->
-<!--                </mat-select>-->
-<!--                <mat-error *ngIf="formDangKy.controls.gioiTinh.errors?.required">Giới tính không đươc để trống.-->
-<!--                </mat-error>-->
-<!--              </mat-form-field>-->
-<!--              <div class="col-sm-2"></div>-->
-<!--            </div>-->
-<!--          </div>-->
+        </form>
+      </div>
+    </div>
 
-<!--          <div class="row mt-1 d-flex justify-content-center" style="margin: -15px 0 5px 0">-->
-<!--            <mat-error *ngIf="thongBao">{{thongBao}}</mat-error>-->
-<!--          </div>-->
-
-<!--          <div class="row pb-3 mt-2">-->
-<!--            <div class="col-sm-3"></div>-->
-<!--            <div class="col-sm-6 d-flex justify-content-center">-->
-<!--              <button mat-button type="submit">Đăng ký</button>-->
-<!--            </div>-->
-<!--            <div class="col-sm-3"></div>-->
-<!--          </div>-->
-
-<!--        </form>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+    <div class="col-sm-6 pt-1">
+      <div class="justify-content-center">
+        <h1>Giỏ hàng</h1>
+        <div class="row">
+          <div class="col-sm-3">
+            <img style="width: 100%; margin-bottom: 5px" src="{{loaiSanPham.hinh1}}" alt="">
+            <i class="fa fa-minus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
+               (click)="chonSoLuong(1)"></i>
+            <span class="ml-3 mr-3" style="font-size: 25px; color: green">{{soLuong}}</span>
+            <i class="fa fa-plus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
+               (click)="chonSoLuong(2)"></i>
+          </div>
+          <div class="col-sm-9">
+            <h1 style="color: green">{{loaiSanPham.ten}}</h1>
+            <hr>
+            <h3>Kích thước : {{sanPham.rong}} x {{sanPham.dai}} cm</h3>
+            <h3>Độ dày : {{sanPham.cao}} cm</h3>
+            <h3>Giá : {{gia}} VND</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p #paypalRef></p>
+</div>

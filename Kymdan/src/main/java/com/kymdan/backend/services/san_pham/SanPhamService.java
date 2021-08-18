@@ -21,5 +21,5 @@ public interface SanPhamService {
 
     ThongBaoDTO taoMoi(SanPhamDTO sanPhamDTO);
 
-    ThongBaoDTO timBangKichThuoc(SanPhamDTO sanPhamDTO);
+    SanPham timBangKichThuoc(SanPhamDTO sanPhamDTO);
 }

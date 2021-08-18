@@ -6,10 +6,6 @@ button {
   border: none;
 }
 
-button:hover {
-  background-color: orange;
-}
-
 mat-form-field {
   width: 100%;
 }
