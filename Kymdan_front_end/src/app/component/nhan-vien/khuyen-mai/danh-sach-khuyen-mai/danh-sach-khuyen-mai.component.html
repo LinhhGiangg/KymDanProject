@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div class="table-responsive">
+    <div class="table-wrapper table-striped">
+
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6">
+            <h1 class="text-center" style="font-weight: bold">Danh sách khuyến mãi</h1>
+          </div>
+          <div class="col-sm-3">
+            <div class="search-box">
+              <button class="btn btn-success" (click)="taoMoi()">Thêm mới</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <table class="table table-bordered mt-3">
+        <thead>
+        <tr style="font-size: 17px">
+          <th>Mã khuyến mãi</th>
+          <th>Tên khuyến mãi</th>
+          <th>Mô tả</th>
+          <th>Ngày bắt đầu</th>
+          <th>Ngày kết thúc</th>
+          <th>Nhân Viên</th>
+          <th>Thao tác</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let phanTu of danhSach ; let i = index">
+          <td style="width: 170px; font-size: 17px">{{phanTu.ma}}</td>
+          <td style="width: 350px; font-size: 17px">{{phanTu.ten}}</td>
+          <td>{{phanTu.moTa}}</td>
+          <td>{{phanTu.ngayBatDau}}</td>
+          <td>{{phanTu.ngayKetThuc}}</td>
+          <td>{{phanTu.nhanVien.ten}}</td>
+          <td>
+            <a [routerLink]="['/']" (click)="view(phanTu.ma)"
+               class="view" title="Xem chi tiết" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+            <a class="edit" title="Sửa" data-toggle="tooltip" [routerLink]="['/danh-sach-khuyen-mai']">
+              <i class="material-icons" (click)="sua(phanTu.ma)">&#xE254;</i></a>
+            <a class="delete" title="Xóa" data-toggle="tooltip" [routerLink]="['/danh-sach-khuyen-mai']">
+              <i class="material-icons" (click)="xoa(phanTu.ma)">&#xE872;</i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

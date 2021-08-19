@@ -21,9 +21,6 @@ public class SanPham {
     @Column(name = "cao", columnDefinition = "VARCHAR(5)")
     private String cao;
 
-    @Column(name = "gia", columnDefinition = "VARCHAR(15)")
-    private String gia;
-
     @Column(name = "so_luong", columnDefinition = "VARCHAR(5)")
     private String soLuong;
 
@@ -48,23 +45,33 @@ public class SanPham {
     @JsonBackReference
     private List<ChiTietPhieuNhap> danhSachChiTietPhieuNhap;
 
+    @OneToMany(mappedBy = "sanPham", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<ChiTietKhuyenMai> danhSachChiTietKhuyenMai;
+
+    @OneToMany(mappedBy = "sanPham", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<ChiTietGia> danhSachChiTietGia;
+
     public SanPham() {
     }
 
-    public SanPham(String ma, String dai, String rong, String cao, String gia, String soLuong, String giamGia,
+    public SanPham(String ma, String dai, String rong, String cao, String soLuong, String giamGia,
                    LoaiSanPham loaiSanPham, List<ChiTietDonHang> danhSachChiTietDonHang,
-                   List<ChiTietDatHang> danhSachChiTietDatHang, List<ChiTietPhieuNhap> danhSachChiTietPhieuNhap) {
+                   List<ChiTietDatHang> danhSachChiTietDatHang, List<ChiTietPhieuNhap> danhSachChiTietPhieuNhap,
+                   List<ChiTietKhuyenMai> danhSachChiTietKhuyenMai, List<ChiTietGia> danhSachChiTietGia) {
         this.ma = ma;
         this.dai = dai;
         this.rong = rong;
         this.cao = cao;
-        this.gia = gia;
         this.soLuong = soLuong;
         this.giamGia = giamGia;
         this.loaiSanPham = loaiSanPham;
         this.danhSachChiTietDonHang = danhSachChiTietDonHang;
         this.danhSachChiTietDatHang = danhSachChiTietDatHang;
         this.danhSachChiTietPhieuNhap = danhSachChiTietPhieuNhap;
+        this.danhSachChiTietKhuyenMai = danhSachChiTietKhuyenMai;
+        this.danhSachChiTietGia = danhSachChiTietGia;
     }
 
     public String getMa() {
@@ -97,14 +104,6 @@ public class SanPham {
 
     public void setCao(String cao) {
         this.cao = cao;
-    }
-
-    public String getGia() {
-        return gia;
-    }
-
-    public void setGia(String gia) {
-        this.gia = gia;
     }
 
     public String getSoLuong() {
@@ -153,5 +152,21 @@ public class SanPham {
 
     public void setDanhSachChiTietPhieuNhap(List<ChiTietPhieuNhap> danhSachChiTietPhieuNhap) {
         this.danhSachChiTietPhieuNhap = danhSachChiTietPhieuNhap;
+    }
+
+    public List<ChiTietKhuyenMai> getDanhSachChiTietKhuyenMai() {
+        return danhSachChiTietKhuyenMai;
+    }
+
+    public void setDanhSachChiTietKhuyenMai(List<ChiTietKhuyenMai> danhSachChiTietKhuyenMai) {
+        this.danhSachChiTietKhuyenMai = danhSachChiTietKhuyenMai;
+    }
+
+    public List<ChiTietGia> getDanhSachChiTietGia() {
+        return danhSachChiTietGia;
+    }
+
+    public void setDanhSachChiTietGia(List<ChiTietGia> danhSachChiTietGia) {
+        this.danhSachChiTietGia = danhSachChiTietGia;
     }
 }

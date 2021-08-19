@@ -19,11 +19,11 @@ public class PhieuNhap {
 
     // relationship
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
     private NhanVien nhanVien;
 
-    @OneToOne(mappedBy = "phieuNhap", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "phieuNhap")
     @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     private DatHang datHang;
 

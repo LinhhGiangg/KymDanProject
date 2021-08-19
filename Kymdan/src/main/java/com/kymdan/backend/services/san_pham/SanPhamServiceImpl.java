@@ -52,13 +52,13 @@ public class SanPhamServiceImpl implements SanPhamService {
 
         if (ketQua == null && cungLoai.size() != 0) {
             ketQua = cungLoai.get(0);
-            long giaThapNhat = Long.parseLong(ketQua.getGia());
-            for (SanPham sanPham : cungLoai) {
-                if (Long.parseLong(ketQua.getGia()) < giaThapNhat) {
-                    giaThapNhat = Long.parseLong(ketQua.getGia());
-                    ketQua = sanPham;
-                }
-            }
+//            long giaThapNhat = Long.parseLong(ketQua.getGia());
+//            for (SanPham sanPham : cungLoai) {
+//                if (Long.parseLong(ketQua.getGia()) < giaThapNhat) {
+//                    giaThapNhat = Long.parseLong(ketQua.getGia());
+//                    ketQua = sanPham;
+//                }
+//            }
         }
 
         return ketQua;
@@ -97,7 +97,7 @@ public class SanPhamServiceImpl implements SanPhamService {
     public ThongBaoDTO sua(SanPhamDTO sanPhamDTO) {
         SanPham sanPham = this.sanPhamRepository.findById(sanPhamDTO.getMa()).orElse(null);
         if (sanPham != null) {
-            sanPham.setGia(sanPhamDTO.getGia());
+//            sanPham.setGia(sanPhamDTO.getGia());
             sanPham.setSoLuong(sanPhamDTO.getSoLuong());
             sanPham.setGiamGia(sanPhamDTO.getGiamGia());
             this.sanPhamRepository.save(sanPham);
@@ -112,7 +112,7 @@ public class SanPhamServiceImpl implements SanPhamService {
         sanPham.setDai("200");
         sanPham.setRong(sanPhamDTO.getKichThuoc().split("x")[0]);
         sanPham.setCao(sanPhamDTO.getDoDay());
-        sanPham.setGia(sanPhamDTO.getGia());
+//        sanPham.setGia(sanPhamDTO.getGia());
         sanPham.setSoLuong(sanPhamDTO.getSoLuong());
         sanPham.setGiamGia(sanPhamDTO.getGiamGia());
         sanPham.setLoaiSanPham(this.loaiSanPhamRepository.findById(sanPhamDTO.getMaLoai()).orElse(null));

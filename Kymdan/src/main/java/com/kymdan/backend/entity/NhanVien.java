@@ -51,12 +51,16 @@ public class NhanVien {
     @JsonBackReference
     private List<PhieuNhap> danhSachPhieuNhap;
 
+    @OneToMany(mappedBy = "nhanVien", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<ChiTietGia> danhSachChiTietGia;
+
     public NhanVien() {
     }
 
     public NhanVien(String ma, String ten, String gioiTinh, LocalDate ngaySinh, String diaChi, String soDienThoai,
                     String email, TaiKhoan taiKhoan, List<DonHang> danhSachDonHang, List<KhuyenMai> danhSachKhuyenMai,
-                    List<PhieuNhap> danhSachPhieuNhap) {
+                    List<PhieuNhap> danhSachPhieuNhap, List<ChiTietGia> danhSachChiTietGia) {
         this.ma = ma;
         this.ten = ten;
         this.gioiTinh = gioiTinh;
@@ -68,6 +72,7 @@ public class NhanVien {
         this.danhSachDonHang = danhSachDonHang;
         this.danhSachKhuyenMai = danhSachKhuyenMai;
         this.danhSachPhieuNhap = danhSachPhieuNhap;
+        this.danhSachChiTietGia = danhSachChiTietGia;
     }
 
     public String getMa() {
@@ -156,5 +161,13 @@ public class NhanVien {
 
     public void setDanhSachPhieuNhap(List<PhieuNhap> danhSachPhieuNhap) {
         this.danhSachPhieuNhap = danhSachPhieuNhap;
+    }
+
+    public List<ChiTietGia> getDanhSachChiTietGia() {
+        return danhSachChiTietGia;
+    }
+
+    public void setDanhSachChiTietGia(List<ChiTietGia> danhSachChiTietGia) {
+        this.danhSachChiTietGia = danhSachChiTietGia;
     }
 }

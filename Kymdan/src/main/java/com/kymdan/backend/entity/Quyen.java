@@ -17,7 +17,7 @@ public class Quyen {
 
     // relationship
 
-    @OneToMany(mappedBy = "quyen", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "quyen")
     @JsonBackReference
     private List<TaiKhoan> danhSachTaiKhoan;
 

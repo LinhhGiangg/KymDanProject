@@ -38,7 +38,7 @@ public class NhanVienGiaoHang {
     @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     private TaiKhoan taiKhoan;
 
-    @OneToMany(mappedBy = "nhanVienGiaoHang", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "nhanVienGiaoHang")
     @JsonBackReference
     private List<DonHang> danhSachDonHang;
 

@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <form (ngSubmit)="sua()" [formGroup]="formSua">
+
+      <div class="text-center">
+        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" style="color: green" id="add">
+          <strong style="font-size: 25px">Sửa khuyến mãi</strong>
+        </h3>
+
+        <mat-error *ngIf="thongBao && thongBao != 'Sửa thành công !'">{{thongBao}}</mat-error>
+      </div>
+
+      <div>
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field>
+              <mat-label>Mã khuyến mãi</mat-label>
+              <input matInput formControlName="ma" readonly>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field>
+              <mat-label>Tên khuyến mãi</mat-label>
+              <input matInput formControlName="ten" readonly>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field>
+              <mat-label>Mô tả</mat-label>
+              <input matInput formControlName="moTa">
+              <mat-error *ngIf="formSua.controls.moTa.errors?.required">Mô tả không đươc để trống.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-7">
+            <mat-form-field>
+              <mat-label>Mã sản phẩm</mat-label>
+              <input matInput [value]="maSanPham" readonly>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-5">
+            <mat-form-field>
+              <mat-label>Giảm giá (%)</mat-label>
+              <input matInput [value]="giamGia" formControlName="giamGia">
+              <mat-error *ngIf="formSua.controls.giamGia.errors?.required">Giảm giá không đươc để trống.
+              </mat-error>
+              <mat-error *ngIf="formSua.controls.giamGia.errors?.pattern">
+                % giảm giá phải là số nguyên lớn hơn hoặc bằng 0 và nhỏ hơn 100.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field>
+              <mat-label>Ngày bắt đầu</mat-label>
+              <input matInput [matDatepicker]="ngayBatDau" formControlName="ngayBatDau"
+                     (dateChange)="gioiHanNgayKetThuc(ngayBatDau)" [min]="ngayHienTai">
+              <mat-datepicker-toggle matSuffix [for]="ngayBatDau"></mat-datepicker-toggle>
+              <mat-datepicker #ngayBatDau></mat-datepicker>
+              <mat-error *ngIf="formSua.controls.ngayBatDau.errors?.required">Ngày bắt đầu không đươc để trống.
+              </mat-error>
+              <mat-error *ngIf="formSua.controls.ngayBatDau?.invalid
+                      && !formSua.controls.ngayBatDau.errors?.required
+                      && (formSua.controls.ngayBatDau?.dirty || formSua.controls.ngayBatDau?.touched)">
+                Ngày bắt đầu không hợp lệ ! Ngày bắt đầu không được nhỏ hơn ngày hiện tại !
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field>
+              <mat-label>Ngày kết thúc</mat-label>
+              <input matInput [matDatepicker]="ngayKetThuc" formControlName="ngayKetThuc"
+                     [min]="gioiHanNgay">
+              <mat-datepicker-toggle matSuffix [for]="ngayKetThuc"></mat-datepicker-toggle>
+              <mat-datepicker #ngayKetThuc></mat-datepicker>
+              <mat-error *ngIf="formSua.controls.ngayKetThuc.errors?.required">Ngày kết thúc không đươc để trống.
+              </mat-error>
+              <mat-error *ngIf="formSua.controls.ngayKetThuc?.invalid
+                      && !formSua.controls.ngayKetThuc.errors?.required
+                      && (formSua.controls.ngayKetThuc?.dirty || formSua.controls.ngayKetThuc?.touched)">
+                Ngày kết thúc không đươc nhỏ hơn ngày bắt đầu.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Cập nhật</button>
+            <button mat-dialog-close type="button" class="btn btn-warning ml-3">Hủy</button>
+          </div>
+          <div class="col-sm-3"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-2"></div>
+</div>

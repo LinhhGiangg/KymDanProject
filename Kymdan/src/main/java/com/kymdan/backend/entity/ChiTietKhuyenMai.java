@@ -5,37 +5,38 @@ import javax.persistence.*;
 @Entity(name = "chi_tiet_khuyen_mai")
 public class ChiTietKhuyenMai {
     @Id
-    @Column(name = "ma", columnDefinition = "VARCHAR(10)")
-    private String ma;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ma", columnDefinition = "INT")
+    private Integer ma;
 
     @Column(name = "giam_gia", columnDefinition = "VARCHAR(5)")
     private String giamGia;
 
     // relationship
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "ma_khuyen_mai", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
     private KhuyenMai khuyenMai;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ma_loai_san_pham", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
-    private LoaiSanPham loaiSanPham;
+    @ManyToOne
+    @JoinColumn(name = "ma_san_pham", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    private SanPham sanPham;
 
     public ChiTietKhuyenMai() {
     }
 
-    public ChiTietKhuyenMai(String ma, String giamGia, KhuyenMai khuyenMai, LoaiSanPham loaiSanPham) {
+    public ChiTietKhuyenMai(Integer ma, String giamGia, KhuyenMai khuyenMai, SanPham sanPham) {
         this.ma = ma;
         this.giamGia = giamGia;
         this.khuyenMai = khuyenMai;
-        this.loaiSanPham = loaiSanPham;
+        this.sanPham = sanPham;
     }
 
-    public String getMa() {
+    public Integer getMa() {
         return ma;
     }
 
-    public void setMa(String ma) {
+    public void setMa(Integer ma) {
         this.ma = ma;
     }
 
@@ -55,11 +56,11 @@ public class ChiTietKhuyenMai {
         this.khuyenMai = khuyenMai;
     }
 
-    public LoaiSanPham getLoaiSanPham() {
-        return loaiSanPham;
+    public SanPham getSanPham() {
+        return sanPham;
     }
 
-    public void setLoaiSanPham(LoaiSanPham loaiSanPham) {
-        this.loaiSanPham = loaiSanPham;
+    public void setSanPham(SanPham sanPham) {
+        this.sanPham = sanPham;
     }
 }

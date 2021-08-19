@@ -17,7 +17,7 @@ public class TaiKhoan {
 
     // relationship
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "ma_quyen", referencedColumnName = "ma", columnDefinition = "INT")
     private Quyen quyen;
 

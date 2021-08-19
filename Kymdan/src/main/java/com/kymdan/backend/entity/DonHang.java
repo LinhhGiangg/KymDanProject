@@ -36,11 +36,11 @@ public class DonHang {
 
     // relationship
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
     private NhanVien nhanVien;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "ma_khach_hang", referencedColumnName = "ma", columnDefinition = "INT")
     private KhachHang khachHang;
 
@@ -48,7 +48,7 @@ public class DonHang {
     @JsonBackReference
     private List<ChiTietDonHang> danhSachChiTietDonHang;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "ma_nhan_vien_giao_hang", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
     private NhanVienGiaoHang nhanVienGiaoHang;
 

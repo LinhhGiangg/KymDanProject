@@ -31,7 +31,7 @@ export class MuaHangComponent implements OnInit {
   public maLoai = '';
   public duLieuDauVao;
   public thongTinSanPham;
-  public soLuong = 1;
+  public soLuong : number;
   public gia: string;
   public giaBan: string;
   public kichThuoc = '120x200';
@@ -60,6 +60,7 @@ export class MuaHangComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.soLuong = 1;
     if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
       this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
       this.tenDangNhap = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
@@ -73,7 +74,8 @@ export class MuaHangComponent implements OnInit {
           this.maLoai + ',' + this.duLieuDauVao.split(',')[1].split('x')[0] + ',' +
           this.duLieuDauVao.split(',')[2];
         this.chonSanPham(this.thongTinSanPham);
-        this.soLuong = this.duLieuDauVao.split(',')[3];
+        // tslint:disable-next-line:radix
+        this.soLuong = Number.parseInt(this.duLieuDauVao.split(',')[3]);
       } else {
         this.sanPhamDauTien(this.maLoai)
       }
@@ -161,6 +163,7 @@ export class MuaHangComponent implements OnInit {
     } else {
       // tslint:disable-next-line:radix
       if (this.soLuong < Number.parseInt(this.sanPham.soLuong)) {
+        // tslint:disable-next-line:radix
         this.soLuong = this.soLuong + 1;
       } else {
         this.hienThongBao('Hiện tại mặt hàng này chỉ còn ' + this.sanPham.soLuong + ' sản phẩm !')

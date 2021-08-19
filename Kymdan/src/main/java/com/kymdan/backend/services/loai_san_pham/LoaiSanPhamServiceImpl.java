@@ -31,19 +31,19 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
         List<SanPham> ketQua = new ArrayList<>();
         List<SanPham> tatCaSanPham = this.sanPhamRepository.findAll();
 
-        for (SanPham sanPham : tatCaSanPham) {
-            if (mucGia == 6) {
-                if (Long.parseLong(sanPham.getGia()) >= (50000000)) {
-                    ketQua.add(sanPham);
-                }
-                continue;
-            }
-
-            if (((mucGia - 1) * 10000000) <= Long.parseLong(sanPham.getGia())
-                    && Long.parseLong(sanPham.getGia()) <= (mucGia * 10000000)) {
-                ketQua.add(sanPham);
-            }
-        }
+//        for (SanPham sanPham : tatCaSanPham) {
+//            if (mucGia == 6) {
+//                if (Long.parseLong(sanPham.getGia()) >= (50000000)) {
+//                    ketQua.add(sanPham);
+//                }
+//                continue;
+//            }
+//
+//            if (((mucGia - 1) * 10000000) <= Long.parseLong(sanPham.getGia())
+//                    && Long.parseLong(sanPham.getGia()) <= (mucGia * 10000000)) {
+//                ketQua.add(sanPham);
+//            }
+//        }
 
         return ketQua;
     }

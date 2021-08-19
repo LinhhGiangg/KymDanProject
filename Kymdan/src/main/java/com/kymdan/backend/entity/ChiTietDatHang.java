@@ -5,37 +5,38 @@ import javax.persistence.*;
 @Entity(name = "chi_tiet_dat_hang")
 public class ChiTietDatHang {
     @Id
-    @Column(name = "ma", columnDefinition = "VARCHAR(10)")
-    private String ma;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ma", columnDefinition = "INT")
+    private Integer ma;
 
     @Column(name = "so_luong", columnDefinition = "VARCHAR(5)")
     private String soLuong;
 
     // relationship
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "ma_dat_hang", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
     private DatHang datHang;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "ma_san_pham", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
     private SanPham sanPham;
 
     public ChiTietDatHang() {
     }
 
-    public ChiTietDatHang(String ma, String soLuong, DatHang datHang, SanPham sanPham) {
+    public ChiTietDatHang(Integer ma, String soLuong, DatHang datHang, SanPham sanPham) {
         this.ma = ma;
         this.soLuong = soLuong;
         this.datHang = datHang;
         this.sanPham = sanPham;
     }
 
-    public String getMa() {
+    public Integer getMa() {
         return ma;
     }
 
-    public void setMa(String ma) {
+    public void setMa(Integer ma) {
         this.ma = ma;
     }
 

@@ -59,6 +59,23 @@ export class DatHangComponent implements OnInit {
     }
   }
 
+  private thayDoiGia(soLuong) {
+    this.gia =
+      // tslint:disable-next-line:radix
+      ((Number.parseInt(this.sanPham.gia) -
+        // tslint:disable-next-line:radix
+        (Number.parseInt(this.sanPham.gia) * Number.parseInt(this.sanPham.giamGia) / 100)) * soLuong) + '';
+    // @ts-ignore
+    this.gia = DatHangComponent.hienThiGia(this.gia);
+
+    // tslint:disable-next-line:radix
+    this.usd = ((Number.parseInt(this.sanPham.gia)
+      // tslint:disable-next-line:radix
+      - (Number.parseInt(this.sanPham.gia) * Number.parseInt(this.sanPham.giamGia) / 100)) / 23500) + '';
+    // tslint:disable-next-line:radix
+    this.usd = Number.parseInt(this.usd);
+  }
+
   ngOnInit() {
     this.payPal();
     this.formDatHang = this.formBuilder.group({
@@ -100,20 +117,10 @@ export class DatHangComponent implements OnInit {
           () => {
           },
           () => {
-            this.gia =
-              // tslint:disable-next-line:radix
-              (Number.parseInt(this.sanPham.gia) - (Number.parseInt(this.sanPham.gia) * Number.parseInt(this.sanPham.giamGia) / 100)) + '';
-            // @ts-ignore
-            this.gia = DatHangComponent.hienThiGia(this.gia);
-
             // tslint:disable-next-line:radix
-            this.usd = ((Number.parseInt(this.sanPham.gia)
-              // tslint:disable-next-line:radix
-              - (Number.parseInt(this.sanPham.gia) * Number.parseInt(this.sanPham.giamGia) / 100))/23500) + '';
-            // tslint:disable-next-line:radix
-            this.usd = Number.parseInt(this.usd);
+            this.soLuong = Number.parseInt(this.thongTin.split(',')[3]);
+            this.thayDoiGia(this.soLuong);
           });
-      this.soLuong = this.thongTin.split(',')[3];
     });
   }
 
@@ -152,11 +159,13 @@ export class DatHangComponent implements OnInit {
     if (soLuong === 1) {
       if (this.soLuong >= 2) {
         this.soLuong = this.soLuong - 1;
+        this.thayDoiGia(this.soLuong);
       }
     } else {
       // tslint:disable-next-line:radix
       if (this.soLuong < Number.parseInt(this.sanPham.soLuong)) {
         this.soLuong = this.soLuong + 1;
+        this.thayDoiGia(this.soLuong);
       } else {
         this.hienThongBao('Hiện tại mặt hàng này chỉ còn ' + this.sanPham.soLuong + ' sản phẩm !')
       }

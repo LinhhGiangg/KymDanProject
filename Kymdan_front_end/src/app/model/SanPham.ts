@@ -3,7 +3,8 @@ export class SanPham {
   dai: string;
   rong: string;
   cao: string;
-  gia: string;
   soLuong: string;
+
+  gia: string;
   giamGia: string;
 }

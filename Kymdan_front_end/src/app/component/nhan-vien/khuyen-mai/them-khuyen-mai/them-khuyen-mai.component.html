@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <form (ngSubmit)="taoMoi()" [formGroup]="formTaoMoi">
+
+      <div class="text-center">
+        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" style="color: green" id="add">
+          <strong style="font-size: 25px">Tạo mới khuyến mãi</strong>
+        </h3>
+
+        <mat-error *ngIf="thongBao && thongBao != 'Tạo mới thành công !'">{{thongBao}}</mat-error>
+      </div>
+
+      <div>
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field>
+              <mat-label>Mã khuyến mãi</mat-label>
+              <input matInput formControlName="ma">
+              <mat-error *ngIf="formTaoMoi.controls.ma.errors?.required">Mã khuyến mãi không đươc để trống.
+              </mat-error>
+              <mat-error *ngIf="formTaoMoi.controls.ma.errors?.pattern">
+                Mã khuyến mãi không đúng quy định. Mã khuyến mãi có dạng KM-XXX với X là số từ 0 đến 9.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field>
+              <mat-label>Tên khuyến mãi</mat-label>
+              <input matInput formControlName="ten">
+              <mat-error *ngIf="formTaoMoi.controls.ten.errors?.required">Tên khuyến mãi không đươc để trống.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field>
+              <mat-label>Mô tả</mat-label>
+              <input matInput formControlName="moTa">
+              <mat-error *ngIf="formTaoMoi.controls.moTa.errors?.required">Mô tả không đươc để trống.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-7">
+            <mat-form-field>
+              <mat-label>Mã sản phẩm</mat-label>
+              <input matInput formControlName="maSanPham">
+              <mat-error *ngIf="formTaoMoi.controls.maSanPham.errors?.required">Mã sản phẩm không đươc để trống.
+              </mat-error>
+              <mat-error *ngIf="formTaoMoi.controls.maSanPham.errors?.pattern">
+                Mã sản phẩm có dạng SP-XXX với X là số từ 0 đến 9.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-5">
+            <mat-form-field>
+              <mat-label>Giảm giá (%)</mat-label>
+              <input matInput formControlName="giamGia">
+              <mat-error *ngIf="formTaoMoi.controls.giamGia.errors?.required">Giảm giá không đươc để trống.
+              </mat-error>
+              <mat-error *ngIf="formTaoMoi.controls.giamGia.errors?.pattern">
+                % giảm giá phải là số nguyên lớn hơn hoặc bằng 0 và nhỏ hơn 100.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field>
+              <mat-label>Ngày bắt đầu</mat-label>
+              <input matInput [matDatepicker]="ngayBatDau" formControlName="ngayBatDau"
+                     (dateChange)="gioiHanNgayKetThuc(ngayBatDau)" [min]="ngayHienTai">
+              <mat-datepicker-toggle matSuffix [for]="ngayBatDau"></mat-datepicker-toggle>
+              <mat-datepicker #ngayBatDau></mat-datepicker>
+              <mat-error *ngIf="formTaoMoi.controls.ngayBatDau.errors?.required">Ngày bắt đầu không đươc để trống.
+              </mat-error>
+              <mat-error *ngIf="formTaoMoi.controls.ngayBatDau?.invalid
+                      && !formTaoMoi.controls.ngayBatDau.errors?.required
+                      && (formTaoMoi.controls.ngayBatDau?.dirty || formTaoMoi.controls.ngayBatDau?.touched)">
+                Ngày bắt đầu không hợp lệ ! Ngày bắt đầu không được nhỏ hơn ngày hiện tại !
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field>
+              <mat-label>Ngày kết thúc</mat-label>
+              <input matInput [matDatepicker]="ngayKetThuc" formControlName="ngayKetThuc"
+                     [min]="gioiHanNgay">
+              <mat-datepicker-toggle matSuffix [for]="ngayKetThuc"></mat-datepicker-toggle>
+              <mat-datepicker #ngayKetThuc></mat-datepicker>
+              <mat-error *ngIf="formTaoMoi.controls.ngayKetThuc.errors?.required">Ngày kết thúc không đươc để trống.
+              </mat-error>
+              <mat-error *ngIf="formTaoMoi.controls.ngayKetThuc?.invalid
+                      && !formTaoMoi.controls.ngayKetThuc.errors?.required
+                      && (formTaoMoi.controls.ngayKetThuc?.dirty || formTaoMoi.controls.ngayKetThuc?.touched)">
+                Ngày kết thúc không đươc nhỏ hơn ngày bắt đầu.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Tạo mới</button>
+            <button mat-dialog-close type="button" class="btn btn-warning ml-3">Hủy</button>
+          </div>
+          <div class="col-sm-3"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-2"></div>
+</div>

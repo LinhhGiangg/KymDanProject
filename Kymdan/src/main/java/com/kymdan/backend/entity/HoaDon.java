@@ -20,7 +20,7 @@ public class HoaDon {
 
     // relationship
 
-    @OneToOne(mappedBy = "hoaDon", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "hoaDon")
     @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     private DonHang donHang;
 

@@ -12,8 +12,11 @@ public class KhuyenMai {
     @Column(name = "ma", columnDefinition = "VARCHAR(10)")
     private String ma;
 
-    @Column(name = "ten", columnDefinition = "VARCHAR(50)")
+    @Column(name = "ten", columnDefinition = "VARCHAR(250)")
     private String ten;
+
+    @Column(name = "mo_ta", columnDefinition = "VARCHAR(250)")
+    private String moTa;
 
     @Column(name = "ngay_bat_dau", columnDefinition = "DATE")
     private LocalDate ngayBatDau;
@@ -21,12 +24,9 @@ public class KhuyenMai {
     @Column(name = "ngay_ket_thuc", columnDefinition = "DATE")
     private LocalDate ngayKetThuc;
 
-    @Column(name = "mo_ta", columnDefinition = "VARCHAR(250)")
-    private String moTa;
-
     // relationship
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
     private NhanVien nhanVien;
 
