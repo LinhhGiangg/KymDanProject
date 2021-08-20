@@ -69,9 +69,9 @@
               </td>
               <td class="col-sm-9">
                 <div class="row">
-                  <div class="col-sm-9">
-                    <h1 (click)="xemSanPham(phanTu.ma)">
-                      <a [routerLink]="['/mua-hang']" style="color: green">{{phanTu.ten}}</a>
+                  <div class="col-sm-9" (click)="xemSanPham(phanTu.ma)">
+                    <h1>
+                      <a style="color: green">{{phanTu.ten}}</a>
                     </h1>
                     <h3><i class="fa fa-hand-o-right" aria-hidden="true"></i> {{phanTu.moTa1}}</h3>
                     <h3 *ngIf="phanTu.moTa2">

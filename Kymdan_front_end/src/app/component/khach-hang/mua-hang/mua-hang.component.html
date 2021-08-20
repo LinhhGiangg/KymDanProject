@@ -24,30 +24,31 @@
 
           <div class="row">
             <div class="col-sm-6">
-              <p style="font-family: Averta,Helvetica,sans-serif; font-size: 15px" *ngIf="sanPham.giamGia != 0">
+              <p style="font-family: Averta,Helvetica,sans-serif; font-size: 15px" *ngIf="giaBan != ''">
                 <del>{{gia}} VND</del></p>
               <h1 style="font-family: Averta,Helvetica,sans-serif; color: red; font-weight: bold"
-                  *ngIf="sanPham.giamGia != 0">
+                  *ngIf="giaBan != ''">
                 {{giaBan}} VND
               </h1>
               <h1 style="font-family: Averta,Helvetica,sans-serif; color: red; font-weight: bold"
-                  *ngIf="sanPham.giamGia == 0">
+                  *ngIf="giaBan == ''">
                 {{gia}} VND
               </h1>
             </div>
-            <div class="col-sm-6" style="position: relative; text-align: right">
-              <p style="font-size: 15px; margin-left: 247px; margin-top: 14px; position: absolute">
+
+            <div class="col-sm-6" style="position: relative; text-align: right" *ngIf="giaBan != ''">
+              <p style="font-size: 15px; margin-left: 249px; margin-top: 14px; position: absolute">
                 -
               </p>
               <p style="font-size: 15px; margin-left: 254px; margin-top: 14px; position: absolute"
-                 *ngIf="sanPham.giamGia > 9">
-                {{sanPham.giamGia}}
+                 *ngIf="chiTietKhuyenMai.giamGia > 9">
+                {{chiTietKhuyenMai.giamGia}}
               </p>
               <p style="font-size: 15px; margin-left: 259px; margin-top: 14px; position: absolute"
-                 *ngIf="sanPham.giamGia < 10">
-                {{sanPham.giamGia}}
+                 *ngIf="chiTietKhuyenMai.giamGia < 10">
+                {{chiTietKhuyenMai.giamGia}}
               </p>
-              <p style="font-size: 15px; margin-left: 273px; margin-top: 14px; position: absolute">
+              <p style="font-size: 15px; margin-left: 271px; margin-top: 14px; position: absolute">
                 %
               </p>
               <i class="fa fa-bookmark" aria-hidden="true" style="font-size: 63px; color: orangered"></i>

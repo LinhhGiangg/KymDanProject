@@ -1,5 +1,7 @@
 package com.kymdan.backend.controllers;
 
+import com.kymdan.backend.entity.ChiTietGia;
+import com.kymdan.backend.entity.ChiTietKhuyenMai;
 import com.kymdan.backend.entity.SanPham;
 import com.kymdan.backend.model.SanPhamDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
@@ -63,5 +65,17 @@ public class SanPhamController {
         } else {
             return ResponseEntity.ok(this.sanPhamService.taoMoi(sanPhamDTO));
         }
+    }
+
+    @GetMapping("/timGiaBangMaSanPham/{ma}")
+    public ResponseEntity<ChiTietGia> timGiaBangMaSanPham(@PathVariable String ma) {
+        ChiTietGia chiTietGia = this.sanPhamService.timGiaBangMaSanPham(ma);
+        return new ResponseEntity<>(chiTietGia, HttpStatus.OK);
+    }
+
+    @GetMapping("/timKhuyenMaiBangMaSanPham/{ma}")
+    public ResponseEntity<ChiTietKhuyenMai> timKhuyenMaiBangMaSanPham(@PathVariable String ma) {
+        ChiTietKhuyenMai chiTietKhuyenMai = this.sanPhamService.timKhuyenMaiBangMaSanPham(ma);
+        return new ResponseEntity<>(chiTietKhuyenMai, HttpStatus.OK);
     }
 }

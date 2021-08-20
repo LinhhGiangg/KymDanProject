@@ -51,13 +51,14 @@
           <div class="col-sm-5">
             <mat-form-field>
               <mat-label>Giảm giá (%)</mat-label>
-              <input matInput [value]="giamGia" formControlName="giamGia">
-              <mat-error *ngIf="formSua.controls.giamGia.errors?.required">Giảm giá không đươc để trống.
-              </mat-error>
+              <input matInput [(ngModel)]="giamGia" formControlName="giamGia">
               <mat-error *ngIf="formSua.controls.giamGia.errors?.pattern">
                 % giảm giá phải là số nguyên lớn hơn hoặc bằng 0 và nhỏ hơn 100.
               </mat-error>
             </mat-form-field>
+            <p style="margin-top: -18px; font-size: 10px; color: #f35353" *ngIf="giamGia == ''">
+              Giảm giá không đươc để trống.
+            </p>
           </div>
         </div>
 
@@ -66,7 +67,7 @@
             <mat-form-field>
               <mat-label>Ngày bắt đầu</mat-label>
               <input matInput [matDatepicker]="ngayBatDau" formControlName="ngayBatDau"
-                     (dateChange)="gioiHanNgayKetThuc(ngayBatDau)" [min]="ngayHienTai">
+                     [min]="ngayHienTai" (dateChange)="gioiHanNgayKetThuc(ngayBatDau)">
               <mat-datepicker-toggle matSuffix [for]="ngayBatDau"></mat-datepicker-toggle>
               <mat-datepicker #ngayBatDau></mat-datepicker>
               <mat-error *ngIf="formSua.controls.ngayBatDau.errors?.required">Ngày bắt đầu không đươc để trống.
@@ -85,7 +86,7 @@
             <mat-form-field>
               <mat-label>Ngày kết thúc</mat-label>
               <input matInput [matDatepicker]="ngayKetThuc" formControlName="ngayKetThuc"
-                     [min]="gioiHanNgay">
+                     [min]="gioiHanNgay" (dateChange)="chonLaiNgayKetThuc(ngayBatDau)">
               <mat-datepicker-toggle matSuffix [for]="ngayKetThuc"></mat-datepicker-toggle>
               <mat-datepicker #ngayKetThuc></mat-datepicker>
               <mat-error *ngIf="formSua.controls.ngayKetThuc.errors?.required">Ngày kết thúc không đươc để trống.

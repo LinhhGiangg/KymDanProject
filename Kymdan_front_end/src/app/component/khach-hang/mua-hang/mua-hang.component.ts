@@ -31,13 +31,15 @@ export class MuaHangComponent implements OnInit {
   public maLoai = '';
   public duLieuDauVao;
   public thongTinSanPham;
-  public soLuong : number;
-  public gia: string;
-  public giaBan: string;
+  public soLuong: number;
+  public gia = '';
+  public giaBan = '';
   public kichThuoc = '120x200';
   public doDay = '5';
   public sanPham = new SanPham();
   public loaiSanPham = new LoaiSanPham();
+  public chiTietGia = null;
+  public chiTietKhuyenMai;
 
   private static hienThiGia(thongTin) {
     let hangTrieu;
@@ -92,6 +94,8 @@ export class MuaHangComponent implements OnInit {
   }
 
   sanPhamDauTien(thongTinSanPham) {
+    this.gia = '';
+    this.giaBan = '';
     this.sanPhamService.sanPhamDauTien(thongTinSanPham).subscribe(
       (duLieu) => {
         this.sanPham = duLieu;
@@ -100,17 +104,95 @@ export class MuaHangComponent implements OnInit {
       },
       () => {
         if (this.sanPham != null) {
-          // @ts-ignore
-          this.gia = MuaHangComponent.hienThiGia(this.sanPham.gia);
-          // tslint:disable-next-line:radix
-          this.giaBan =
-            // tslint:disable-next-line:radix
-            (Number.parseInt(this.sanPham.gia) - (Number.parseInt(this.sanPham.gia) * Number.parseInt(this.sanPham.giamGia) / 100)) + '';
-          // @ts-ignore
-          this.giaBan = MuaHangComponent.hienThiGia(this.giaBan);
           this.kichThuoc = this.sanPham.rong + 'x200';
           this.doDay = this.sanPham.cao;
-          this.thongTinSanPham = this.maLoai + ',' + this.sanPham.rong + ',' + this.sanPham.cao
+          this.thongTinSanPham = this.maLoai + ',' + this.sanPham.rong + ',' + this.sanPham.cao;
+
+          this.sanPhamService.timGiaBangMaSanPham(this.sanPham.ma).subscribe(
+            (duLieu) => {
+              this.chiTietGia = duLieu;
+            },
+            () => {
+            },
+            () => {
+              this.gia = '';
+              if (this.chiTietGia != null) {
+                // @ts-ignore
+                this.gia = MuaHangComponent.hienThiGia(this.chiTietGia.gia);
+
+                this.sanPhamService.timKhuyenMaiBangMaSanPham(this.sanPham.ma).subscribe(
+                  (duLieu) => {
+                    this.chiTietKhuyenMai = duLieu;
+                  },
+                  () => {
+                  },
+                  () => {
+                    this.giaBan = '';
+                    if (this.chiTietKhuyenMai != null) {
+                      // tslint:disable-next-line:radix
+                      this.giaBan =
+                        // tslint:disable-next-line:radix
+                        (Number.parseInt(this.chiTietGia.gia) -
+                          // tslint:disable-next-line:radix
+                          (Number.parseInt(this.chiTietGia.gia) * Number.parseInt(this.chiTietKhuyenMai.giamGia) / 100)) + '';
+                      // @ts-ignore
+                      this.giaBan = MuaHangComponent.hienThiGia(this.giaBan);
+                    }
+                  });
+              }
+            });
+        }
+      });
+  }
+
+  chonSanPham(thongTinSanPham) {
+    this.sanPhamService.chonSanPham(thongTinSanPham).subscribe(
+      (duLieu) => {
+        this.sanPham = duLieu;
+      },
+      () => {
+      },
+      () => {
+        if (this.sanPham != null) {
+          this.kichThuoc = this.sanPham.rong + 'x200';
+          this.doDay = this.sanPham.cao;
+
+          this.sanPhamService.timGiaBangMaSanPham(this.sanPham.ma).subscribe(
+            (duLieu) => {
+              this.chiTietGia = duLieu;
+            },
+            () => {
+            },
+            () => {
+              this.gia = '';
+              if (this.chiTietGia != null) {
+                // @ts-ignore
+                this.gia = MuaHangComponent.hienThiGia(this.chiTietGia.gia);
+
+                this.sanPhamService.timKhuyenMaiBangMaSanPham(this.sanPham.ma).subscribe(
+                  (duLieu) => {
+                    this.chiTietKhuyenMai = duLieu;
+                  },
+                  () => {
+                  },
+                  () => {
+                    this.giaBan = '';
+                    if (this.chiTietKhuyenMai != null) {
+                      // tslint:disable-next-line:radix
+                      this.giaBan =
+                        // tslint:disable-next-line:radix
+                        (Number.parseInt(this.chiTietGia.gia) -
+                          // tslint:disable-next-line:radix
+                          (Number.parseInt(this.chiTietGia.gia) * Number.parseInt(this.chiTietKhuyenMai.giamGia) / 100)) + '';
+                      // @ts-ignore
+                      this.giaBan = MuaHangComponent.hienThiGia(this.giaBan);
+                    }
+                  });
+              }
+            });
+        } else {
+          this.hienThongBao('Sản phẩm này hiện tại đang hết hàng ! Vui lòng chọn sản phẩm khác !');
+          this.sanPhamDauTien(this.maLoai)
         }
       });
   }
@@ -127,32 +209,6 @@ export class MuaHangComponent implements OnInit {
     this.doDay = doDay;
     this.thongTinSanPham = this.maLoai + ',' + this.kichThuoc.split('x')[0] + ',' + this.doDay;
     this.chonSanPham(this.thongTinSanPham)
-  }
-
-  chonSanPham(thongTinSanPham) {
-    this.sanPhamService.chonSanPham(thongTinSanPham).subscribe(
-      (duLieu) => {
-        this.sanPham = duLieu;
-      },
-      () => {
-      },
-      () => {
-        if (this.sanPham != null) {
-          // @ts-ignore
-          this.gia = MuaHangComponent.hienThiGia(this.sanPham.gia);
-          // tslint:disable-next-line:radix
-          this.giaBan =
-            // tslint:disable-next-line:radix
-            (Number.parseInt(this.sanPham.gia) - (Number.parseInt(this.sanPham.gia) * Number.parseInt(this.sanPham.giamGia) / 100)) + '';
-          // @ts-ignore
-          this.giaBan = MuaHangComponent.hienThiGia(this.giaBan);
-          this.kichThuoc = this.sanPham.rong + 'x200';
-          this.doDay = this.sanPham.cao;
-        } else {
-          this.hienThongBao('Sản phẩm này hiện tại đang hết hàng ! Vui lòng chọn sản phẩm khác !');
-          this.sanPhamDauTien(this.maLoai)
-        }
-      });
   }
 
   chonSoLuong(soLuong) {
@@ -192,8 +248,15 @@ export class MuaHangComponent implements OnInit {
   }
 
   muaHang() {
-    const THONG_TIN = this.tenDangNhap + ',' + this.loaiSanPham.ma + ',' + this.sanPham.ma + ',' + this.soLuong;
-    this.router.navigate(['/dat-hang', {thongTin: THONG_TIN}]).then(() => {
+    let thongTinMua = '';
+    if (this.chiTietKhuyenMai != null) {
+      thongTinMua = this.tenDangNhap + ',' + this.loaiSanPham.ma + ',' + this.sanPham.ma + ',' + this.soLuong
+        + ',' + this.chiTietGia.gia + ',' + this.chiTietKhuyenMai.giamGia;
+    } else {
+      thongTinMua = this.tenDangNhap + ',' + this.loaiSanPham.ma + ',' + this.sanPham.ma + ',' + this.soLuong
+        + ',' + this.chiTietGia.gia;
+    }
+    this.router.navigate(['/dat-hang', {thongTin: thongTinMua}]).then(() => {
     });
   }
 }

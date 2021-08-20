@@ -22,10 +22,14 @@ export class DatHangComponent implements OnInit {
   public khachHang = new KhachHang();
   public sanPham = new SanPham();
   public soLuong;
-  public gia: string;
+  public giaGoc = '';
+  public giaBan;
+  public giaBanHienThi = '';
+  public tongTien = '';
   public usd;
   public thongTin;
   public thongBao;
+  public xacNhanThanhToan = false;
 
   constructor(
     public activatedRouter: ActivatedRoute,
@@ -59,24 +63,19 @@ export class DatHangComponent implements OnInit {
     }
   }
 
-  private thayDoiGia(soLuong) {
-    this.gia =
+  private thayDoiGia(giaBan, soLuong) {
+    this.tongTien =
       // tslint:disable-next-line:radix
-      ((Number.parseInt(this.sanPham.gia) -
-        // tslint:disable-next-line:radix
-        (Number.parseInt(this.sanPham.gia) * Number.parseInt(this.sanPham.giamGia) / 100)) * soLuong) + '';
-    // @ts-ignore
-    this.gia = DatHangComponent.hienThiGia(this.gia);
+      (Number.parseInt(giaBan) * soLuong) + '';
 
     // tslint:disable-next-line:radix
-    this.usd = ((Number.parseInt(this.sanPham.gia)
-      // tslint:disable-next-line:radix
-      - (Number.parseInt(this.sanPham.gia) * Number.parseInt(this.sanPham.giamGia) / 100)) / 23500) + '';
-    // tslint:disable-next-line:radix
-    this.usd = Number.parseInt(this.usd);
+    this.usd = (Number.parseInt(this.tongTien) / 23500).toFixed(0);
+    // @ts-ignore
+    this.tongTien = DatHangComponent.hienThiGia(this.tongTien);
   }
 
   ngOnInit() {
+    this.xacNhanThanhToan = false;
     this.payPal();
     this.formDatHang = this.formBuilder.group({
       ten: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50),
@@ -119,7 +118,13 @@ export class DatHangComponent implements OnInit {
           () => {
             // tslint:disable-next-line:radix
             this.soLuong = Number.parseInt(this.thongTin.split(',')[3]);
-            this.thayDoiGia(this.soLuong);
+            this.giaGoc = this.thongTin.split(',')[4];
+            this.giaBanHienThi = this.thongTin.split(',')[5];
+            // tslint:disable-next-line:radix
+            this.giaBan = (Number.parseInt(this.giaGoc) - Number.parseInt(this.giaGoc) * Number.parseInt(this.giaBanHienThi) / 100);
+            this.thayDoiGia(this.giaBan, this.soLuong);
+            this.giaBanHienThi = DatHangComponent.hienThiGia(this.giaBan);
+            this.giaGoc = DatHangComponent.hienThiGia(this.giaGoc);
           });
     });
   }
@@ -159,13 +164,13 @@ export class DatHangComponent implements OnInit {
     if (soLuong === 1) {
       if (this.soLuong >= 2) {
         this.soLuong = this.soLuong - 1;
-        this.thayDoiGia(this.soLuong);
+        this.thayDoiGia(this.giaBan, this.soLuong);
       }
     } else {
       // tslint:disable-next-line:radix
       if (this.soLuong < Number.parseInt(this.sanPham.soLuong)) {
         this.soLuong = this.soLuong + 1;
-        this.thayDoiGia(this.soLuong);
+        this.thayDoiGia(this.giaBan, this.soLuong);
       } else {
         this.hienThongBao('Hiện tại mặt hàng này chỉ còn ' + this.sanPham.soLuong + ' sản phẩm !')
       }
@@ -223,5 +228,9 @@ export class DatHangComponent implements OnInit {
         }
       }
     ).render(this.paypalRef.nativeElement);
+  }
+
+  thanhToan() {
+    this.xacNhanThanhToan = true;
   }
 }

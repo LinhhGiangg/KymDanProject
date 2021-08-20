@@ -40,4 +40,12 @@ export class SanPhamService {
   taoMoi(sanPham): Observable<any> {
     return this.http.post(this.API + '/taoMoi', sanPham, {headers: {skip: 'true'}});
   }
+
+  timGiaBangMaSanPham(ma): Observable<any> {
+    return this.http.get(this.API + '/timGiaBangMaSanPham/' + ma);
+  }
+
+  timKhuyenMaiBangMaSanPham(ma): Observable<any> {
+    return this.http.get(this.API + '/timKhuyenMaiBangMaSanPham/' + ma);
+  }
 }

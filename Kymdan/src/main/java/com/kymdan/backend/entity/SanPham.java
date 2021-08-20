@@ -24,9 +24,6 @@ public class SanPham {
     @Column(name = "so_luong", columnDefinition = "VARCHAR(5)")
     private String soLuong;
 
-    @Column(name = "giam_gia", columnDefinition = "VARCHAR(5)")
-    private String giamGia;
-
     // relationship
 
     @ManyToOne()
@@ -56,7 +53,7 @@ public class SanPham {
     public SanPham() {
     }
 
-    public SanPham(String ma, String dai, String rong, String cao, String soLuong, String giamGia,
+    public SanPham(String ma, String dai, String rong, String cao, String soLuong,
                    LoaiSanPham loaiSanPham, List<ChiTietDonHang> danhSachChiTietDonHang,
                    List<ChiTietDatHang> danhSachChiTietDatHang, List<ChiTietPhieuNhap> danhSachChiTietPhieuNhap,
                    List<ChiTietKhuyenMai> danhSachChiTietKhuyenMai, List<ChiTietGia> danhSachChiTietGia) {
@@ -65,7 +62,6 @@ public class SanPham {
         this.rong = rong;
         this.cao = cao;
         this.soLuong = soLuong;
-        this.giamGia = giamGia;
         this.loaiSanPham = loaiSanPham;
         this.danhSachChiTietDonHang = danhSachChiTietDonHang;
         this.danhSachChiTietDatHang = danhSachChiTietDatHang;
@@ -112,14 +108,6 @@ public class SanPham {
 
     public void setSoLuong(String soLuong) {
         this.soLuong = soLuong;
-    }
-
-    public String getGiamGia() {
-        return giamGia;
-    }
-
-    public void setGiamGia(String giamGia) {
-        this.giamGia = giamGia;
     }
 
     public LoaiSanPham getLoaiSanPham() {

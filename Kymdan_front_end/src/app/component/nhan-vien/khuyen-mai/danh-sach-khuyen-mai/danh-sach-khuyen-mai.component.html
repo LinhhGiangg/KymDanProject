@@ -10,7 +10,7 @@
           </div>
           <div class="col-sm-3">
             <div class="search-box">
-              <button class="btn btn-success" (click)="taoMoi()">Thêm mới</button>
+              <button class="btn btn-success" (click)="taoMoi()">Tạo mới</button>
             </div>
           </div>
         </div>
@@ -37,8 +37,8 @@
           <td>{{phanTu.ngayKetThuc}}</td>
           <td>{{phanTu.nhanVien.ten}}</td>
           <td>
-            <a [routerLink]="['/']" (click)="view(phanTu.ma)"
-               class="view" title="Xem chi tiết" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+            <a class="view" title="Xem chi tiết" data-toggle="tooltip" [routerLink]="['/danh-sach-khuyen-mai']">
+              <i class="material-icons" (click)="xemChiTiet(phanTu.ma)">&#xE417;</i></a>
             <a class="edit" title="Sửa" data-toggle="tooltip" [routerLink]="['/danh-sach-khuyen-mai']">
               <i class="material-icons" (click)="sua(phanTu.ma)">&#xE254;</i></a>
             <a class="delete" title="Xóa" data-toggle="tooltip" [routerLink]="['/danh-sach-khuyen-mai']">

@@ -63,6 +63,7 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
             if (khuyenMaiDTO.getTen().contains("2")) {
                 khuyenMai.setNgayKetThuc(khuyenMaiDTO.getNgayKetThuc().plusDays(1));
             }
+            khuyenMai.setNhanVien(this.nhanVienRepository.findByTen(khuyenMaiDTO.getTenNhanVien()));
             this.khuyenMaiRepository.save(khuyenMai);
         }
 

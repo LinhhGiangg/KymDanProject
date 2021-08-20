@@ -5,10 +5,12 @@ insert into kymdan.quyen (ma, ten) values (2, 'Nhân Viên Giao Hàng');
 insert into kymdan.quyen (ma, ten) values (3, 'Khách Hàng');
 
 insert into kymdan.nhan_vien (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values ('NV-001', 'Linh Giang', 'Nữ', '1999-08-05', 'Đăk Lăk', '0769555555', 'linhgiang58999@gmail.com');
+insert into kymdan.nhan_vien (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values ('NV-002', 'Giang Linh', 'Nữ', '1999-08-05', 'Đăk Lăk', '0769555555', 'gianglinh58999@gmail.com');
 insert into kymdan.nhan_vien_giao_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values ('NVGH-001', 'Shipper', 'Nam', '1999-05-30', 'Sài Gòn', '0905111111', 'shipper@gmail.com');
 insert into kymdan.khach_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values (1, 'SuPea Jr', 'Nam', '1995-05-27', 'Quảng Nam', '0905999999', 'supea@gmail.com');
 
 insert into kymdan.tai_khoan (ma, ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien) values (1, 'Linh Giang', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 1, 'NV-001');
+insert into kymdan.tai_khoan (ma, ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien) values (5, 'Giang Linh', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 1, 'NV-002');
 insert into kymdan.tai_khoan (ma, ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values (2, 'Shipper', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 2, 'NVGH-001');
 insert into kymdan.tai_khoan (ma, ten_dang_nhap, mat_khau, ma_quyen, ma_khach_hang) values (3, 'SuPea Jr', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 3, 1);
 
@@ -167,17 +169,61 @@ insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) v
 insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('55560000', '2020-11-28', 'SP-081', 'NV-001');
 insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('56860000', '2020-11-28', 'SP-082', 'NV-001');
 
-insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-111', 'Khuyến mãi đợt 1', 'Mừng ngày của Mẹ', '2021-06-28', '2021-07-28', 'NV-001');
-insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-222', 'Khuyến mãi đợt 2', 'Mừng ngày của Ba', '2021-07-28', '2021-08-28', 'NV-001');
-insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-333', 'Khuyến mãi đợt 3', 'Mừng ngày của Thầy', '2021-08-28', '2021-08-31', 'NV-001');
-insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-555', 'Khuyến mãi đợt 5', 'Mừng ngày Quốc Khánh', '2021-09-01', '2021-09-05', 'NV-001');
-insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-666', 'Khuyến mãi đợt 6', 'Mừng ngày Quốc tế lao động', '2021-05-01', '2021-05-05', 'NV-001');
+insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-111', 'Khuyến mãi đợt 1', 'Mừng ngày Quốc tế lao động', '2021-05-01', '2021-05-05', 'NV-001');
+insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-222', 'Khuyến mãi đợt 2', 'Mừng ngày của Mẹ', '2021-06-28', '2021-07-28', 'NV-001');
+insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-333', 'Khuyến mãi đợt 3', 'Mừng ngày của Ba', '2021-07-28', '2021-08-28', 'NV-001');
+insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-555', 'Khuyến mãi đợt 5', 'Khuyến mãi mùa CoVid', '2021-08-17', '2021-08-31', 'NV-001');
+insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-666', 'Khuyến mãi đợt 6', 'Mừng ngày Quốc Khánh', '2021-09-01', '2021-09-05', 'NV-001');
 
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-001');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-002');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-003');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-004');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-005');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('5', 'KM-111', 'SP-001');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-002');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-111', 'SP-003');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-005');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-006');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-041');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-042');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-043');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-044');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-045');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-011');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-012');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-014');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-015');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-016');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-055');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-056');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-057');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-058');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-022');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-023');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-024');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-025');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-026');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-061');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-062');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-063');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-064');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-065');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-027');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-028');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-029');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-030');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-031');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-071');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-072');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-073');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-074');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-075');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-007');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-008');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-009');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-010');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-076');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-077');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-078');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-079');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-080');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-081');
 
 -- DELIMITER //
 -- CREATE PROCEDURE SP_LAY_GIA_HIEN_TAI(ngay DATE, ma varchar(10))

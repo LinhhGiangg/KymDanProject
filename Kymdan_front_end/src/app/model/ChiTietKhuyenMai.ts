@@ -1,6 +1,9 @@
+import {SanPham} from './SanPham';
+import {KhuyenMai} from './KhuyenMai';
+
 export class ChiTietKhuyenMai {
   ma : number;
   giamGia: string;
-  maKhuyenMai: string;
-  maSanPham: string;
+  khuyenMai: KhuyenMai;
+  sanPham: SanPham;
 }

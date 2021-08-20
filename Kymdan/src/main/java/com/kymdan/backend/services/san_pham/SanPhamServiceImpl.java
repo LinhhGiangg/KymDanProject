@@ -1,13 +1,18 @@
 package com.kymdan.backend.services.san_pham;
 
+import com.kymdan.backend.entity.ChiTietGia;
+import com.kymdan.backend.entity.ChiTietKhuyenMai;
 import com.kymdan.backend.entity.SanPham;
 import com.kymdan.backend.model.SanPhamDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
+import com.kymdan.backend.repository.ChiTietGiaRepository;
+import com.kymdan.backend.repository.ChiTietKhuyenMaiRepository;
 import com.kymdan.backend.repository.LoaiSanPhamRepository;
 import com.kymdan.backend.repository.SanPhamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +23,12 @@ public class SanPhamServiceImpl implements SanPhamService {
 
     @Autowired
     private LoaiSanPhamRepository loaiSanPhamRepository;
+
+    @Autowired
+    private ChiTietGiaRepository chiTietGiaRepository;
+
+    @Autowired
+    private ChiTietKhuyenMaiRepository chiTietKhuyenMaiRepository;
 
     @Override
     public List<SanPham> locTheoMaLoai(String maLoai) {
@@ -52,13 +63,13 @@ public class SanPhamServiceImpl implements SanPhamService {
 
         if (ketQua == null && cungLoai.size() != 0) {
             ketQua = cungLoai.get(0);
-//            long giaThapNhat = Long.parseLong(ketQua.getGia());
-//            for (SanPham sanPham : cungLoai) {
-//                if (Long.parseLong(ketQua.getGia()) < giaThapNhat) {
-//                    giaThapNhat = Long.parseLong(ketQua.getGia());
-//                    ketQua = sanPham;
-//                }
-//            }
+            long rongNhoNhat = Long.parseLong(ketQua.getRong());
+            for (SanPham sanPham : cungLoai) {
+                if (Long.parseLong(ketQua.getRong()) < rongNhoNhat) {
+                    rongNhoNhat = Long.parseLong(ketQua.getRong());
+                    ketQua = sanPham;
+                }
+            }
         }
 
         return ketQua;
@@ -97,9 +108,7 @@ public class SanPhamServiceImpl implements SanPhamService {
     public ThongBaoDTO sua(SanPhamDTO sanPhamDTO) {
         SanPham sanPham = this.sanPhamRepository.findById(sanPhamDTO.getMa()).orElse(null);
         if (sanPham != null) {
-//            sanPham.setGia(sanPhamDTO.getGia());
             sanPham.setSoLuong(sanPhamDTO.getSoLuong());
-            sanPham.setGiamGia(sanPhamDTO.getGiamGia());
             this.sanPhamRepository.save(sanPham);
             return new ThongBaoDTO("Sửa thành công !");
         } else return new ThongBaoDTO("Lỗi hệ thống ! Vui lòng thử lại sau !");
@@ -112,9 +121,7 @@ public class SanPhamServiceImpl implements SanPhamService {
         sanPham.setDai("200");
         sanPham.setRong(sanPhamDTO.getKichThuoc().split("x")[0]);
         sanPham.setCao(sanPhamDTO.getDoDay());
-//        sanPham.setGia(sanPhamDTO.getGia());
         sanPham.setSoLuong(sanPhamDTO.getSoLuong());
-        sanPham.setGiamGia(sanPhamDTO.getGiamGia());
         sanPham.setLoaiSanPham(this.loaiSanPhamRepository.findById(sanPhamDTO.getMaLoai()).orElse(null));
         this.sanPhamRepository.save(sanPham);
         return new ThongBaoDTO("Tạo mới thành công !");
@@ -132,5 +139,53 @@ public class SanPhamServiceImpl implements SanPhamService {
         }
 
         return null;
+    }
+
+    @Override
+    public ChiTietGia timGiaBangMaSanPham(String ma) {
+        List<ChiTietGia> danhSach = this.chiTietGiaRepository.findAll();
+        List<ChiTietGia> danhSachCungSanPham = new ArrayList<>();
+        ChiTietGia ketQua;
+
+        for (ChiTietGia chiTietGia : danhSach) {
+            if (chiTietGia.getSanPham().getMa().equals(ma)) {
+                danhSachCungSanPham.add(chiTietGia);
+            }
+        }
+
+        ketQua = danhSachCungSanPham.get(0);
+        LocalDate ngayGanNhat = ketQua.getNgayThayDoi();
+        for (ChiTietGia chiTietGia : danhSachCungSanPham) {
+            if (chiTietGia.getNgayThayDoi().isAfter(ngayGanNhat)) {
+                ketQua = chiTietGia;
+                ngayGanNhat = chiTietGia.getNgayThayDoi();
+            }
+        }
+
+        return ketQua;
+    }
+
+    @Override
+    public ChiTietKhuyenMai timKhuyenMaiBangMaSanPham(String ma) {
+        List<ChiTietKhuyenMai> danhSach = this.chiTietKhuyenMaiRepository.findAll();
+        List<ChiTietKhuyenMai> danhSachCungSanPham = new ArrayList<>();
+        ChiTietKhuyenMai ketQua = null;
+
+        for (ChiTietKhuyenMai chiTietKhuyenMai : danhSach) {
+            if (chiTietKhuyenMai.getSanPham().getMa().equals(ma)) {
+                danhSachCungSanPham.add(chiTietKhuyenMai);
+            }
+        }
+
+        for (ChiTietKhuyenMai chiTietKhuyenMai : danhSachCungSanPham) {
+            if (LocalDate.now().isBefore(chiTietKhuyenMai.getKhuyenMai().getNgayBatDau())
+                    || LocalDate.now().isAfter(chiTietKhuyenMai.getKhuyenMai().getNgayKetThuc())) {
+                continue;
+            }
+            ketQua = chiTietKhuyenMai;
+            break;
+        }
+
+        return ketQua;
     }
 }

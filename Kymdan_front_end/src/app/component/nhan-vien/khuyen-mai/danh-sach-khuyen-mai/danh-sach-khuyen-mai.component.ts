@@ -5,6 +5,8 @@ import {KhuyenMaiService} from '../../../../service/khuyen-mai.service';
 import {ThemKhuyenMaiComponent} from '../them-khuyen-mai/them-khuyen-mai.component';
 import {SuaKhuyenMaiComponent} from '../sua-khuyen-mai/sua-khuyen-mai.component';
 import {XoaKhuyenMaiComponent} from '../xoa-khuyen-mai/xoa-khuyen-mai.component';
+import {ChiTietKhuyenMai} from '../../../../model/ChiTietKhuyenMai';
+import {ChiTietKhuyenMaiComponent} from '../chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component';
 
 @Component({
   selector: 'app-danh-sach-khuyen-mai',
@@ -62,7 +64,7 @@ export class DanhSachKhuyenMaiComponent implements OnInit {
     this.thongBao = '';
     const dialogRefEdit = this.dialog.open(SuaKhuyenMaiComponent, {
       width: '750px',
-      height: '500px',
+      height: '505px',
       data: {thongTin: duLieu},
       disableClose: true
     });
@@ -86,8 +88,28 @@ export class DanhSachKhuyenMaiComponent implements OnInit {
     })
   }
 
-  view(maLoai) {
-    this.router.navigate(['/danh-sach-san-pham', {thongTin: maLoai}]).then(() => {
+  xemChiTiet(ma) {
+    this.khuyenMaiService.timBangMa(ma).subscribe(
+      (duLieu) => {
+        this.taoFormXem(duLieu)
+      },
+      () => {
+      },
+      () => {
+      });
+  }
+
+  taoFormXem(duLieu) {
+    this.thongBao = '';
+    const dialogRefEdit = this.dialog.open(ChiTietKhuyenMaiComponent, {
+      width: '750px',
+      height: '495px',
+      data: {thongTin: duLieu},
+      disableClose: true
     });
+
+    dialogRefEdit.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    })
   }
 }

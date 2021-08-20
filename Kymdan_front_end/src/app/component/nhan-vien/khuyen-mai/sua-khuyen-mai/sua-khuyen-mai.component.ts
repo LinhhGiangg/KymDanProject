@@ -5,6 +5,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog
 import {ActivatedRoute, Router} from '@angular/router';
 import {ThongBaoComponent} from '../../../cau-hinh/thong-bao/thong-bao.component';
 import {MatDatepicker} from '@angular/material/datepicker';
+import {TaiKhoanService} from '../../../../service/tai-khoan.service';
 
 @Component({
   selector: 'app-sua-khuyen-mai',
@@ -12,6 +13,7 @@ import {MatDatepicker} from '@angular/material/datepicker';
   styleUrls: ['./sua-khuyen-mai.component.css']
 })
 export class SuaKhuyenMaiComponent implements OnInit {
+  public tenDangNhap;
   public formSua: FormGroup;
   public chiTiet;
   public thongBao;
@@ -21,6 +23,7 @@ export class SuaKhuyenMaiComponent implements OnInit {
   public gioiHanNgay = new Date('yyyy/MM/dd');
 
   constructor(
+    public taiKhoanService: TaiKhoanService,
     public khuyenMaiService: KhuyenMaiService,
     public dialogRef: MatDialogRef<SuaKhuyenMaiComponent>,
     @Inject(MAT_DIALOG_DATA) public duLieu: any,
@@ -33,6 +36,7 @@ export class SuaKhuyenMaiComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tenDangNhap = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
     this.khuyenMaiService.timChiTietBangMa(this.duLieu.thongTin.ma)
       .subscribe(ketQua => {
           this.chiTiet = ketQua;
@@ -50,16 +54,13 @@ export class SuaKhuyenMaiComponent implements OnInit {
       moTa: [this.duLieu.thongTin.moTa, [Validators.required]],
       ngayBatDau: [this.duLieu.thongTin.ngayBatDau, [Validators.required]],
       ngayKetThuc: [this.duLieu.thongTin.ngayKetThuc, [Validators.required]],
-      giamGia: [this.giamGia, [Validators.required, Validators.pattern('^([0-9]{1})([0-9]?)$')]],
+      giamGia: [this.giamGia, [Validators.pattern('^([0-9]{1})([0-9]?)$')]],
+      tenNhanVien: [this.tenDangNhap]
     });
   }
 
   sua() {
-    if (this.formSua.value.giamGia == null) {
-      this.formSua.value.giamGia = this.giamGia;
-      alert('vô : ' + this.formSua.value.giamGia);
-    }
-    if (this.formSua.valid) {
+    if (this.formSua.valid && this.formSua.value.giamGia !== '') {
       this.formSua.value.ten = '';
       if (this.duLieu.thongTin.ngayBatDau !== this.formSua.value.ngayBatDau) {
         this.formSua.value.ten += '1';
@@ -93,11 +94,20 @@ export class SuaKhuyenMaiComponent implements OnInit {
           viTri.focus();
           break;
         }
+        if (this.giamGia === '') {
+          const viTri = this.el.nativeElement.querySelector('[formControlName=giamGia]');
+          viTri.focus();
+          break;
+        }
       }
     }
   }
 
   gioiHanNgayKetThuc(ngayBatDau: MatDatepicker<any>) {
+    this.gioiHanNgay = ngayBatDau._datepickerInput.value;
+  }
+
+  chonLaiNgayKetThuc(ngayBatDau: MatDatepicker<any>) {
     this.gioiHanNgay = ngayBatDau._datepickerInput.value;
   }
 }

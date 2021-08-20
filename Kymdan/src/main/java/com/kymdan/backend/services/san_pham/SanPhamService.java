@@ -1,5 +1,7 @@
 package com.kymdan.backend.services.san_pham;
 
+import com.kymdan.backend.entity.ChiTietGia;
+import com.kymdan.backend.entity.ChiTietKhuyenMai;
 import com.kymdan.backend.entity.SanPham;
 import com.kymdan.backend.model.SanPhamDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
@@ -22,4 +24,8 @@ public interface SanPhamService {
     ThongBaoDTO taoMoi(SanPhamDTO sanPhamDTO);
 
     SanPham timBangKichThuoc(SanPhamDTO sanPhamDTO);
+
+    ChiTietGia timGiaBangMaSanPham(String ma);
+
+    ChiTietKhuyenMai timKhuyenMaiBangMaSanPham(String ma);
 }
