@@ -24,7 +24,7 @@ public class KhuyenMai {
     @Column(name = "ngay_ket_thuc", columnDefinition = "DATE")
     private LocalDate ngayKetThuc;
 
-    // relationship
+    // moi quan he
 
     @ManyToOne
     @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")

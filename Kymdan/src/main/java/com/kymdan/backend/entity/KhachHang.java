@@ -33,11 +33,15 @@ public class KhachHang {
     @Column(name = "email", columnDefinition = "VARCHAR(50)")
     private String email;
 
-    // relationship
+    // moi quan he
 
     @OneToOne(mappedBy = "khachHang", cascade = CascadeType.ALL)
     @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     private TaiKhoan taiKhoan;
+
+    @OneToOne(mappedBy = "khachHang", cascade = CascadeType.ALL)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+    private GioHang gioHang;
 
     @OneToMany(mappedBy = "khachHang", cascade = CascadeType.ALL)
     @JsonBackReference
@@ -47,7 +51,7 @@ public class KhachHang {
     }
 
     public KhachHang(Integer ma, String ten, String gioiTinh, LocalDate ngaySinh, String diaChi, String soDienThoai,
-                     String email, TaiKhoan taiKhoan, List<DonHang> danhSachDonHang) {
+                     String email, TaiKhoan taiKhoan, GioHang gioHang, List<DonHang> danhSachDonHang) {
         this.ma = ma;
         this.ten = ten;
         this.gioiTinh = gioiTinh;
@@ -56,6 +60,7 @@ public class KhachHang {
         this.soDienThoai = soDienThoai;
         this.email = email;
         this.taiKhoan = taiKhoan;
+        this.gioHang = gioHang;
         this.danhSachDonHang = danhSachDonHang;
     }
 
@@ -121,6 +126,14 @@ public class KhachHang {
 
     public void setTaiKhoan(TaiKhoan taiKhoan) {
         this.taiKhoan = taiKhoan;
+    }
+
+    public GioHang getGioHang() {
+        return gioHang;
+    }
+
+    public void setGioHang(GioHang gioHang) {
+        this.gioHang = gioHang;
     }
 
     public List<DonHang> getDanhSachDonHang() {

@@ -15,7 +15,7 @@ public class TaiKhoan {
     @Column(name = "mat_khau", columnDefinition = "VARCHAR(100)")
     private String matKhau;
 
-    // relationship
+    // moi quan he
 
     @ManyToOne
     @JoinColumn(name = "ma_quyen", referencedColumnName = "ma", columnDefinition = "INT")

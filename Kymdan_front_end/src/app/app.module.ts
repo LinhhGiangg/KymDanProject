@@ -34,6 +34,7 @@ import {ThemKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/them-khuy
 import {SuaKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/sua-khuyen-mai/sua-khuyen-mai.component';
 import {XoaKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/xoa-khuyen-mai/xoa-khuyen-mai.component';
 import {ChiTietKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component';
+import {GioHangComponent} from './component/khach-hang/gio-hang/gio-hang.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import {ChiTietKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/chi-ti
     ThemKhuyenMaiComponent,
     SuaKhuyenMaiComponent,
     XoaKhuyenMaiComponent,
-    ChiTietKhuyenMaiComponent
+    ChiTietKhuyenMaiComponent,
+    GioHangComponent
   ],
   imports: [
     BrowserModule,

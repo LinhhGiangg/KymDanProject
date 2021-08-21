@@ -15,7 +15,7 @@ public class Quyen {
     @Column(name = "ten", columnDefinition = "VARCHAR(50)")
     private String ten;
 
-    // relationship
+    // moi quan he
 
     @OneToMany(mappedBy = "quyen")
     @JsonBackReference

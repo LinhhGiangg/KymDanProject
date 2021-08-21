@@ -33,7 +33,7 @@ public class LoaiSanPham {
     @Column(name = "ngay_tao", columnDefinition = "DATE")
     private LocalDate ngayTao;
 
-    // relationship
+    // moi quan he
 
     @OneToMany(mappedBy = "loaiSanPham", cascade = CascadeType.ALL)
     @JsonBackReference

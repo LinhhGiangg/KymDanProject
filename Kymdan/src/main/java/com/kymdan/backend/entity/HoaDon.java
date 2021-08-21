@@ -18,7 +18,7 @@ public class HoaDon {
     @Column(name = "tong_tien", columnDefinition = "VARCHAR(15)")
     private String tongTien;
 
-    // relationship
+    // moi quan he
 
     @OneToOne(mappedBy = "hoaDon")
     @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)

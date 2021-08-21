@@ -119,9 +119,16 @@ export class DatHangComponent implements OnInit {
             // tslint:disable-next-line:radix
             this.soLuong = Number.parseInt(this.thongTin.split(',')[3]);
             this.giaGoc = this.thongTin.split(',')[4];
+
             this.giaBanHienThi = this.thongTin.split(',')[5];
-            // tslint:disable-next-line:radix
-            this.giaBan = (Number.parseInt(this.giaGoc) - Number.parseInt(this.giaGoc) * Number.parseInt(this.giaBanHienThi) / 100);
+            if (this.giaBanHienThi === undefined) {
+              this.giaBanHienThi = this.giaGoc;
+              this.giaBan = this.giaGoc;
+            } else {
+              // tslint:disable-next-line:radix
+              this.giaBan = (Number.parseInt(this.giaGoc) - Number.parseInt(this.giaGoc) * Number.parseInt(this.giaBanHienThi) / 100);
+            }
+
             this.thayDoiGia(this.giaBan, this.soLuong);
             this.giaBanHienThi = DatHangComponent.hienThiGia(this.giaBan);
             this.giaGoc = DatHangComponent.hienThiGia(this.giaGoc);
@@ -197,7 +204,7 @@ export class DatHangComponent implements OnInit {
           color: 'gold',
           layout: 'horizontal',
           label: 'paypal',
-          height: 55,
+          height: 35,
         },
 
         createOrder: (data, actions) => {
@@ -219,7 +226,7 @@ export class DatHangComponent implements OnInit {
 
         onApprove: (data, actions) => {
           return actions.order.capture().then(() => {
-            alert('Đã thanh toán !')
+            console.log('ok')
           });
         },
 
@@ -232,5 +239,9 @@ export class DatHangComponent implements OnInit {
 
   thanhToan() {
     this.xacNhanThanhToan = true;
+  }
+
+  thayDoiThongTin() {
+    this.xacNhanThanhToan = false;
   }
 }

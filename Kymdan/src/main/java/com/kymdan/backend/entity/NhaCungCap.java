@@ -23,7 +23,7 @@ public class NhaCungCap {
     @Column(name = "so_dien_thoai", columnDefinition = "VARCHAR(20)")
     private String soDienThoai;
 
-    // relationship
+    // moi quan he
 
     @OneToMany(mappedBy = "nhaCungCap")
     @JsonBackReference

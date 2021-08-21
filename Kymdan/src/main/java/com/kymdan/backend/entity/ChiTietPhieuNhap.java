@@ -15,7 +15,7 @@ public class ChiTietPhieuNhap {
     @Column(name = "gia", columnDefinition = "VARCHAR(15)")
     private String gia;
 
-    // relationship
+    // moi quan he
 
     @ManyToOne
     @JoinColumn(name = "ma_phieu_nhap", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")

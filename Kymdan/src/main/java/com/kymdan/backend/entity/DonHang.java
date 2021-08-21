@@ -34,7 +34,7 @@ public class DonHang {
     @Column(name = "cach_thanh_toan", columnDefinition = "VARCHAR(50)")
     private String cachThanhToan;
 
-    // relationship
+    // moi quan he
 
     @ManyToOne
     @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")

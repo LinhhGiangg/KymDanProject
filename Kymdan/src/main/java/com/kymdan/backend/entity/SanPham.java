@@ -24,11 +24,15 @@ public class SanPham {
     @Column(name = "so_luong", columnDefinition = "VARCHAR(5)")
     private String soLuong;
 
-    // relationship
+    // moi quan he
 
     @ManyToOne()
     @JoinColumn(name = "ma_loai_san_pham", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
     private LoaiSanPham loaiSanPham;
+
+    @OneToMany(mappedBy = "sanPham", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<ChiTietGioHang> danhSachChiTietGioHang;
 
     @OneToMany(mappedBy = "sanPham", cascade = CascadeType.ALL)
     @JsonBackReference
@@ -53,8 +57,8 @@ public class SanPham {
     public SanPham() {
     }
 
-    public SanPham(String ma, String dai, String rong, String cao, String soLuong,
-                   LoaiSanPham loaiSanPham, List<ChiTietDonHang> danhSachChiTietDonHang,
+    public SanPham(String ma, String dai, String rong, String cao, String soLuong, LoaiSanPham loaiSanPham,
+                   List<ChiTietGioHang> danhSachChiTietGioHang, List<ChiTietDonHang> danhSachChiTietDonHang,
                    List<ChiTietDatHang> danhSachChiTietDatHang, List<ChiTietPhieuNhap> danhSachChiTietPhieuNhap,
                    List<ChiTietKhuyenMai> danhSachChiTietKhuyenMai, List<ChiTietGia> danhSachChiTietGia) {
         this.ma = ma;
@@ -63,6 +67,7 @@ public class SanPham {
         this.cao = cao;
         this.soLuong = soLuong;
         this.loaiSanPham = loaiSanPham;
+        this.danhSachChiTietGioHang = danhSachChiTietGioHang;
         this.danhSachChiTietDonHang = danhSachChiTietDonHang;
         this.danhSachChiTietDatHang = danhSachChiTietDatHang;
         this.danhSachChiTietPhieuNhap = danhSachChiTietPhieuNhap;
@@ -116,6 +121,14 @@ public class SanPham {
 
     public void setLoaiSanPham(LoaiSanPham loaiSanPham) {
         this.loaiSanPham = loaiSanPham;
+    }
+
+    public List<ChiTietGioHang> getDanhSachChiTietGioHang() {
+        return danhSachChiTietGioHang;
+    }
+
+    public void setDanhSachChiTietGioHang(List<ChiTietGioHang> danhSachChiTietGioHang) {
+        this.danhSachChiTietGioHang = danhSachChiTietGioHang;
     }
 
     public List<ChiTietDonHang> getDanhSachChiTietDonHang() {

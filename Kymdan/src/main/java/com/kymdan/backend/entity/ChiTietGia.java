@@ -16,7 +16,7 @@ public class ChiTietGia {
     @Column(name = "ngay_thay_doi", columnDefinition = "DATE")
     private LocalDate ngayThayDoi;
 
-    // relationship
+    // moi quan he
 
     @ManyToOne
     @JoinColumn(name = "ma_san_pham", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")

@@ -38,15 +38,19 @@
       <a><img style="height: 100px" src="assets/logo.png" alt="icon" routerLink=""></a>
     </div>
     <div class="col-sm-3">
-      <div class="row" style="font-size: 17px; margin-top: 12%">
-        <a routerLink="/">TRANG CHỦ</a>
+      <div class="row" style="font-size: 17px; margin-top: 12%; text-align: right">
+        <a routerLink="/" style="margin-left: 39%"
+           *ngIf="!taiKhoanHienTai || taiKhoanHienTai.quyen !== 'Khách Hàng'">TRANG CHỦ</a>
+
+        <a routerLink="/"  style="margin-left: 15%"
+           *ngIf="taiKhoanHienTai && taiKhoanHienTai.quyen === 'Khách Hàng'">TRANG CHỦ</a>
 
         <a [routerLink]="['/danh-sach-loai']" style="margin: 0 25px"
-           *ngIf="!taiKhoanHienTai || taiKhoanHienTai.quyen !== 'Nhân Viên Giao Hàng'">SẢN PHẨM</a>
+           *ngIf="!taiKhoanHienTai || taiKhoanHienTai.quyen === 'Khách Hàng'">SẢN PHẨM</a>
 
         <a [routerLink]="['/gio-hang']" *ngIf="taiKhoanHienTai && taiKhoanHienTai.quyen === 'Khách Hàng'">GIỎ HÀNG</a>
 
-        <a *ngIf="taiKhoanHienTai && taiKhoanHienTai.quyen === 'Nhân Viên'" href="#">
+        <a *ngIf="taiKhoanHienTai && taiKhoanHienTai.quyen === 'Nhân Viên'" href="#" style="margin: 0 25px">
           <li class="list-inline-item dropdown show">
             <a class="dropdown-toggle nav-link p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span>QUẢN LÝ</span>
@@ -65,7 +69,7 @@
         </a>
 
         <a [routerLink]="['/chuyen-hang']" style="margin: 0 25px"
-           *ngIf="taiKhoanHienTai && taiKhoanHienTai.quyen === 'Nhân Viên Giao Hàng'">QUẢN LÝ ĐƠN HÀNG</a>
+           *ngIf="taiKhoanHienTai && taiKhoanHienTai.quyen === 'Nhân Viên Giao Hàng'">ĐƠN HÀNG</a>
       </div>
     </div>
   </div>

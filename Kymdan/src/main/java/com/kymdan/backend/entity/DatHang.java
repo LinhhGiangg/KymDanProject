@@ -15,7 +15,7 @@ public class DatHang {
     @Column(name = "ngay_dat", columnDefinition = "DATE")
     private LocalDate ngayDat;
 
-    // relationship
+    // moi quan he
 
     @OneToOne
     @JoinColumn(name = "ma_phieu_nhap", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")

@@ -4,7 +4,20 @@
       <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-          <h1>Thông tin khách hàng</h1>
+          <div class="row" style="margin-left: 1px" *ngIf="!xacNhanThanhToan">
+            <h1>Thông tin khách hàng</h1>
+          </div>
+          <div class="row" *ngIf="xacNhanThanhToan">
+            <div class="col-sm-7">
+              <h1>Xác nhận thông tin</h1>
+            </div>
+            <div class="col-sm-5">
+              <button class="btn btn-success" style="height: 35px; width: 152px; margin-left: 27px"
+                      (click)="thayDoiThongTin()">
+                Thay đổi thông tin
+              </button>
+            </div>
+          </div>
         </div>
         <div class="col-sm-2"></div>
       </div>
@@ -14,7 +27,7 @@
           <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
-              <mat-form-field class="example-full-width">
+              <mat-form-field class="example-full-width" *ngIf="!xacNhanThanhToan">
                 <mat-label>Họ tên người nhận</mat-label>
                 <input matInput formControlName="ten">
                 <mat-error *ngIf="formDatHang.controls.ten.errors?.required">
@@ -28,6 +41,11 @@
                 <mat-error *ngIf="formDatHang.controls.ten.errors?.maxlength">Họ tên người nhận tối đa 50 kí tự.
                 </mat-error>
               </mat-form-field>
+
+              <mat-form-field class="example-full-width" *ngIf="xacNhanThanhToan">
+                <mat-label>Họ tên người nhận</mat-label>
+                <input matInput formControlName="ten" readonly>
+              </mat-form-field>
             </div>
             <div class="col-sm-2"></div>
           </div>
@@ -35,7 +53,7 @@
           <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
-              <mat-form-field class="example-full-width">
+              <mat-form-field class="example-full-width" *ngIf="!xacNhanThanhToan">
                 <mat-label>Số điện thoại</mat-label>
                 <input matInput formControlName="soDienThoai">
                 <mat-error *ngIf="formDatHang.controls.soDienThoai.errors?.required">Số điện thoại không đươc để trống.
@@ -43,18 +61,10 @@
                 <mat-error *ngIf="formDatHang.controls.soDienThoai.errors?.pattern">Số điện thoại không đúng định dạng.
                 </mat-error>
               </mat-form-field>
-            </div>
-            <div class="col-sm-2"></div>
-          </div>
 
-          <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-              <mat-form-field class="example-full-width">
-                <mat-label>Địa chỉ</mat-label>
-                <input matInput formControlName="diaChi">
-                <mat-error *ngIf="formDatHang.controls.diaChi.errors?.required">Địa chỉ không đươc để trống.
-                </mat-error>
+              <mat-form-field class="example-full-width" *ngIf="xacNhanThanhToan">
+                <mat-label>Số điện thoại</mat-label>
+                <input matInput formControlName="soDienThoai" readonly>
               </mat-form-field>
             </div>
             <div class="col-sm-2"></div>
@@ -63,11 +73,34 @@
           <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
-              <mat-form-field class="example-full-width">
+              <mat-form-field class="example-full-width" *ngIf="!xacNhanThanhToan">
+                <mat-label>Địa chỉ</mat-label>
+                <input matInput formControlName="diaChi">
+                <mat-error *ngIf="formDatHang.controls.diaChi.errors?.required">Địa chỉ không đươc để trống.
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width" *ngIf="xacNhanThanhToan">
+                <mat-label>Địa chỉ</mat-label>
+                <input matInput formControlName="diaChi" readonly>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+              <mat-form-field class="example-full-width" *ngIf="!xacNhanThanhToan">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email">
                 <mat-error *ngIf="formDatHang.controls.email.errors?.required">Email không được để trống.</mat-error>
                 <mat-error *ngIf="formDatHang.controls.email.errors?.pattern">Sai định dạng email.</mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width" *ngIf="xacNhanThanhToan">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" readonly>
               </mat-form-field>
             </div>
             <div class="col-sm-2"></div>
@@ -80,21 +113,26 @@
           <div class="row pb-3 mt-2">
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
-              <button mat-button class="btn btn-success" *ngIf="!xacNhanThanhToan"
-                      [routerLink]="['/danh-sach-loai']"
-                      style="width: 143px; margin-right: 15px; margin-left: 14%">
-                Tiếp tục mua sắm
-              </button>
-              <button mat-button class="btn btn-success" *ngIf="!xacNhanThanhToan"
-                      style="background-color: rgba(255,0,0,0.77)"
-                      (click)="thanhToan()">
-                Thanh toán
-              </button>
-              <!--              <button mat-button class="btn btn-success" *ngIf="xacNhanThanhToan"-->
-              <!--                      style="background-color: rgba(255,0,0,0.77)">-->
-              <!--                Thanh toán khi nhận hàng-->
-              <!--              </button>-->
-              <p #paypalRef [hidden]="!xacNhanThanhToan" style="width: 15px"></p>
+              <div class="row">
+                <button mat-button class="btn btn-success" *ngIf="!xacNhanThanhToan"
+                        [routerLink]="['/danh-sach-loai']"
+                        style="width: 143px; margin-right: 15px; margin-left: 14%">
+                  Tiếp tục mua sắm
+                </button>
+                <button mat-button class="btn btn-success" *ngIf="!xacNhanThanhToan"
+                        style="background-color: rgba(255,0,0,0.77)"
+                        (click)="thanhToan()">
+                  Thanh toán
+                </button>
+              </div>
+
+              <div class="row">
+                <button mat-button class="btn btn-success" *ngIf="xacNhanThanhToan"
+                        style="background-color: rgba(255,0,0,0.77); width: 195px; height: 35px">
+                  Thanh toán khi nhận hàng
+                </button>
+                <p #paypalRef [hidden]="!xacNhanThanhToan" style="margin-left: 29px"></p>
+              </div>
             </div>
             <div class="col-sm-3"></div>
           </div>
@@ -103,55 +141,54 @@
       </div>
     </div>
 
-    <div class="col-sm-6 pt-1 p-0">
-      <div class="justify-content-center">
-        <h1>Giỏ hàng</h1>
-        <div class="row">
-          <div class="col-sm-3">
-            <img style="width: 100%; margin-bottom: 5px" src="{{loaiSanPham.hinh1}}" alt="">
-            <i class="fa fa-minus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
-               (click)="chonSoLuong(1)"></i>
-            <span class="ml-3 mr-3" style="font-size: 25px; color: green">{{soLuong}}</span>
-            <i class="fa fa-plus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
-               (click)="chonSoLuong(2)"></i>
-          </div>
-
-          <div class="col-sm-9">
-            <h1 style="color: green">{{loaiSanPham.ten}}</h1>
-            <hr style="margin-top: -15px">
-            <h3 style="margin-top: -5px">Kích thước : {{sanPham.rong}} x {{sanPham.dai}} cm</h3>
-            <h3 style="margin-top: -15px">Độ dày : {{sanPham.cao}} cm</h3>
-            <h3 style="margin-top: -15px">Giá gốc : <span style="color: green">{{giaGoc}} VND</span></h3>
-            <h3 style="margin-top: -15px">Giá sau khuyến mãi : <span style="color: green">{{giaBanHienThi}} VND</span>
-            </h3>
-          </div>
+    <div class="col-sm-6 pt-1">
+      <h1>Giỏ hàng</h1>
+      <div class="row">
+        <div class="col-sm-3">
+          <img style="width: 100%; margin-bottom: 5px" src="{{loaiSanPham.hinh1}}" alt="">
+          <i class="fa fa-minus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
+             (click)="chonSoLuong(1)"></i>
+          <span class="ml-3 mr-3" style="font-size: 25px; color: green">{{soLuong}}</span>
+          <i class="fa fa-plus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
+             (click)="chonSoLuong(2)"></i>
         </div>
 
-        <div class="row mt-5">
-          <div class="col-sm-9" style="text-align: left">
-            <h2>Tạm tính</h2>
-            <h2 style="margin-top: -17px">Vận chuyển</h2>
-          </div>
-
-          <div class="col-sm-3" style="text-align: right">
-            <h2 style="margin-right: 15px">{{tongTien}} VND</h2>
-            <h2 style="color: green; margin-top: -17px; margin-right: 15px">Miễn phí</h2>
-          </div>
+        <div class="col-sm-9">
+          <h1 style="color: green">{{loaiSanPham.ten}}</h1>
+          <hr style="margin-top: -15px">
+          <h3 style="margin-top: -5px">Kích thước : {{sanPham.rong}} x {{sanPham.dai}} cm</h3>
+          <h3 style="margin-top: -15px">Độ dày : {{sanPham.cao}} cm</h3>
+          <h3 style="margin-top: -15px">Giá gốc : <span style="color: green">{{giaGoc}} VND</span></h3>
+          <h3 style="margin-top: -15px" *ngIf="giaGoc != giaBanHienThi">
+            Giá khuyến mãi : <span style="color: green">{{giaBanHienThi}} VND</span>
+          </h3>
         </div>
-
-        <hr style="margin-top: -17px">
-
-        <div class="row">
-          <div class="col-sm-9" style="text-align: left">
-            <h2>Tổng</h2>
-          </div>
-
-          <div class="col-sm-3" style="text-align: right">
-            <h2 style="color: red; margin-right: 15px">{{tongTien}} VND</h2>
-          </div>
-        </div>
-
       </div>
+
+      <div class="row mt-5">
+        <div class="col-sm-7" style="text-align: left">
+          <h2>Tạm tính</h2>
+          <h2 style="margin-top: -17px">Vận chuyển</h2>
+        </div>
+
+        <div class="col-sm-5" style="text-align: right">
+          <h2 style="margin-right: 15px">{{tongTien}} VND</h2>
+          <h2 style="color: green; margin-top: -17px; margin-right: 15px">Miễn phí</h2>
+        </div>
+      </div>
+
+      <hr style="margin-top: -17px">
+
+      <div class="row">
+        <div class="col-sm-7" style="text-align: left">
+          <h2>Tổng</h2>
+        </div>
+
+        <div class="col-sm-5" style="text-align: right">
+          <h2 style="color: red; margin-right: 15px">{{tongTien}} VND</h2>
+        </div>
+      </div>
+
     </div>
 
   </div>

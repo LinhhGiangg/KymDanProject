@@ -9,4 +9,5 @@ export class TaiKhoan {
   ngaySinh: string;
   diaChi: string;
   gioiTinh: string;
+  tenCongTy: string;
 }

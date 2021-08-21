@@ -12,7 +12,7 @@ public class ChiTietDatHang {
     @Column(name = "so_luong", columnDefinition = "VARCHAR(5)")
     private String soLuong;
 
-    // relationship
+    // moi quan he
 
     @ManyToOne
     @JoinColumn(name = "ma_dat_hang", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")

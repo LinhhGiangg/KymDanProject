@@ -32,7 +32,10 @@ public class NhanVienGiaoHang {
     @Column(name = "email", columnDefinition = "VARCHAR(50)")
     private String email;
 
-    // relationship
+    @Column(name = "ten_cong_ty", columnDefinition = "VARCHAR(250)")
+    private String tenCongTy;
+
+    // moi quan he
 
     @OneToOne(mappedBy = "nhanVienGiaoHang", cascade = CascadeType.ALL)
     @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
@@ -46,7 +49,8 @@ public class NhanVienGiaoHang {
     }
 
     public NhanVienGiaoHang(String ma, String ten, String gioiTinh, LocalDate ngaySinh, String diaChi,
-                            String soDienThoai, String email, TaiKhoan taiKhoan, List<DonHang> danhSachDonHang) {
+                            String soDienThoai, String email, String tenCongTy, TaiKhoan taiKhoan,
+                            List<DonHang> danhSachDonHang) {
         this.ma = ma;
         this.ten = ten;
         this.gioiTinh = gioiTinh;
@@ -54,6 +58,7 @@ public class NhanVienGiaoHang {
         this.diaChi = diaChi;
         this.soDienThoai = soDienThoai;
         this.email = email;
+        this.tenCongTy = tenCongTy;
         this.taiKhoan = taiKhoan;
         this.danhSachDonHang = danhSachDonHang;
     }
@@ -128,5 +133,13 @@ public class NhanVienGiaoHang {
 
     public void setDanhSachDonHang(List<DonHang> danhSachDonHang) {
         this.danhSachDonHang = danhSachDonHang;
+    }
+
+    public String getTenCongTy() {
+        return tenCongTy;
+    }
+
+    public void setTenCongTy(String tenCongTy) {
+        this.tenCongTy = tenCongTy;
     }
 }

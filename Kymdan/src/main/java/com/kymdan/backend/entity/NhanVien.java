@@ -33,7 +33,7 @@ public class NhanVien {
     @Column(name = "email", columnDefinition = "VARCHAR(50)")
     private String email;
 
-    // relationship
+    // moi quan he
 
     @OneToOne(mappedBy = "nhanVien", cascade = CascadeType.ALL)
     @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
