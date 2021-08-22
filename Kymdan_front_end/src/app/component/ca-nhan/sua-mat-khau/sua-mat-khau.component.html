@@ -8,7 +8,7 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
         <mat-form-field class="example-full-width">
-          <mat-label>Mật khẩu cũ</mat-label>
+          <mat-label>Mật khẩu cũ<sup class="text-danger"> *</sup></mat-label>
           <input type="password" matInput formControlName="matKhauCu">
           <mat-error *ngIf="formSuaMatKhau.controls.matKhauCu.errors?.required">Mật khẩu cũ không được để trống.
           </mat-error>
@@ -21,7 +21,7 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
         <mat-form-field class="example-full-width">
-          <mat-label>Mật khẩu mới</mat-label>
+          <mat-label>Mật khẩu mới<sup class="text-danger"> *</sup></mat-label>
           <input type="password" matInput formControlName="matKhauMoi">
           <mat-error *ngIf="formSuaMatKhau.controls.matKhauMoi.errors?.required">Mật khẩu mới không được để trống.
           </mat-error>
@@ -34,7 +34,7 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
         <mat-form-field class="example-full-width">
-          <mat-label>Xác nhận mật khẩu</mat-label>
+          <mat-label>Xác nhận mật khẩu<sup class="text-danger"> *</sup></mat-label>
           <input type="password" matInput formControlName="xacNhanMatKhauMoi" [errorStateMatcher]="soTrung">
           <mat-error *ngIf="formSuaMatKhau.controls.xacNhanMatKhauMoi.errors?.required">
             Xác nhận mật khẩu không đươc để trống.

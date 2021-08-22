@@ -21,7 +21,7 @@
 
         <div class="row">
           <mat-form-field>
-            <mat-label>Đặc tính 1</mat-label>
+            <mat-label>Đặc tính 1<sup class="text-danger"> *</sup></mat-label>
             <input matInput formControlName="moTa1">
             <mat-error *ngIf="formSua.controls.moTa1.errors?.required">Mô tả này không đươc để trống.
             </mat-error>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="row">
-          <p>Hình ảnh minh họa : </p>
+          <p>Hình ảnh minh họa<sup class="text-danger"> *</sup> : </p>
         </div>
 
         <div class="row mb-1">

@@ -14,7 +14,7 @@
       <div>
         <div class="row">
           <mat-form-field>
-            <mat-label>Mã loại</mat-label>
+            <mat-label>Mã loại<sup class="text-danger"> *</sup></mat-label>
             <input matInput formControlName="ma">
             <mat-error *ngIf="formTaoMoi.controls.ma.errors?.required">Mã loại không đươc để trống.
             </mat-error>

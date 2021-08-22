@@ -1,5 +1,6 @@
 package com.kymdan.backend.controllers;
 
+import com.kymdan.backend.entity.ChiTietGioHang;
 import com.kymdan.backend.entity.KhachHang;
 import com.kymdan.backend.entity.LoaiSanPham;
 import com.kymdan.backend.model.TaiKhoanDTO;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/khachHang")
@@ -37,5 +40,11 @@ public class KhachHangController {
     public ResponseEntity<KhachHang> timBangTen(@PathVariable String ten) {
         KhachHang khachHang = this.khachHangService.timBangTen(ten);
         return new ResponseEntity<>(khachHang, HttpStatus.OK);
+    }
+
+    @GetMapping("/chiTietGioHang/{khachHang}")
+    public ResponseEntity<List<ChiTietGioHang>> chiTietGioHang(@PathVariable String khachHang) {
+        List<ChiTietGioHang> ketQua = this.khachHangService.chiTietGioHang(khachHang);
+        return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
 }

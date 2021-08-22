@@ -18,4 +18,8 @@ export class KhachHangService {
   timBangTen(ten): Observable<any> {
     return this.http.get(this.API + '/timBangTen/' + ten);
   }
+
+  chiTietGioHang(khachHang): Observable<any> {
+    return this.http.get(this.API + '/chiTietGioHang/' + khachHang);
+  }
 }

@@ -12,15 +12,21 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
               <mat-form-field class="example-full-width">
-                <mat-label>Tên đăng nhập</mat-label>
+                <mat-label>Tên đăng nhập<sup class="text-danger"> *</sup></mat-label>
                 <input matInput formControlName="tenDangNhap">
-                <mat-error *ngIf="formDangKy.controls.tenDangNhap.errors?.required">Tên đăng nhập không đươc để trống.
+                <mat-error *ngIf="formDangKy.controls.tenDangNhap.errors?.required">
+                  Tên đăng nhập không đươc để trống.
                 </mat-error>
-                <mat-error *ngIf="formDangKy.controls.tenDangNhap.errors?.pattern">Tên đăng nhập không đúng định dạng.
+                <mat-error *ngIf="formDangKy.controls.tenDangNhap.errors?.pattern">
+                  Tên đăng nhập không đúng định dạng.
                 </mat-error>
-                <mat-error *ngIf="formDangKy.controls.tenDangNhap.errors?.minlength">Tên đăng nhập tối thiểu 5 kí tự.
+                <mat-error *ngIf="formDangKy.controls.tenDangNhap.errors?.minlength
+                              && !formDangKy.controls.tenDangNhap.errors?.pattern">
+                  Tên đăng nhập tối thiểu 5 kí tự.
                 </mat-error>
-                <mat-error *ngIf="formDangKy.controls.tenDangNhap.errors?.maxlength">Tên đăng nhập tối đa 50 kí tự.
+                <mat-error *ngIf="formDangKy.controls.tenDangNhap.errors?.maxlength
+                              && !formDangKy.controls.tenDangNhap.errors?.pattern">
+                  Tên đăng nhập tối đa 50 kí tự.
                 </mat-error>
               </mat-form-field>
             </div>
@@ -31,7 +37,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
               <mat-form-field class="example-full-width">
-                <mat-label>Email</mat-label>
+                <mat-label>Email<sup class="text-danger"> *</sup></mat-label>
                 <input matInput formControlName="email">
                 <mat-error *ngIf="formDangKy.controls.email.errors?.required">Email không được để trống.</mat-error>
                 <mat-error *ngIf="formDangKy.controls.email.errors?.pattern">Sai định dạng email.</mat-error>
@@ -44,7 +50,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
               <mat-form-field class="example-full-width">
-                <mat-label>Mật khẩu</mat-label>
+                <mat-label>Mật khẩu<sup class="text-danger"> *</sup></mat-label>
                 <input type="password" matInput formControlName="matKhau">
                 <mat-error *ngIf="formDangKy.controls.matKhau.errors?.required">Mật khẩu không được để trống.
                 </mat-error>
@@ -57,7 +63,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
               <mat-form-field class="example-full-width">
-                <mat-label>Xác nhận mật khẩu</mat-label>
+                <mat-label>Xác nhận mật khẩu<sup class="text-danger"> *</sup></mat-label>
                 <input type="password" matInput formControlName="xacNhanMatKhau" [errorStateMatcher]="soTrung">
                 <mat-error *ngIf="formDangKy.controls.xacNhanMatKhau.errors?.required">Xác nhận mật khẩu không đươc
                   để trống.
@@ -74,7 +80,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
               <mat-form-field class="example-full-width">
-                <mat-label>Số điện thoại</mat-label>
+                <mat-label>Số điện thoại<sup class="text-danger"> *</sup></mat-label>
                 <input matInput formControlName="soDienThoai">
                 <mat-error *ngIf="formDangKy.controls.soDienThoai.errors?.required">Số điện thoại không đươc để trống.
                 </mat-error>
@@ -89,11 +95,13 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
               <mat-form-field>
-                <mat-label>Ngày sinh</mat-label>
+                <mat-label>Ngày sinh<sup class="text-danger"> *</sup></mat-label>
                 <input matInput [matDatepicker]="picker" formControlName="ngaySinh">
                 <mat-error *ngIf="formDangKy.controls.ngaySinh.errors?.required">Ngày sinh không đươc để trống.
                 </mat-error>
-                <mat-error *ngIf="formDangKy.controls.ngaySinh.errors?.ageError">Tuổi phải lớn hơn 16 và nhỏ hơn 150.
+                <mat-error *ngIf="formDangKy.controls.ngaySinh.errors?.ageError
+                              && !formDangKy.controls.ngaySinh.errors?.required">
+                  Tuổi phải lớn hơn 16 và nhỏ hơn 150.
                 </mat-error>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -106,7 +114,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
               <mat-form-field class="example-full-width">
-                <mat-label>Địa chỉ</mat-label>
+                <mat-label>Địa chỉ<sup class="text-danger"> *</sup></mat-label>
                 <input matInput formControlName="diaChi">
                 <mat-error *ngIf="formDangKy.controls.diaChi.errors?.required">Địa chỉ không đươc để trống.
                 </mat-error>
@@ -119,7 +127,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
               <mat-form-field>
-                <mat-label>Giới tính</mat-label>
+                <mat-label>Giới tính<sup class="text-danger"> *</sup></mat-label>
                 <mat-select formControlName="gioiTinh">
                   <mat-option value='Nam'>Nam</mat-option>
                   <mat-option value='Nữ'>Nữ</mat-option>

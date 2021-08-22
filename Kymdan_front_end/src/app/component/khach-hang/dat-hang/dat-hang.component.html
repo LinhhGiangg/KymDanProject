@@ -28,7 +28,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
               <mat-form-field class="example-full-width" *ngIf="!xacNhanThanhToan">
-                <mat-label>Họ tên người nhận</mat-label>
+                <mat-label>Họ tên người nhận<sup class="text-danger"> *</sup></mat-label>
                 <input matInput formControlName="ten">
                 <mat-error *ngIf="formDatHang.controls.ten.errors?.required">
                   Họ tên người nhận không đươc để trống.
@@ -54,7 +54,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
               <mat-form-field class="example-full-width" *ngIf="!xacNhanThanhToan">
-                <mat-label>Số điện thoại</mat-label>
+                <mat-label>Số điện thoại<sup class="text-danger"> *</sup></mat-label>
                 <input matInput formControlName="soDienThoai">
                 <mat-error *ngIf="formDatHang.controls.soDienThoai.errors?.required">Số điện thoại không đươc để trống.
                 </mat-error>
@@ -74,7 +74,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
               <mat-form-field class="example-full-width" *ngIf="!xacNhanThanhToan">
-                <mat-label>Địa chỉ</mat-label>
+                <mat-label>Địa chỉ<sup class="text-danger"> *</sup></mat-label>
                 <input matInput formControlName="diaChi">
                 <mat-error *ngIf="formDatHang.controls.diaChi.errors?.required">Địa chỉ không đươc để trống.
                 </mat-error>
@@ -92,7 +92,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
               <mat-form-field class="example-full-width" *ngIf="!xacNhanThanhToan">
-                <mat-label>Email</mat-label>
+                <mat-label>Email<sup class="text-danger"> *</sup></mat-label>
                 <input matInput formControlName="email">
                 <mat-error *ngIf="formDatHang.controls.email.errors?.required">Email không được để trống.</mat-error>
                 <mat-error *ngIf="formDatHang.controls.email.errors?.pattern">Sai định dạng email.</mat-error>
