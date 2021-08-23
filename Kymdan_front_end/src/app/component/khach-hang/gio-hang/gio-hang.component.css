@@ -51,3 +51,11 @@ table.table td i {
   margin-top: 10px;
   font-size: 13px;
 }
+
+button {
+  background-color: green;
+  color: white;
+  width: 100px;
+  height: 35px;
+  border: none;
+}

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="391113ff-e529-4d69-911a-7775e8d587ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/model/ChiTietGioHang.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -12,26 +11,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/controllers/KhachHangController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/controllers/KhachHangController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/ChiTietGioHang.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/ChiTietGioHang.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/repository/GioHangRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/repository/GioHangRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/khach_hang/KhachHangService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/khach_hang/KhachHangService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/khach_hang/KhachHangServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/khach_hang/KhachHangServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/controllers/KhachHangController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/controllers/KhachHangController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietGioHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietGioHang.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/repository/GioHangRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/repository/GioHangRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/khach_hang/KhachHangService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/khach_hang/KhachHangService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/khach_hang/KhachHangServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/khach_hang/KhachHangServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/ca-nhan/sua-mat-khau/sua-mat-khau.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/ca-nhan/sua-mat-khau/sua-mat-khau.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/cau-hinh/dang-nhap/dang-nhap.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/cau-hinh/dang-nhap/dang-nhap.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/dang-ky/dang-ky.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/dang-ky/dang-ky.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/dat-hang/dat-hang.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/dat-hang/dat-hang.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/gio-hang/gio-hang.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/gio-hang/gio-hang.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/gio-hang/gio-hang.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/gio-hang/gio-hang.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/gio-hang/gio-hang.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/gio-hang/gio-hang.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/loai-san-pham/sua-loai/sua-loai.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/loai-san-pham/sua-loai/sua-loai.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/loai-san-pham/tao-moi-loai/tao-moi-loai.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/loai-san-pham/tao-moi-loai/tao-moi-loai.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham/them-san-pham/them-san-pham.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham/them-san-pham/them-san-pham.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/service/khach-hang.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/service/khach-hang.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/model/ChiTietGioHang.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/model/ChiTietGioHang.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../first.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../first.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kymdan_database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../kymdan_database.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +84,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/CodeGym/C0620G1/module2" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -220,6 +210,10 @@
       <workItem from="1629628331995" duration="6262000" />
       <workItem from="1629646300138" duration="149000" />
       <workItem from="1629647197942" duration="2749000" />
+      <workItem from="1629694950492" duration="4420000" />
+      <workItem from="1629722895548" duration="144000" />
+      <workItem from="1629724368237" duration="394000" />
+      <workItem from="1629726150409" duration="8702000" />
     </task>
     <task id="LOCAL-00001" summary="up begin merge">
       <created>1611823206431</created>
@@ -264,10 +258,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1626839618802" />
-    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1629632786598">
+    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1629731806787">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1629632786598" />
+    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1629731806787" />
     <state x="392" y="339" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1627920737307">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -284,58 +278,58 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="524" y="116" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1629445066079" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1629554981646">
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1629708731933">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1629554981646" />
-    <state width="1493" height="229" key="GridCell.Tab.0.bottom" timestamp="1629655702560">
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1629708731933" />
+    <state width="1493" height="251" key="GridCell.Tab.0.bottom" timestamp="1629740152412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629655702560" />
-    <state width="1493" height="229" key="GridCell.Tab.0.center" timestamp="1629655702560">
+    <state width="1493" height="251" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629740152412" />
+    <state width="1493" height="251" key="GridCell.Tab.0.center" timestamp="1629740152412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1629655702560" />
-    <state width="1493" height="229" key="GridCell.Tab.0.left" timestamp="1629655702560">
+    <state width="1493" height="251" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1629740152412" />
+    <state width="1493" height="251" key="GridCell.Tab.0.left" timestamp="1629740152412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1629655702560" />
-    <state width="1493" height="229" key="GridCell.Tab.0.right" timestamp="1629655702560">
+    <state width="1493" height="251" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1629740152412" />
+    <state width="1493" height="251" key="GridCell.Tab.0.right" timestamp="1629740152412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1629655702560" />
-    <state width="1493" height="229" key="GridCell.Tab.1.bottom" timestamp="1629655702560">
+    <state width="1493" height="251" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1629740152412" />
+    <state width="1493" height="251" key="GridCell.Tab.1.bottom" timestamp="1629740152412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629655702560" />
-    <state width="1493" height="229" key="GridCell.Tab.1.center" timestamp="1629655702560">
+    <state width="1493" height="251" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629740152412" />
+    <state width="1493" height="251" key="GridCell.Tab.1.center" timestamp="1629740152412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1629655702560" />
-    <state width="1493" height="229" key="GridCell.Tab.1.left" timestamp="1629655702560">
+    <state width="1493" height="251" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1629740152412" />
+    <state width="1493" height="251" key="GridCell.Tab.1.left" timestamp="1629740152412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1629655702560" />
-    <state width="1493" height="229" key="GridCell.Tab.1.right" timestamp="1629655702560">
+    <state width="1493" height="251" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1629740152412" />
+    <state width="1493" height="251" key="GridCell.Tab.1.right" timestamp="1629740152412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1629655702560" />
-    <state width="1493" height="251" key="GridCell.Tab.2.bottom" timestamp="1629461275239">
+    <state width="1493" height="251" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1629740152412" />
+    <state width="1493" height="251" key="GridCell.Tab.2.bottom" timestamp="1629740152412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="251" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629461275239" />
-    <state width="1493" height="251" key="GridCell.Tab.2.center" timestamp="1629461275239">
+    <state width="1493" height="251" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629740152412" />
+    <state width="1493" height="251" key="GridCell.Tab.2.center" timestamp="1629740152412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="251" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1629461275239" />
-    <state width="1493" height="251" key="GridCell.Tab.2.left" timestamp="1629461275239">
+    <state width="1493" height="251" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1629740152412" />
+    <state width="1493" height="251" key="GridCell.Tab.2.left" timestamp="1629740152412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="251" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1629461275239" />
-    <state width="1493" height="251" key="GridCell.Tab.2.right" timestamp="1629461275239">
+    <state width="1493" height="251" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1629740152412" />
+    <state width="1493" height="251" key="GridCell.Tab.2.right" timestamp="1629740152412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="251" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1629461275239" />
+    <state width="1493" height="251" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1629740152412" />
     <state x="277" y="56" key="SettingsEditor" timestamp="1628732891451">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

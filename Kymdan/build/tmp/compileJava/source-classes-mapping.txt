@@ -144,7 +144,7 @@ com/kymdan/backend/controllers/KhachHangController.java
  com.kymdan.backend.controllers.KhachHangController
 com/kymdan/backend/services/khach_hang/KhachHangService.java
  com.kymdan.backend.services.khach_hang.KhachHangService
-com/kymdan/backend/services/khach_hang/KhachHangServiceImpl.java
- com.kymdan.backend.services.khach_hang.KhachHangServiceImpl
 com/kymdan/backend/entity/ChiTietGioHang.java
  com.kymdan.backend.entity.ChiTietGioHang
+com/kymdan/backend/services/khach_hang/KhachHangServiceImpl.java
+ com.kymdan.backend.services.khach_hang.KhachHangServiceImpl

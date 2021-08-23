@@ -6,6 +6,7 @@ import {TaiKhoanService} from '../../../service/tai-khoan.service';
 import {ChiTietGioHang} from '../../../model/ChiTietGioHang';
 import {LoaiSanPhamService} from '../../../service/loai-san-pham.service';
 import {SanPhamService} from '../../../service/san-pham.service';
+import {ThongBaoComponent} from '../../cau-hinh/thong-bao/thong-bao.component';
 
 @Component({
   selector: 'app-gio-hang',
@@ -28,6 +29,10 @@ export class GioHangComponent implements OnInit {
   public thongBao;
   public khachHang;
   public quyen;
+  public kiemTraMua;
+  public danhSachMua = [];
+  public maCanXoa;
+  public tienCanThanhToan;
 
   private static hienThiGia(thongTin) {
     let hangTrieu;
@@ -50,6 +55,9 @@ export class GioHangComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.kiemTraMua = false;
+    this.maCanXoa = -1;
+    this.maCanXoa = '';
     this.khachHang = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
     this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
     if (this.quyen === 'Khách Hàng') {
@@ -66,6 +74,7 @@ export class GioHangComponent implements OnInit {
             this.thongTinLoai(i);
             this.thongTinKhuyenMai(i);
             this.thongTinGia(i);
+            this.gioHang[i].chon = false;
           }
         });
     }
@@ -119,7 +128,7 @@ export class GioHangComponent implements OnInit {
             - Number.parseInt(this.gioHang[i].gia) * Number.parseInt(this.gioHang[i].khuyenMai) / 100) + '';
         }
         // tslint:disable-next-line:radix
-        this.gioHang[i].tongTien = Number.parseInt(this.gioHang[i].gia) * Number.parseInt(this.gioHang[i].soLuong) + '';
+        this.gioHang[i].tongTien = Number.parseInt(this.gioHang[i].gia) * this.gioHang[i].soLuong + '';
         this.gioHang[i].gia = GioHangComponent.hienThiGia(this.gioHang[i].gia);
         this.gioHang[i].tongTien = GioHangComponent.hienThiGia(this.gioHang[i].tongTien);
       },
@@ -129,14 +138,122 @@ export class GioHangComponent implements OnInit {
       });
   }
 
-  xoa(ma: number) {
-    alert('xóa nha')
-  }
-
   xemSanPham(i: number) {
     const THONG_TIN = this.gioHang[i].maLoai + ','
       + this.gioHang[i].kichThuoc.split(' x ')[0] + ',' + this.gioHang[i].kichThuoc.split(' x ')[2] + ',1';
     this.router.navigate(['/mua-hang', {thongTin: THONG_TIN}]).then(() => {
     });
+  }
+
+  chonSanPham(i: number) {
+    let gia = '';
+    this.tienCanThanhToan = 0;
+    this.kiemTraMua = true;
+    this.gioHang[i].chon = true;
+    this.danhSachMua.push(this.gioHang[i]);
+
+    // tslint:disable-next-line:prefer-for-of
+    for (let z = 0; z < this.danhSachMua.length; z++) {
+      gia = this.danhSachMua[z].tongTien.split('.')[0]
+        + this.danhSachMua[z].tongTien.split('.')[1] + this.danhSachMua[z].tongTien.split('.')[2] + '';
+      // tslint:disable-next-line:radix
+      this.tienCanThanhToan = this.tienCanThanhToan + Number.parseInt(gia);
+    }
+    this.tienCanThanhToan = GioHangComponent.hienThiGia(this.tienCanThanhToan);
+  }
+
+  boChonSanPham(i: number) {
+    let gia = '';
+    this.tienCanThanhToan = 0;
+    this.kiemTraMua = false;
+    this.gioHang[i].chon = false;
+    this.maCanXoa = this.gioHang[i].ma;
+    // tslint:disable-next-line:prefer-for-of
+    for (let j = 0; j < this.gioHang.length; j++) {
+      if (this.gioHang[j].chon === true && this.kiemTraMua === false) {
+        this.kiemTraMua = true;
+        break;
+      }
+    }
+
+    for (let z = 0; z < this.danhSachMua.length; z++) {
+      if (this.danhSachMua[z].ma === this.maCanXoa) {
+        this.danhSachMua.splice(z, 1);
+      }
+    }
+
+    // tslint:disable-next-line:prefer-for-of
+    for (let z = 0; z < this.danhSachMua.length; z++) {
+      gia = this.danhSachMua[z].tongTien.split('.')[0]
+        + this.danhSachMua[z].tongTien.split('.')[1] + this.danhSachMua[z].tongTien.split('.')[2] + '';
+      // tslint:disable-next-line:radix
+      this.tienCanThanhToan = this.tienCanThanhToan + Number.parseInt(gia);
+    }
+    this.tienCanThanhToan = GioHangComponent.hienThiGia(this.tienCanThanhToan);
+  }
+
+  chonSoLuong(thayDoi, viTri) {
+    this.sanPhamService.timBangMa(this.gioHang[viTri].sanPham.ma).subscribe(
+      (duLieu) => {
+        if (thayDoi === 1) {
+          if (this.gioHang[viTri].soLuong >= 2) {
+            this.gioHang[viTri].soLuong -= 1;
+            this.khachHangService.thayDoiSanPham(this.gioHang[viTri].ma, this.gioHang[viTri].soLuong).subscribe(
+              () => {
+              },
+              () => {
+              },
+              () => {
+                this.ngOnInit()
+              });
+          }
+        } else {
+          // tslint:disable-next-line:radix
+          if (this.gioHang[viTri].soLuong < Number.parseInt(duLieu.soLuong)) {
+            // tslint:disable-next-line:radix
+            this.gioHang[viTri].soLuong = Number.parseInt(String(this.gioHang[viTri].soLuong)) + 1;
+            this.khachHangService.thayDoiSanPham(this.gioHang[viTri].ma, this.gioHang[viTri].soLuong).subscribe(
+              () => {
+              },
+              () => {
+              },
+              () => {
+                this.ngOnInit()
+              });
+          } else {
+            this.hienThongBao('Hiện tại mặt hàng này chỉ còn ' + duLieu.soLuong + ' sản phẩm !')
+          }
+        }
+      },
+      () => {
+      },
+      () => {
+      });
+  }
+
+  hienThongBao(thongTin) {
+    const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
+      width: '555px',
+      height: '205px',
+      data: {thongBao: thongTin},
+      disableClose: true
+    });
+
+    dialogRefNotice.afterClosed().subscribe(() => {
+    })
+  }
+
+  xoa(ma: number) {
+    this.khachHangService.xoaSanPham(ma).subscribe(
+      () => {
+      },
+      () => {
+      },
+      () => {
+        this.ngOnInit()
+      });
+  }
+
+  thanhToan() {
   }
 }

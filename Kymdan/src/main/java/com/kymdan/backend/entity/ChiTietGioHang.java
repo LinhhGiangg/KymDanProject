@@ -10,8 +10,8 @@ public class ChiTietGioHang {
     @Column(name = "ma", columnDefinition = "INT")
     private Integer ma;
 
-    @Column(name = "so_luong", columnDefinition = "VARCHAR(5)")
-    private String soLuong;
+    @Column(name = "so_luong", columnDefinition = "INT")
+    private Integer soLuong;
 
     @Column(name = "trang_thai", columnDefinition = "VARCHAR(50)")
     private String trangThai;
@@ -29,7 +29,7 @@ public class ChiTietGioHang {
     public ChiTietGioHang() {
     }
 
-    public ChiTietGioHang(Integer ma, String soLuong, String trangThai,
+    public ChiTietGioHang(Integer ma, Integer soLuong, String trangThai,
                           GioHang gioHang, SanPham sanPham) {
         this.ma = ma;
         this.soLuong = soLuong;
@@ -46,11 +46,11 @@ public class ChiTietGioHang {
         this.ma = ma;
     }
 
-    public String getSoLuong() {
+    public Integer getSoLuong() {
         return soLuong;
     }
 
-    public void setSoLuong(String soLuong) {
+    public void setSoLuong(Integer soLuong) {
         this.soLuong = soLuong;
     }
 

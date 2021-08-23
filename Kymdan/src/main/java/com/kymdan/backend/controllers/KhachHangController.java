@@ -47,4 +47,20 @@ public class KhachHangController {
         List<ChiTietGioHang> ketQua = this.khachHangService.chiTietGioHang(khachHang);
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
+
+    @GetMapping("/thayDoiSanPham/{maChiTiet}/{soLuong}")
+    public ResponseEntity<ThongBaoDTO> thayDoiSanPham(@PathVariable Integer maChiTiet, @PathVariable Integer soLuong) {
+        return ResponseEntity.ok(khachHangService.thayDoiSanPham(maChiTiet, soLuong));
+    }
+
+    @GetMapping("/xoaSanPham/{maChiTiet}")
+    public ResponseEntity<ThongBaoDTO> xoaSanPham(@PathVariable Integer maChiTiet) {
+        return ResponseEntity.ok(khachHangService.xoaSanPham(maChiTiet));
+    }
+
+    @GetMapping("/luuGioHang/{tenKhachHang}/{maSanPham}/{soLuong}")
+    public ResponseEntity<ThongBaoDTO> luuGioHang(@PathVariable String tenKhachHang, @PathVariable String maSanPham,
+                                                  @PathVariable Integer soLuong) {
+        return ResponseEntity.ok(khachHangService.luuGioHang(tenKhachHang, maSanPham, soLuong));
+    }
 }

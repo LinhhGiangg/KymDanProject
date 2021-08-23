@@ -234,6 +234,6 @@ insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) val
 
 -- Giỏ hàng
 insert into kymdan.gio_hang(ma, ma_khach_hang) values (1, 1);
-insert into kymdan.chi_tiet_gio_hang(so_luong, trang_thai, ma_gio_hang, ma_san_pham) values ('3', 'Chưa đặt', 1, 'SP-001');
-insert into kymdan.chi_tiet_gio_hang(so_luong, trang_thai, ma_gio_hang, ma_san_pham) values ('1', 'Chưa đặt', 1, 'SP-022');
-insert into kymdan.chi_tiet_gio_hang(so_luong, trang_thai, ma_gio_hang, ma_san_pham) values ('2', 'Chưa đặt', 1, 'SP-045');
+insert into kymdan.chi_tiet_gio_hang(so_luong, trang_thai, ma_gio_hang, ma_san_pham) values (3, 'Chưa đặt', 1, 'SP-001');
+insert into kymdan.chi_tiet_gio_hang(so_luong, trang_thai, ma_gio_hang, ma_san_pham) values (1, 'Chưa đặt', 1, 'SP-025');
+insert into kymdan.chi_tiet_gio_hang(so_luong, trang_thai, ma_gio_hang, ma_san_pham) values (2, 'Đã mua', 1, 'SP-045');

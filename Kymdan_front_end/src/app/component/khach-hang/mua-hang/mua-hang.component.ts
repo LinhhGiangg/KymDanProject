@@ -7,6 +7,7 @@ import {SanPham} from '../../../model/SanPham';
 import {LoaiSanPham} from '../../../model/LoaiSanPham';
 import {SanPhamService} from '../../../service/san-pham.service';
 import {LoaiSanPhamService} from '../../../service/loai-san-pham.service';
+import {KhachHangService} from '../../../service/khach-hang.service';
 
 @Component({
   selector: 'app-mua-hang',
@@ -20,6 +21,7 @@ export class MuaHangComponent implements OnInit {
     public sanPhamService: SanPhamService,
     public loaiSanPhamService: LoaiSanPhamService,
     public taiKhoanService: TaiKhoanService,
+    public khachHangService: KhachHangService,
     public router: Router,
     public dialog: MatDialog,
   ) {
@@ -228,6 +230,14 @@ export class MuaHangComponent implements OnInit {
   }
 
   luuGioHang() {
+    this.khachHangService.luuGioHang(this.tenDangNhap, this.sanPham.ma, this.soLuong).subscribe(
+      () => {
+        this.hienThongBao('Thêm giỏ hàng thành công !')
+      },
+      () => {
+      },
+      () => {
+      });
   }
 
   hienThongBao(thongBao) {

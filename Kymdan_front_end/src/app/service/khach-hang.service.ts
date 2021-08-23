@@ -22,4 +22,16 @@ export class KhachHangService {
   chiTietGioHang(khachHang): Observable<any> {
     return this.http.get(this.API + '/chiTietGioHang/' + khachHang);
   }
+
+  thayDoiSanPham(maChiTiet, soLuong): Observable<any> {
+    return this.http.get(this.API + '/thayDoiSanPham/' + maChiTiet + '/' + soLuong);
+  }
+
+  xoaSanPham(maChiTiet): Observable<any> {
+    return this.http.get(this.API + '/xoaSanPham/' + maChiTiet);
+  }
+
+  luuGioHang(tenKhachHang, maSanPham, soLuong): Observable<any> {
+    return this.http.get(this.API + '/luuGioHang/' + tenKhachHang + '/' + maSanPham + '/' + soLuong);
+  }
 }
