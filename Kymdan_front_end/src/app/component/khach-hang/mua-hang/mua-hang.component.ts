@@ -258,15 +258,21 @@ export class MuaHangComponent implements OnInit {
   }
 
   muaHang() {
-    let thongTinMua = '';
-    if (this.chiTietKhuyenMai != null) {
-      thongTinMua = this.tenDangNhap + ',' + this.loaiSanPham.ma + ',' + this.sanPham.ma + ',' + this.soLuong
-        + ',' + this.chiTietGia.gia + ',' + this.chiTietKhuyenMai.giamGia;
-    } else {
-      thongTinMua = this.tenDangNhap + ',' + this.loaiSanPham.ma + ',' + this.sanPham.ma + ',' + this.soLuong
-        + ',' + this.chiTietGia.gia;
-    }
-    this.router.navigate(['/dat-hang', {thongTin: thongTinMua}]).then(() => {
-    });
+    this.khachHangService.luuGioHang(this.tenDangNhap, this.sanPham.ma, this.soLuong).subscribe(
+      () => {
+      },
+      () => {
+      },
+      () => {
+        this.khachHangService.timChiTietGioHang(this.sanPham.ma).subscribe(
+          (duLieu) => {
+            this.router.navigate(['/dat-hang', {thongTin: duLieu.sanPham.ma}]).then(() => {
+            });
+          },
+          () => {
+          },
+          () => {
+          });
+      });
   }
 }

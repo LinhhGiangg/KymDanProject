@@ -88,8 +88,8 @@ com/kymdan/backend/entity/Quyen.java
  com.kymdan.backend.entity.Quyen
 com/kymdan/backend/entity/DatHang.java
  com.kymdan.backend.entity.DatHang
-com/kymdan/backend/repository/ChiTietGioHangRepository.java
- com.kymdan.backend.repository.ChiTietGioHangRepository
+com/kymdan/backend/entity/ChiTietGioHang.java
+ com.kymdan.backend.entity.ChiTietGioHang
 com/kymdan/backend/services/khuyen_mai/KhuyenMaiService.java
  com.kymdan.backend.services.khuyen_mai.KhuyenMaiService
 com/kymdan/backend/entity/NhanVien.java
@@ -144,7 +144,7 @@ com/kymdan/backend/controllers/KhachHangController.java
  com.kymdan.backend.controllers.KhachHangController
 com/kymdan/backend/services/khach_hang/KhachHangService.java
  com.kymdan.backend.services.khach_hang.KhachHangService
-com/kymdan/backend/entity/ChiTietGioHang.java
- com.kymdan.backend.entity.ChiTietGioHang
+com/kymdan/backend/repository/ChiTietGioHangRepository.java
+ com.kymdan.backend.repository.ChiTietGioHangRepository
 com/kymdan/backend/services/khach_hang/KhachHangServiceImpl.java
  com.kymdan.backend.services.khach_hang.KhachHangServiceImpl

@@ -57,7 +57,7 @@ export class GioHangComponent implements OnInit {
   ngOnInit(): void {
     this.kiemTraMua = false;
     this.maCanXoa = -1;
-    this.maCanXoa = '';
+    this.danhSachMua = [];
     this.khachHang = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
     this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
     if (this.quyen === 'Khách Hàng') {
@@ -73,7 +73,6 @@ export class GioHangComponent implements OnInit {
             this.thongTinSanPham(i);
             this.thongTinLoai(i);
             this.thongTinKhuyenMai(i);
-            this.thongTinGia(i);
             this.gioHang[i].chon = false;
           }
         });
@@ -114,6 +113,7 @@ export class GioHangComponent implements OnInit {
       () => {
       },
       () => {
+        this.thongTinGia(i);
       });
   }
 
@@ -255,5 +255,16 @@ export class GioHangComponent implements OnInit {
   }
 
   thanhToan() {
+    let duLieu = '';
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.danhSachMua.length; i++) {
+      if (i === 0) {
+        duLieu += this.danhSachMua[i].sanPham.ma;
+      } else {
+        duLieu = duLieu + ',' + this.danhSachMua[i].sanPham.ma;
+      }
+    }
+    this.router.navigate(['/dat-hang', {thongTin: duLieu}]).then(() => {
+    });
   }
 }

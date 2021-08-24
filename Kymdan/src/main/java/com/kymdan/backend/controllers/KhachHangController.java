@@ -3,6 +3,7 @@ package com.kymdan.backend.controllers;
 import com.kymdan.backend.entity.ChiTietGioHang;
 import com.kymdan.backend.entity.KhachHang;
 import com.kymdan.backend.entity.LoaiSanPham;
+import com.kymdan.backend.model.DonHangDTO;
 import com.kymdan.backend.model.TaiKhoanDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
 import com.kymdan.backend.services.tai_khoan.TaiKhoanService;
@@ -62,5 +63,16 @@ public class KhachHangController {
     public ResponseEntity<ThongBaoDTO> luuGioHang(@PathVariable String tenKhachHang, @PathVariable String maSanPham,
                                                   @PathVariable Integer soLuong) {
         return ResponseEntity.ok(khachHangService.luuGioHang(tenKhachHang, maSanPham, soLuong));
+    }
+
+    @GetMapping("/timChiTietGioHang/{maSanPham}")
+    public ResponseEntity<ChiTietGioHang> timChiTietGioHang(@PathVariable String maSanPham) {
+        ChiTietGioHang ketQua = this.khachHangService.timChiTietGioHang(maSanPham);
+        return new ResponseEntity<>(ketQua, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/luuDonHang", method = RequestMethod.POST)
+    public ResponseEntity<?> luuDonHang(@RequestBody DonHangDTO donHangDTO) {
+        return ResponseEntity.ok(khachHangService.luuDonHang(donHangDTO));
     }
 }

@@ -3,11 +3,9 @@ package com.kymdan.backend.services.khach_hang;
 import com.kymdan.backend.entity.ChiTietGioHang;
 import com.kymdan.backend.entity.GioHang;
 import com.kymdan.backend.entity.KhachHang;
+import com.kymdan.backend.model.DonHangDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
-import com.kymdan.backend.repository.ChiTietGioHangRepository;
-import com.kymdan.backend.repository.GioHangRepository;
-import com.kymdan.backend.repository.KhachHangRepository;
-import com.kymdan.backend.repository.SanPhamRepository;
+import com.kymdan.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +26,12 @@ public class KhachHangServiceImpl implements KhachHangService {
 
     @Autowired
     private SanPhamRepository sanPhamRepository;
+
+    @Autowired
+    private DonHangRepository donHangRepository;
+
+    @Autowired
+    private ChiTietDonHangRepository chiTietDonHangRepository;
 
     @Override
     public KhachHang timBangEmail(String email) {
@@ -122,5 +126,16 @@ public class KhachHangServiceImpl implements KhachHangService {
         }
 
         return new ThongBaoDTO("Thêm giỏ hàng thành công !");
+    }
+
+    @Override
+    public ChiTietGioHang timChiTietGioHang(String maSanPham) {
+        return this.chiTietGioHangRepository.findBySanPham_Ma(maSanPham);
+    }
+
+    @Override
+    public ThongBaoDTO luuDonHang(DonHangDTO donHangDTO) {
+        System.out.println(donHangDTO);
+        return new ThongBaoDTO("Thành công");
     }
 }

@@ -4,11 +4,10 @@ import {KhachHangService} from '../../../service/khach-hang.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {KhachHang} from '../../../model/KhachHang';
-import {LoaiSanPhamService} from '../../../service/loai-san-pham.service';
 import {SanPhamService} from '../../../service/san-pham.service';
-import {LoaiSanPham} from '../../../model/LoaiSanPham';
-import {SanPham} from '../../../model/SanPham';
 import {ThongBaoComponent} from '../../cau-hinh/thong-bao/thong-bao.component';
+import {TaiKhoanService} from '../../../service/tai-khoan.service';
+import {ChiTietGioHang} from '../../../model/ChiTietGioHang';
 
 @Component({
   selector: 'app-dat-hang',
@@ -18,24 +17,29 @@ import {ThongBaoComponent} from '../../cau-hinh/thong-bao/thong-bao.component';
 export class DatHangComponent implements OnInit {
   @ViewChild('paypalRef', {static: true}) private paypalRef: ElementRef;
   public formDatHang: FormGroup;
-  public loaiSanPham = new LoaiSanPham();
+  public tenKhachHang;
   public khachHang = new KhachHang();
-  public sanPham = new SanPham();
-  public soLuong;
-  public giaGoc = '';
-  public giaBan;
-  public giaBanHienThi = '';
-  public tongTien = '';
+  public gioHang = [new ChiTietGioHang()];
+  public chiTiet;
+  public tienCanThanhToan = 0;
+  public tongTienHienThi = '';
   public usd;
+  public duLieuCanLay;
+  public giaCanLay;
+  public khuyenMaiCanLay;
+  public hienThiPayPal = false;
   public thongTin;
   public thongBao;
-  public xacNhanThanhToan = false;
+  public xacNhanThanhToan;
+  public thongTinDonHang;
+  public cachThanhToan = 'tien';
+  public ngayHienTai = new Date();
 
   constructor(
     public activatedRouter: ActivatedRoute,
     public formBuilder: FormBuilder,
+    public taiKhoanService: TaiKhoanService,
     public khachHangService: KhachHangService,
-    public loaiSanPhamService: LoaiSanPhamService,
     public sanPhamService: SanPhamService,
     public router: Router,
     public el: ElementRef,
@@ -63,99 +67,138 @@ export class DatHangComponent implements OnInit {
     }
   }
 
-  private thayDoiGia(giaBan, soLuong) {
-    this.tongTien =
-      // tslint:disable-next-line:radix
-      (Number.parseInt(giaBan) * soLuong) + '';
-
-    // tslint:disable-next-line:radix
-    this.usd = (Number.parseInt(this.tongTien) / 23500).toFixed(0);
-    // @ts-ignore
-    this.tongTien = DatHangComponent.hienThiGia(this.tongTien);
-  }
-
   ngOnInit() {
+    this.gioHang = [new ChiTietGioHang()];
     this.xacNhanThanhToan = false;
-    this.payPal();
+    this.tienCanThanhToan = 0;
+    this.tongTienHienThi = '';
+    this.usd = 0;
+    this.duLieuCanLay = 0;
+    this.giaCanLay = 0;
+    this.khuyenMaiCanLay = 0;
+
     this.formDatHang = this.formBuilder.group({
       ten: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50),
         // tslint:disable-next-line:max-line-length
         Validators.pattern('^([aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+(\\s[aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+)*)$')]],
       soDienThoai: ['', [Validators.required, Validators.pattern('((09|03|07|08|05)+([0-9]{8})\\b)')]],
       diaChi: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.pattern('^[a-z][a-z0-9_\\.]{0,30}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$')]],
+      ngayNhan: ['', [Validators.required]],
     });
+
+    this.tenKhachHang = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
+    this.khachHangService.timBangTen(this.tenKhachHang)
+      .subscribe(ketQua => {
+          this.khachHang = ketQua;
+          if (this.khachHang != null) {
+            this.formDatHang.patchValue(ketQua);
+          }
+        },
+        () => {
+        },
+        () => {
+        });
 
     this.activatedRouter.params.subscribe(duLieu => {
       this.thongTin = duLieu.thongTin;
-      this.khachHangService.timBangTen(this.thongTin.split(',')[0])
-        .subscribe(ketQua => {
-            this.khachHang = ketQua;
-            if (this.khachHang != null) {
-              this.formDatHang.patchValue(ketQua);
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < this.thongTin.split(',').length; i++) {
+        this.khachHangService.timChiTietGioHang(this.thongTin.split(',')[i]).subscribe(
+          (ketQua) => {
+            this.duLieuCanLay = ketQua;
+          },
+          () => {
+          },
+          () => {
+            this.chiTiet = new ChiTietGioHang();
+            this.chiTiet.ma = this.duLieuCanLay.ma;
+            this.chiTiet.sanPham = this.duLieuCanLay.sanPham;
+            this.chiTiet.maLoai = this.duLieuCanLay.sanPham.loaiSanPham.ma;
+            this.chiTiet.hinh = this.duLieuCanLay.sanPham.loaiSanPham.hinh1;
+            this.chiTiet.ten = this.duLieuCanLay.sanPham.loaiSanPham.ten;
+            this.chiTiet.kichThuoc = this.duLieuCanLay.sanPham.rong + ' x ' + this.duLieuCanLay.sanPham.dai
+              + ' x ' + this.duLieuCanLay.sanPham.cao;
+            this.chiTiet.gia = '';
+            this.chiTiet.khuyenMai = '';
+            this.chiTiet.soLuong = this.duLieuCanLay.soLuong;
+            this.chiTiet.tongTien = '';
+            if (i === 0) {
+              this.gioHang.pop()
             }
-          },
-          () => {
-          },
-          () => {
+            this.gioHang.push(this.chiTiet);
+            this.thongTinKhuyenMai(i);
           });
-
-      this.loaiSanPhamService.timBangMaLoai(this.thongTin.split(',')[1])
-        .subscribe(ketQua => {
-            this.loaiSanPham = ketQua;
-          },
-          () => {
-          },
-          () => {
-          });
-
-      this.sanPhamService.timBangMa(this.thongTin.split(',')[2])
-        .subscribe(ketQua => {
-            this.sanPham = ketQua;
-          },
-          () => {
-          },
-          () => {
-            // tslint:disable-next-line:radix
-            this.soLuong = Number.parseInt(this.thongTin.split(',')[3]);
-            this.giaGoc = this.thongTin.split(',')[4];
-
-            this.giaBanHienThi = this.thongTin.split(',')[5];
-            if (this.giaBanHienThi === undefined) {
-              this.giaBanHienThi = this.giaGoc;
-              this.giaBan = this.giaGoc;
-            } else {
-              // tslint:disable-next-line:radix
-              this.giaBan = (Number.parseInt(this.giaGoc) - Number.parseInt(this.giaGoc) * Number.parseInt(this.giaBanHienThi) / 100);
-            }
-
-            this.thayDoiGia(this.giaBan, this.soLuong);
-            this.giaBanHienThi = DatHangComponent.hienThiGia(this.giaBan);
-            this.giaGoc = DatHangComponent.hienThiGia(this.giaGoc);
-          });
+      }
     });
+    if (this.hienThiPayPal === false) {
+      this.payPal();
+    }
+  }
+
+  private thongTinKhuyenMai(i: number) {
+    this.sanPhamService.timKhuyenMaiBangMaSanPham(this.gioHang[i].sanPham.ma).subscribe(
+      (duLieu) => {
+        this.khuyenMaiCanLay = duLieu;
+      },
+      () => {
+      },
+      () => {
+        if (this.khuyenMaiCanLay != null) {
+          this.gioHang[i].khuyenMai = this.khuyenMaiCanLay.giamGia;
+        } else this.gioHang[i].khuyenMai = '';
+        this.thongTinGia(i);
+      });
+  }
+
+  private thongTinGia(i: number) {
+    this.sanPhamService.timGiaBangMaSanPham(this.gioHang[i].sanPham.ma).subscribe(
+      (duLieu) => {
+        this.giaCanLay = duLieu;
+      },
+      () => {
+      },
+      () => {
+        this.gioHang[i].gia = this.giaCanLay.gia;
+        if (this.gioHang[i].khuyenMai !== '') {
+          // tslint:disable-next-line:radix
+          this.gioHang[i].gia = (Number.parseInt(this.gioHang[i].gia)
+            // tslint:disable-next-line:radix
+            - Number.parseInt(this.gioHang[i].gia) * Number.parseInt(this.gioHang[i].khuyenMai) / 100) + '';
+        }
+        // tslint:disable-next-line:radix
+        this.gioHang[i].tongTien = Number.parseInt(this.gioHang[i].gia) * this.gioHang[i].soLuong + '';
+        // tslint:disable-next-line:radix
+        this.tienCanThanhToan += Number.parseInt(this.gioHang[i].gia) * this.gioHang[i].soLuong;
+        this.usd = (this.tienCanThanhToan / 23500).toFixed(2);
+        this.tongTienHienThi = DatHangComponent.hienThiGia(this.tienCanThanhToan);
+        this.gioHang[i].gia = DatHangComponent.hienThiGia(this.gioHang[i].gia);
+        this.gioHang[i].tongTien = DatHangComponent.hienThiGia(this.gioHang[i].tongTien);
+      });
+  }
+
+  chonSoLuong(thayDoi, viTri) {
+    if (thayDoi === 1) {
+      if (this.gioHang[viTri].soLuong >= 2) {
+        this.gioHang[viTri].soLuong -= 1;
+      }
+    } else {
+      // tslint:disable-next-line:radix
+      if (this.gioHang[viTri].soLuong < Number.parseInt(this.gioHang[viTri].sanPham.soLuong)) {
+        // tslint:disable-next-line:radix
+        this.gioHang[viTri].soLuong = Number.parseInt(String(this.gioHang[viTri].soLuong)) + 1;
+      } else {
+        this.hienThongBao('Hiện tại mặt hàng này chỉ còn ' + this.gioHang[viTri].sanPham.soLuong + ' sản phẩm !')
+      }
+    }
+    this.tienCanThanhToan = 0;
+    for (let i = 0; i < this.gioHang.length; i++) {
+      this.thongTinGia(i);
+    }
   }
 
   xacNhanThongTin() {
     if (this.formDatHang.valid) {
-      this.thongBao = 'Vui lòng chờ !';
-      // this.khachHangService.dangKy(this.khachHang)
-      //   .subscribe(data => {
-      //     this.thongBao = data.thongBao;
-      //     if (data.thongBao === 'Đăng ký tài khoản thành công !') {
-      //       const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
-      //         width: '555px',
-      //         height: '180px',
-      //         data: {thongBao: this.thongBao},
-      //         disableClose: true
-      //       });
-      //
-      //       dialogRefNotice.afterClosed().subscribe(() => {
-      //         this.router.navigate(['dang-nhap', {thongBao: ''}]).then(() => {
-      //         });
-      //       })
-      //     }
-      //   });
+      this.xacNhanThanhToan = true;
     } else {
       for (const thuocTinh of Object.keys(this.formDatHang.controls)) {
         if (this.formDatHang.controls[thuocTinh].invalid) {
@@ -163,23 +206,6 @@ export class DatHangComponent implements OnInit {
           viTri.focus();
           break;
         }
-      }
-    }
-  }
-
-  chonSoLuong(soLuong) {
-    if (soLuong === 1) {
-      if (this.soLuong >= 2) {
-        this.soLuong = this.soLuong - 1;
-        this.thayDoiGia(this.giaBan, this.soLuong);
-      }
-    } else {
-      // tslint:disable-next-line:radix
-      if (this.soLuong < Number.parseInt(this.sanPham.soLuong)) {
-        this.soLuong = this.soLuong + 1;
-        this.thayDoiGia(this.giaBan, this.soLuong);
-      } else {
-        this.hienThongBao('Hiện tại mặt hàng này chỉ còn ' + this.sanPham.soLuong + ' sản phẩm !')
       }
     }
   }
@@ -197,6 +223,7 @@ export class DatHangComponent implements OnInit {
   }
 
   payPal() {
+    this.hienThiPayPal = true;
     paypal.Buttons(
       {
         style: {
@@ -226,7 +253,9 @@ export class DatHangComponent implements OnInit {
 
         onApprove: (data, actions) => {
           return actions.order.capture().then(() => {
-            console.log('ok')
+            this.hienThongBao('Thanh toán thành công !');
+            this.cachThanhToan = 'payPal';
+            this.thanhToan()
           });
         },
 
@@ -237,11 +266,56 @@ export class DatHangComponent implements OnInit {
     ).render(this.paypalRef.nativeElement);
   }
 
-  thanhToan() {
-    this.xacNhanThanhToan = true;
-  }
-
   thayDoiThongTin() {
     this.xacNhanThanhToan = false;
+  }
+
+  thanhToan() {
+    this.thongTinDonHang = {
+      nguoiNhan: this.formDatHang.value.ten,
+      diaChi: this.formDatHang.value.diaChi,
+      soDienThoai: this.formDatHang.value.soDienThoai,
+      ngayNhan: this.formDatHang.value.ngayNhan,
+      cachThanhToan: this.cachThanhToan,
+      sanPham: '',
+      soLuong: '',
+      gia: '',
+    };
+
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.gioHang.length; i++) {
+      if (i === 0) {
+        this.thongTinDonHang.sanPham += this.gioHang[i].sanPham.ma;
+        this.thongTinDonHang.soLuong += this.gioHang[i].soLuong;
+        this.thongTinDonHang.gia += this.gioHang[i].gia;
+      } else {
+        this.thongTinDonHang.sanPham = this.thongTinDonHang.sanPham + ',' + this.gioHang[i].sanPham.ma;
+        this.thongTinDonHang.soLuong = this.thongTinDonHang.soLuong + ',' + this.gioHang[i].soLuong;
+        this.thongTinDonHang.gia = this.thongTinDonHang.gia + ',' + this.gioHang[i].gia;
+      }
+    }
+    this.khachHangService.luuDonHang(this.thongTinDonHang).subscribe(
+      () => {
+      },
+      () => {
+      },
+      () => {
+        // Đơn hàng đã được xác nhận! Cảm ơn quý khách đã mua hàng tại hệ thống của chúng tôi !
+      });
+  }
+
+  luuThongTin() {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.gioHang.length; i++) {
+      this.khachHangService.thayDoiSanPham(this.gioHang[i].ma, this.gioHang[i].soLuong).subscribe(
+        () => {
+        },
+        () => {
+        },
+        () => {
+        });
+    }
+    this.router.navigate(['/danh-sach-loai', {thongTin: ''}]).then(() => {
+    });
   }
 }
