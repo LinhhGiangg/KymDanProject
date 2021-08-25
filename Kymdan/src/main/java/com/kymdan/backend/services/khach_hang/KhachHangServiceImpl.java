@@ -1,14 +1,14 @@
 package com.kymdan.backend.services.khach_hang;
 
-import com.kymdan.backend.entity.ChiTietGioHang;
-import com.kymdan.backend.entity.GioHang;
-import com.kymdan.backend.entity.KhachHang;
+import com.kymdan.backend.config.TaoMaNgauNhien;
+import com.kymdan.backend.entity.*;
 import com.kymdan.backend.model.DonHangDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
 import com.kymdan.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,8 +51,7 @@ public class KhachHangServiceImpl implements KhachHangService {
 
         if (gioHang != null) {
             for (ChiTietGioHang chiTietGioHang : danhSach) {
-                if (chiTietGioHang.getGioHang().getMa().equals(gioHang.getMa())
-                        && chiTietGioHang.getTrangThai().equals("Chưa đặt")) {
+                if (chiTietGioHang.getGioHang().getMa().equals(gioHang.getMa())) {
                     ketQua.add(chiTietGioHang);
                 }
             }
@@ -109,7 +108,6 @@ public class KhachHangServiceImpl implements KhachHangService {
                 sanPhamMoi.setGioHang(gioHang);
                 sanPhamMoi.setSanPham(this.sanPhamRepository.findById(maSanPham).orElse(null));
                 sanPhamMoi.setSoLuong(soLuong);
-                sanPhamMoi.setTrangThai("Chưa đặt");
                 this.chiTietGioHangRepository.save(sanPhamMoi);
             }
         } else {
@@ -121,7 +119,6 @@ public class KhachHangServiceImpl implements KhachHangService {
             sanPhamMoi.setGioHang(this.gioHangRepository.findByKhachHang_Ten(tenKhachHang));
             sanPhamMoi.setSanPham(this.sanPhamRepository.findById(maSanPham).orElse(null));
             sanPhamMoi.setSoLuong(soLuong);
-            sanPhamMoi.setTrangThai("Chưa đặt");
             this.chiTietGioHangRepository.save(sanPhamMoi);
         }
 
@@ -129,13 +126,84 @@ public class KhachHangServiceImpl implements KhachHangService {
     }
 
     @Override
-    public ChiTietGioHang timChiTietGioHang(String maSanPham) {
-        return this.chiTietGioHangRepository.findBySanPham_Ma(maSanPham);
+    public ChiTietGioHang timChiTietGioHang(String maSanPham, String khachHang) {
+        List<ChiTietGioHang> danhSachGioHang = this.chiTietGioHangRepository.findAll();
+        for (ChiTietGioHang chiTietGioHang : danhSachGioHang) {
+            if (chiTietGioHang.getGioHang().getKhachHang().getTen().equals(khachHang)
+                    && chiTietGioHang.getSanPham().getMa().equals(maSanPham)) {
+                return chiTietGioHang;
+            }
+        }
+        return null;
     }
 
     @Override
     public ThongBaoDTO luuDonHang(DonHangDTO donHangDTO) {
-        System.out.println(donHangDTO);
+        GioHang gioHang = this.gioHangRepository.findByKhachHang_Ten(donHangDTO.getKhachHang());
+
+        DonHang donHang = new DonHang();
+        String maDonHang = TaoMaNgauNhien.tao(5);
+        donHang.setMa(maDonHang);
+        donHang.setNguoiNhan(donHangDTO.getNguoiNhan());
+        donHang.setDiaChi(donHangDTO.getDiaChi());
+        donHang.setSoDienThoai(donHangDTO.getSoDienThoai());
+        donHang.setNgayDat(LocalDate.now());
+        donHang.setNgayNhan(donHangDTO.getNgayNhan().plusDays(1));
+        donHang.setTrangThai("Chờ duyệt");
+        donHang.setCachThanhToan(donHangDTO.getCachThanhToan());
+        donHang.setKhachHang(this.khachHangRepository.findByTen(donHangDTO.getKhachHang()));
+        this.donHangRepository.save(donHang);
+
+        for (int i = 0; i < donHangDTO.getSanPham().split(",").length; i++) {
+            ChiTietDonHang chiTietDonHang = new ChiTietDonHang();
+            chiTietDonHang.setDonHang(this.donHangRepository.findById(maDonHang).orElse(null));
+            chiTietDonHang.setSoLuong(donHangDTO.getSoLuong().split(",")[i]);
+            chiTietDonHang.setGia(donHangDTO.getGia().split(",")[i]);
+            chiTietDonHang.setSanPham(this.sanPhamRepository
+                    .findById(donHangDTO.getSanPham().split(",")[i]).orElse(null));
+            this.chiTietDonHangRepository.save(chiTietDonHang);
+
+            SanPham sanPham = this.sanPhamRepository
+                    .findById(donHangDTO.getSanPham().split(",")[i]).orElse(null);
+            if (sanPham != null) {
+                sanPham.setSoLuong(Integer.parseInt(sanPham.getSoLuong())
+                        - Integer.parseInt(donHangDTO.getSoLuong().split(",")[i]) + "");
+                this.sanPhamRepository.save(sanPham);
+            }
+
+            List<ChiTietGioHang> danhSachGioHang = this.chiTietGioHangRepository.findAll();
+            for (ChiTietGioHang chiTietGioHang : danhSachGioHang) {
+                if (chiTietGioHang.getGioHang().getMa().equals(gioHang.getMa())
+                        && chiTietGioHang.getSanPham().getMa().equals(donHangDTO.getSanPham().split(",")[i])) {
+                    this.chiTietGioHangRepository.delete(chiTietGioHang);
+                } else {
+                    if (chiTietGioHang.getSanPham().getMa().equals(donHangDTO.getSanPham().split(",")[i])) {
+                        if (chiTietGioHang.getSanPham().getSoLuong().equals("0")) {
+                            this.chiTietGioHangRepository.delete(chiTietGioHang);
+                        } else {
+                            if (chiTietGioHang.getSoLuong() > Integer.parseInt(chiTietGioHang.getSanPham().getSoLuong())) {
+                                chiTietGioHang.setSoLuong(Integer.parseInt(chiTietGioHang.getSanPham().getSoLuong()));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         return new ThongBaoDTO("Thành công");
+    }
+
+    @Override
+    public List<DonHang> xemDonHang(String khachHang) {
+        List<DonHang> danhSachDonHang = this.donHangRepository.findAll();
+        List<DonHang> ketQua = new ArrayList<>();
+
+        for (DonHang donHang : danhSachDonHang) {
+            if (donHang.getKhachHang().getTen().equals(khachHang)) {
+                ketQua.add(donHang);
+            }
+        }
+
+        return ketQua;
     }
 }

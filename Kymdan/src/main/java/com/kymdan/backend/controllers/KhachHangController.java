@@ -1,8 +1,8 @@
 package com.kymdan.backend.controllers;
 
 import com.kymdan.backend.entity.ChiTietGioHang;
+import com.kymdan.backend.entity.DonHang;
 import com.kymdan.backend.entity.KhachHang;
-import com.kymdan.backend.entity.LoaiSanPham;
 import com.kymdan.backend.model.DonHangDTO;
 import com.kymdan.backend.model.TaiKhoanDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
@@ -65,14 +65,21 @@ public class KhachHangController {
         return ResponseEntity.ok(khachHangService.luuGioHang(tenKhachHang, maSanPham, soLuong));
     }
 
-    @GetMapping("/timChiTietGioHang/{maSanPham}")
-    public ResponseEntity<ChiTietGioHang> timChiTietGioHang(@PathVariable String maSanPham) {
-        ChiTietGioHang ketQua = this.khachHangService.timChiTietGioHang(maSanPham);
+    @GetMapping("/timChiTietGioHang/{maSanPham}/{khachHang}")
+    public ResponseEntity<ChiTietGioHang> timChiTietGioHang(@PathVariable String maSanPham,
+                                                            @PathVariable String khachHang) {
+        ChiTietGioHang ketQua = this.khachHangService.timChiTietGioHang(maSanPham, khachHang);
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/luuDonHang", method = RequestMethod.POST)
     public ResponseEntity<?> luuDonHang(@RequestBody DonHangDTO donHangDTO) {
         return ResponseEntity.ok(khachHangService.luuDonHang(donHangDTO));
+    }
+
+    @GetMapping("/xemDonHang/{khachHang}")
+    public ResponseEntity<List<DonHang>> xemDonHang(@PathVariable String khachHang) {
+        List<DonHang> ketQua = this.khachHangService.xemDonHang(khachHang);
+        return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
 }

@@ -35,11 +35,15 @@ export class KhachHangService {
     return this.http.get(this.API + '/luuGioHang/' + tenKhachHang + '/' + maSanPham + '/' + soLuong);
   }
 
-  timChiTietGioHang(maSanPham): Observable<any> {
-    return this.http.get(this.API + '/timChiTietGioHang/' + maSanPham);
+  timChiTietGioHang(maSanPham, khachHang): Observable<any> {
+    return this.http.get(this.API + '/timChiTietGioHang/' + maSanPham + '/' + khachHang);
   }
 
   luuDonHang(thongTinDonHang): Observable<any> {
     return this.http.post(this.API + '/luuDonHang', thongTinDonHang, {headers: {skip: 'true'}});
+  }
+
+  xemDonHang(khachHang): Observable<any> {
+    return this.http.get(this.API + '/xemDonHang/' + khachHang);
   }
 }

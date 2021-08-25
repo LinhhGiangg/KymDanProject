@@ -22,7 +22,6 @@
           <th>Giá bán (VND)</th>
           <th>Số lượng</th>
           <th>Thành tiền</th>
-          <th>Trạng thái</th>
           <th>Xóa</th>
         </tr>
         </thead>
@@ -54,7 +53,6 @@
             </div>
           </td>
           <td>{{phanTu.tongTien}}</td>
-          <td>{{phanTu.trangThai}}</td>
           <td>
             <a class="delete" title="Xóa" data-toggle="tooltip" [routerLink]="['/gio-hang']">
               <i class="material-icons" (click)="xoa(phanTu.ma)">&#xE872;</i></a>
@@ -97,7 +95,7 @@
   <div style="text-align: center" *ngIf="gioHang.length == 0 && quyen === 'Khách Hàng'">
     <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/cart/9bdd8040b334d31946f49e36beaf32db.png"
          alt="" style="width: 10%">
-    <h2>Giỏ hàng của bạn còn trống</h2>
+    <h2>Giỏ hàng của bạn còn trống !</h2>
     <button mat-button class="btn btn-success" style="background-color: green; color: white"
             [routerLink]="['/danh-sach-loai']">
       Mua ngay

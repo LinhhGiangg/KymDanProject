@@ -23,6 +23,7 @@ import {ThemKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/them-khuy
 import {SuaKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/sua-khuyen-mai/sua-khuyen-mai.component';
 import {XoaKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/xoa-khuyen-mai/xoa-khuyen-mai.component';
 import {GioHangComponent} from './component/khach-hang/gio-hang/gio-hang.component';
+import {LichSuMuaHangComponent} from './component/khach-hang/lich-su-mua-hang/lich-su-mua-hang.component';
 
 const routes: Routes = [
   {path: '', component: TrangChuComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path: 'mua-hang', component: MuaHangComponent},
   {path: 'dat-hang', component: DatHangComponent},
   {path: 'gio-hang', component: GioHangComponent},
+  {path: 'lich-su-mua-hang', component: LichSuMuaHangComponent},
 
   // Nhân Viên
   {path: 'quan-ly-loai', component: QuanLyLoaiComponent},

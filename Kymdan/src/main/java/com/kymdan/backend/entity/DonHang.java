@@ -9,9 +9,8 @@ import java.util.List;
 @Entity(name = "don_hang")
 public class DonHang {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ma", columnDefinition = "INT")
-    private Integer ma;
+    @Column(name = "ma", columnDefinition = "VARCHAR(10)")
+    private String ma;
 
     @Column(name = "nguoi_nhan", columnDefinition = "VARCHAR(50)")
     private String nguoiNhan;
@@ -59,7 +58,7 @@ public class DonHang {
     public DonHang() {
     }
 
-    public DonHang(Integer ma, String nguoiNhan, String diaChi, String soDienThoai, LocalDate ngayDat,
+    public DonHang(String ma, String nguoiNhan, String diaChi, String soDienThoai, LocalDate ngayDat,
                    LocalDate ngayNhan, String trangThai, String cachThanhToan, NhanVien nhanVien,
                    KhachHang khachHang, List<ChiTietDonHang> danhSachChiTietDonHang, NhanVienGiaoHang nhanVienGiaoHang,
                    HoaDon hoaDon) {
@@ -78,11 +77,11 @@ public class DonHang {
         this.hoaDon = hoaDon;
     }
 
-    public Integer getMa() {
+    public String getMa() {
         return ma;
     }
 
-    public void setMa(Integer ma) {
+    public void setMa(String ma) {
         this.ma = ma;
     }
 

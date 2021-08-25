@@ -155,7 +155,7 @@ export class MuaHangComponent implements OnInit {
       () => {
       },
       () => {
-        if (this.sanPham != null) {
+        if (this.sanPham != null && this.sanPham.soLuong !== '0') {
           this.kichThuoc = this.sanPham.rong + 'x200';
           this.doDay = this.sanPham.cao;
 
@@ -264,7 +264,7 @@ export class MuaHangComponent implements OnInit {
       () => {
       },
       () => {
-        this.khachHangService.timChiTietGioHang(this.sanPham.ma).subscribe(
+        this.khachHangService.timChiTietGioHang(this.sanPham.ma, this.tenDangNhap).subscribe(
           (duLieu) => {
             this.router.navigate(['/dat-hang', {thongTin: duLieu.sanPham.ma}]).then(() => {
             });

@@ -52,7 +52,7 @@ public class SanPhamServiceImpl implements SanPhamService {
         String maLoai = thongTin.split(",")[0];
 
         for (SanPham sanPham : tatCaSanPham) {
-            if (sanPham.getLoaiSanPham().getMa().equals(maLoai)) {
+            if (sanPham.getLoaiSanPham().getMa().equals(maLoai) && !sanPham.getSoLuong().equals("0")) {
                 cungLoai.add(sanPham);
                 if (sanPham.getRong().equals("120") && sanPham.getCao().equals("5")) {
                     ketQua = sanPham;
@@ -61,7 +61,7 @@ public class SanPhamServiceImpl implements SanPhamService {
         }
 
 
-        if (ketQua == null && cungLoai.size() != 0) {
+        if (ketQua == null || ketQua.getSoLuong().equals("0")) {
             ketQua = cungLoai.get(0);
             long rongNhoNhat = Long.parseLong(ketQua.getRong());
             for (SanPham sanPham : cungLoai) {

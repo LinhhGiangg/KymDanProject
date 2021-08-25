@@ -3,6 +3,7 @@ package com.kymdan.backend.model;
 import java.time.LocalDate;
 
 public class DonHangDTO {
+    private String khachHang;
     private String nguoiNhan;
     private String diaChi;
     private String soDienThoai;
@@ -16,8 +17,9 @@ public class DonHangDTO {
     public DonHangDTO() {
     }
 
-    public DonHangDTO(String nguoiNhan, String diaChi, String soDienThoai, LocalDate ngayNhan, String cachThanhToan,
-                      String sanPham, String soLuong, String gia) {
+    public DonHangDTO(String khachHang, String nguoiNhan, String diaChi, String soDienThoai, LocalDate ngayNhan,
+                      String cachThanhToan, String sanPham, String soLuong, String gia) {
+        this.khachHang = khachHang;
         this.nguoiNhan = nguoiNhan;
         this.diaChi = diaChi;
         this.soDienThoai = soDienThoai;
@@ -26,6 +28,14 @@ public class DonHangDTO {
         this.sanPham = sanPham;
         this.soLuong = soLuong;
         this.gia = gia;
+    }
+
+    public String getKhachHang() {
+        return khachHang;
+    }
+
+    public void setKhachHang(String khachHang) {
+        this.khachHang = khachHang;
     }
 
     public String getNguoiNhan() {

@@ -32,7 +32,7 @@ export class DatHangComponent implements OnInit {
   public thongBao;
   public xacNhanThanhToan;
   public thongTinDonHang;
-  public cachThanhToan = 'tien';
+  public cachThanhToan = 'Tiền mặt';
   public ngayHienTai = new Date();
 
   constructor(
@@ -103,29 +103,15 @@ export class DatHangComponent implements OnInit {
       this.thongTin = duLieu.thongTin;
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < this.thongTin.split(',').length; i++) {
-        this.khachHangService.timChiTietGioHang(this.thongTin.split(',')[i]).subscribe(
+        this.duLieuCanLay = 0;
+        this.khachHangService.timChiTietGioHang(this.thongTin.split(',')[i], this.tenKhachHang).subscribe(
           (ketQua) => {
             this.duLieuCanLay = ketQua;
           },
           () => {
           },
           () => {
-            this.chiTiet = new ChiTietGioHang();
-            this.chiTiet.ma = this.duLieuCanLay.ma;
-            this.chiTiet.sanPham = this.duLieuCanLay.sanPham;
-            this.chiTiet.maLoai = this.duLieuCanLay.sanPham.loaiSanPham.ma;
-            this.chiTiet.hinh = this.duLieuCanLay.sanPham.loaiSanPham.hinh1;
-            this.chiTiet.ten = this.duLieuCanLay.sanPham.loaiSanPham.ten;
-            this.chiTiet.kichThuoc = this.duLieuCanLay.sanPham.rong + ' x ' + this.duLieuCanLay.sanPham.dai
-              + ' x ' + this.duLieuCanLay.sanPham.cao;
-            this.chiTiet.gia = '';
-            this.chiTiet.khuyenMai = '';
-            this.chiTiet.soLuong = this.duLieuCanLay.soLuong;
-            this.chiTiet.tongTien = '';
-            if (i === 0) {
-              this.gioHang.pop()
-            }
-            this.gioHang.push(this.chiTiet);
+            this.layDuLieu(i);
             this.thongTinKhuyenMai(i);
           });
       }
@@ -133,6 +119,25 @@ export class DatHangComponent implements OnInit {
     if (this.hienThiPayPal === false) {
       this.payPal();
     }
+  }
+
+  private layDuLieu(i: number) {
+    this.chiTiet = new ChiTietGioHang();
+    this.chiTiet.ma = this.duLieuCanLay.ma;
+    this.chiTiet.sanPham = this.duLieuCanLay.sanPham;
+    this.chiTiet.maLoai = this.duLieuCanLay.sanPham.loaiSanPham.ma;
+    this.chiTiet.hinh = this.duLieuCanLay.sanPham.loaiSanPham.hinh1;
+    this.chiTiet.ten = this.duLieuCanLay.sanPham.loaiSanPham.ten;
+    this.chiTiet.kichThuoc = this.duLieuCanLay.sanPham.rong + ' x ' + this.duLieuCanLay.sanPham.dai
+      + ' x ' + this.duLieuCanLay.sanPham.cao;
+    this.chiTiet.gia = '';
+    this.chiTiet.khuyenMai = '';
+    this.chiTiet.soLuong = this.duLieuCanLay.soLuong;
+    this.chiTiet.tongTien = '';
+    if (i === 0) {
+      this.gioHang.pop()
+    }
+    this.gioHang.push(this.chiTiet);
   }
 
   private thongTinKhuyenMai(i: number) {
@@ -210,18 +215,6 @@ export class DatHangComponent implements OnInit {
     }
   }
 
-  hienThongBao(thongTin) {
-    const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
-      width: '555px',
-      height: '205px',
-      data: {thongBao: thongTin},
-      disableClose: true
-    });
-
-    dialogRefNotice.afterClosed().subscribe(() => {
-    })
-  }
-
   payPal() {
     this.hienThiPayPal = true;
     paypal.Buttons(
@@ -253,9 +246,8 @@ export class DatHangComponent implements OnInit {
 
         onApprove: (data, actions) => {
           return actions.order.capture().then(() => {
+            this.cachThanhToan = 'PayPal';
             this.hienThongBao('Thanh toán thành công !');
-            this.cachThanhToan = 'payPal';
-            this.thanhToan()
           });
         },
 
@@ -272,6 +264,7 @@ export class DatHangComponent implements OnInit {
 
   thanhToan() {
     this.thongTinDonHang = {
+      khachHang: this.tenKhachHang,
       nguoiNhan: this.formDatHang.value.ten,
       diaChi: this.formDatHang.value.diaChi,
       soDienThoai: this.formDatHang.value.soDienThoai,
@@ -294,14 +287,44 @@ export class DatHangComponent implements OnInit {
         this.thongTinDonHang.gia = this.thongTinDonHang.gia + ',' + this.gioHang[i].gia;
       }
     }
+
     this.khachHangService.luuDonHang(this.thongTinDonHang).subscribe(
       () => {
       },
       () => {
       },
       () => {
-        // Đơn hàng đã được xác nhận! Cảm ơn quý khách đã mua hàng tại hệ thống của chúng tôi !
+        this.hienThongBao('Đơn hàng đã được xác nhận ! Cảm ơn quý khách đã mua hàng tại hệ thống của chúng tôi !');
+        this.router.navigate(['/lich-su-mua-hang', {thongTin: ''}]).then(() => {
+        });
       });
+  }
+
+  hienThongBao(thongTin) {
+    if (thongTin.length > 80) {
+      const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
+        width: '575px',
+        height: '209px',
+        data: {thongBao: thongTin},
+        disableClose: true
+      });
+
+      dialogRefNotice.afterClosed().subscribe(() => {
+      })
+    } else {
+      const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
+        width: '555px',
+        height: '187px',
+        data: {thongBao: thongTin},
+        disableClose: true
+      });
+
+      dialogRefNotice.afterClosed().subscribe(() => {
+        if (this.cachThanhToan === 'PayPal') {
+          this.thanhToan()
+        }
+      })
+    }
   }
 
   luuThongTin() {

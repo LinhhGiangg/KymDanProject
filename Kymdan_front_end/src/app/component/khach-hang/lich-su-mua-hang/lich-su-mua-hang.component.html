@@ -1,1 +1,64 @@
-<p>lich-su-mua-hang works!</p>
+<div class="container-fluid" style="margin-top: -55px">
+  <div class="table-responsive" *ngIf="gioHang.length != 0 && quyen === 'Khách Hàng'">
+    <div class="table-wrapper table-striped">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6">
+            <h1 class="text-center" style="font-weight: bold; font-size: 35px; color: green">Lịch sử mua hàng</h1>
+          </div>
+          <div class="col-sm-3">
+          </div>
+        </div>
+      </div>
+
+      <table class="table table-bordered mt-3">
+        <thead>
+        <tr style="font-size: 17px">
+          <th>STT</th>
+          <th>Người nhận</th>
+          <th>Địa chỉ</th>
+          <th>Số điện thoại</th>
+          <th>Ngày đặt</th>
+          <th>Ngày nhận</th>
+          <th>Thanh toán</th>
+          <th>Trạng thái</th>
+          <th>Xem</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let phanTu of gioHang ; let i = index">
+          <td>{{i + 1}}</td>
+          <td>{{phanTu.nguoiNhan}}</td>
+          <td>{{phanTu.diaChi}}</td>
+          <td>{{phanTu.soDienThoai}}</td>
+          <td>{{phanTu.ngayDat}}</td>
+          <td>{{phanTu.ngayNhan}}</td>
+          <td>{{phanTu.cachThanhToan}}</td>
+          <td>{{phanTu.trangThai}}</td>
+          <td>
+            <a [routerLink]="['/danh-sach-san-pham']" (click)="xemChiTietDonHang(phanTu.ma)"
+               class="view" title="Xem chi tiết" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+  <div style="text-align: center" *ngIf="gioHang.length == 0 && quyen === 'Khách Hàng'">
+    <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/cart/9bdd8040b334d31946f49e36beaf32db.png"
+         alt="" style="width: 10%">
+    <h2>Lịch sử mua hàng của bạn còn trống !</h2>
+    <button mat-button class="btn btn-success" style="background-color: green; color: white"
+            [routerLink]="['/danh-sach-loai']">
+      Mua ngay
+    </button>
+  </div>
+
+  <div style="text-align: center" *ngIf="quyen !== 'Khách Hàng'">
+    <h1 style="color: red">Không tìm thấy trang</h1>
+  </div>
+</div>

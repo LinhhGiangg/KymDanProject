@@ -1,7 +1,6 @@
 package com.kymdan.backend.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity(name = "chi_tiet_gio_hang")
 public class ChiTietGioHang {
@@ -12,9 +11,6 @@ public class ChiTietGioHang {
 
     @Column(name = "so_luong", columnDefinition = "INT")
     private Integer soLuong;
-
-    @Column(name = "trang_thai", columnDefinition = "VARCHAR(50)")
-    private String trangThai;
 
     // moi quan he
 
@@ -29,11 +25,9 @@ public class ChiTietGioHang {
     public ChiTietGioHang() {
     }
 
-    public ChiTietGioHang(Integer ma, Integer soLuong, String trangThai,
-                          GioHang gioHang, SanPham sanPham) {
+    public ChiTietGioHang(Integer ma, Integer soLuong, GioHang gioHang, SanPham sanPham) {
         this.ma = ma;
         this.soLuong = soLuong;
-        this.trangThai = trangThai;
         this.gioHang = gioHang;
         this.sanPham = sanPham;
     }
@@ -52,14 +46,6 @@ public class ChiTietGioHang {
 
     public void setSoLuong(Integer soLuong) {
         this.soLuong = soLuong;
-    }
-
-    public String getTrangThai() {
-        return trangThai;
-    }
-
-    public void setTrangThai(String trangThai) {
-        this.trangThai = trangThai;
     }
 
     public GioHang getGioHang() {

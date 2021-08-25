@@ -1,6 +1,7 @@
 package com.kymdan.backend.services.khach_hang;
 
 import com.kymdan.backend.entity.ChiTietGioHang;
+import com.kymdan.backend.entity.DonHang;
 import com.kymdan.backend.entity.KhachHang;
 import com.kymdan.backend.model.DonHangDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
@@ -20,7 +21,9 @@ public interface KhachHangService {
 
     ThongBaoDTO luuGioHang(String tenKhachHang, String maSanPham, Integer soLuong);
 
-    ChiTietGioHang timChiTietGioHang(String maSanPham);
+    ChiTietGioHang timChiTietGioHang(String maSanPham, String khachHang);
 
     ThongBaoDTO luuDonHang(DonHangDTO donHangDTO);
+
+    List<DonHang> xemDonHang(String khachHang);
 }
