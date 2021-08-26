@@ -30,6 +30,9 @@ public class LoaiSanPham {
     @Column(name = "luot_xem", columnDefinition = "INT")
     private Integer luotXem;
 
+    @Column(name = "luot_mua", columnDefinition = "INT")
+    private Integer luotMua;
+
     @Column(name = "ngay_tao", columnDefinition = "DATE")
     private LocalDate ngayTao;
 
@@ -47,7 +50,7 @@ public class LoaiSanPham {
     }
 
     public LoaiSanPham(String ma, String ten, String moTa, String hinh1, String hinh2, String hinh3, Integer luotXem,
-                       LocalDate ngayTao, List<SanPham> danhSachSanPham, NhaCungCap nhaCungCap) {
+                       Integer luotMua, LocalDate ngayTao, List<SanPham> danhSachSanPham, NhaCungCap nhaCungCap) {
         this.ma = ma;
         this.ten = ten;
         this.moTa = moTa;
@@ -55,6 +58,7 @@ public class LoaiSanPham {
         this.hinh2 = hinh2;
         this.hinh3 = hinh3;
         this.luotXem = luotXem;
+        this.luotMua = luotMua;
         this.ngayTao = ngayTao;
         this.danhSachSanPham = danhSachSanPham;
         this.nhaCungCap = nhaCungCap;
@@ -114,6 +118,14 @@ public class LoaiSanPham {
 
     public void setLuotXem(Integer luotXem) {
         this.luotXem = luotXem;
+    }
+
+    public Integer getLuotMua() {
+        return luotMua;
+    }
+
+    public void setLuotMua(Integer luotMua) {
+        this.luotMua = luotMua;
     }
 
     public LocalDate getNgayTao() {

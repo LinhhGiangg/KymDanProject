@@ -65,7 +65,7 @@ export class TaoMoiLoaiComponent implements OnInit {
             this.thongBao = '';
 
             dialogRefNotice.afterClosed().subscribe(() => {
-              this.router.navigate(['/quan-ly-loai', {message: ''}]).then(() => {
+              this.router.navigate(['/quan-ly-loai']).then(() => {
               });
               this.dialogRef.close()
             })

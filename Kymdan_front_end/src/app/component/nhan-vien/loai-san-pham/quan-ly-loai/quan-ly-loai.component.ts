@@ -69,7 +69,7 @@ export class QuanLyLoaiComponent implements OnInit {
     this.thongBao = '';
     const dialogRefEdit = this.dialog.open(SuaLoaiComponent, {
       width: '750px',
-      height: '690px',
+      height: '645px',
       data: {thongTin: duLieu},
       disableClose: true
     });

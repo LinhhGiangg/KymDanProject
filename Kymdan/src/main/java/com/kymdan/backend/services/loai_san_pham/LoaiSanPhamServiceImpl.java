@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +69,7 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
         loaiSanPham.setHinh2("assets/sanPham6.jpg");
         loaiSanPham.setHinh3("assets/sanPham7.jpg");
         loaiSanPham.setLuotXem(0);
+        loaiSanPham.setLuotMua(0);
         loaiSanPham.setNgayTao(LocalDate.now());
         this.loaiSanPhamRepository.save(loaiSanPham);
 
@@ -97,21 +99,33 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
 
     @Override
     public List<LoaiSanPham> xemLoaiMoi() {
+        LocalDate ngayHienTai = LocalDate.now();
         List<LoaiSanPham> ketQua = new ArrayList<>();
+        List<LoaiSanPham> loaiMoiNhap = new ArrayList<>();
         List<LoaiSanPham> tatCaLoai = this.loaiSanPhamRepository.findAll();
         LoaiSanPham loaiSanPham;
-        int min;
-        for (int i = 0; i < 5; i++) {
-            loaiSanPham = tatCaLoai.get(0);
-            min = LocalDate.now().compareTo(loaiSanPham.getNgayTao());
-            for (int j = 1; j < tatCaLoai.size(); j++) {
-                if (LocalDate.now().compareTo(tatCaLoai.get(j).getNgayTao()) < min) {
-                    loaiSanPham = tatCaLoai.get(j);
-                    min = LocalDate.now().compareTo(tatCaLoai.get(j).getNgayTao());
+        int ngayGanNhat;
+        int soDem = 0;
+
+        for (LoaiSanPham phanTu : tatCaLoai) {
+            Period soNgay = Period.between(phanTu.getNgayTao(), ngayHienTai);
+            if (soNgay.getDays() < 31 && soNgay.getMonths() == 0 && soNgay.getYears() == 0) {
+                loaiMoiNhap.add(phanTu);
+            }
+        }
+
+        for (int i = 0; i < loaiMoiNhap.size() && soDem < 5;) {
+            loaiSanPham = loaiMoiNhap.get(0);
+            ngayGanNhat = LocalDate.now().compareTo(loaiSanPham.getNgayTao());
+            for (LoaiSanPham sanPham : loaiMoiNhap) {
+                if (LocalDate.now().compareTo(sanPham.getNgayTao()) < ngayGanNhat) {
+                    loaiSanPham = sanPham;
+                    ngayGanNhat = LocalDate.now().compareTo(sanPham.getNgayTao());
                 }
             }
             ketQua.add(loaiSanPham);
-            tatCaLoai.remove(loaiSanPham);
+            soDem += 1;
+            loaiMoiNhap.remove(loaiSanPham);
         }
 
         return ketQua;
@@ -120,20 +134,30 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
     @Override
     public List<LoaiSanPham> xemLoaiBanChay() {
         List<LoaiSanPham> ketQua = new ArrayList<>();
+        List<LoaiSanPham> loaiDaMua = new ArrayList<>();
         List<LoaiSanPham> tatCaLoai = this.loaiSanPhamRepository.findAll();
         LoaiSanPham loaiSanPham;
-        Integer max;
-        for (int i = 0; i < 5; i++) {
-            loaiSanPham = tatCaLoai.get(0);
-            max = tatCaLoai.get(0).getLuotXem();
-            for (int j = 1; j < tatCaLoai.size(); j++) {
-                if (tatCaLoai.get(j).getLuotXem() > max) {
-                    loaiSanPham = tatCaLoai.get(j);
-                    max = tatCaLoai.get(j).getLuotXem();
+        int luotMua;
+        int soDem = 0;
+
+        for (LoaiSanPham phanTu : tatCaLoai) {
+            if (phanTu.getLuotMua() > 0) {
+                loaiDaMua.add(phanTu);
+            }
+        }
+
+        for (int i = 0; i < loaiDaMua.size() && soDem < 5;) {
+            loaiSanPham = loaiDaMua.get(0);
+            luotMua = loaiSanPham.getLuotMua();
+            for (LoaiSanPham sanPham : loaiDaMua) {
+                if (sanPham.getLuotMua() > luotMua) {
+                    loaiSanPham = sanPham;
+                    luotMua = sanPham.getLuotMua();
                 }
             }
             ketQua.add(loaiSanPham);
-            tatCaLoai.remove(loaiSanPham);
+            soDem += 1;
+            loaiDaMua.remove(loaiSanPham);
         }
 
         return ketQua;

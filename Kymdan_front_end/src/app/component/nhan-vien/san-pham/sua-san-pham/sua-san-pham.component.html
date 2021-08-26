@@ -14,7 +14,7 @@
       <div>
         <div class="row">
           <mat-form-field>
-            <mat-label>Mã loại</mat-label>
+            <mat-label>Mã sản phẩm</mat-label>
             <input matInput formControlName="ma" readonly>
           </mat-form-field>
         </div>
@@ -28,7 +28,7 @@
 
         <div class="row">
           <mat-form-field>
-            <mat-label>Giá (VND)</mat-label>
+            <mat-label>Giá (VND) <i style="margin-left: 5px" class="fa fa-pencil"></i></mat-label>
             <input matInput formControlName="gia">
             <mat-error *ngIf="formSua.controls.gia.errors?.required">Giá không đươc để trống.
             </mat-error>
@@ -40,24 +40,12 @@
 
         <div class="row">
           <mat-form-field>
-            <mat-label>Số lượng</mat-label>
+            <mat-label>Số lượng <i style="margin-left: 5px" class="fa fa-pencil"></i></mat-label>
             <input matInput formControlName="soLuong">
             <mat-error *ngIf="formSua.controls.soLuong.errors?.required">Số lượng không đươc để trống.
             </mat-error>
             <mat-error *ngIf="formSua.controls.soLuong.errors?.pattern">
               Số lượng phải là số nguyên lớn hơn 0.
-            </mat-error>
-          </mat-form-field>
-        </div>
-
-        <div class="row">
-          <mat-form-field>
-            <mat-label>Giảm giá (%)</mat-label>
-            <input matInput formControlName="giamGia">
-            <mat-error *ngIf="formSua.controls.giamGia.errors?.required">Giảm giá không đươc để trống.
-            </mat-error>
-            <mat-error *ngIf="formSua.controls.giamGia.errors?.pattern">
-              % giảm giá phải là số nguyên lớn hơn hoặc bằng 0 và nhỏ hơn 100.
             </mat-error>
           </mat-form-field>
         </div>

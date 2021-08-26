@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {ActivatedRoute, Router} from '@angular/router';
-import {SuaLoaiComponent} from '../../loai-san-pham/sua-loai/sua-loai.component';
-import {XoaLoaiComponent} from '../../loai-san-pham/xoa-loai/xoa-loai.component';
 import {SanPham} from '../../../../model/SanPham';
 import {SanPhamService} from '../../../../service/san-pham.service';
 import {XoaSanPhamComponent} from '../xoa-san-pham/xoa-san-pham.component';
@@ -61,7 +59,15 @@ export class DanhSachSanPhamComponent implements OnInit {
       () => {
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < this.danhSach.length; i++) {
-          this.danhSach[i].gia = DanhSachSanPhamComponent.hienThiGia(this.danhSach[i].gia);
+          this.sanPhamService.timGiaBangMaSanPham(this.danhSach[i].ma).subscribe(
+            (duLieu) => {
+              this.danhSach[i].gia = duLieu.gia;
+              this.danhSach[i].gia = DanhSachSanPhamComponent.hienThiGia(this.danhSach[i].gia);
+            },
+            () => {
+            },
+            () => {
+            });
         }
       });
   }
@@ -70,7 +76,7 @@ export class DanhSachSanPhamComponent implements OnInit {
     this.thongBao = '';
     const dialogRefAdd = this.dialog.open(ThemSanPhamComponent, {
       width: '750px',
-      height: '460px',
+      height: '405px',
       data: {thongTin: this.maLoai},
       disableClose: true
     });
@@ -81,21 +87,20 @@ export class DanhSachSanPhamComponent implements OnInit {
   }
 
   sua(ma) {
-    this.sanPhamService.timBangMa(ma).subscribe(
-      (duLieu) => {
-        this.taoFormSua(duLieu)
-      },
-      () => {
-      },
-      () => {
-      });
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.danhSach.length; i++) {
+      if (this.danhSach[i].ma === ma) {
+        this.taoFormSua(this.danhSach[i]);
+        break;
+      }
+    }
   }
 
   taoFormSua(duLieu) {
     this.thongBao = '';
     const dialogRefEdit = this.dialog.open(SuaSanPhamComponent, {
       width: '750px',
-      height: '430px',
+      height: '375px',
       data: {thongTin: duLieu},
       disableClose: true
     });
@@ -109,7 +114,7 @@ export class DanhSachSanPhamComponent implements OnInit {
     this.thongBao = '';
     const dialogRefDelete = this.dialog.open(XoaSanPhamComponent, {
       width: '690px',
-      height: '195px',
+      height: '175px',
       data: {thongTin: ma + ',' + this.maLoai},
       disableClose: true
     });

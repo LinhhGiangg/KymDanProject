@@ -7,20 +7,20 @@ public class SanPhamDTO {
     private String doDay;
     private String gia;
     private String soLuong;
-    private String giamGia;
+    private String nhanVien;
 
     public SanPhamDTO() {
     }
 
     public SanPhamDTO(String ma, String maLoai, String kichThuoc, String doDay, String gia, String soLuong,
-                      String giamGia) {
+                      String nhanVien) {
         this.ma = ma;
         this.maLoai = maLoai;
         this.kichThuoc = kichThuoc;
         this.doDay = doDay;
         this.gia = gia;
         this.soLuong = soLuong;
-        this.giamGia = giamGia;
+        this.nhanVien = nhanVien;
     }
 
     public String getMa() {
@@ -71,11 +71,11 @@ public class SanPhamDTO {
         this.soLuong = soLuong;
     }
 
-    public String getGiamGia() {
-        return giamGia;
+    public String getNhanVien() {
+        return nhanVien;
     }
 
-    public void setGiamGia(String giamGia) {
-        this.giamGia = giamGia;
+    public void setNhanVien(String nhanVien) {
+        this.nhanVien = nhanVien;
     }
 }

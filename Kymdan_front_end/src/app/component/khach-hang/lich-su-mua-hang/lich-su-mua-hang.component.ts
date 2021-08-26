@@ -38,13 +38,8 @@ export class LichSuMuaHangComponent implements OnInit {
     }
   }
 
-  xemSanPham(i: number) {
-    const THONG_TIN = this.gioHang[i].maLoai + ','
-      + this.gioHang[i].kichThuoc.split(' x ')[0] + ',' + this.gioHang[i].kichThuoc.split(' x ')[2] + ',1';
-    this.router.navigate(['/mua-hang', {thongTin: THONG_TIN}]).then(() => {
+  xemChiTietDonHang(ma) {
+    this.router.navigate(['/chi-tiet-don-hang', {thongTin: ma}]).then(() => {
     });
-  }
-
-  xemChiTietDonHang(ma: any) {
   }
 }

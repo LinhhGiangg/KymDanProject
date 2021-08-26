@@ -72,7 +72,7 @@ export class SuaLoaiComponent implements OnInit {
           });
 
           dialogRefNotice.afterClosed().subscribe(() => {
-            this.router.navigate(['/quan-ly-loai', {thongBao: ''}]).then(() => {
+            this.router.navigate(['/quan-ly-loai']).then(() => {
             });
             this.dialogRef.close()
           })

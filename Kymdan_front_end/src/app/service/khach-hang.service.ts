@@ -46,4 +46,8 @@ export class KhachHangService {
   xemDonHang(khachHang): Observable<any> {
     return this.http.get(this.API + '/xemDonHang/' + khachHang);
   }
+
+  xemChiTietDonHang(maDonHang): Observable<any> {
+    return this.http.get(this.API + '/xemChiTietDonHang/' + maDonHang);
+  }
 }

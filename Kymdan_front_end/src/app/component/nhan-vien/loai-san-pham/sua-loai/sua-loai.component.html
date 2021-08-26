@@ -8,7 +8,7 @@
           <strong style="font-size: 25px">Sửa thông tin loại sản phẩm</strong>
         </h3>
 
-        <mat-error *ngIf="thongBao">{{thongBao}}</mat-error>
+        <mat-error *ngIf="thongBao && thongBao != 'Sửa thành công !'">{{thongBao}}</mat-error>
       </div>
 
       <div>
@@ -21,7 +21,7 @@
 
         <div class="row">
           <mat-form-field>
-            <mat-label>Đặc tính 1<sup class="text-danger"> *</sup></mat-label>
+            <mat-label>Đặc tính 1 <i style="margin-left: 5px" class="fa fa-pencil"></i></mat-label>
             <input matInput formControlName="moTa1">
             <mat-error *ngIf="formSua.controls.moTa1.errors?.required">Mô tả này không đươc để trống.
             </mat-error>
@@ -32,7 +32,7 @@
 
         <div class="row">
           <mat-form-field>
-            <mat-label>Đặc tính 2</mat-label>
+            <mat-label>Đặc tính 2 <i style="margin-left: 5px" class="fa fa-pencil"></i></mat-label>
             <input matInput formControlName="moTa2">
             <mat-error *ngIf="formSua.controls.moTa2.errors?.maxlength">Mô tả tối đa 80 kí tự.
             </mat-error>
@@ -41,7 +41,7 @@
 
         <div class="row">
           <mat-form-field>
-            <mat-label>Đặc tính 3</mat-label>
+            <mat-label>Đặc tính 3 <i style="margin-left: 5px" class="fa fa-pencil"></i></mat-label>
             <input matInput formControlName="moTa3">
             <mat-error *ngIf="formSua.controls.moTa3.errors?.maxlength">Mô tả tối đa 80 kí tự.
             </mat-error>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="row">
-          <p>Hình ảnh minh họa<sup class="text-danger"> *</sup> : </p>
+          <p>Hình ảnh minh họa <i style="margin-left: 5px" class="fa fa-pencil"></i></p>
         </div>
 
         <div class="row mb-1">
@@ -60,7 +60,7 @@
                alt="" class="mt-1">
         </div>
 
-        <div class="row">
+        <div class="row mt-3">
           <div class="col-sm-3"></div>
           <div class="col-sm-6 d-flex justify-content-center">
             <button type="submit" class="btn btn-success">Cập nhật</button>

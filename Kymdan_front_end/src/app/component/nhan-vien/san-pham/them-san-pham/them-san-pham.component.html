@@ -14,12 +14,12 @@
       <div>
         <div class="row">
           <mat-form-field>
-            <mat-label>Mã loại<sup class="text-danger"> *</sup></mat-label>
+            <mat-label>Mã sản phẩm<sup class="text-danger"> *</sup></mat-label>
             <input matInput formControlName="ma">
-            <mat-error *ngIf="formTaoMoi.controls.ma.errors?.required">Mã loại không đươc để trống.
+            <mat-error *ngIf="formTaoMoi.controls.ma.errors?.required">Mã sản phẩm không đươc để trống.
             </mat-error>
             <mat-error *ngIf="formTaoMoi.controls.ma.errors?.pattern">
-              Mã loại không đúng quy định. Mã loại có dạng SP-XXX với X là số từ 0 đến 9.
+              Mã sản phẩm không đúng quy định. Mã sản phẩm có dạng SP-XXX với X là số từ 0 đến 9.
             </mat-error>
           </mat-form-field>
         </div>
@@ -64,18 +64,6 @@
             </mat-error>
             <mat-error *ngIf="formTaoMoi.controls.soLuong.errors?.pattern">
               Số lượng phải là số nguyên lớn hơn 0.
-            </mat-error>
-          </mat-form-field>
-        </div>
-
-        <div class="row">
-          <mat-form-field>
-            <mat-label>Giảm giá (%)</mat-label>
-            <input matInput formControlName="giamGia">
-            <mat-error *ngIf="formTaoMoi.controls.giamGia.errors?.required">Giảm giá không đươc để trống.
-            </mat-error>
-            <mat-error *ngIf="formTaoMoi.controls.giamGia.errors?.pattern">
-              % giảm giá phải là số nguyên lớn hơn hoặc bằng 0 và nhỏ hơn 100.
             </mat-error>
           </mat-form-field>
         </div>

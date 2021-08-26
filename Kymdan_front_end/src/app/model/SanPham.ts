@@ -7,7 +7,5 @@ export class SanPham {
   cao: string;
   soLuong: string;
   loaiSanPham: LoaiSanPham;
-
   gia: string;
-  giamGia: string;
 }

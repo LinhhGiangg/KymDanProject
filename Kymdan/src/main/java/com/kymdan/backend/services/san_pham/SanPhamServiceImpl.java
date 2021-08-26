@@ -5,10 +5,7 @@ import com.kymdan.backend.entity.ChiTietKhuyenMai;
 import com.kymdan.backend.entity.SanPham;
 import com.kymdan.backend.model.SanPhamDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
-import com.kymdan.backend.repository.ChiTietGiaRepository;
-import com.kymdan.backend.repository.ChiTietKhuyenMaiRepository;
-import com.kymdan.backend.repository.LoaiSanPhamRepository;
-import com.kymdan.backend.repository.SanPhamRepository;
+import com.kymdan.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +23,9 @@ public class SanPhamServiceImpl implements SanPhamService {
 
     @Autowired
     private ChiTietGiaRepository chiTietGiaRepository;
+
+    @Autowired
+    private NhanVienRepository nhanVienRepository;
 
     @Autowired
     private ChiTietKhuyenMaiRepository chiTietKhuyenMaiRepository;
@@ -108,8 +108,16 @@ public class SanPhamServiceImpl implements SanPhamService {
     public ThongBaoDTO sua(SanPhamDTO sanPhamDTO) {
         SanPham sanPham = this.sanPhamRepository.findById(sanPhamDTO.getMa()).orElse(null);
         if (sanPham != null) {
+            ChiTietGia chiTietGia = new ChiTietGia();
+            chiTietGia.setSanPham(sanPham);
+            chiTietGia.setGia(sanPhamDTO.getGia());
+            chiTietGia.setNgayThayDoi(LocalDate.now());
+            chiTietGia.setNhanVien(this.nhanVienRepository.findByTen(sanPhamDTO.getNhanVien()));
+            this.chiTietGiaRepository.save(chiTietGia);
+
             sanPham.setSoLuong(sanPhamDTO.getSoLuong());
             this.sanPhamRepository.save(sanPham);
+
             return new ThongBaoDTO("Sửa thành công !");
         } else return new ThongBaoDTO("Lỗi hệ thống ! Vui lòng thử lại sau !");
     }
@@ -124,6 +132,14 @@ public class SanPhamServiceImpl implements SanPhamService {
         sanPham.setSoLuong(sanPhamDTO.getSoLuong());
         sanPham.setLoaiSanPham(this.loaiSanPhamRepository.findById(sanPhamDTO.getMaLoai()).orElse(null));
         this.sanPhamRepository.save(sanPham);
+
+        ChiTietGia chiTietGia = new ChiTietGia();
+        chiTietGia.setSanPham(this.sanPhamRepository.findById(sanPhamDTO.getMa()).orElse(null));
+        chiTietGia.setGia(sanPhamDTO.getGia());
+        chiTietGia.setNgayThayDoi(LocalDate.now());
+        chiTietGia.setNhanVien(this.nhanVienRepository.findByTen(sanPhamDTO.getNhanVien()));
+        this.chiTietGiaRepository.save(chiTietGia);
+
         return new ThongBaoDTO("Tạo mới thành công !");
     }
 

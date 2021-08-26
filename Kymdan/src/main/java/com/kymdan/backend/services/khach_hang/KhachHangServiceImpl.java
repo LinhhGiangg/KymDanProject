@@ -142,7 +142,7 @@ public class KhachHangServiceImpl implements KhachHangService {
         GioHang gioHang = this.gioHangRepository.findByKhachHang_Ten(donHangDTO.getKhachHang());
 
         DonHang donHang = new DonHang();
-        String maDonHang = TaoMaNgauNhien.tao(5);
+        String maDonHang = "DH" + TaoMaNgauNhien.tao(8);
         donHang.setMa(maDonHang);
         donHang.setNguoiNhan(donHangDTO.getNguoiNhan());
         donHang.setDiaChi(donHangDTO.getDiaChi());
@@ -168,6 +168,8 @@ public class KhachHangServiceImpl implements KhachHangService {
             if (sanPham != null) {
                 sanPham.setSoLuong(Integer.parseInt(sanPham.getSoLuong())
                         - Integer.parseInt(donHangDTO.getSoLuong().split(",")[i]) + "");
+                sanPham.getLoaiSanPham().setLuotMua(sanPham.getLoaiSanPham().getLuotMua()
+                        + Integer.parseInt(donHangDTO.getSoLuong().split(",")[i]));
                 this.sanPhamRepository.save(sanPham);
             }
 
@@ -201,6 +203,20 @@ public class KhachHangServiceImpl implements KhachHangService {
         for (DonHang donHang : danhSachDonHang) {
             if (donHang.getKhachHang().getTen().equals(khachHang)) {
                 ketQua.add(donHang);
+            }
+        }
+
+        return ketQua;
+    }
+
+    @Override
+    public List<ChiTietDonHang> xemChiTietDonHang(String maDonHang) {
+        List<ChiTietDonHang> danhSachChiTiet = this.chiTietDonHangRepository.findAll();
+        List<ChiTietDonHang> ketQua = new ArrayList<>();
+
+        for (ChiTietDonHang chiTietDonHang : danhSachChiTiet) {
+            if (chiTietDonHang.getDonHang().getMa().equals(maDonHang)) {
+                ketQua.add(chiTietDonHang);
             }
         }
 

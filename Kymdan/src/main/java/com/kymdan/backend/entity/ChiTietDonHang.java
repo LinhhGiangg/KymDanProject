@@ -18,7 +18,7 @@ public class ChiTietDonHang {
     // moi quan he
 
     @ManyToOne
-    @JoinColumn(name = "ma_don_hang", referencedColumnName = "ma", columnDefinition = "VARCHAR(5)")
+    @JoinColumn(name = "ma_don_hang", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
     private DonHang donHang;
 
     @ManyToOne

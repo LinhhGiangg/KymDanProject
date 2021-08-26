@@ -1,5 +1,6 @@
 package com.kymdan.backend.controllers;
 
+import com.kymdan.backend.entity.ChiTietDonHang;
 import com.kymdan.backend.entity.ChiTietGioHang;
 import com.kymdan.backend.entity.DonHang;
 import com.kymdan.backend.entity.KhachHang;
@@ -80,6 +81,12 @@ public class KhachHangController {
     @GetMapping("/xemDonHang/{khachHang}")
     public ResponseEntity<List<DonHang>> xemDonHang(@PathVariable String khachHang) {
         List<DonHang> ketQua = this.khachHangService.xemDonHang(khachHang);
+        return new ResponseEntity<>(ketQua, HttpStatus.OK);
+    }
+
+    @GetMapping("/xemChiTietDonHang/{maDonHang}")
+    public ResponseEntity<List<ChiTietDonHang>> xemChiTietDonHang(@PathVariable String maDonHang) {
+        List<ChiTietDonHang> ketQua = this.khachHangService.xemChiTietDonHang(maDonHang);
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
 }

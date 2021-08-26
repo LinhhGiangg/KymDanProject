@@ -40,7 +40,7 @@ export class XoaKhuyenMaiComponent implements OnInit {
       });
 
       dialogRefNotice.afterClosed().subscribe(() => {
-        this.router.navigate(['/danh-sach-khuyen-mai', {thongBao: ''}]).then(() => {
+        this.router.navigate(['/danh-sach-khuyen-mai']).then(() => {
         });
         this.dialogRef.close()
       })

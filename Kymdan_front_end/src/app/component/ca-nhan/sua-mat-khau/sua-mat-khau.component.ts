@@ -65,7 +65,7 @@ export class SuaMatKhauComponent implements OnInit {
           });
 
           dialogRefNotice.afterClosed().subscribe(() => {
-            this.router.navigate(['/thong-tin', {message: ''}]).then(() => {
+            this.router.navigate(['/thong-tin']).then(() => {
             });
             this.dialogRef.close()
           })

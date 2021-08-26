@@ -4,6 +4,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog
 import {ActivatedRoute, Router} from '@angular/router';
 import {ThongBaoComponent} from '../../../cau-hinh/thong-bao/thong-bao.component';
 import {SanPhamService} from '../../../../service/san-pham.service';
+import {TaiKhoanService} from '../../../../service/tai-khoan.service';
 
 @Component({
   selector: 'app-sua-san-pham',
@@ -11,12 +12,15 @@ import {SanPhamService} from '../../../../service/san-pham.service';
   styleUrls: ['./sua-san-pham.component.css']
 })
 export class SuaSanPhamComponent implements OnInit {
+  public tenDangNhap;
   public formSua: FormGroup;
   public duLieuMoi;
   public duLieuCu;
+  public gia;
   public thongBao;
 
   constructor(
+    public taiKhoanService: TaiKhoanService,
     public sanPhamService: SanPhamService,
     public dialogRef: MatDialogRef<SuaSanPhamComponent>,
     @Inject(MAT_DIALOG_DATA) public duLieu: any,
@@ -29,15 +33,18 @@ export class SuaSanPhamComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tenDangNhap = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
+
     this.activatedRouter.params.subscribe(() => {
       this.duLieuCu = this.duLieu.thongTin;
+      this.gia = this.duLieuCu.gia.split('.')[0]
+        + this.duLieuCu.gia.split('.')[1] + this.duLieuCu.gia.split('.')[2] + '';
     });
 
     this.formSua = this.formBuilder.group({
       ma: [this.duLieuCu.ma],
-      gia: [this.duLieuCu.gia, [Validators.required, Validators.pattern('^([1-9]{1})([0-9]{6,7})$')]],
+      gia: [this.gia, [Validators.required, Validators.pattern('^([1-9]{1})([0-9]{6,7})$')]],
       soLuong: [this.duLieuCu.soLuong, [Validators.required, Validators.pattern('^([1-9]{1})([0-9]*)$')]],
-      giamGia: [this.duLieuCu.giamGia, [Validators.required, Validators.pattern('^([0-9]{1})([0-9]?)$')]],
     });
   }
 
@@ -47,7 +54,7 @@ export class SuaSanPhamComponent implements OnInit {
         ma: this.duLieuCu.ma,
         gia: this.formSua.value.gia,
         soLuong: this.formSua.value.soLuong,
-        giamGia: this.formSua.value.giamGia,
+        nhanVien: this.tenDangNhap,
       };
 
       this.sanPhamService.sua(this.duLieuMoi)

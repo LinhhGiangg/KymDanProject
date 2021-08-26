@@ -81,7 +81,7 @@ export class SuaKhuyenMaiComponent implements OnInit {
             });
 
             dialogRefNotice.afterClosed().subscribe(() => {
-              this.router.navigate(['/danh-sach-khuyen-mai', {thongTin: ''}]).then(() => {
+              this.router.navigate(['/danh-sach-khuyen-mai']).then(() => {
               });
               this.dialogRef.close()
             })

@@ -8,17 +8,20 @@ public class LoaiSanPhamDTO {
     private String moTa;
     private String hinh;
     private Integer luotXem;
+    private Integer luotMua;
     private LocalDate ngayTao;
 
     public LoaiSanPhamDTO() {
     }
 
-    public LoaiSanPhamDTO(String ma, String ten, String moTa, String hinh, Integer luotXem, LocalDate ngayTao) {
+    public LoaiSanPhamDTO(String ma, String ten, String moTa, String hinh, Integer luotXem, Integer luotMua,
+                          LocalDate ngayTao) {
         this.ma = ma;
         this.ten = ten;
         this.moTa = moTa;
         this.hinh = hinh;
         this.luotXem = luotXem;
+        this.luotMua = luotMua;
         this.ngayTao = ngayTao;
     }
 
@@ -68,5 +71,13 @@ public class LoaiSanPhamDTO {
 
     public void setNgayTao(LocalDate ngayTao) {
         this.ngayTao = ngayTao;
+    }
+
+    public Integer getLuotMua() {
+        return luotMua;
+    }
+
+    public void setLuotMua(Integer luotMua) {
+        this.luotMua = luotMua;
     }
 }

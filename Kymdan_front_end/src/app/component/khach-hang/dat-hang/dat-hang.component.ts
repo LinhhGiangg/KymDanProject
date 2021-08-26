@@ -295,7 +295,7 @@ export class DatHangComponent implements OnInit {
       },
       () => {
         this.hienThongBao('Đơn hàng đã được xác nhận ! Cảm ơn quý khách đã mua hàng tại hệ thống của chúng tôi !');
-        this.router.navigate(['/lich-su-mua-hang', {thongTin: ''}]).then(() => {
+        this.router.navigate(['/lich-su-mua-hang']).then(() => {
         });
       });
   }
