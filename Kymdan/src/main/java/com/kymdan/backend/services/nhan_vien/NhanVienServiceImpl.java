@@ -1,17 +1,19 @@
 package com.kymdan.backend.services.nhan_vien;
 
-import com.kymdan.backend.entity.NhanVien;
-import com.kymdan.backend.repository.NhanVienRepository;
+import com.kymdan.backend.entity.DonHang;
+import com.kymdan.backend.repository.DonHangRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class NhanVienServiceImpl implements NhanVienService {
     @Autowired
-    NhanVienRepository nhanVienRepository;
+    DonHangRepository donHangRepository;
 
     @Override
-    public NhanVien timBangMa(String ma) {
-        return this.nhanVienRepository.findById(ma).orElse(null);
+    public List<DonHang> danhSachDonHang() {
+        return this.donHangRepository.findAll();
     }
 }

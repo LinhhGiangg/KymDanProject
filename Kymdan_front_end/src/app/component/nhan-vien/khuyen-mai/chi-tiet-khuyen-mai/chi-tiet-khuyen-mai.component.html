@@ -1,83 +1,52 @@
-<div class="row">
-  <div class="col-sm-2"></div>
-  <div class="col-sm-8">
-    <form>
-      <div class="text-center">
-        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" style="color: green" id="add">
-          <strong style="font-size: 25px">Chi tiết khuyến mãi</strong>
-        </h3>
+<div class="container-fluid">
+  <div class="table-responsive">
+    <div class="table-wrapper table-striped">
+
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-3" style="text-align: left">
+            <button class="btn btn-dark" style="width: 103px" [routerLink]="['/danh-sach-khuyen-mai']">Trở về</button>
+          </div>
+          <div class="col-sm-6">
+            <h1 class="text-center" style="font-weight: bold; color: green" *ngIf="danhSach.length > 0">
+              Chi tiết khuyến mãi
+            </h1>
+            <h1 class="text-center" style="font-weight: bold; color: green" *ngIf="danhSach.length == 0">
+              Chi tiết khuyến mãi trống !
+            </h1>
+          </div>
+          <div class="col-sm-3" style="text-align: right">
+            <button class="btn btn-success" *ngIf="kiemTra || danhSach.length == 0" (click)="themSanPham()">
+              Thêm sản phẩm
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div>
-        <div class="row">
-          <div class="col-sm-12">
-            <mat-form-field>
-              <mat-label>Mã khuyến mãi</mat-label>
-              <input matInput [value]="khuyenMai.ma" readonly>
-            </mat-form-field>
-          </div>
-        </div>
+      <table class="table table-bordered mt-3" *ngIf="danhSach.length > 0">
+        <thead>
+        <tr style="font-size: 17px">
+          <th>STT</th>
+          <th style="width: 504px">Tên loại sản phẩm</th>
+          <th>Mã sản phẩm</th>
+          <th>Kích thước</th>
+          <th>Giá gốc (VND)</th>
+          <th style="width: 139px">Giảm giá (%)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let phanTu of danhSach ; let i = index">
+          <td>{{i + 1}}</td>
+          <td>{{phanTu.sanPham.loaiSanPham.ten}}</td>
+          <td>{{phanTu.sanPham.ma}}</td>
+          <td>{{phanTu.sanPham.rong}} x {{phanTu.sanPham.dai}} x {{phanTu.sanPham.cao}}</td>
+          <td>{{phanTu.gia}}</td>
+          <td>{{phanTu.giamGia}}</td>
+        </tr>
+        </tbody>
+      </table>
 
-        <div class="row">
-          <div class="col-sm-12">
-            <mat-form-field>
-              <mat-label>Tên khuyến mãi</mat-label>
-              <input matInput [value]="khuyenMai.ten" readonly>
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <mat-form-field>
-              <mat-label>Mô tả</mat-label>
-              <input matInput [value]="khuyenMai.moTa" readonly>
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-7">
-            <mat-form-field>
-              <mat-label>Mã sản phẩm</mat-label>
-              <input matInput [value]="maSanPham" readonly>
-            </mat-form-field>
-          </div>
-          <div class="col-sm-5">
-            <mat-form-field>
-              <mat-label>Giảm giá (%)</mat-label>
-              <input matInput [value]="giamGia" readonly>
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <mat-form-field>
-              <mat-label>Ngày bắt đầu</mat-label>
-              <input matInput [value]="khuyenMai.ngayBatDau" readonly>
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <mat-form-field>
-              <mat-label>Ngày kết thúc</mat-label>
-              <input matInput [value]="khuyenMai.ngayKetThuc" readonly>
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div class="row mt-2">
-          <div class="col-sm-3"></div>
-          <div class="col-sm-6 d-flex justify-content-center">
-            <button mat-dialog-close type="button" class="btn btn-warning ml-3">Đóng</button>
-          </div>
-          <div class="col-sm-3"></div>
-        </div>
-      </div>
-    </form>
+      <div class="clearfix"></div>
+    </div>
   </div>
-  <div class="col-sm-2"></div>
 </div>

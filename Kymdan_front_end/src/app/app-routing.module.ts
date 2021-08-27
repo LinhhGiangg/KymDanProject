@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {TrangChuComponent} from './component/cau-hinh/trang-chu/trang-chu.component';
-import {DanhSachLoaiComponent} from './component/nhan-vien/loai-san-pham/danh-sach-loai/danh-sach-loai.component';
+import {DanhSachLoaiComponent} from './component/khach-hang/danh-sach-loai/danh-sach-loai.component';
 import {DangNhapComponent} from './component/cau-hinh/dang-nhap/dang-nhap.component';
 import {DangKyComponent} from './component/khach-hang/dang-ky/dang-ky.component';
 import {ThongTinComponent} from './component/ca-nhan/thong-tin/thong-tin.component';
@@ -25,6 +25,10 @@ import {XoaKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/xoa-khuyen
 import {GioHangComponent} from './component/khach-hang/gio-hang/gio-hang.component';
 import {LichSuMuaHangComponent} from './component/khach-hang/lich-su-mua-hang/lich-su-mua-hang.component';
 import {ChiTietDonHangComponent} from './component/khach-hang/chi-tiet-don-hang/chi-tiet-don-hang.component';
+import {DanhSachDonHangComponent} from './component/nhan-vien/don-hang/danh-sach-don-hang/danh-sach-don-hang.component';
+import {ChiTietKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component';
+import {DanhSachPhieuTraComponent} from './component/nhan-vien/phieu-tra/danh-sach-phieu-tra/danh-sach-phieu-tra.component';
+import {ThemSanPhamKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component';
 
 const routes: Routes = [
   {path: '', component: TrangChuComponent},
@@ -56,9 +60,15 @@ const routes: Routes = [
   {path: 'xoa-san-pham', component: XoaSanPhamComponent},
 
   {path: 'danh-sach-khuyen-mai', component: DanhSachKhuyenMaiComponent},
+  {path: 'chi-tiet-khuyen-mai', component: ChiTietKhuyenMaiComponent},
   {path: 'them-khuyen-mai', component: ThemKhuyenMaiComponent},
   {path: 'sua-khuyen-mai', component: SuaKhuyenMaiComponent},
   {path: 'xoa-khuyen-mai', component: XoaKhuyenMaiComponent},
+  {path: 'them-san-pham-khuyen-mai', component: ThemSanPhamKhuyenMaiComponent},
+
+  {path: 'danh-sach-don-hang', component: DanhSachDonHangComponent},
+
+  {path: 'danh-sach-phieu-tra', component: DanhSachPhieuTraComponent},
 
   // Nhân Viên Giao Hàng
   {path: 'chuyen-hang', component: ChuyenHangComponent},

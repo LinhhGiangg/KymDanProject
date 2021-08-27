@@ -15,10 +15,9 @@ import {TaiKhoanService} from '../../../../service/tai-khoan.service';
 export class SuaKhuyenMaiComponent implements OnInit {
   public tenDangNhap;
   public formSua: FormGroup;
-  public chiTiet;
   public thongBao;
-  public maSanPham;
-  public giamGia;
+  public gioiHanTruoc;
+  public gioiHanSau;
   public ngayHienTai = new Date();
   public gioiHanNgay = new Date('yyyy/MM/dd');
 
@@ -37,30 +36,26 @@ export class SuaKhuyenMaiComponent implements OnInit {
 
   ngOnInit(): void {
     this.tenDangNhap = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
-    this.khuyenMaiService.timChiTietBangMa(this.duLieu.thongTin.ma)
-      .subscribe(ketQua => {
-          this.chiTiet = ketQua;
-        },
-        () => {
-        },
-        () => {
-          this.maSanPham = this.chiTiet.sanPham.ma;
-          this.giamGia = this.chiTiet.giamGia;
-        });
 
     this.formSua = this.formBuilder.group({
-      ma: [this.duLieu.thongTin.ma, [Validators.required, Validators.pattern('^(KM-)[0-9]{3}$')]],
-      ten: [this.duLieu.thongTin.ten, [Validators.required]],
+      ma: [this.duLieu.thongTin.ma],
+      ten: [this.duLieu.thongTin.ten],
       moTa: [this.duLieu.thongTin.moTa, [Validators.required]],
       ngayBatDau: [this.duLieu.thongTin.ngayBatDau, [Validators.required]],
       ngayKetThuc: [this.duLieu.thongTin.ngayKetThuc, [Validators.required]],
-      giamGia: [this.giamGia, [Validators.pattern('^([0-9]{1})([0-9]?)$')]],
       tenNhanVien: [this.tenDangNhap]
     });
+
+    this.gioiHanTruoc = new Date(this.duLieu.thongTin.gioiHanTruoc);
+    this.gioiHanTruoc.setDate(this.gioiHanTruoc.getDate() + 1);
+    if (this.duLieu.thongTin.gioiHanSau !== undefined) {
+      this.gioiHanSau = new Date(this.duLieu.thongTin.gioiHanSau);
+      this.gioiHanSau.setDate(this.gioiHanSau.getDate() - 1);
+    }
   }
 
   sua() {
-    if (this.formSua.valid && this.formSua.value.giamGia !== '') {
+    if (this.formSua.valid) {
       this.formSua.value.ten = '';
       if (this.duLieu.thongTin.ngayBatDau !== this.formSua.value.ngayBatDau) {
         this.formSua.value.ten += '1';
@@ -91,11 +86,6 @@ export class SuaKhuyenMaiComponent implements OnInit {
       for (const thuocTinh of Object.keys(this.formSua.controls)) {
         if (this.formSua.controls[thuocTinh].invalid) {
           const viTri = this.el.nativeElement.querySelector('[formControlName="' + thuocTinh + '"]');
-          viTri.focus();
-          break;
-        }
-        if (this.giamGia === '') {
-          const viTri = this.el.nativeElement.querySelector('[formControlName=giamGia]');
           viTri.focus();
           break;
         }

@@ -31,17 +31,17 @@ public class KhuyenMaiController {
         return new ResponseEntity<>(khuyenMai, HttpStatus.OK);
     }
 
-    @GetMapping("/timChiTietBangMa/{ma}")
-    public ResponseEntity<ChiTietKhuyenMai> timChiTietBangMa(@PathVariable String ma) {
-        ChiTietKhuyenMai chiTietKhuyenMai = this.khuyenMaiService.timChiTietBangMa(ma);
-        return new ResponseEntity<>(chiTietKhuyenMai, HttpStatus.OK);
+    @GetMapping("/timChiTietBangMaKhuyenMai/{maKhuyenMai}")
+    public ResponseEntity<List<ChiTietKhuyenMai>> timChiTietBangMaKhuyenMai(@PathVariable String maKhuyenMai) {
+        List<ChiTietKhuyenMai> ketQua = this.khuyenMaiService.timChiTietBangMaKhuyenMai(maKhuyenMai);
+        return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
 
     @PostMapping(value = "/taoMoi")
     public ResponseEntity<?> taoMoi(@RequestBody KhuyenMaiDTO khuyenMaiDTO) {
         if (this.khuyenMaiService.timBangMa(khuyenMaiDTO.getMa()) != null) {
             return ResponseEntity.ok(new ThongBaoDTO("Mã " + khuyenMaiDTO.getMa() + " đã được đăng ký !"));
-        } else if (this.khuyenMaiService.timBangTen(khuyenMaiDTO.getTen()) != null){
+        } else if (this.khuyenMaiService.timBangTen(khuyenMaiDTO.getTen()) != null) {
             return ResponseEntity.ok(new ThongBaoDTO("Tên " + khuyenMaiDTO.getTen() + " đã được đăng ký !"));
         } else {
             return ResponseEntity.ok(this.khuyenMaiService.taoMoi(khuyenMaiDTO));
@@ -56,5 +56,11 @@ public class KhuyenMaiController {
     @GetMapping("/xoa/{ma}")
     public ResponseEntity<?> delete(@PathVariable String ma) {
         return ResponseEntity.ok(this.khuyenMaiService.xoa(ma));
+    }
+
+    @GetMapping("/themSanPhamKhuyenMai/{maKhuyenMai}/{maSanPham}/{giamGia}")
+    public ResponseEntity<?> themSanPhamKhuyenMai(@PathVariable String maKhuyenMai, @PathVariable String maSanPham,
+                                                  @PathVariable String giamGia) {
+        return ResponseEntity.ok(this.khuyenMaiService.themSanPhamKhuyenMai(maKhuyenMai, maSanPham, giamGia));
     }
 }

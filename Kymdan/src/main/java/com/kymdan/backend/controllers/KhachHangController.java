@@ -44,9 +44,9 @@ public class KhachHangController {
         return new ResponseEntity<>(khachHang, HttpStatus.OK);
     }
 
-    @GetMapping("/chiTietGioHang/{khachHang}")
-    public ResponseEntity<List<ChiTietGioHang>> chiTietGioHang(@PathVariable String khachHang) {
-        List<ChiTietGioHang> ketQua = this.khachHangService.chiTietGioHang(khachHang);
+    @GetMapping("/danhSachChiTietGioHang/{khachHang}")
+    public ResponseEntity<List<ChiTietGioHang>> danhSachChiTietGioHang(@PathVariable String khachHang) {
+        List<ChiTietGioHang> ketQua = this.khachHangService.danhSachChiTietGioHang(khachHang);
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
 

@@ -18,7 +18,9 @@ public interface KhuyenMaiService {
 
     KhuyenMai timBangMa(String ma);
 
-    ChiTietKhuyenMai timChiTietBangMa(String ma);
-
     KhuyenMai timBangTen(String ten);
+
+    List<ChiTietKhuyenMai> timChiTietBangMaKhuyenMai(String maKhuyenMai);
+
+    ThongBaoDTO themSanPhamKhuyenMai(String maKhuyenMai, String maSanPham, String giamGia);
 }

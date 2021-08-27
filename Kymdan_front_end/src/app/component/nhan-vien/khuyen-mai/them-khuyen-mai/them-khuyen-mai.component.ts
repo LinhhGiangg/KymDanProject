@@ -16,7 +16,8 @@ export class ThemKhuyenMaiComponent implements OnInit {
   public tenDangNhap;
   public formTaoMoi: FormGroup;
   public thongBao;
-  public ngayHienTai = new Date();
+  public ngayKhuyenMaiCuoi;
+  public ngayNhoNhat = new Date();
   public gioiHanNgay = new Date('yyyy/MM/dd');
 
   constructor(
@@ -33,6 +34,12 @@ export class ThemKhuyenMaiComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.ngayNhoNhat = new Date();
+    this.ngayKhuyenMaiCuoi = this.duLieu.thongTin;
+    if (Date.parse(this.ngayKhuyenMaiCuoi) > Date.parse(this.ngayNhoNhat.toDateString())) {
+      this.ngayNhoNhat = new Date(this.ngayKhuyenMaiCuoi);
+      this.ngayNhoNhat.setDate(this.ngayNhoNhat.getDate() + 1);
+    }
     this.tenDangNhap = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
     this.formTaoMoi = this.formBuilder.group({
       ma: ['', [Validators.required, Validators.pattern('^(KM-)[0-9]{3}$')]],
@@ -40,8 +47,6 @@ export class ThemKhuyenMaiComponent implements OnInit {
       moTa: ['', [Validators.required]],
       ngayBatDau: ['', [Validators.required]],
       ngayKetThuc: ['', [Validators.required]],
-      maSanPham: ['', [Validators.required, Validators.pattern('^(SP-)[0-9]{3}$')]],
-      giamGia: ['', [Validators.required, Validators.pattern('^([0-9]{1})([0-9]?)$')]],
       tenNhanVien: [this.tenDangNhap]
     });
   }

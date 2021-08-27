@@ -93,7 +93,7 @@ export class QuanLyLoaiComponent implements OnInit {
     })
   }
 
-  view(maLoai) {
+  xemChiTiet(maLoai) {
     this.router.navigate(['/danh-sach-san-pham', {thongTin: maLoai}]).then(() => {
     });
   }

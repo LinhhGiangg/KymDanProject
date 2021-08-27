@@ -25,26 +25,6 @@ export class DanhSachSanPhamComponent implements OnInit {
   ) {
   }
 
-  private static hienThiGia(thongTin) {
-    let hangTrieu;
-    let hangNgan;
-    // tslint:disable-next-line:radix
-    hangTrieu = (Number.parseInt(thongTin) / 1000000).toString().split('.')[0] + '';
-    // tslint:disable-next-line:radix
-    hangNgan = ((Number.parseInt(thongTin) - Number.parseInt(hangTrieu) * 1000000) / 1000).toString().split('.')[0] + '';
-    if (hangNgan === '0') {
-      return hangTrieu + '.000.000'
-      // tslint:disable-next-line:radix
-    } else if (Number.parseInt(hangNgan) < 10) {
-      return hangTrieu + '.00' + hangNgan + '.000';
-      // tslint:disable-next-line:radix
-    } else if (Number.parseInt(hangNgan) < 100) {
-      return hangTrieu + '.0' + hangNgan + '.000';
-    } else {
-      return hangTrieu + '.' + hangNgan + '.000';
-    }
-  }
-
   ngOnInit(): void {
     this.activatedRouter.params.subscribe(duLieu => {
       this.maLoai = duLieu.thongTin;
@@ -62,7 +42,7 @@ export class DanhSachSanPhamComponent implements OnInit {
           this.sanPhamService.timGiaBangMaSanPham(this.danhSach[i].ma).subscribe(
             (duLieu) => {
               this.danhSach[i].gia = duLieu.gia;
-              this.danhSach[i].gia = DanhSachSanPhamComponent.hienThiGia(this.danhSach[i].gia);
+              this.danhSach[i].gia = this.sanPhamService.hienThiGia(this.danhSach[i].gia);
             },
             () => {
             },

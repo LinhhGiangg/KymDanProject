@@ -47,26 +47,6 @@ export class DatHangComponent implements OnInit {
   ) {
   }
 
-  private static hienThiGia(thongTin) {
-    let hangTrieu;
-    let hangNgan;
-    // tslint:disable-next-line:radix
-    hangTrieu = (Number.parseInt(thongTin) / 1000000).toString().split('.')[0] + '';
-    // tslint:disable-next-line:radix
-    hangNgan = ((Number.parseInt(thongTin) - Number.parseInt(hangTrieu) * 1000000) / 1000).toString().split('.')[0] + '';
-    if (hangNgan === '0') {
-      return hangTrieu + '.000.000'
-      // tslint:disable-next-line:radix
-    } else if (Number.parseInt(hangNgan) < 10) {
-      return hangTrieu + '.00' + hangNgan + '.000';
-      // tslint:disable-next-line:radix
-    } else if (Number.parseInt(hangNgan) < 100) {
-      return hangTrieu + '.0' + hangNgan + '.000';
-    } else {
-      return hangTrieu + '.' + hangNgan + '.000';
-    }
-  }
-
   ngOnInit() {
     this.gioHang = [new ChiTietGioHang()];
     this.xacNhanThanhToan = false;
@@ -175,9 +155,9 @@ export class DatHangComponent implements OnInit {
         // tslint:disable-next-line:radix
         this.tienCanThanhToan += Number.parseInt(this.gioHang[i].gia) * this.gioHang[i].soLuong;
         this.usd = (this.tienCanThanhToan / 23500).toFixed(2);
-        this.tongTienHienThi = DatHangComponent.hienThiGia(this.tienCanThanhToan);
-        this.gioHang[i].gia = DatHangComponent.hienThiGia(this.gioHang[i].gia);
-        this.gioHang[i].tongTien = DatHangComponent.hienThiGia(this.gioHang[i].tongTien);
+        this.tongTienHienThi = this.sanPhamService.hienThiGia(this.tienCanThanhToan);
+        this.gioHang[i].gia = this.sanPhamService.hienThiGia(this.gioHang[i].gia);
+        this.gioHang[i].tongTien = this.sanPhamService.hienThiGia(this.gioHang[i].tongTien);
       });
   }
 

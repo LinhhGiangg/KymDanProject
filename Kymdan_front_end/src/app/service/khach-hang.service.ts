@@ -19,8 +19,8 @@ export class KhachHangService {
     return this.http.get(this.API + '/timBangTen/' + ten);
   }
 
-  chiTietGioHang(khachHang): Observable<any> {
-    return this.http.get(this.API + '/chiTietGioHang/' + khachHang);
+  danhSachChiTietGioHang(khachHang): Observable<any> {
+    return this.http.get(this.API + '/danhSachChiTietGioHang/' + khachHang);
   }
 
   thayDoiSanPham(maChiTiet, soLuong): Observable<any> {

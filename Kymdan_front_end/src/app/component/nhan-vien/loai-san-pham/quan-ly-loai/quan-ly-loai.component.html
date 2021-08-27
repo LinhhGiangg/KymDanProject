@@ -35,8 +35,9 @@
           </td>
           <td><img src="{{phanTu.hinh1}}" style="width: 90%; height: 250px"></td>
           <td>
-            <a [routerLink]="['/danh-sach-san-pham']" (click)="view(phanTu.ma)"
-               class="view" title="Xem chi tiết" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+            <a [routerLink]="['/danh-sach-san-pham']" (click)="xemChiTiet(phanTu.ma)"
+               class="view" title="Xem chi tiết" data-toggle="tooltip">
+              <i class="material-icons">&#xE417;</i></a>
             <a class="edit" title="Sửa" data-toggle="tooltip" [routerLink]="['/quan-ly-loai']">
               <i class="material-icons" (click)="sua(phanTu.ma)">&#xE254;</i></a>
             <a class="delete" title="Xóa" data-toggle="tooltip" [routerLink]="['/quan-ly-loai']">

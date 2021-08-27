@@ -1,0 +1,113 @@
+<div class="container-fluid" style="background-color: rgba(0,128,0,0.15)">
+  <div class="row">
+    <div class="col-sm-1"></div>
+
+    <div class="col-sm-10">
+      <div class="row">
+        <div class="col-sm-3" style="background-color: white">
+          <div class="mt-3">
+            <p style="font-family: Averta,Helvetica,sans-serif; color: green; font-size: 25px; font-weight: bold">
+              Giá (VNĐ)</p>
+
+            <h3 (click)="locTheoGia(2)"><i class="fa fa-arrow-circle-o-right" [hidden]="viTri === 2"></i>
+              <i class="fa fa-arrow-circle-right" aria-hidden="true" [hidden]="viTri !== 2"></i>
+              <a [routerLink]="['/danh-sach-loai']" style="color: black; margin-left: 7px">Dưới 20.000.000 đ</a></h3>
+
+            <h3 (click)="locTheoGia(3)"><i class="fa fa-arrow-circle-o-right" [hidden]="viTri === 3"></i>
+              <i class="fa fa-arrow-circle-right" aria-hidden="true" [hidden]="viTri !== 3"></i>
+              <a [routerLink]="['/danh-sach-loai']" style="color: black; margin-left: 7px">20.000.000 đ
+                - 30.000.000 đ</a></h3>
+
+            <h3 (click)="locTheoGia(4)"><i class="fa fa-arrow-circle-o-right" [hidden]="viTri === 4"></i>
+              <i class="fa fa-arrow-circle-right" aria-hidden="true" [hidden]="viTri !== 4"></i>
+              <a [routerLink]="['/danh-sach-loai']" style="color: black; margin-left: 7px">30.000.000 đ
+                - 40.000.000 đ</a></h3>
+
+            <h3 (click)="locTheoGia(5)"><i class="fa fa-arrow-circle-o-right" [hidden]="viTri === 5"></i>
+              <i class="fa fa-arrow-circle-right" aria-hidden="true" [hidden]="viTri !== 5"></i>
+              <a [routerLink]="['/danh-sach-loai']" style="color: black; margin-left: 7px">40.000.000 đ
+                - 50.000.000 đ</a></h3>
+
+            <h3 (click)="locTheoGia(6)"><i class="fa fa-arrow-circle-o-right" [hidden]="viTri === 6"></i>
+              <i class="fa fa-arrow-circle-right" aria-hidden="true" [hidden]="viTri !== 6"></i>
+              <a [routerLink]="['/danh-sach-loai']" style="color: black; margin-left: 7px">Trên 50.000.000 đ</a></h3>
+          </div>
+        </div>
+
+        <div class="col-sm-9" style="background-color: white">
+          <div class="row mt-3">
+            <div class="col-sm-8">
+              <button class="btn btn-success" (click)="lamMoi()">Tất cả sản phẩm</button>
+            </div>
+            <div class="col-sm-4">
+              <div class="row">
+                <button class="btn btn-success" (click)="xemLoaiMoi()">Sản phẩm mới</button>
+                <button class="btn btn-success ml-3" (click)="xemLoaiBanChay()">Sản phẩm bán chạy</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-1">
+            <div class="col-sm-8"></div>
+            <div class="col-sm-4">
+              <div class="search-box" style="width: 98%">
+                <div class="input-group">
+                  <a class="input-group-addon">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </a>
+                  <input type="text" class="form-control" [(ngModel)]="tenCanTim" (ngModelChange)="timTheoTen()"
+                         placeholder="Tìm kiếm sản phẩm theo tên">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <table class="table mt-1" *ngIf="danhSachLoai && danhSachLoai.length !== 0">
+            <tr class="row" *ngFor="let phanTu of danhSachLoai">
+              <td class="col-sm-3">
+                <img style="width: 100%" src="{{phanTu.hinh1}}" alt="" (click)="xemSanPham(phanTu.ma)">
+              </td>
+              <td class="col-sm-9">
+                <div class="row">
+                  <div class="col-sm-9" (click)="xemSanPham(phanTu.ma)">
+                    <h1>
+                      <a style="color: green">{{phanTu.ten}}</a>
+                    </h1>
+                    <h3><i class="fa fa-hand-o-right" aria-hidden="true"></i> {{phanTu.moTa1}}</h3>
+                    <h3 *ngIf="phanTu.moTa2">
+                      <i class="fa fa-hand-o-right" aria-hidden="true"></i> {{phanTu.moTa2}}
+                    </h3>
+                    <h3 *ngIf="phanTu.moTa3">
+                      <i class="fa fa-hand-o-right" aria-hidden="true"></i> {{phanTu.moTa3}}
+                    </h3>
+                    <h3 *ngIf="!kiemTraBanChay"><i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                      <span style="color: green"> Số lượt mua : </span>{{phanTu.luotMua}}
+                    </h3>
+                    <h3 *ngIf="kiemTraBanChay"><i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                      <span style="color: green"> Ngày nhập : </span>{{phanTu.ngayTao}}
+                    </h3>
+                  </div>
+
+                  <div class="col-sm-3">
+                    <div style="background-color: rgba(0,106,211,0.27); border-radius: 5px">
+                      <h3 style="margin-left: 3%"><strong><i class="fa fa-briefcase" aria-hidden="true"></i> Hàng chính
+                        hãng</strong></h3>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <div *ngIf="danhSachLoai.length === 0">
+            <h1 style="color: red; font-weight: bold; text-align: center">Không có sản phẩm phù hợp</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-1"></div>
+  </div>
+
+  <div class="clearfix"></div>
+</div>

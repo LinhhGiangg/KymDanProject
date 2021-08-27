@@ -194,12 +194,13 @@ public class SanPhamServiceImpl implements SanPhamService {
         }
 
         for (ChiTietKhuyenMai chiTietKhuyenMai : danhSachCungSanPham) {
-            if (LocalDate.now().isBefore(chiTietKhuyenMai.getKhuyenMai().getNgayBatDau())
-                    || LocalDate.now().isAfter(chiTietKhuyenMai.getKhuyenMai().getNgayKetThuc())) {
-                continue;
+            if (LocalDate.now().isBefore(chiTietKhuyenMai.getKhuyenMai().getNgayKetThuc())
+                    && LocalDate.now().isAfter(chiTietKhuyenMai.getKhuyenMai().getNgayBatDau())
+                    || LocalDate.now().equals(chiTietKhuyenMai.getKhuyenMai().getNgayBatDau())
+                    || LocalDate.now().equals(chiTietKhuyenMai.getKhuyenMai().getNgayKetThuc())) {
+                ketQua = chiTietKhuyenMai;
+                break;
             }
-            ketQua = chiTietKhuyenMai;
-            break;
         }
 
         return ketQua;

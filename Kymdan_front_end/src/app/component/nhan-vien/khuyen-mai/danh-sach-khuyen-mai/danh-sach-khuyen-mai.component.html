@@ -6,12 +6,10 @@
         <div class="row">
           <div class="col-sm-3"></div>
           <div class="col-sm-6">
-            <h1 class="text-center" style="font-weight: bold">Danh sách khuyến mãi</h1>
+            <h1 class="text-center" style="font-weight: bold; color: green">Danh sách khuyến mãi</h1>
           </div>
-          <div class="col-sm-3">
-            <div class="search-box">
-              <button class="btn btn-success" (click)="taoMoi()">Tạo mới</button>
-            </div>
+          <div class="col-sm-3" style="text-align: right; padding-right: 39px">
+            <button class="btn btn-success" (click)="taoMoi()">Tạo mới</button>
           </div>
         </div>
       </div>
@@ -19,6 +17,7 @@
       <table class="table table-bordered mt-3">
         <thead>
         <tr style="font-size: 17px">
+          <th>STT</th>
           <th>Mã khuyến mãi</th>
           <th>Tên khuyến mãi</th>
           <th>Mô tả</th>
@@ -30,6 +29,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let phanTu of danhSach ; let i = index">
+          <td>{{i + 1}}</td>
           <td style="width: 170px; font-size: 17px">{{phanTu.ma}}</td>
           <td style="width: 350px; font-size: 17px">{{phanTu.ten}}</td>
           <td>{{phanTu.moTa}}</td>
@@ -37,10 +37,18 @@
           <td>{{phanTu.ngayKetThuc}}</td>
           <td>{{phanTu.nhanVien.ten}}</td>
           <td>
-            <a class="view" title="Xem chi tiết" data-toggle="tooltip" [routerLink]="['/danh-sach-khuyen-mai']">
-              <i class="material-icons" (click)="xemChiTiet(phanTu.ma)">&#xE417;</i></a>
-            <a class="edit" title="Sửa" data-toggle="tooltip" [routerLink]="['/danh-sach-khuyen-mai']">
+            <a [routerLink]="['/chi-tiet-khuyen-mai']" (click)="xemChiTiet(phanTu.ma)"
+              class="view" title="Xem chi tiết" data-toggle="tooltip">
+              <i class="material-icons">&#xE417;</i></a>
+
+            <a class="edit" title="Sửa" data-toggle="tooltip" *ngIf="phanTu.trangThai == 'Chưa khuyến mãi'"
+               [routerLink]="['/danh-sach-khuyen-mai']">
               <i class="material-icons" (click)="sua(phanTu.ma)">&#xE254;</i></a>
+
+            <a class="edit" title="Sửa" data-toggle="tooltip" *ngIf="phanTu.trangThai != 'Chưa khuyến mãi'"
+               [routerLink]="['/danh-sach-khuyen-mai']">
+              <i class="material-icons" (click)="khongTheSua()">&#xE254;</i></a>
+
             <a class="delete" title="Xóa" data-toggle="tooltip" [routerLink]="['/danh-sach-khuyen-mai']">
               <i class="material-icons" (click)="xoa(phanTu.ma)">&#xE872;</i></a>
           </td>

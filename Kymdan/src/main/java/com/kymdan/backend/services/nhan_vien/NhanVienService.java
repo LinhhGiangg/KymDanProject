@@ -1,7 +1,9 @@
 package com.kymdan.backend.services.nhan_vien;
 
-import com.kymdan.backend.entity.NhanVien;
+import com.kymdan.backend.entity.DonHang;
+
+import java.util.List;
 
 public interface NhanVienService {
-    NhanVien timBangMa(String ma);
+    List<DonHang> danhSachDonHang();
 }

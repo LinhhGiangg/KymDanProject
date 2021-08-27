@@ -30,7 +30,7 @@ insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao,
 
 -- Sản phẩm
 insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-001', '120', '200', '5', '5', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-002', '140', '200', '5', '6', 'KD-111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-002', '140', '200', '5', '0', 'KD-111');
 insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-003', '160', '200', '5', '2', 'KD-111');
 insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-004', '180', '200', '5', '3', 'KD-111');
 insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-005', '200', '200', '5', '5', 'KD-111');
@@ -204,7 +204,7 @@ insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) v
 insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-111', 'Khuyến mãi đợt 1', 'Mừng ngày Quốc tế lao động', '2021-05-01', '2021-05-05', 'NV-001');
 insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-222', 'Khuyến mãi đợt 2', 'Mừng ngày của Mẹ', '2021-05-08', '2021-05-15', 'NV-001');
 insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-333', 'Khuyến mãi đợt 3', 'Mừng ngày Quốc tế Thiếu Nhi', '2021-06-01', '2021-06-08', 'NV-001');
-insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-555', 'Khuyến mãi đợt 5', 'Khuyến mãi mùa CoVid', '2021-08-01', '2021-08-28', 'NV-001');
+insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-555', 'Khuyến mãi đợt 5', 'Khuyến mãi mùa CoVid', '2021-08-01', '2021-08-31', 'NV-001');
 insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-666', 'Khuyến mãi đợt 6', 'Mừng ngày Quốc Khánh', '2021-09-01', '2021-09-05', 'NV-001');
 
 -- Chi tiết khuyến mãi

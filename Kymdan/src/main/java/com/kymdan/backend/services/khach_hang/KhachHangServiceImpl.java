@@ -44,7 +44,7 @@ public class KhachHangServiceImpl implements KhachHangService {
     }
 
     @Override
-    public List<ChiTietGioHang> chiTietGioHang(String khachHang) {
+    public List<ChiTietGioHang> danhSachChiTietGioHang(String khachHang) {
         GioHang gioHang = this.gioHangRepository.findByKhachHang_Ten(khachHang);
         List<ChiTietGioHang> danhSach = this.chiTietGioHangRepository.findAll();
         List<ChiTietGioHang> ketQua = new ArrayList<>();

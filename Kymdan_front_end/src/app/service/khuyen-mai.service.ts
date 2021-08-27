@@ -21,8 +21,8 @@ export class KhuyenMaiService {
     return this.http.get(this.API + '/timBangMa/' + ma);
   }
 
-  timChiTietBangMa(ma): Observable<any> {
-    return this.http.get(this.API + '/timChiTietBangMa/' + ma);
+  timChiTietBangMaKhuyenMai(maKhuyenMai): Observable<any> {
+    return this.http.get(this.API + '/timChiTietBangMaKhuyenMai/' + maKhuyenMai);
   }
 
   taoMoi(thongTin): Observable<any> {
@@ -35,5 +35,9 @@ export class KhuyenMaiService {
 
   xoa(ma): Observable<any> {
     return this.http.get(this.API + '/xoa/' + ma);
+  }
+
+  themSanPhamKhuyenMai(maKhuyenMai, maSanPham, giamGia): Observable<any> {
+    return this.http.get(this.API + '/themSanPhamKhuyenMai/' + maKhuyenMai + '/' + maSanPham + '/' + giamGia);
   }
 }

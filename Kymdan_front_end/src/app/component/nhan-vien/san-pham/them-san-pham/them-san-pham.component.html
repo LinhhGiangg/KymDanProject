@@ -46,7 +46,7 @@
 
         <div class="row">
           <mat-form-field>
-            <mat-label>Giá (VND)</mat-label>
+            <mat-label>Giá (VND)<sup class="text-danger"> *</sup></mat-label>
             <input matInput formControlName="gia">
             <mat-error *ngIf="formTaoMoi.controls.gia.errors?.required">Giá không đươc để trống.
             </mat-error>
@@ -58,7 +58,7 @@
 
         <div class="row">
           <mat-form-field>
-            <mat-label>Số lượng</mat-label>
+            <mat-label>Số lượng<sup class="text-danger"> *</sup></mat-label>
             <input matInput formControlName="soLuong">
             <mat-error *ngIf="formTaoMoi.controls.soLuong.errors?.required">Số lượng không đươc để trống.
             </mat-error>

@@ -9,7 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {NavBarComponent} from './component/cau-hinh/nav-bar/nav-bar.component';
 import {FooterComponent} from './component/cau-hinh/footer/footer.component';
 import {TrangChuComponent} from './component/cau-hinh/trang-chu/trang-chu.component';
-import {DanhSachLoaiComponent} from './component/nhan-vien/loai-san-pham/danh-sach-loai/danh-sach-loai.component';
+import {DanhSachLoaiComponent} from './component/khach-hang/danh-sach-loai/danh-sach-loai.component';
 import {DangNhapComponent} from './component/cau-hinh/dang-nhap/dang-nhap.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -37,6 +37,9 @@ import {ChiTietKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/chi-ti
 import {GioHangComponent} from './component/khach-hang/gio-hang/gio-hang.component';
 import {LichSuMuaHangComponent} from './component/khach-hang/lich-su-mua-hang/lich-su-mua-hang.component';
 import {ChiTietDonHangComponent} from './component/khach-hang/chi-tiet-don-hang/chi-tiet-don-hang.component';
+import {DanhSachDonHangComponent} from './component/nhan-vien/don-hang/danh-sach-don-hang/danh-sach-don-hang.component';
+import {DanhSachPhieuTraComponent} from './component/nhan-vien/phieu-tra/danh-sach-phieu-tra/danh-sach-phieu-tra.component';
+import {ThemSanPhamKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +71,10 @@ import {ChiTietDonHangComponent} from './component/khach-hang/chi-tiet-don-hang/
     ChiTietKhuyenMaiComponent,
     GioHangComponent,
     LichSuMuaHangComponent,
-    ChiTietDonHangComponent
+    ChiTietDonHangComponent,
+    DanhSachDonHangComponent,
+    DanhSachPhieuTraComponent,
+    ThemSanPhamKhuyenMaiComponent
   ],
   imports: [
     BrowserModule,

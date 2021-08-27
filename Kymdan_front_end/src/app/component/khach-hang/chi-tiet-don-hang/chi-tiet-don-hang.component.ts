@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {TaiKhoanService} from '../../../service/tai-khoan.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {KhachHangService} from '../../../service/khach-hang.service';
+import {SanPhamService} from '../../../service/san-pham.service';
 
 @Component({
   selector: 'app-chi-tiet-don-hang',
@@ -9,34 +9,60 @@ import {KhachHangService} from '../../../service/khach-hang.service';
   styleUrls: ['./chi-tiet-don-hang.component.css']
 })
 export class ChiTietDonHangComponent implements OnInit {
-  public maDonHang;
   public danhSachChiTiet = [];
-  public khachHang;
+  public maDonHang;
   public quyen;
+  public gia;
+  public tienHienThi;
+  public tongTien = 0;
 
   constructor(
     public activatedRouter: ActivatedRoute,
-    public taiKhoanService: TaiKhoanService,
     public khachHangService: KhachHangService,
-  ) { }
-
-  ngOnInit(): void {
-    this.activatedRouter.params.subscribe(duLieu => {
-      this.maDonHang = duLieu.thongTin;
-    });
-
-    this.khachHang = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
-    this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
-    if (this.quyen === 'Khách Hàng') {
-      this.khachHangService.xemChiTietDonHang(this.maDonHang).subscribe(
-        (duLieu) => {
-          this.danhSachChiTiet = duLieu;
-        },
-        () => {
-        },
-        () => {
-        });
-    }
+    public sanPhamService: SanPhamService,
+    public router: Router,
+  ) {
   }
 
+  ngOnInit(): void {
+    this.gia = '';
+    this.quyen = '';
+    this.tongTien = 0;
+    this.tienHienThi = '';
+    this.danhSachChiTiet = [];
+    this.activatedRouter.params.subscribe(duLieu => {
+      this.maDonHang = duLieu.thongTin;
+      if (this.maDonHang.split(',').length > 1) {
+        this.maDonHang = duLieu.thongTin.split(',')[0];
+        this.quyen = duLieu.thongTin.split(',')[1];
+      } else this.maDonHang = duLieu.thongTin;
+    });
+
+    this.khachHangService.xemChiTietDonHang(this.maDonHang).subscribe(
+      (duLieu) => {
+        this.danhSachChiTiet = duLieu;
+      },
+      () => {
+      },
+      () => {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.danhSachChiTiet.length; i++) {
+          this.gia = this.danhSachChiTiet[i].gia.split('.')[0]
+            + this.danhSachChiTiet[i].gia.split('.')[1] + this.danhSachChiTiet[i].gia.split('.')[2];
+          // tslint:disable-next-line:radix
+          this.tongTien += Number.parseInt(this.danhSachChiTiet[i].soLuong) * Number.parseInt(this.gia);
+        }
+        this.tienHienThi = this.sanPhamService.hienThiGia(this.tongTien);
+      });
+  }
+
+  troVe() {
+    if (this.quyen === '') {
+      this.router.navigate(['/lich-su-mua-hang']).then(() => {
+      });
+    } else {
+      this.router.navigate(['/danh-sach-don-hang']).then(() => {
+      });
+    }
+  }
 }

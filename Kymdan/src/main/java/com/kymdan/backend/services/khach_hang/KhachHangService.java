@@ -14,7 +14,7 @@ public interface KhachHangService {
 
     KhachHang timBangTen(String ten);
 
-    List<ChiTietGioHang> chiTietGioHang(String khachHang);
+    List<ChiTietGioHang> danhSachChiTietGioHang(String khachHang);
 
     ThongBaoDTO thayDoiSanPham(Integer maChiTiet, Integer soLuong);
 
