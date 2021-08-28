@@ -196,17 +196,9 @@ public class KhachHangServiceImpl implements KhachHangService {
     }
 
     @Override
-    public List<DonHang> xemDonHang(String khachHang) {
-        List<DonHang> danhSachDonHang = this.donHangRepository.findAll();
-        List<DonHang> ketQua = new ArrayList<>();
-
-        for (DonHang donHang : danhSachDonHang) {
-            if (donHang.getKhachHang().getTen().equals(khachHang)) {
-                ketQua.add(donHang);
-            }
-        }
-
-        return ketQua;
+    public List<DonHang> xemDonHang(String tenKhachHang) {
+        KhachHang khachHang = this.khachHangRepository.findByTen(tenKhachHang);
+        return this.donHangRepository.xemDonHang(khachHang.getMa());
     }
 
     @Override

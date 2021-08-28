@@ -8,8 +8,8 @@
             <button class="btn btn-dark" style="width: 103px" [routerLink]="['/danh-sach-khuyen-mai']">Trở về</button>
           </div>
           <div class="col-sm-6">
-            <h1 class="text-center" style="font-weight: bold; color: green" *ngIf="danhSach.length > 0">
-              Chi tiết khuyến mãi
+            <h1 class="text-center" style="font-weight: bold" *ngIf="danhSach.length > 0">
+              Chi tiết <span style="color: green">{{tenKhuyenMai}}</span>
             </h1>
             <h1 class="text-center" style="font-weight: bold; color: green" *ngIf="danhSach.length == 0">
               Chi tiết khuyến mãi trống !

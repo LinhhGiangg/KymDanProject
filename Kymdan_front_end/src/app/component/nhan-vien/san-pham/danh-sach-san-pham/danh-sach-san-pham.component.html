@@ -8,8 +8,11 @@
             <button class="btn btn-dark" [routerLink]="['/quan-ly-loai']">Trở về</button>
           </div>
           <div class="col-sm-6">
-            <h1 class="text-center" style="font-weight: bold; color: green" *ngIf="danhSach.length > 0">
+            <h1 class="text-center" style="font-weight: bold" *ngIf="danhSach.length > 0">
               Danh sách sản phẩm
+            </h1>
+            <h1 class="text-center" style="font-weight: bold; color: green" *ngIf="danhSach.length > 0">
+              {{tenLoai}}
             </h1>
             <h1 class="text-center" style="font-weight: bold" *ngIf="danhSach.length == 0">Không có sản phẩm nào !</h1>
           </div>

@@ -262,3 +262,10 @@ insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) val
 insert into kymdan.gio_hang(ma, ma_khach_hang) values (1, 1);
 insert into kymdan.chi_tiet_gio_hang(so_luong, ma_gio_hang, ma_san_pham) values (5, 1, 'SP-022');
 insert into kymdan.chi_tiet_gio_hang(so_luong, ma_gio_hang, ma_san_pham) values (2, 1, 'SP-045');
+
+DELIMITER //
+CREATE PROCEDURE xem_don_hang(khach_hang int)
+BEGIN
+	SELECT * FROM don_hang where ma_khach_hang = khach_hang order by ngay_dat desc;
+END //
+DELIMITER ;

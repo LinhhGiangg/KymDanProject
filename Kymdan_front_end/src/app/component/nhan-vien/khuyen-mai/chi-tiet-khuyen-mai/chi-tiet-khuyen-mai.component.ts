@@ -13,6 +13,7 @@ import {ThemSanPhamKhuyenMaiComponent} from '../them-san-pham-khuyen-mai/them-sa
 })
 export class ChiTietKhuyenMaiComponent implements OnInit {
   public maKhuyenMai;
+  public tenKhuyenMai;
   public danhSach = [];
   public kiemTra = false;
   public ngayHienTai = new Date();
@@ -53,6 +54,7 @@ export class ChiTietKhuyenMaiComponent implements OnInit {
                 () => {
                 });
             }
+            this.tenKhuyenMai = this.danhSach[0].khuyenMai.ten;
 
             if (Date.parse(this.danhSach[0].khuyenMai.ngayKetThuc) > Date.parse(this.ngayHienTai.toDateString())) {
               this.kiemTra = true;

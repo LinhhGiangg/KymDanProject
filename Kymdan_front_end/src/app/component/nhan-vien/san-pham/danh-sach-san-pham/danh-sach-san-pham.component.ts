@@ -16,6 +16,7 @@ export class DanhSachSanPhamComponent implements OnInit {
   public danhSach = [new SanPham()];
   public thongBao;
   public maLoai;
+  public tenLoai;
 
   constructor(
     public sanPhamService: SanPhamService,
@@ -49,6 +50,7 @@ export class DanhSachSanPhamComponent implements OnInit {
             () => {
             });
         }
+        this.tenLoai = this.danhSach[0].loaiSanPham.ten;
       });
   }
 

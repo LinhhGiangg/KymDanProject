@@ -146,7 +146,7 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
             }
         }
 
-        for (int i = 0; i < loaiDaMua.size() && soDem < 5;) {
+        for (; loaiDaMua.size() > 0 && soDem < 5;) {
             loaiSanPham = loaiDaMua.get(0);
             luotMua = loaiSanPham.getLuotMua();
             for (LoaiSanPham sanPham : loaiDaMua) {
