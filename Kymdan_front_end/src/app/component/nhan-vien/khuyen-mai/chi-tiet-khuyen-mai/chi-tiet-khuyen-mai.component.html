@@ -32,16 +32,23 @@
           <th>Kích thước</th>
           <th>Giá gốc (VND)</th>
           <th style="width: 139px">Giảm giá (%)</th>
+          <th *ngIf="kiemTra" style="width: 138px">Thao tác</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let phanTu of danhSach ; let i = index">
-          <td>{{i + 1}}</td>
+          <td style="width: 103px">{{i + 1}}</td>
           <td>{{phanTu.sanPham.loaiSanPham.ten}}</td>
           <td>{{phanTu.sanPham.ma}}</td>
           <td>{{phanTu.sanPham.rong}} x {{phanTu.sanPham.dai}} x {{phanTu.sanPham.cao}}</td>
           <td>{{phanTu.gia}}</td>
           <td>{{phanTu.giamGia}}</td>
+          <td *ngIf="kiemTra">
+            <a class="edit" title="Sửa" data-toggle="tooltip"
+               [routerLink]="['/chi-tiet-khuyen-mai']">
+              <i class="material-icons" (click)="sua(phanTu.ma)">&#xE254;</i>
+            </a>
+          </td>
         </tr>
         </tbody>
       </table>

@@ -23,4 +23,6 @@ public interface KhuyenMaiService {
     List<ChiTietKhuyenMai> timChiTietBangMaKhuyenMai(String maKhuyenMai);
 
     ThongBaoDTO themSanPhamKhuyenMai(String maKhuyenMai, String maSanPham, String giamGia);
+
+    ThongBaoDTO suaSanPhamKhuyenMai(Integer maChiTiet, String giamGia);
 }

@@ -40,6 +40,7 @@ import {ChiTietDonHangComponent} from './component/khach-hang/chi-tiet-don-hang/
 import {DanhSachDonHangComponent} from './component/nhan-vien/don-hang/danh-sach-don-hang/danh-sach-don-hang.component';
 import {DanhSachPhieuTraComponent} from './component/nhan-vien/phieu-tra/danh-sach-phieu-tra/danh-sach-phieu-tra.component';
 import {ThemSanPhamKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component';
+import {SuaSanPhamKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/sua-san-pham-khuyen-mai/sua-san-pham-khuyen-mai.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import {ThemSanPhamKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/th
     ChiTietDonHangComponent,
     DanhSachDonHangComponent,
     DanhSachPhieuTraComponent,
-    ThemSanPhamKhuyenMaiComponent
+    ThemSanPhamKhuyenMaiComponent,
+    SuaSanPhamKhuyenMaiComponent
   ],
   imports: [
     BrowserModule,

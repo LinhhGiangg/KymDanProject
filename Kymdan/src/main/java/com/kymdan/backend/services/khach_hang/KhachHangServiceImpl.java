@@ -157,7 +157,7 @@ public class KhachHangServiceImpl implements KhachHangService {
         for (int i = 0; i < donHangDTO.getSanPham().split(",").length; i++) {
             ChiTietDonHang chiTietDonHang = new ChiTietDonHang();
             chiTietDonHang.setDonHang(this.donHangRepository.findById(maDonHang).orElse(null));
-            chiTietDonHang.setSoLuong(donHangDTO.getSoLuong().split(",")[i]);
+            chiTietDonHang.setSoLuong(Integer.parseInt(donHangDTO.getSoLuong().split(",")[i]));
             chiTietDonHang.setGia(donHangDTO.getGia().split(",")[i]);
             chiTietDonHang.setSanPham(this.sanPhamRepository
                     .findById(donHangDTO.getSanPham().split(",")[i]).orElse(null));
@@ -168,8 +168,6 @@ public class KhachHangServiceImpl implements KhachHangService {
             if (sanPham != null) {
                 sanPham.setSoLuong(Integer.parseInt(sanPham.getSoLuong())
                         - Integer.parseInt(donHangDTO.getSoLuong().split(",")[i]) + "");
-                sanPham.getLoaiSanPham().setLuotMua(sanPham.getLoaiSanPham().getLuotMua()
-                        + Integer.parseInt(donHangDTO.getSoLuong().split(",")[i]));
                 this.sanPhamRepository.save(sanPham);
             }
 

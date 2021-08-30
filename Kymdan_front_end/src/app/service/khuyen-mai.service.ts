@@ -40,4 +40,8 @@ export class KhuyenMaiService {
   themSanPhamKhuyenMai(maKhuyenMai, maSanPham, giamGia): Observable<any> {
     return this.http.get(this.API + '/themSanPhamKhuyenMai/' + maKhuyenMai + '/' + maSanPham + '/' + giamGia);
   }
+
+  suaSanPhamKhuyenMai(maChiTiet, giamGia): Observable<any> {
+    return this.http.get(this.API + '/suaSanPhamKhuyenMai/' + maChiTiet + '/' + giamGia);
+  }
 }

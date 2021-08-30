@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SanPhamService} from '../../../../service/san-pham.service';
 import {ThemSanPhamKhuyenMaiComponent} from '../them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component';
+import {SuaSanPhamKhuyenMaiComponent} from '../sua-san-pham-khuyen-mai/sua-san-pham-khuyen-mai.component';
 
 @Component({
   selector: 'app-chi-tiet-khuyen-mai',
@@ -68,6 +69,26 @@ export class ChiTietKhuyenMaiComponent implements OnInit {
       width: '750px',
       height: '268px',
       data: {thongTin: this.maKhuyenMai},
+      disableClose: true
+    });
+
+    dialogRefAdd.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    })
+  }
+
+  sua(maChiTiet) {
+    let maSanPham;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.danhSach.length; i++) {
+      if (this.danhSach[i].ma === maChiTiet) {
+        maSanPham = this.danhSach[i].sanPham.ma;
+      }
+    }
+    const dialogRefAdd = this.dialog.open(SuaSanPhamKhuyenMaiComponent, {
+      width: '750px',
+      height: '268px',
+      data: {thongTin: this.maKhuyenMai + ',' + maChiTiet + ',' + maSanPham},
       disableClose: true
     });
 

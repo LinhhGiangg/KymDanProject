@@ -117,7 +117,7 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
                 "      <p> Cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi! </p>\n" +
                 "      <p> Trân trọng! </p>\n" +
                 "       <img src=\"https://iweb.tatthanh.com.vn/pic/3/blog/images/logo-cong-ty-nem-2.jpg" +
-                "       \" style=\"width: 100%\">\n" +
+                "       \" style=\"width: 50%\">\n" +
                 "      </div>" +
                 "    <div class=\"col-sm-3\"></div>\n" +
                 "  </div>\n" +

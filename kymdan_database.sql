@@ -7,25 +7,29 @@ insert into kymdan.quyen (ma, ten) values (3, 'Khách Hàng');
 
 -- Nhân viên, Nhân viên giao hàng, Khách hàng
 insert into kymdan.nhan_vien (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values ('NV-001', 'Linh Giang', 'Nữ', '1999-08-05', 'Đăk Lăk', '0769555555', 'linhgiang58999@gmail.com');
-insert into kymdan.nhan_vien (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values ('NV-002', 'Nhan Vien', 'Nam', '1990-01-01', 'Đăk Lăk', '0769333333', 'gianglinh58999@gmail.com');
-insert into kymdan.nhan_vien_giao_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email, ten_cong_ty) values ('NVGH-001', 'Shipper', 'Nam', '1999-05-30', 'Sài Gòn', '0905111111', 'shipper@gmail.com', 'Grab');
-insert into kymdan.khach_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values (1, 'Khach Hang', 'Nam', '1995-05-27', 'Quảng Nam', '0905999999', 'supea@gmail.com');
+insert into kymdan.nhan_vien (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values ('NV-002', 'Nguyen Khang', 'Nam', '1990-01-01', 'Đăk Lăk', '0769333333', 'gianglinh58999@gmail.com');
+insert into kymdan.nhan_vien_giao_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email, ten_cong_ty) values ('NVGH-001', 'Thanh Phong', 'Nam', '1999-05-30', 'Sài Gòn', '0905111111', 'shipper@gmail.com', 'Grab');
+insert into kymdan.nhan_vien_giao_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email, ten_cong_ty) values ('NVGH-002', 'Phong Tran', 'Nam', '1999-05-15', 'Sài Gòn', '0905222222', 'shipper2@gmail.com', 'Bee');
+insert into kymdan.nhan_vien_giao_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email, ten_cong_ty) values ('NVGH-003', 'Tran Duc', 'Nam', '1999-05-05', 'Sài Gòn', '0905333333', 'shipper3@gmail.com', 'Now');
+insert into kymdan.khach_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values (1, 'Khoi Nguyen', 'Nam', '1995-05-27', 'Quảng Nam', '0905999999', 'supea@gmail.com');
 insert into kymdan.khach_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values (2, 'Phuong Thao', 'Nữ', '1973-01-01', 'Dak Lak', '0905111111', 'phuongthao@gmail.com');
 
 -- Tài khoản
-insert into kymdan.tai_khoan (ma, ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien) values (1, 'Linh Giang', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 1, 'NV-001');
-insert into kymdan.tai_khoan (ma, ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values (2, 'Shipper', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 2, 'NVGH-001');
-insert into kymdan.tai_khoan (ma, ten_dang_nhap, mat_khau, ma_quyen, ma_khach_hang) values (3, 'Khach Hang', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 3, 1);
-insert into kymdan.tai_khoan (ma, ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien) values (5, 'Nhan Vien', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 1, 'NV-002');
-insert into kymdan.tai_khoan (ma, ten_dang_nhap, mat_khau, ma_quyen, ma_khach_hang) values (6, 'Phuong Thao', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 3, 2);
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien) values ('Linh Giang', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 1, 'NV-001');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien) values ('Nguyen Khang', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 1, 'NV-002');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Thanh Phong', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 2, 'NVGH-001');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Phong Tran', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 2, 'NVGH-002');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Tran Duc', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 2, 'NVGH-003');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_khach_hang) values ('Khoi Nguyen', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 3, 1);
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_khach_hang) values ('Phuong Thao', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 3, 2);
 
 -- Loại sản phẩm
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-111', 'Nệm (mattress) KYMDAN Deluxe', 'assets/sanPham11.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Chất liệu TEMPUR® được NASA công nhận,Giúp giảm đau tại các điểm chịu lực,Công nghệ CoolTouch™ giúp vỏ nệm luôn mát mẻ', '2020-06-11', 700, 412);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-222', 'Nệm (mattress) KYMDAN UltimateCare', 'assets/sanPham12.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Chất liệu TEMPUR® nâng đỡ cơ thể,Công nghệ Dynamic Support tăng khả năng đàn hồi,Công nghệ CoolTouch™ giúp vỏ nệm luôn mát mẻ', '2020-07-15', 1204, 530);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-333', 'Nệm (mattress) KYMDAN Deluxe Premium', 'assets/sanPham15.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Ứng dụng công nghệ hiện đại PuroTex,Tích hợp 3 lớp cao su đặc biệt,Lớp phủ sinh học Nanobiotic', '2021-06-05', 1102, 532);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-444', 'Nệm (mattress) KYMDAN Massage', 'assets/sanPham16.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Nâng đỡ 5 vùng cơ thể,Độ thoáng khí tốt,Lõi nệm kháng khuẩn', '2021-07-07', 870, 415);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-555', 'Nệm (mattress) KYMDAN Y Tế', 'assets/sanPham17.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Công nghệ HourGlass Support® độc quyền,Lớp Memory Foam có độ bền cao', '2021-08-07', 210, 116);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-666', 'Nệm (mattress) KYMDAN Premium', 'assets/sanPham1.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Lõi nệm kháng khuẩn,Lớp Memory Foam có độ bền cao', '2021-08-11', 110, 75);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-111', 'Nệm (mattress) KYMDAN Deluxe', 'assets/sanPham11.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Chất liệu TEMPUR® được NASA công nhận,Giúp giảm đau tại các điểm chịu lực,Công nghệ CoolTouch™ giúp vỏ nệm luôn mát mẻ', '2020-06-11', 700, 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-222', 'Nệm (mattress) KYMDAN UltimateCare', 'assets/sanPham12.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Chất liệu TEMPUR® nâng đỡ cơ thể,Công nghệ Dynamic Support tăng khả năng đàn hồi,Công nghệ CoolTouch™ giúp vỏ nệm luôn mát mẻ', '2020-07-15', 1204, 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-333', 'Nệm (mattress) KYMDAN Deluxe Premium', 'assets/sanPham15.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Ứng dụng công nghệ hiện đại PuroTex,Tích hợp 3 lớp cao su đặc biệt,Lớp phủ sinh học Nanobiotic', '2021-06-05', 1102, 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-444', 'Nệm (mattress) KYMDAN Massage', 'assets/sanPham16.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Nâng đỡ 5 vùng cơ thể,Độ thoáng khí tốt,Lõi nệm kháng khuẩn', '2021-07-07', 870, 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-555', 'Nệm (mattress) KYMDAN Y Tế', 'assets/sanPham17.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Công nghệ HourGlass Support® độc quyền,Lớp Memory Foam có độ bền cao', '2021-08-07', 210, 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-666', 'Nệm (mattress) KYMDAN Premium', 'assets/sanPham1.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Lõi nệm kháng khuẩn,Lớp Memory Foam có độ bền cao', '2021-08-11', 110, 0);
 insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-777', 'Nệm (mattress) KYMDAN Royal', 'assets/sanPham5.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Chống dị ứng,Lớp Memory Foam có độ bền cao', '2021-08-15', 50, 0);
 
 -- Sản phẩm
@@ -267,5 +271,14 @@ DELIMITER //
 CREATE PROCEDURE xem_don_hang(khach_hang int)
 BEGIN
 	SELECT * FROM don_hang where ma_khach_hang = khach_hang order by ngay_dat desc;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE loc_chi_tiet()
+BEGIN
+	SELECT * FROM chi_tiet_don_hang where ma_don_hang in (
+		 SELECT ma FROM don_hang where datediff(now(), don_hang.ngay_dat) < 30
+    );
 END //
 DELIMITER ;

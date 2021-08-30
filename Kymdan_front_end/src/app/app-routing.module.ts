@@ -29,6 +29,7 @@ import {DanhSachDonHangComponent} from './component/nhan-vien/don-hang/danh-sach
 import {ChiTietKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component';
 import {DanhSachPhieuTraComponent} from './component/nhan-vien/phieu-tra/danh-sach-phieu-tra/danh-sach-phieu-tra.component';
 import {ThemSanPhamKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component';
+import {SuaSanPhamKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/sua-san-pham-khuyen-mai/sua-san-pham-khuyen-mai.component';
 
 const routes: Routes = [
   {path: '', component: TrangChuComponent},
@@ -65,6 +66,7 @@ const routes: Routes = [
   {path: 'sua-khuyen-mai', component: SuaKhuyenMaiComponent},
   {path: 'xoa-khuyen-mai', component: XoaKhuyenMaiComponent},
   {path: 'them-san-pham-khuyen-mai', component: ThemSanPhamKhuyenMaiComponent},
+  {path: 'sua-san-pham-khuyen-mai', component: SuaSanPhamKhuyenMaiComponent},
 
   {path: 'danh-sach-don-hang', component: DanhSachDonHangComponent},
 

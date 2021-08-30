@@ -1,9 +1,11 @@
 package com.kymdan.backend.services.loai_san_pham;
 
+import com.kymdan.backend.entity.ChiTietDonHang;
 import com.kymdan.backend.entity.LoaiSanPham;
 import com.kymdan.backend.entity.SanPham;
 import com.kymdan.backend.model.ThongBaoDTO;
 import com.kymdan.backend.model.LoaiSanPhamDTO;
+import com.kymdan.backend.repository.ChiTietDonHangRepository;
 import com.kymdan.backend.repository.LoaiSanPhamRepository;
 import com.kymdan.backend.repository.SanPhamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
 
     @Autowired
     private SanPhamRepository sanPhamRepository;
+
+    @Autowired
+    private ChiTietDonHangRepository chiTietDonHangRepository;
 
     @Override
     public List<LoaiSanPham> xemTatCa() {
@@ -114,7 +119,7 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
             }
         }
 
-        for (int i = 0; i < loaiMoiNhap.size() && soDem < 5;) {
+        for (int i = 0; i < loaiMoiNhap.size() && soDem < 5; ) {
             loaiSanPham = loaiMoiNhap.get(0);
             ngayGanNhat = LocalDate.now().compareTo(loaiSanPham.getNgayTao());
             for (LoaiSanPham sanPham : loaiMoiNhap) {
@@ -134,22 +139,29 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
     @Override
     public List<LoaiSanPham> xemLoaiBanChay() {
         List<LoaiSanPham> ketQua = new ArrayList<>();
-        List<LoaiSanPham> loaiDaMua = new ArrayList<>();
-        List<LoaiSanPham> tatCaLoai = this.loaiSanPhamRepository.findAll();
+        List<LoaiSanPham> locDanhSach = new ArrayList<>();
+        List<ChiTietDonHang> danhSachMua = this.chiTietDonHangRepository.locChiTiet();
         LoaiSanPham loaiSanPham;
         int luotMua;
         int soDem = 0;
 
-        for (LoaiSanPham phanTu : tatCaLoai) {
-            if (phanTu.getLuotMua() > 0) {
-                loaiDaMua.add(phanTu);
+        for (; danhSachMua.size() > 0; ) {
+            loaiSanPham = danhSachMua.get(0).getSanPham().getLoaiSanPham();
+            loaiSanPham.setLuotMua(danhSachMua.get(0).getSoLuong());
+            for (int i = 1; i < danhSachMua.size(); i++) {
+                if (danhSachMua.get(i).getSanPham().getLoaiSanPham().equals(loaiSanPham)) {
+                    loaiSanPham.setLuotMua(loaiSanPham.getLuotMua() + danhSachMua.get(i).getSoLuong());
+                    danhSachMua.remove(danhSachMua.get(i));
+                }
             }
+            locDanhSach.add(loaiSanPham);
+            danhSachMua.remove(danhSachMua.get(0));
         }
 
-        for (; loaiDaMua.size() > 0 && soDem < 5;) {
-            loaiSanPham = loaiDaMua.get(0);
+        for (; locDanhSach.size() > 0 && soDem < 5; ) {
+            loaiSanPham = locDanhSach.get(0);
             luotMua = loaiSanPham.getLuotMua();
-            for (LoaiSanPham sanPham : loaiDaMua) {
+            for (LoaiSanPham sanPham : locDanhSach) {
                 if (sanPham.getLuotMua() > luotMua) {
                     loaiSanPham = sanPham;
                     luotMua = sanPham.getLuotMua();
@@ -157,7 +169,7 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
             }
             ketQua.add(loaiSanPham);
             soDem += 1;
-            loaiDaMua.remove(loaiSanPham);
+            locDanhSach.remove(loaiSanPham);
         }
 
         return ketQua;

@@ -63,4 +63,9 @@ public class KhuyenMaiController {
                                                   @PathVariable String giamGia) {
         return ResponseEntity.ok(this.khuyenMaiService.themSanPhamKhuyenMai(maKhuyenMai, maSanPham, giamGia));
     }
+
+    @GetMapping("/suaSanPhamKhuyenMai/{maChiTiet}/{giamGia}")
+    public ResponseEntity<?> suaSanPhamKhuyenMai(@PathVariable Integer maChiTiet, @PathVariable String giamGia) {
+        return ResponseEntity.ok(this.khuyenMaiService.suaSanPhamKhuyenMai(maChiTiet, giamGia));
+    }
 }

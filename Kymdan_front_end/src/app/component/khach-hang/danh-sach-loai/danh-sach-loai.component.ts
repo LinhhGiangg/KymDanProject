@@ -67,7 +67,7 @@ export class DanhSachLoaiComponent implements OnInit {
   }
 
   xemLoaiMoi() {
-    this.kiemTraBanChay = true;
+    this.kiemTraBanChay = false;
     this.loaiSanPhamService.xemLoaiMoi().subscribe(
       (duLieu) => {
         this.danhSachLoai = duLieu;
@@ -85,7 +85,7 @@ export class DanhSachLoaiComponent implements OnInit {
   }
 
   xemLoaiBanChay() {
-    this.kiemTraBanChay = false;
+    this.kiemTraBanChay = true;
     this.loaiSanPhamService.xemLoaiBanChay().subscribe(
       (duLieu) => {
         this.danhSachLoai = duLieu;

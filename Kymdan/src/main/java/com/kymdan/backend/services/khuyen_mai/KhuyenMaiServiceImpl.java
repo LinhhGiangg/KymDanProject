@@ -135,4 +135,15 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
             return new ThongBaoDTO("Thêm sản phẩm khuyến mãi thành công !");
         }
     }
+
+    @Override
+    public ThongBaoDTO suaSanPhamKhuyenMai(Integer maChiTiet, String giamGia) {
+        ChiTietKhuyenMai chiTietKhuyenMai = this.chiTietKhuyenMaiRepository.findById(maChiTiet).orElse(null);
+        if (chiTietKhuyenMai != null) {
+            chiTietKhuyenMai.setGiamGia(giamGia);
+            this.chiTietKhuyenMaiRepository.save(chiTietKhuyenMai);
+            return new ThongBaoDTO("Sửa thành công !");
+        }
+        return new ThongBaoDTO("Lỗi hệ thống !");
+    }
 }
