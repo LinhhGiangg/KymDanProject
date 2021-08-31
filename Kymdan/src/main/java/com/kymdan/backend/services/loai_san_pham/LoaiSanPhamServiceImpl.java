@@ -141,6 +141,7 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
         List<LoaiSanPham> ketQua = new ArrayList<>();
         List<LoaiSanPham> locDanhSach = new ArrayList<>();
         List<ChiTietDonHang> danhSachMua = this.chiTietDonHangRepository.locChiTiet();
+        List<ChiTietDonHang> mangTam = new ArrayList<>();
         LoaiSanPham loaiSanPham;
         int luotMua;
         int soDem = 0;
@@ -149,10 +150,13 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
             loaiSanPham = danhSachMua.get(0).getSanPham().getLoaiSanPham();
             loaiSanPham.setLuotMua(danhSachMua.get(0).getSoLuong());
             for (int i = 1; i < danhSachMua.size(); i++) {
-                if (danhSachMua.get(i).getSanPham().getLoaiSanPham().equals(loaiSanPham)) {
+                if (danhSachMua.get(i).getSanPham().getLoaiSanPham().getMa().equals(loaiSanPham.getMa())) {
                     loaiSanPham.setLuotMua(loaiSanPham.getLuotMua() + danhSachMua.get(i).getSoLuong());
-                    danhSachMua.remove(danhSachMua.get(i));
+                    mangTam.add(danhSachMua.get(i));
                 }
+            }
+            for (ChiTietDonHang phanTu : mangTam) {
+                danhSachMua.remove(phanTu);
             }
             locDanhSach.add(loaiSanPham);
             danhSachMua.remove(danhSachMua.get(0));

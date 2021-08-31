@@ -67,7 +67,7 @@ export class DangNhapComponent implements OnInit {
             }
           }
         }, () => {
-          this.thongBao = 'Sai email hoặc mật khẩu !';
+          this.thongBao = 'Lỗi hệ thống !';
         });
     } else {
       for (const thuocTinh of Object.keys(this.formDangNhap.controls)) {

@@ -142,7 +142,10 @@ public class KhachHangServiceImpl implements KhachHangService {
         GioHang gioHang = this.gioHangRepository.findByKhachHang_Ten(donHangDTO.getKhachHang());
 
         DonHang donHang = new DonHang();
-        String maDonHang = "DH" + TaoMaNgauNhien.tao(8);
+        String maDonHang;
+        do {
+            maDonHang = "DH" + TaoMaNgauNhien.tao(8);
+        } while (this.donHangRepository.findById(maDonHang).orElse(null) != null);
         donHang.setMa(maDonHang);
         donHang.setNguoiNhan(donHangDTO.getNguoiNhan());
         donHang.setDiaChi(donHangDTO.getDiaChi());

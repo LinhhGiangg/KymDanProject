@@ -12,7 +12,19 @@ export class NhanVienService {
     public http: HttpClient
   ) { }
 
-  danhSachDonHang(nhanVien): Observable<any> {
-    return this.http.get(this.API + '/danhSachDonHang/' + nhanVien);
+  danhSachDonHang(thongTin): Observable<any> {
+    return this.http.get(this.API + '/danhSachDonHang/' + thongTin);
+  }
+
+  danhSachNhanVienGiaoHang(thongTin): Observable<any> {
+    return this.http.get(this.API + '/danhSachNhanVienGiaoHang/' + thongTin);
+  }
+
+  phanCongGiaoHang(thongTin): Observable<any> {
+    return this.http.get(this.API + '/phanCongGiaoHang/' + thongTin);
+  }
+
+  giaoHangHoanTat(thongTin): Observable<any> {
+    return this.http.get(this.API + '/giaoHangHoanTat/' + thongTin);
   }
 }

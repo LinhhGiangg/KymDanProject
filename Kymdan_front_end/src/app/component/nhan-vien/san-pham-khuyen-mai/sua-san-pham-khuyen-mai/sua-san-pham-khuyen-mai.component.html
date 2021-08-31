@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <form (ngSubmit)="sua()" [formGroup]="formSua">
+
+      <div class="text-center">
+        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" style="color: green" id="add">
+          <strong style="font-size: 25px">Sửa phần trăm khuyến mãi</strong>
+        </h3>
+
+        <mat-error *ngIf="thongBao && thongBao != 'Sửa thành công !'" style="margin-top: -9px">
+          {{thongBao}}
+        </mat-error>
+      </div>
+
+      <div>
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Mã sản phẩm</mat-label>
+            <input matInput formControlName="maSanPham" readonly>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Giảm giá (%) <i style="margin-left: 5px" class="fa fa-pencil"></i></mat-label>
+            <input matInput formControlName="giamGia">
+            <mat-error *ngIf="formSua.controls.giamGia.errors?.required">Giảm giá không đươc để trống.
+            </mat-error>
+            <mat-error *ngIf="formSua.controls.giamGia.errors?.pattern">
+              % giảm giá phải là số nguyên lớn hơn 0 và nhỏ hơn 100.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Cập nhật</button>
+            <button type="button" class="btn btn-warning ml-3" (click)="huy()">Hủy</button>
+          </div>
+          <div class="col-sm-3"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-2"></div>
+</div>

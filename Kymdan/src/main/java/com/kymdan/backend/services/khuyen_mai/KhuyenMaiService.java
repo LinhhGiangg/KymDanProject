@@ -25,4 +25,6 @@ public interface KhuyenMaiService {
     ThongBaoDTO themSanPhamKhuyenMai(String maKhuyenMai, String maSanPham, String giamGia);
 
     ThongBaoDTO suaSanPhamKhuyenMai(Integer maChiTiet, String giamGia);
+
+    ThongBaoDTO xoaSanPhamKhuyenMai(Integer maChiTiet);
 }

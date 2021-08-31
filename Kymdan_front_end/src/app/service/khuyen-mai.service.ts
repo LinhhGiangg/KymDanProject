@@ -44,4 +44,8 @@ export class KhuyenMaiService {
   suaSanPhamKhuyenMai(maChiTiet, giamGia): Observable<any> {
     return this.http.get(this.API + '/suaSanPhamKhuyenMai/' + maChiTiet + '/' + giamGia);
   }
+
+  xoaSanPhamKhuyenMai(maChiTiet): Observable<any> {
+    return this.http.get(this.API + '/xoaSanPhamKhuyenMai/' + maChiTiet);
+  }
 }

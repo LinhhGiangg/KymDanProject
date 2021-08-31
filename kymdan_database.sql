@@ -267,6 +267,29 @@ insert into kymdan.gio_hang(ma, ma_khach_hang) values (1, 1);
 insert into kymdan.chi_tiet_gio_hang(so_luong, ma_gio_hang, ma_san_pham) values (5, 1, 'SP-022');
 insert into kymdan.chi_tiet_gio_hang(so_luong, ma_gio_hang, ma_san_pham) values (2, 1, 'SP-045');
 
+-- Đơn hàng
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang) values ('DH20263406', 'Tiền mặt', 'Quảng Nam', '2021-08-31', '2021-10-22', 'Khoi Nguyen', '0905999999', 'Chờ duyệt', 1);
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang) values ('DH32877125', 'Tiền mặt', 'Quảng Nam', '2021-08-21', '2021-10-01', 'Khoi Nguyen', '0905999999', 'Chờ duyệt', 1);
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH40023690', 'PayPal', 'Quảng Nam', '2021-08-17', '2021-09-25', 'Khoi Nguyen', '0905999999', 'Đã phân công', 1, 'NV-002', 'NVGH-002');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang) values ('DH41208273', 'Tiền mặt', 'Dak Lak', '2021-08-15', '2021-09-15', 'Phuong Thao', '0905111111', 'Chờ duyệt', 2);
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42676093', 'PayPal', 'Dak Lak', '2021-08-12', '2021-09-11', 'Phuong Thao', '0905111111', 'Đã phân công', 2, 'NV-001', 'NVGH-001');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42675093', 'PayPal', 'Sài Gòn', '2021-08-11', '2021-09-09', 'Phuong Thanh', '0905222222', 'Hoàn tất', 2, 'NV-001', 'NVGH-001');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42675095', 'PayPal', 'Đà Nẵng', '2021-08-10', '2021-09-08', 'Thanh Nhi', '0905666666', 'Hoàn tất', 1, 'NV-002', 'NVGH-003');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('19.460.000', 2, 'DH41208273', 'SP-023');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('14.440.000', 3, 'DH41208273', 'SP-001');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('20.560.000', 2, 'DH42676093', 'SP-024');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('35.860.000', 1, 'DH42676093', 'SP-058');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('43.395.000', 3, 'DH20263406', 'SP-088');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('14.632.000', 3, 'DH20263406', 'SP-029');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('18.560.000', 5, 'DH40023690', 'SP-022');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('46.860.000', 2, 'DH40023690', 'SP-085');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('21.860.000', 1, 'DH32877125', 'SP-016');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('15.860.000', 10, 'DH42675093', 'SP-006');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('25.860.000', 18, 'DH42675093', 'SP-045');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('45.860.000', 11, 'DH42675095', 'SP-072');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('50.860.000', 6, 'DH42675095', 'SP-077');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('11.860.000', 1, 'DH42675095', 'SP-001');
+
 DELIMITER //
 CREATE PROCEDURE xem_don_hang(khach_hang int)
 BEGIN

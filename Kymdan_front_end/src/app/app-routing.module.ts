@@ -26,10 +26,13 @@ import {GioHangComponent} from './component/khach-hang/gio-hang/gio-hang.compone
 import {LichSuMuaHangComponent} from './component/khach-hang/lich-su-mua-hang/lich-su-mua-hang.component';
 import {ChiTietDonHangComponent} from './component/khach-hang/chi-tiet-don-hang/chi-tiet-don-hang.component';
 import {DanhSachDonHangComponent} from './component/nhan-vien/don-hang/danh-sach-don-hang/danh-sach-don-hang.component';
-import {ChiTietKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component';
+import {ChiTietKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component';
 import {DanhSachPhieuTraComponent} from './component/nhan-vien/phieu-tra/danh-sach-phieu-tra/danh-sach-phieu-tra.component';
-import {ThemSanPhamKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component';
-import {SuaSanPhamKhuyenMaiComponent} from './component/nhan-vien/khuyen-mai/sua-san-pham-khuyen-mai/sua-san-pham-khuyen-mai.component';
+import {ThemSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component';
+import {SuaSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/sua-san-pham-khuyen-mai/sua-san-pham-khuyen-mai.component';
+import {PhanCongComponent} from './component/nhan-vien/don-hang/phan-cong/phan-cong.component';
+import {XacNhanGiaoComponent} from './component/nhan-vien-giao-hang/xac-nhan-giao/xac-nhan-giao.component';
+import {XoaSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/xoa-san-pham-khuyen-mai/xoa-san-pham-khuyen-mai.component';
 
 const routes: Routes = [
   {path: '', component: TrangChuComponent},
@@ -61,14 +64,18 @@ const routes: Routes = [
   {path: 'xoa-san-pham', component: XoaSanPhamComponent},
 
   {path: 'danh-sach-khuyen-mai', component: DanhSachKhuyenMaiComponent},
-  {path: 'chi-tiet-khuyen-mai', component: ChiTietKhuyenMaiComponent},
   {path: 'them-khuyen-mai', component: ThemKhuyenMaiComponent},
   {path: 'sua-khuyen-mai', component: SuaKhuyenMaiComponent},
   {path: 'xoa-khuyen-mai', component: XoaKhuyenMaiComponent},
+
+  {path: 'chi-tiet-khuyen-mai', component: ChiTietKhuyenMaiComponent},
   {path: 'them-san-pham-khuyen-mai', component: ThemSanPhamKhuyenMaiComponent},
   {path: 'sua-san-pham-khuyen-mai', component: SuaSanPhamKhuyenMaiComponent},
+  {path: 'xoa-san-pham-khuyen-mai', component: XoaSanPhamKhuyenMaiComponent},
 
   {path: 'danh-sach-don-hang', component: DanhSachDonHangComponent},
+  {path: 'phan-cong', component: PhanCongComponent},
+  {path: 'xac-nhan-giao', component: XacNhanGiaoComponent},
 
   {path: 'danh-sach-phieu-tra', component: DanhSachPhieuTraComponent},
 

@@ -146,4 +146,10 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
         }
         return new ThongBaoDTO("Lỗi hệ thống !");
     }
+
+    @Override
+    public ThongBaoDTO xoaSanPhamKhuyenMai(Integer maChiTiet) {
+        this.chiTietKhuyenMaiRepository.deleteById(maChiTiet);
+        return new ThongBaoDTO("Xóa thành công !");
+    }
 }

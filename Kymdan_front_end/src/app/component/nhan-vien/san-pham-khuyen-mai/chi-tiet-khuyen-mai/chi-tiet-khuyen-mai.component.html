@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <div class="table-responsive">
+    <div class="table-wrapper table-striped">
+
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-3" style="text-align: left">
+            <button class="btn btn-dark" style="width: 103px" [routerLink]="['/danh-sach-khuyen-mai']">Trở về</button>
+          </div>
+          <div class="col-sm-6">
+            <h1 class="text-center" style="font-weight: bold" *ngIf="danhSach.length > 0">
+              Chi tiết <span style="color: green">{{tenKhuyenMai}}</span>
+            </h1>
+            <h1 class="text-center" style="font-weight: bold; color: green" *ngIf="danhSach.length == 0">
+              Chi tiết khuyến mãi trống !
+            </h1>
+          </div>
+          <div class="col-sm-3" style="text-align: right">
+            <button class="btn btn-success" *ngIf="kiemTra || danhSach.length == 0" (click)="themSanPham()">
+              Thêm sản phẩm
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <table class="table table-bordered mt-3" *ngIf="danhSach.length > 0">
+        <thead>
+        <tr style="font-size: 17px">
+          <th>STT</th>
+          <th style="width: 504px">Tên loại sản phẩm</th>
+          <th>Mã sản phẩm</th>
+          <th>Kích thước</th>
+          <th>Giá gốc (VND)</th>
+          <th style="width: 139px">Giảm giá (%)</th>
+          <th *ngIf="kiemTra" style="width: 138px">Thao tác</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let phanTu of danhSach ; let i = index">
+          <td style="width: 103px">{{i + 1}}</td>
+          <td>{{phanTu.sanPham.loaiSanPham.ten}}</td>
+          <td>{{phanTu.sanPham.ma}}</td>
+          <td>{{phanTu.sanPham.rong}} x {{phanTu.sanPham.dai}} x {{phanTu.sanPham.cao}}</td>
+          <td>{{phanTu.gia}}</td>
+          <td>{{phanTu.giamGia}}</td>
+          <td *ngIf="kiemTra">
+            <a class="edit" title="Sửa" data-toggle="tooltip"
+               [routerLink]="['/chi-tiet-khuyen-mai']">
+              <i class="material-icons" (click)="sua(phanTu.ma)">&#xE254;</i>
+            </a>
+
+            <a class="delete" title="Xóa" data-toggle="tooltip"
+               [routerLink]="['/chi-tiet-khuyen-mai']">
+              <i class="material-icons" (click)="xoa(phanTu.ma, phanTu.sanPham.ma)">&#xE872;</i>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
