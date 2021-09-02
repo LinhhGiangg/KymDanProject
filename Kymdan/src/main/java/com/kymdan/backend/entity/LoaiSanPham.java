@@ -27,41 +27,21 @@ public class LoaiSanPham {
     @Column(name = "hinh3", columnDefinition = "VARCHAR(250)")
     private String hinh3;
 
-    @Column(name = "luot_xem", columnDefinition = "INT")
-    private Integer luotXem;
-
     @Column(name = "luot_mua", columnDefinition = "INT")
     private Integer luotMua;
 
     @Column(name = "ngay_tao", columnDefinition = "DATE")
     private LocalDate ngayTao;
 
-    // moi quan he
-
     @OneToMany(mappedBy = "loaiSanPham", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<SanPham> danhSachSanPham;
 
     @ManyToOne()
-    @JoinColumn(name = "ma_nha_cung_cap", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @JoinColumn(name = "ma_nha_cung_cap", referencedColumnName = "ma", columnDefinition = "CHAR(10)")
     private NhaCungCap nhaCungCap;
 
     public LoaiSanPham() {
-    }
-
-    public LoaiSanPham(String ma, String ten, String moTa, String hinh1, String hinh2, String hinh3, Integer luotXem,
-                       Integer luotMua, LocalDate ngayTao, List<SanPham> danhSachSanPham, NhaCungCap nhaCungCap) {
-        this.ma = ma;
-        this.ten = ten;
-        this.moTa = moTa;
-        this.hinh1 = hinh1;
-        this.hinh2 = hinh2;
-        this.hinh3 = hinh3;
-        this.luotXem = luotXem;
-        this.luotMua = luotMua;
-        this.ngayTao = ngayTao;
-        this.danhSachSanPham = danhSachSanPham;
-        this.nhaCungCap = nhaCungCap;
     }
 
     public String getMa() {
@@ -110,14 +90,6 @@ public class LoaiSanPham {
 
     public void setHinh3(String hinh3) {
         this.hinh3 = hinh3;
-    }
-
-    public Integer getLuotXem() {
-        return luotXem;
-    }
-
-    public void setLuotXem(Integer luotXem) {
-        this.luotXem = luotXem;
     }
 
     public Integer getLuotMua() {

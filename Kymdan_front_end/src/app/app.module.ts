@@ -45,6 +45,8 @@ import {PhanCongComponent} from './component/nhan-vien/don-hang/phan-cong/phan-c
 import {MatRadioModule} from '@angular/material/radio';
 import {XacNhanGiaoComponent} from './component/nhan-vien-giao-hang/xac-nhan-giao/xac-nhan-giao.component';
 import {XoaSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/xoa-san-pham-khuyen-mai/xoa-san-pham-khuyen-mai.component';
+import {ThongKeComponent} from './component/nhan-vien/thong-ke/thong-ke.component';
+import {ChartsModule} from '@progress/kendo-angular-charts';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,8 @@ import {XoaSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuye
     SuaSanPhamKhuyenMaiComponent,
     PhanCongComponent,
     XacNhanGiaoComponent,
-    XoaSanPhamKhuyenMaiComponent
+    XoaSanPhamKhuyenMaiComponent,
+    ThongKeComponent
   ],
   imports: [
     BrowserModule,
@@ -97,6 +100,7 @@ import {XoaSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuye
     MatDialogModule,
     MatButtonModule,
     MatRadioModule,
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

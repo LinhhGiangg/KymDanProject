@@ -1,5 +1,6 @@
 package com.kymdan.backend.services.san_pham;
 
+import com.kymdan.backend.entity.ChiTietDonHang;
 import com.kymdan.backend.entity.ChiTietGia;
 import com.kymdan.backend.entity.ChiTietKhuyenMai;
 import com.kymdan.backend.entity.SanPham;
@@ -52,7 +53,7 @@ public class SanPhamServiceImpl implements SanPhamService {
         String maLoai = thongTin.split(",")[0];
 
         for (SanPham sanPham : tatCaSanPham) {
-            if (sanPham.getLoaiSanPham().getMa().equals(maLoai) && !sanPham.getSoLuong().equals("0")) {
+            if (sanPham.getLoaiSanPham().getMa().equals(maLoai) && !sanPham.getSoLuong().equals(0)) {
                 cungLoai.add(sanPham);
                 if (sanPham.getRong().equals("120") && sanPham.getCao().equals("5")) {
                     ketQua = sanPham;
@@ -61,7 +62,7 @@ public class SanPhamServiceImpl implements SanPhamService {
         }
 
 
-        if (ketQua == null || ketQua.getSoLuong().equals("0")) {
+        if (ketQua == null || ketQua.getSoLuong().equals(0)) {
             ketQua = cungLoai.get(0);
             long rongNhoNhat = Long.parseLong(ketQua.getRong());
             for (SanPham sanPham : cungLoai) {
@@ -95,8 +96,13 @@ public class SanPhamServiceImpl implements SanPhamService {
 
     @Override
     public ThongBaoDTO xoa(String ma) {
-        this.sanPhamRepository.deleteById(ma);
-        return new ThongBaoDTO("Xóa thành công !");
+        List<Integer> danhSach = this.sanPhamRepository.kiemTraSanPham(ma);
+        if (danhSach.size() == 0) {
+            this.sanPhamRepository.deleteById(ma);
+            return new ThongBaoDTO("Xóa thành công !");
+        } else {
+            return new ThongBaoDTO("Sản phẩm này đã được mua nên không thể xóa !");
+        }
     }
 
     @Override

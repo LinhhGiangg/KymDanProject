@@ -15,19 +15,11 @@ public class Quyen {
     @Column(name = "ten", columnDefinition = "VARCHAR(50)")
     private String ten;
 
-    // moi quan he
-
     @OneToMany(mappedBy = "quyen")
     @JsonBackReference
     private List<TaiKhoan> danhSachTaiKhoan;
 
     public Quyen() {
-    }
-
-    public Quyen(Integer ma, String ten, List<TaiKhoan> danhSachTaiKhoan) {
-        this.ma = ma;
-        this.ten = ten;
-        this.danhSachTaiKhoan = danhSachTaiKhoan;
     }
 
     public Integer getMa() {

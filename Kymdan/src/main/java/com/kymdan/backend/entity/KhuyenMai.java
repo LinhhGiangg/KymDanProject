@@ -24,10 +24,8 @@ public class KhuyenMai {
     @Column(name = "ngay_ket_thuc", columnDefinition = "DATE")
     private LocalDate ngayKetThuc;
 
-    // moi quan he
-
     @ManyToOne
-    @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "CHAR(10)")
     private NhanVien nhanVien;
 
     @OneToMany(mappedBy = "khuyenMai", cascade = CascadeType.ALL)
@@ -35,17 +33,6 @@ public class KhuyenMai {
     private List<ChiTietKhuyenMai> danhSachChiTietKhuyenMai;
 
     public KhuyenMai() {
-    }
-
-    public KhuyenMai(String ma, String ten, LocalDate ngayBatDau, LocalDate ngayKetThuc, String moTa, NhanVien nhanVien,
-                     List<ChiTietKhuyenMai> danhSachChiTietKhuyenMai) {
-        this.ma = ma;
-        this.ten = ten;
-        this.ngayBatDau = ngayBatDau;
-        this.ngayKetThuc = ngayKetThuc;
-        this.moTa = moTa;
-        this.nhanVien = nhanVien;
-        this.danhSachChiTietKhuyenMai = danhSachChiTietKhuyenMai;
     }
 
     public String getMa() {

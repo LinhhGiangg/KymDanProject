@@ -5,22 +5,11 @@ public class SanPhamDTO {
     private String maLoai;
     private String kichThuoc;
     private String doDay;
-    private String gia;
-    private String soLuong;
+    private Integer gia;
+    private Integer soLuong;
     private String nhanVien;
 
     public SanPhamDTO() {
-    }
-
-    public SanPhamDTO(String ma, String maLoai, String kichThuoc, String doDay, String gia, String soLuong,
-                      String nhanVien) {
-        this.ma = ma;
-        this.maLoai = maLoai;
-        this.kichThuoc = kichThuoc;
-        this.doDay = doDay;
-        this.gia = gia;
-        this.soLuong = soLuong;
-        this.nhanVien = nhanVien;
     }
 
     public String getMa() {
@@ -55,19 +44,19 @@ public class SanPhamDTO {
         this.doDay = doDay;
     }
 
-    public String getGia() {
+    public Integer getGia() {
         return gia;
     }
 
-    public void setGia(String gia) {
+    public void setGia(Integer gia) {
         this.gia = gia;
     }
 
-    public String getSoLuong() {
+    public Integer getSoLuong() {
         return soLuong;
     }
 
-    public void setSoLuong(String soLuong) {
+    public void setSoLuong(Integer soLuong) {
         this.soLuong = soLuong;
     }
 

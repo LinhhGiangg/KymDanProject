@@ -91,11 +91,10 @@ public class KhachHangServiceImpl implements KhachHangService {
 
             for (ChiTietGioHang chiTietGioHang : danhSachCungGioHang) {
                 if (chiTietGioHang.getSanPham().getMa().equals(maSanPham)) {
-                    if ((chiTietGioHang.getSoLuong() + soLuong)
-                            <= Integer.parseInt(chiTietGioHang.getSanPham().getSoLuong())) {
+                    if ((chiTietGioHang.getSoLuong() + soLuong) <= chiTietGioHang.getSanPham().getSoLuong()) {
                         chiTietGioHang.setSoLuong(chiTietGioHang.getSoLuong() + soLuong);
                     } else {
-                        chiTietGioHang.setSoLuong(Integer.parseInt(chiTietGioHang.getSanPham().getSoLuong()));
+                        chiTietGioHang.setSoLuong(chiTietGioHang.getSanPham().getSoLuong());
                     }
                     this.chiTietGioHangRepository.save(chiTietGioHang);
                     kiemTra = false;
@@ -161,16 +160,14 @@ public class KhachHangServiceImpl implements KhachHangService {
             ChiTietDonHang chiTietDonHang = new ChiTietDonHang();
             chiTietDonHang.setDonHang(this.donHangRepository.findById(maDonHang).orElse(null));
             chiTietDonHang.setSoLuong(Integer.parseInt(donHangDTO.getSoLuong().split(",")[i]));
-            chiTietDonHang.setGia(donHangDTO.getGia().split(",")[i]);
+            chiTietDonHang.setGia(Integer.parseInt(donHangDTO.getGia().split(",")[i]));
             chiTietDonHang.setSanPham(this.sanPhamRepository
                     .findById(donHangDTO.getSanPham().split(",")[i]).orElse(null));
             this.chiTietDonHangRepository.save(chiTietDonHang);
 
-            SanPham sanPham = this.sanPhamRepository
-                    .findById(donHangDTO.getSanPham().split(",")[i]).orElse(null);
+            SanPham sanPham = this.sanPhamRepository.findById(donHangDTO.getSanPham().split(",")[i]).orElse(null);
             if (sanPham != null) {
-                sanPham.setSoLuong(Integer.parseInt(sanPham.getSoLuong())
-                        - Integer.parseInt(donHangDTO.getSoLuong().split(",")[i]) + "");
+                sanPham.setSoLuong(sanPham.getSoLuong() - Integer.parseInt(donHangDTO.getSoLuong().split(",")[i]));
                 this.sanPhamRepository.save(sanPham);
             }
 
@@ -181,11 +178,11 @@ public class KhachHangServiceImpl implements KhachHangService {
                     this.chiTietGioHangRepository.delete(chiTietGioHang);
                 } else {
                     if (chiTietGioHang.getSanPham().getMa().equals(donHangDTO.getSanPham().split(",")[i])) {
-                        if (chiTietGioHang.getSanPham().getSoLuong().equals("0")) {
+                        if (chiTietGioHang.getSanPham().getSoLuong().equals(0)) {
                             this.chiTietGioHangRepository.delete(chiTietGioHang);
                         } else {
-                            if (chiTietGioHang.getSoLuong() > Integer.parseInt(chiTietGioHang.getSanPham().getSoLuong())) {
-                                chiTietGioHang.setSoLuong(Integer.parseInt(chiTietGioHang.getSanPham().getSoLuong()));
+                            if (chiTietGioHang.getSoLuong() > chiTietGioHang.getSanPham().getSoLuong()) {
+                                chiTietGioHang.setSoLuong(chiTietGioHang.getSanPham().getSoLuong());
                             }
                         }
                     }

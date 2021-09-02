@@ -7,11 +7,6 @@ public class DangNhapDTO {
     public DangNhapDTO() {
     }
 
-    public DangNhapDTO(String tenDangNhap, String matKhau) {
-        this.tenDangNhap = tenDangNhap;
-        this.matKhau = matKhau;
-    }
-
     public String getTenDangNhap() {
         return tenDangNhap;
     }

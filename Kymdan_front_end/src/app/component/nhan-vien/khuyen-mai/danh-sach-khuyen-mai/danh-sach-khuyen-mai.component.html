@@ -47,10 +47,15 @@
 
             <a class="edit" title="Sửa" data-toggle="tooltip" *ngIf="phanTu.trangThai != 'Chưa khuyến mãi'"
                [routerLink]="['/danh-sach-khuyen-mai']">
-              <i class="material-icons" (click)="khongTheSua()">&#xE254;</i></a>
+              <i class="material-icons" (click)="khongTheSuaXoa()">&#xE254;</i></a>
 
-            <a class="delete" title="Xóa" data-toggle="tooltip" [routerLink]="['/danh-sach-khuyen-mai']">
+            <a class="delete" title="Xóa" data-toggle="tooltip" *ngIf="phanTu.trangThai == 'Chưa khuyến mãi'"
+               [routerLink]="['/danh-sach-khuyen-mai']">
               <i class="material-icons" (click)="xoa(phanTu.ma)">&#xE872;</i></a>
+
+            <a class="delete" title="Xóa" data-toggle="tooltip" *ngIf="phanTu.trangThai != 'Chưa khuyến mãi'"
+               [routerLink]="['/danh-sach-khuyen-mai']">
+              <i class="material-icons" (click)="khongTheSuaXoa()">&#xE872;</i></a>
           </td>
         </tr>
         </tbody>

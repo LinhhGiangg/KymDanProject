@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,24 +33,7 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
 
     @Override
     public List<?> locTheoGia(long mucGia) {
-        List<SanPham> ketQua = new ArrayList<>();
-        List<SanPham> tatCaSanPham = this.sanPhamRepository.findAll();
-
-//        for (SanPham sanPham : tatCaSanPham) {
-//            if (mucGia == 6) {
-//                if (Long.parseLong(sanPham.getGia()) >= (50000000)) {
-//                    ketQua.add(sanPham);
-//                }
-//                continue;
-//            }
-//
-//            if (((mucGia - 1) * 10000000) <= Long.parseLong(sanPham.getGia())
-//                    && Long.parseLong(sanPham.getGia()) <= (mucGia * 10000000)) {
-//                ketQua.add(sanPham);
-//            }
-//        }
-
-        return ketQua;
+        return this.loaiSanPhamRepository.findAll();
     }
 
     @Override
@@ -73,7 +55,6 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
         loaiSanPham.setHinh1(loaiSanPhamDTO.getHinh());
         loaiSanPham.setHinh2("assets/sanPham6.jpg");
         loaiSanPham.setHinh3("assets/sanPham7.jpg");
-        loaiSanPham.setLuotXem(0);
         loaiSanPham.setLuotMua(0);
         loaiSanPham.setNgayTao(LocalDate.now());
         this.loaiSanPhamRepository.save(loaiSanPham);
@@ -104,43 +85,14 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
 
     @Override
     public List<LoaiSanPham> xemLoaiMoi() {
-        LocalDate ngayHienTai = LocalDate.now();
-        List<LoaiSanPham> ketQua = new ArrayList<>();
-        List<LoaiSanPham> loaiMoiNhap = new ArrayList<>();
-        List<LoaiSanPham> tatCaLoai = this.loaiSanPhamRepository.findAll();
-        LoaiSanPham loaiSanPham;
-        int ngayGanNhat;
-        int soDem = 0;
-
-        for (LoaiSanPham phanTu : tatCaLoai) {
-            Period soNgay = Period.between(phanTu.getNgayTao(), ngayHienTai);
-            if (soNgay.getDays() < 31 && soNgay.getMonths() == 0 && soNgay.getYears() == 0) {
-                loaiMoiNhap.add(phanTu);
-            }
-        }
-
-        for (int i = 0; i < loaiMoiNhap.size() && soDem < 5; ) {
-            loaiSanPham = loaiMoiNhap.get(0);
-            ngayGanNhat = LocalDate.now().compareTo(loaiSanPham.getNgayTao());
-            for (LoaiSanPham sanPham : loaiMoiNhap) {
-                if (LocalDate.now().compareTo(sanPham.getNgayTao()) < ngayGanNhat) {
-                    loaiSanPham = sanPham;
-                    ngayGanNhat = LocalDate.now().compareTo(sanPham.getNgayTao());
-                }
-            }
-            ketQua.add(loaiSanPham);
-            soDem += 1;
-            loaiMoiNhap.remove(loaiSanPham);
-        }
-
-        return ketQua;
+        return this.loaiSanPhamRepository.xemLoaiMoi();
     }
 
     @Override
     public List<LoaiSanPham> xemLoaiBanChay() {
         List<LoaiSanPham> ketQua = new ArrayList<>();
         List<LoaiSanPham> locDanhSach = new ArrayList<>();
-        List<ChiTietDonHang> danhSachMua = this.chiTietDonHangRepository.locChiTiet();
+        List<ChiTietDonHang> danhSachMua = this.chiTietDonHangRepository.locChiTietDonHang();
         List<ChiTietDonHang> mangTam = new ArrayList<>();
         LoaiSanPham loaiSanPham;
         int luotMua;
@@ -180,26 +132,7 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
     }
 
     @Override
-    public List<LoaiSanPham> timTheoTen(String ten) {
-        List<LoaiSanPham> ketQua = new ArrayList<>();
-        List<LoaiSanPham> tatCaLoai = this.loaiSanPhamRepository.findAll();
-
-        for (LoaiSanPham loaiSanPham : tatCaLoai) {
-            if (loaiSanPham.getTen().toLowerCase().contains(ten.toLowerCase())) {
-                ketQua.add(loaiSanPham);
-            }
-        }
-
-        return ketQua;
-    }
-
-    @Override
-    public ThongBaoDTO tangLuotXem(String maLoai) {
-        LoaiSanPham loaiSanPham = this.loaiSanPhamRepository.findById(maLoai).orElse(null);
-        if (loaiSanPham != null) {
-            loaiSanPham.setLuotXem(loaiSanPham.getLuotXem() + 1);
-            this.loaiSanPhamRepository.save(loaiSanPham);
-        }
-        return new ThongBaoDTO("OK");
+    public List<LoaiSanPham> locTheoTen(String kiTu) {
+        return this.loaiSanPhamRepository.locTheoTen(kiTu);
     }
 }

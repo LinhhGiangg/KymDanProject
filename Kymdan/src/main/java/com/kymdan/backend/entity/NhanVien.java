@@ -12,7 +12,7 @@ import java.util.List;
 @Entity(name = "nhan_vien")
 public class NhanVien {
     @Id
-    @Column(name = "ma", columnDefinition = "VARCHAR(10)")
+    @Column(name = "ma", columnDefinition = "CHAR(10)")
     private String ma;
 
     @Column(name = "ten", columnDefinition = "VARCHAR(50)")
@@ -32,8 +32,6 @@ public class NhanVien {
 
     @Column(name = "email", columnDefinition = "VARCHAR(50)")
     private String email;
-
-    // moi quan he
 
     @OneToOne(mappedBy = "nhanVien", cascade = CascadeType.ALL)
     @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
@@ -55,24 +53,15 @@ public class NhanVien {
     @JsonBackReference
     private List<ChiTietGia> danhSachChiTietGia;
 
-    public NhanVien() {
-    }
+    @OneToMany(mappedBy = "nhanVien", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<HoaDon> danhSachHoaDon;
 
-    public NhanVien(String ma, String ten, String gioiTinh, LocalDate ngaySinh, String diaChi, String soDienThoai,
-                    String email, TaiKhoan taiKhoan, List<DonHang> danhSachDonHang, List<KhuyenMai> danhSachKhuyenMai,
-                    List<PhieuNhap> danhSachPhieuNhap, List<ChiTietGia> danhSachChiTietGia) {
-        this.ma = ma;
-        this.ten = ten;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
-        this.diaChi = diaChi;
-        this.soDienThoai = soDienThoai;
-        this.email = email;
-        this.taiKhoan = taiKhoan;
-        this.danhSachDonHang = danhSachDonHang;
-        this.danhSachKhuyenMai = danhSachKhuyenMai;
-        this.danhSachPhieuNhap = danhSachPhieuNhap;
-        this.danhSachChiTietGia = danhSachChiTietGia;
+    @OneToMany(mappedBy = "nhanVien", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<PhieuTra> danhSachPhieuTra;
+
+    public NhanVien() {
     }
 
     public String getMa() {
@@ -169,5 +158,21 @@ public class NhanVien {
 
     public void setDanhSachChiTietGia(List<ChiTietGia> danhSachChiTietGia) {
         this.danhSachChiTietGia = danhSachChiTietGia;
+    }
+
+    public List<HoaDon> getDanhSachHoaDon() {
+        return danhSachHoaDon;
+    }
+
+    public void setDanhSachHoaDon(List<HoaDon> danhSachHoaDon) {
+        this.danhSachHoaDon = danhSachHoaDon;
+    }
+
+    public List<PhieuTra> getDanhSachPhieuTra() {
+        return danhSachPhieuTra;
+    }
+
+    public void setDanhSachPhieuTra(List<PhieuTra> danhSachPhieuTra) {
+        this.danhSachPhieuTra = danhSachPhieuTra;
     }
 }

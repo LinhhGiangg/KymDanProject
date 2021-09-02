@@ -22,6 +22,7 @@
           <th>Số điện thoại</th>
           <th>Ngày đặt</th>
           <th>Ngày nhận</th>
+          <th>Tổng tiền (VND)</th>
           <th>Thanh toán</th>
           <th>Nhân viên phân công</th>
           <th>Trạng thái</th>
@@ -37,6 +38,7 @@
           <td>{{phanTu.soDienThoai}}</td>
           <td>{{phanTu.ngayDat}}</td>
           <td>{{phanTu.ngayNhan}}</td>
+          <td>{{phanTu.tienThanhToan}}</td>
           <td>{{phanTu.cachThanhToan}}</td>
           <td>{{phanTu.nhanVien.ten}}</td>
           <td *ngIf="phanTu.trangThai == 'Đã phân công'">Chưa giao</td>

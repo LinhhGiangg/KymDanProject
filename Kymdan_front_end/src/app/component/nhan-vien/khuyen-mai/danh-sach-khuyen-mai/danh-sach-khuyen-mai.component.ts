@@ -96,7 +96,7 @@ export class DanhSachKhuyenMaiComponent implements OnInit {
   xoa(ma) {
     this.thongBao = '';
     const dialogRefDelete = this.dialog.open(XoaKhuyenMaiComponent, {
-      width: '690px',
+      width: '715px',
       height: '175px',
       data: {thongTin: ma},
       disableClose: true
@@ -112,7 +112,7 @@ export class DanhSachKhuyenMaiComponent implements OnInit {
     });
   }
 
-  khongTheSua() {
+  khongTheSuaXoa() {
     this.thongBao = 'Khuyến mãi này đang được áp dụng hoặc đã quá hạn !';
     const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
       width: '655px',

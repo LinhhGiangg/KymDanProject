@@ -60,12 +60,12 @@ public class KhuyenMaiController {
 
     @GetMapping("/themSanPhamKhuyenMai/{maKhuyenMai}/{maSanPham}/{giamGia}")
     public ResponseEntity<?> themSanPhamKhuyenMai(@PathVariable String maKhuyenMai, @PathVariable String maSanPham,
-                                                  @PathVariable String giamGia) {
+                                                  @PathVariable Integer giamGia) {
         return ResponseEntity.ok(this.khuyenMaiService.themSanPhamKhuyenMai(maKhuyenMai, maSanPham, giamGia));
     }
 
     @GetMapping("/suaSanPhamKhuyenMai/{maChiTiet}/{giamGia}")
-    public ResponseEntity<?> suaSanPhamKhuyenMai(@PathVariable Integer maChiTiet, @PathVariable String giamGia) {
+    public ResponseEntity<?> suaSanPhamKhuyenMai(@PathVariable Integer maChiTiet, @PathVariable Integer giamGia) {
         return ResponseEntity.ok(this.khuyenMaiService.suaSanPhamKhuyenMai(maChiTiet, giamGia));
     }
 

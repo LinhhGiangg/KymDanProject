@@ -4,6 +4,7 @@ import {TaiKhoanService} from '../../../service/tai-khoan.service';
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import {XacNhanGiaoComponent} from '../xac-nhan-giao/xac-nhan-giao.component';
+import {SanPhamService} from '../../../service/san-pham.service';
 
 @Component({
   selector: 'app-chuyen-hang',
@@ -19,6 +20,7 @@ export class ChuyenHangComponent implements OnInit {
   constructor(
     public nhanVienService: NhanVienService,
     public taiKhoanService: TaiKhoanService,
+    public sanPhamService: SanPhamService,
     public dialog: MatDialog,
     public router: Router,
   ) {
@@ -54,6 +56,7 @@ export class ChuyenHangComponent implements OnInit {
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < this.danhSach.length; i++) {
           if (this.danhSach[i].nhanVienGiaoHang != null && this.danhSach[i].nhanVienGiaoHang.ten === this.nhanVien) {
+            this.danhSach[i].tienThanhToan = this.sanPhamService.hienThiGia(this.danhSach[i].hoaDon.tongTien);
             this.danhSachLoc.push(this.danhSach[i])
           }
         }

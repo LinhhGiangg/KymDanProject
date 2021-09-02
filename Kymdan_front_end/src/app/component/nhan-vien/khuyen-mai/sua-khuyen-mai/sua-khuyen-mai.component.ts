@@ -18,7 +18,6 @@ export class SuaKhuyenMaiComponent implements OnInit {
   public thongBao;
   public gioiHanTruoc;
   public gioiHanSau;
-  public ngayHienTai = new Date();
   public gioiHanNgay = new Date('yyyy/MM/dd');
 
   constructor(

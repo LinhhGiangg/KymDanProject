@@ -15,6 +15,23 @@ import {KhachHangService} from '../../../service/khach-hang.service';
   styleUrls: ['./mua-hang.component.css']
 })
 export class MuaHangComponent implements OnInit {
+  public thongBao;
+  public quyen = 'Nothing';
+  public tenDangNhap;
+  public maLoai = '';
+  public duLieuDauVao;
+  public thongTinSanPham;
+  public soLuong: number;
+  public gia = 0;
+  public giaHienThi = '';
+  public giaBan = 0;
+  public giaBanHienThi = '';
+  public kichThuoc = '120x200';
+  public doDay = '5';
+  public sanPham = new SanPham();
+  public loaiSanPham = new LoaiSanPham();
+  public chiTietGia = null;
+  public chiTietKhuyenMai;
 
   constructor(
     public activatedRouter: ActivatedRoute,
@@ -26,22 +43,6 @@ export class MuaHangComponent implements OnInit {
     public dialog: MatDialog,
   ) {
   }
-
-  public thongBao;
-  public quyen = 'Nothing';
-  public tenDangNhap;
-  public maLoai = '';
-  public duLieuDauVao;
-  public thongTinSanPham;
-  public soLuong: number;
-  public gia = '';
-  public giaBan = '';
-  public kichThuoc = '120x200';
-  public doDay = '5';
-  public sanPham = new SanPham();
-  public loaiSanPham = new LoaiSanPham();
-  public chiTietGia = null;
-  public chiTietKhuyenMai;
 
   ngOnInit(): void {
     this.soLuong = 1;
@@ -76,8 +77,8 @@ export class MuaHangComponent implements OnInit {
   }
 
   sanPhamDauTien(thongTinSanPham) {
-    this.gia = '';
-    this.giaBan = '';
+    this.gia = 0;
+    this.giaBan = 0;
     this.sanPhamService.sanPhamDauTien(thongTinSanPham).subscribe(
       (duLieu) => {
         this.sanPham = duLieu;
@@ -97,11 +98,10 @@ export class MuaHangComponent implements OnInit {
             () => {
             },
             () => {
-              this.gia = '';
+              this.gia = 0;
+              this.giaHienThi = '';
               if (this.chiTietGia != null) {
-                // @ts-ignore
-                this.gia = this.sanPhamService.hienThiGia(this.chiTietGia.gia);
-
+                this.giaHienThi = this.sanPhamService.hienThiGia(this.chiTietGia.gia);
                 this.sanPhamService.timKhuyenMaiBangMaSanPham(this.sanPham.ma).subscribe(
                   (duLieu) => {
                     this.chiTietKhuyenMai = duLieu;
@@ -109,16 +109,11 @@ export class MuaHangComponent implements OnInit {
                   () => {
                   },
                   () => {
-                    this.giaBan = '';
+                    this.giaBan = 0;
+                    this.giaBanHienThi = '';
                     if (this.chiTietKhuyenMai != null) {
-                      // tslint:disable-next-line:radix
-                      this.giaBan =
-                        // tslint:disable-next-line:radix
-                        (Number.parseInt(this.chiTietGia.gia) -
-                          // tslint:disable-next-line:radix
-                          (Number.parseInt(this.chiTietGia.gia) * Number.parseInt(this.chiTietKhuyenMai.giamGia) / 100)) + '';
-                      // @ts-ignore
-                      this.giaBan = this.sanPhamService.hienThiGia(this.giaBan);
+                      this.giaBan = this.chiTietGia.gia - this.chiTietGia.gia * this.chiTietKhuyenMai.giamGia / 100;
+                      this.giaBanHienThi = this.sanPhamService.hienThiGia(this.giaBan);
                     }
                   });
               }
@@ -135,7 +130,7 @@ export class MuaHangComponent implements OnInit {
       () => {
       },
       () => {
-        if (this.sanPham != null && this.sanPham.soLuong !== '0') {
+        if (this.sanPham != null && this.sanPham.soLuong !== 0) {
           this.kichThuoc = this.sanPham.rong + 'x200';
           this.doDay = this.sanPham.cao;
 
@@ -146,11 +141,10 @@ export class MuaHangComponent implements OnInit {
             () => {
             },
             () => {
-              this.gia = '';
+              this.gia = 0;
+              this.giaHienThi = '';
               if (this.chiTietGia != null) {
-                // @ts-ignore
-                this.gia = this.sanPhamService.hienThiGia(this.chiTietGia.gia);
-
+                this.giaHienThi = this.sanPhamService.hienThiGia(this.chiTietGia.gia);
                 this.sanPhamService.timKhuyenMaiBangMaSanPham(this.sanPham.ma).subscribe(
                   (duLieu) => {
                     this.chiTietKhuyenMai = duLieu;
@@ -158,16 +152,11 @@ export class MuaHangComponent implements OnInit {
                   () => {
                   },
                   () => {
-                    this.giaBan = '';
+                    this.giaBan = 0;
+                    this.giaBanHienThi = '';
                     if (this.chiTietKhuyenMai != null) {
-                      // tslint:disable-next-line:radix
-                      this.giaBan =
-                        // tslint:disable-next-line:radix
-                        (Number.parseInt(this.chiTietGia.gia) -
-                          // tslint:disable-next-line:radix
-                          (Number.parseInt(this.chiTietGia.gia) * Number.parseInt(this.chiTietKhuyenMai.giamGia) / 100)) + '';
-                      // @ts-ignore
-                      this.giaBan = this.sanPhamService.hienThiGia(this.giaBan);
+                      this.giaBan = this.chiTietGia.gia - this.chiTietGia.gia * this.chiTietKhuyenMai.giamGia / 100;
+                      this.giaBanHienThi = this.sanPhamService.hienThiGia(this.giaBan);
                     }
                   });
               }
@@ -199,9 +188,7 @@ export class MuaHangComponent implements OnInit {
         this.soLuong = this.soLuong - 1;
       }
     } else {
-      // tslint:disable-next-line:radix
-      if (this.soLuong < Number.parseInt(this.sanPham.soLuong)) {
-        // tslint:disable-next-line:radix
+      if (this.soLuong < this.sanPham.soLuong) {
         this.soLuong = this.soLuong + 1;
       } else {
         this.hienThongBao('Hiện tại mặt hàng này chỉ còn ' + this.sanPham.soLuong + ' sản phẩm !')

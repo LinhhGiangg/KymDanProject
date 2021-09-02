@@ -12,8 +12,6 @@ public class GioHang {
     @Column(name = "ma", columnDefinition = "INT")
     private Integer ma;
 
-    // moi quan he
-
     @OneToMany(mappedBy = "gioHang", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<ChiTietGioHang> danhSachGioHang;
@@ -23,12 +21,6 @@ public class GioHang {
     private KhachHang khachHang;
 
     public GioHang() {
-    }
-
-    public GioHang(Integer ma, List<ChiTietGioHang> danhSachGioHang, KhachHang khachHang) {
-        this.ma = ma;
-        this.danhSachGioHang = danhSachGioHang;
-        this.khachHang = khachHang;
     }
 
     public Integer getMa() {

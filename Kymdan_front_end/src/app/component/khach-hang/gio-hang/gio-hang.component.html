@@ -42,7 +42,7 @@
             </div>
           </td>
           <td>{{phanTu.kichThuoc}}</td>
-          <td>{{phanTu.gia}}</td>
+          <td>{{phanTu.giaHienThi}}</td>
           <td>
             <div class="row justify-content-center">
               <i class="fa fa-minus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
@@ -52,7 +52,7 @@
                  (click)="chonSoLuong(2, i)" *ngIf="!kiemTraMua"></i>
             </div>
           </td>
-          <td>{{phanTu.tongTien}}</td>
+          <td>{{phanTu.tongTienHienThi}}</td>
           <td>
             <a class="delete" title="Xóa" data-toggle="tooltip" [routerLink]="['/gio-hang']">
               <i class="material-icons" (click)="xoa(phanTu.ma)">&#xE872;</i></a>
@@ -69,7 +69,7 @@
           <h2>Tổng tiền</h2>
         </div>
         <div class="col-sm-2">
-          <h2>{{tienCanThanhToan}} VND</h2>
+          <h2>{{tienCanThanhToanHienThi}} VND</h2>
         </div>
       </div>
 

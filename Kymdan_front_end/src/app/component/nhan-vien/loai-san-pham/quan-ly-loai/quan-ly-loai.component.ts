@@ -82,7 +82,7 @@ export class QuanLyLoaiComponent implements OnInit {
   xoa(ten) {
     this.thongBao = '';
     const dialogRefDelete = this.dialog.open(XoaLoaiComponent, {
-      width: '690px',
+      width: '715px',
       height: '180px',
       data: {thongTin: ten},
       disableClose: true

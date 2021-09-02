@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 import {KhachHangService} from '../../../service/khach-hang.service';
 import {TaiKhoanService} from '../../../service/tai-khoan.service';
 import {ChiTietGioHang} from '../../../model/ChiTietGioHang';
-import {LoaiSanPhamService} from '../../../service/loai-san-pham.service';
 import {SanPhamService} from '../../../service/san-pham.service';
 import {ThongBaoComponent} from '../../cau-hinh/thong-bao/thong-bao.component';
 
@@ -18,7 +17,6 @@ export class GioHangComponent implements OnInit {
   constructor(
     public taiKhoanService: TaiKhoanService,
     public khachHangService: KhachHangService,
-    public loaiSanPhamService: LoaiSanPhamService,
     public sanPhamService: SanPhamService,
     public dialog: MatDialog,
     public router: Router,
@@ -33,6 +31,7 @@ export class GioHangComponent implements OnInit {
   public danhSachMua = [];
   public maCanXoa;
   public tienCanThanhToan;
+  public tienCanThanhToanHienThi;
 
   ngOnInit(): void {
     this.kiemTraMua = false;
@@ -70,7 +69,7 @@ export class GioHangComponent implements OnInit {
       (duLieu) => {
         if (duLieu != null) {
           this.gioHang[i].khuyenMai = duLieu.giamGia;
-        } else this.gioHang[i].khuyenMai = ''
+        } else this.gioHang[i].khuyenMai = 0
       },
       () => {
       },
@@ -83,16 +82,12 @@ export class GioHangComponent implements OnInit {
     this.sanPhamService.timGiaBangMaSanPham(this.gioHang[i].sanPham.ma).subscribe(
       (duLieu) => {
         this.gioHang[i].gia = duLieu.gia;
-        if (this.gioHang[i].khuyenMai !== '') {
-          // tslint:disable-next-line:radix
-          this.gioHang[i].gia = (Number.parseInt(this.gioHang[i].gia)
-            // tslint:disable-next-line:radix
-            - Number.parseInt(this.gioHang[i].gia) * Number.parseInt(this.gioHang[i].khuyenMai) / 100) + '';
+        if (this.gioHang[i].khuyenMai !== 0) {
+          this.gioHang[i].gia = this.gioHang[i].gia - this.gioHang[i].gia * this.gioHang[i].khuyenMai / 100;
         }
-        // tslint:disable-next-line:radix
-        this.gioHang[i].tongTien = Number.parseInt(this.gioHang[i].gia) * this.gioHang[i].soLuong + '';
-        this.gioHang[i].gia = this.sanPhamService.hienThiGia(this.gioHang[i].gia);
-        this.gioHang[i].tongTien = this.sanPhamService.hienThiGia(this.gioHang[i].tongTien);
+        this.gioHang[i].tongTien = this.gioHang[i].gia * this.gioHang[i].soLuong;
+        this.gioHang[i].giaHienThi = this.sanPhamService.hienThiGia(this.gioHang[i].gia);
+        this.gioHang[i].tongTienHienThi = this.sanPhamService.hienThiGia(this.gioHang[i].tongTien);
       },
       () => {
       },
@@ -108,7 +103,7 @@ export class GioHangComponent implements OnInit {
   }
 
   chonSanPham(i: number) {
-    let gia = '';
+    let gia = 0;
     this.tienCanThanhToan = 0;
     this.kiemTraMua = true;
     this.gioHang[i].chon = true;
@@ -116,16 +111,14 @@ export class GioHangComponent implements OnInit {
 
     // tslint:disable-next-line:prefer-for-of
     for (let z = 0; z < this.danhSachMua.length; z++) {
-      gia = this.danhSachMua[z].tongTien.split('.')[0]
-        + this.danhSachMua[z].tongTien.split('.')[1] + this.danhSachMua[z].tongTien.split('.')[2] + '';
-      // tslint:disable-next-line:radix
-      this.tienCanThanhToan = this.tienCanThanhToan + Number.parseInt(gia);
+      gia = this.danhSachMua[z].tongTien;
+      this.tienCanThanhToan = this.tienCanThanhToan + gia;
     }
-    this.tienCanThanhToan = this.sanPhamService.hienThiGia(this.tienCanThanhToan);
+    this.tienCanThanhToanHienThi = this.sanPhamService.hienThiGia(this.tienCanThanhToan);
   }
 
   boChonSanPham(i: number) {
-    let gia = '';
+    let gia = 0;
     this.tienCanThanhToan = 0;
     this.kiemTraMua = false;
     this.gioHang[i].chon = false;
@@ -146,12 +139,10 @@ export class GioHangComponent implements OnInit {
 
     // tslint:disable-next-line:prefer-for-of
     for (let z = 0; z < this.danhSachMua.length; z++) {
-      gia = this.danhSachMua[z].tongTien.split('.')[0]
-        + this.danhSachMua[z].tongTien.split('.')[1] + this.danhSachMua[z].tongTien.split('.')[2] + '';
-      // tslint:disable-next-line:radix
-      this.tienCanThanhToan = this.tienCanThanhToan + Number.parseInt(gia);
+      gia = this.danhSachMua[z].tongTien;
+      this.tienCanThanhToan = this.tienCanThanhToan + gia;
     }
-    this.tienCanThanhToan = this.sanPhamService.hienThiGia(this.tienCanThanhToan);
+    this.tienCanThanhToanHienThi = this.sanPhamService.hienThiGia(this.tienCanThanhToan);
   }
 
   chonSoLuong(thayDoi, viTri) {
@@ -170,10 +161,8 @@ export class GioHangComponent implements OnInit {
               });
           }
         } else {
-          // tslint:disable-next-line:radix
-          if (this.gioHang[viTri].soLuong < Number.parseInt(duLieu.soLuong)) {
-            // tslint:disable-next-line:radix
-            this.gioHang[viTri].soLuong = Number.parseInt(String(this.gioHang[viTri].soLuong)) + 1;
+          if (this.gioHang[viTri].soLuong < duLieu.soLuong) {
+            this.gioHang[viTri].soLuong = this.gioHang[viTri].soLuong + 1;
             this.khachHangService.thayDoiSanPham(this.gioHang[viTri].ma, this.gioHang[viTri].soLuong).subscribe(
               () => {
               },

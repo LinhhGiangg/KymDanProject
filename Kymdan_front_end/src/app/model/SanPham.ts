@@ -5,7 +5,8 @@ export class SanPham {
   dai: string;
   rong: string;
   cao: string;
-  soLuong: string;
+  soLuong: number;
   loaiSanPham: LoaiSanPham;
-  gia: string;
+  gia: number;
+  giaHienThi: string;
 }

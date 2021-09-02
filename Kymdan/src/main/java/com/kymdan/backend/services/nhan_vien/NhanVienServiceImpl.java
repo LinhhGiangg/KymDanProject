@@ -24,7 +24,7 @@ public class NhanVienServiceImpl implements NhanVienService {
 
     @Override
     public List<DonHang> danhSachDonHang() {
-        return this.donHangRepository.findAll();
+        return this.donHangRepository.danhSachDonHang();
     }
 
     @Override

@@ -10,21 +10,9 @@ public class KhuyenMaiDTO {
     private LocalDate ngayKetThuc;
     private String tenNhanVien;
     private String maSanPham;
-    private String giamGia;
+    private Integer giamGia;
 
     public KhuyenMaiDTO() {
-    }
-
-    public KhuyenMaiDTO(String ma, String ten, String moTa, LocalDate ngayBatDau, LocalDate ngayKetThuc,
-                        String tenNhanVien, String maSanPham, String giamGia) {
-        this.ma = ma;
-        this.ten = ten;
-        this.moTa = moTa;
-        this.ngayBatDau = ngayBatDau;
-        this.ngayKetThuc = ngayKetThuc;
-        this.tenNhanVien = tenNhanVien;
-        this.maSanPham = maSanPham;
-        this.giamGia = giamGia;
     }
 
     public String getMa() {
@@ -75,11 +63,11 @@ public class KhuyenMaiDTO {
         this.maSanPham = maSanPham;
     }
 
-    public String getGiamGia() {
+    public Integer getGiamGia() {
         return giamGia;
     }
 
-    public void setGiamGia(String giamGia) {
+    public void setGiamGia(Integer giamGia) {
         this.giamGia = giamGia;
     }
 

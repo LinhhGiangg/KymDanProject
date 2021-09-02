@@ -37,8 +37,7 @@ export class SuaSanPhamComponent implements OnInit {
 
     this.activatedRouter.params.subscribe(() => {
       this.duLieuCu = this.duLieu.thongTin;
-      this.gia = this.duLieuCu.gia.split('.')[0]
-        + this.duLieuCu.gia.split('.')[1] + this.duLieuCu.gia.split('.')[2] + '';
+      this.gia = this.duLieuCu.gia;
     });
 
     this.formSua = this.formBuilder.group({

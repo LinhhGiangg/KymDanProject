@@ -9,7 +9,7 @@ import java.util.List;
 @Entity(name = "san_pham")
 public class SanPham {
     @Id
-    @Column(name = "ma", columnDefinition = "VARCHAR(10)")
+    @Column(name = "ma", columnDefinition = "CHAR(10)")
     private String ma;
 
     @Column(name = "dai", columnDefinition = "VARCHAR(5)")
@@ -21,13 +21,11 @@ public class SanPham {
     @Column(name = "cao", columnDefinition = "VARCHAR(5)")
     private String cao;
 
-    @Column(name = "so_luong", columnDefinition = "VARCHAR(5)")
-    private String soLuong;
-
-    // moi quan he
+    @Column(name = "so_luong", columnDefinition = "INT")
+    private Integer soLuong;
 
     @ManyToOne()
-    @JoinColumn(name = "ma_loai_san_pham", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @JoinColumn(name = "ma_loai_san_pham", referencedColumnName = "ma", columnDefinition = "CHAR(10)")
     private LoaiSanPham loaiSanPham;
 
     @OneToMany(mappedBy = "sanPham", cascade = CascadeType.ALL)
@@ -54,25 +52,11 @@ public class SanPham {
     @JsonBackReference
     private List<ChiTietGia> danhSachChiTietGia;
 
-    public SanPham() {
-    }
+    @OneToMany(mappedBy = "sanPham", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<ChiTietPhieuTra> danhSachChiTietPhieuTra;
 
-    public SanPham(String ma, String dai, String rong, String cao, String soLuong, LoaiSanPham loaiSanPham,
-                   List<ChiTietGioHang> danhSachChiTietGioHang, List<ChiTietDonHang> danhSachChiTietDonHang,
-                   List<ChiTietDatHang> danhSachChiTietDatHang, List<ChiTietPhieuNhap> danhSachChiTietPhieuNhap,
-                   List<ChiTietKhuyenMai> danhSachChiTietKhuyenMai, List<ChiTietGia> danhSachChiTietGia) {
-        this.ma = ma;
-        this.dai = dai;
-        this.rong = rong;
-        this.cao = cao;
-        this.soLuong = soLuong;
-        this.loaiSanPham = loaiSanPham;
-        this.danhSachChiTietGioHang = danhSachChiTietGioHang;
-        this.danhSachChiTietDonHang = danhSachChiTietDonHang;
-        this.danhSachChiTietDatHang = danhSachChiTietDatHang;
-        this.danhSachChiTietPhieuNhap = danhSachChiTietPhieuNhap;
-        this.danhSachChiTietKhuyenMai = danhSachChiTietKhuyenMai;
-        this.danhSachChiTietGia = danhSachChiTietGia;
+    public SanPham() {
     }
 
     public String getMa() {
@@ -107,11 +91,11 @@ public class SanPham {
         this.cao = cao;
     }
 
-    public String getSoLuong() {
+    public Integer getSoLuong() {
         return soLuong;
     }
 
-    public void setSoLuong(String soLuong) {
+    public void setSoLuong(Integer soLuong) {
         this.soLuong = soLuong;
     }
 
@@ -169,5 +153,13 @@ public class SanPham {
 
     public void setDanhSachChiTietGia(List<ChiTietGia> danhSachChiTietGia) {
         this.danhSachChiTietGia = danhSachChiTietGia;
+    }
+
+    public List<ChiTietPhieuTra> getDanhSachChiTietPhieuTra() {
+        return danhSachChiTietPhieuTra;
+    }
+
+    public void setDanhSachChiTietPhieuTra(List<ChiTietPhieuTra> danhSachChiTietPhieuTra) {
+        this.danhSachChiTietPhieuTra = danhSachChiTietPhieuTra;
     }
 }

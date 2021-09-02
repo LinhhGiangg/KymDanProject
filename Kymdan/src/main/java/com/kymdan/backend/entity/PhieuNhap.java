@@ -11,16 +11,14 @@ import java.util.List;
 @Entity(name = "phieu_nhap")
 public class PhieuNhap {
     @Id
-    @Column(name = "ma", columnDefinition = "VARCHAR(10)")
+    @Column(name = "ma", columnDefinition = "CHAR(10)")
     private String ma;
 
     @Column(name = "ngay_tao", columnDefinition = "DATE")
     private LocalDate ngayTao;
 
-    // moi quan he
-
     @ManyToOne
-    @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "CHAR(10)")
     private NhanVien nhanVien;
 
     @OneToOne(mappedBy = "phieuNhap")
@@ -32,15 +30,6 @@ public class PhieuNhap {
     private List<ChiTietPhieuNhap> danhSachChiTietPhieuNhap;
 
     public PhieuNhap() {
-    }
-
-    public PhieuNhap(String ma, LocalDate ngayTao, NhanVien nhanVien, DatHang datHang,
-                     List<ChiTietPhieuNhap> danhSachChiTietPhieuNhap) {
-        this.ma = ma;
-        this.ngayTao = ngayTao;
-        this.nhanVien = nhanVien;
-        this.datHang = datHang;
-        this.danhSachChiTietPhieuNhap = danhSachChiTietPhieuNhap;
     }
 
     public String getMa() {

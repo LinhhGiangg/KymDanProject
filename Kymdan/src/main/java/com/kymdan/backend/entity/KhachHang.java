@@ -33,8 +33,6 @@ public class KhachHang {
     @Column(name = "email", columnDefinition = "VARCHAR(50)")
     private String email;
 
-    // moi quan he
-
     @OneToOne(mappedBy = "khachHang", cascade = CascadeType.ALL)
     @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     private TaiKhoan taiKhoan;
@@ -48,20 +46,6 @@ public class KhachHang {
     private List<DonHang> danhSachDonHang;
 
     public KhachHang() {
-    }
-
-    public KhachHang(Integer ma, String ten, String gioiTinh, LocalDate ngaySinh, String diaChi, String soDienThoai,
-                     String email, TaiKhoan taiKhoan, GioHang gioHang, List<DonHang> danhSachDonHang) {
-        this.ma = ma;
-        this.ten = ten;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
-        this.diaChi = diaChi;
-        this.soDienThoai = soDienThoai;
-        this.email = email;
-        this.taiKhoan = taiKhoan;
-        this.gioHang = gioHang;
-        this.danhSachDonHang = danhSachDonHang;
     }
 
     public Integer getMa() {

@@ -53,7 +53,7 @@ public class LoaiSanPhamController {
     }
 
     @GetMapping("/xoa/{ten}")
-    public ResponseEntity<?> delete(@PathVariable String ten) {
+    public ResponseEntity<?> xoa(@PathVariable String ten) {
         return ResponseEntity.ok(this.loaiSanPhamService.xoa(ten));
     }
 
@@ -69,14 +69,9 @@ public class LoaiSanPhamController {
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
 
-    @GetMapping("/timTheoTen/{ten}")
-    public ResponseEntity<List<LoaiSanPham>> timTheoTen(@PathVariable String ten) {
-        List<LoaiSanPham> ketQua = this.loaiSanPhamService.timTheoTen(ten);
+    @GetMapping("/locTheoTen/{kiTu}")
+    public ResponseEntity<List<LoaiSanPham>> locTheoTen(@PathVariable String kiTu) {
+        List<LoaiSanPham> ketQua = this.loaiSanPhamService.locTheoTen(kiTu);
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
-    }
-
-    @GetMapping("/tangLuotXem/{maLoai}")
-    public ResponseEntity<?> tangLuotXem(@PathVariable String maLoai) {
-        return ResponseEntity.ok(this.loaiSanPhamService.tangLuotXem(maLoai));
     }
 }

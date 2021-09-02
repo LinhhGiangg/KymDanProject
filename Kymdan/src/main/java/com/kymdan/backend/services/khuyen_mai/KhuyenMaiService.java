@@ -22,9 +22,9 @@ public interface KhuyenMaiService {
 
     List<ChiTietKhuyenMai> timChiTietBangMaKhuyenMai(String maKhuyenMai);
 
-    ThongBaoDTO themSanPhamKhuyenMai(String maKhuyenMai, String maSanPham, String giamGia);
+    ThongBaoDTO themSanPhamKhuyenMai(String maKhuyenMai, String maSanPham, Integer giamGia);
 
-    ThongBaoDTO suaSanPhamKhuyenMai(Integer maChiTiet, String giamGia);
+    ThongBaoDTO suaSanPhamKhuyenMai(Integer maChiTiet, Integer giamGia);
 
     ThongBaoDTO xoaSanPhamKhuyenMai(Integer maChiTiet);
 }

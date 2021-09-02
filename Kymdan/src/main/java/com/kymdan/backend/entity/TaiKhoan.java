@@ -15,14 +15,12 @@ public class TaiKhoan {
     @Column(name = "mat_khau", columnDefinition = "VARCHAR(100)")
     private String matKhau;
 
-    // moi quan he
-
     @ManyToOne
     @JoinColumn(name = "ma_quyen", referencedColumnName = "ma", columnDefinition = "INT")
     private Quyen quyen;
 
     @OneToOne
-    @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "CHAR(10)")
     private NhanVien nhanVien;
 
     @OneToOne
@@ -30,21 +28,10 @@ public class TaiKhoan {
     private KhachHang khachHang;
 
     @OneToOne
-    @JoinColumn(name = "ma_nhan_vien_giao_hang", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @JoinColumn(name = "ma_nhan_vien_giao_hang", referencedColumnName = "ma", columnDefinition = "CHAR(10)")
     private NhanVienGiaoHang nhanVienGiaoHang;
 
     public TaiKhoan() {
-    }
-
-    public TaiKhoan(Integer ma, String tenDangNhap, String matKhau, Quyen quyen, NhanVien nhanVien, KhachHang khachHang,
-                    NhanVienGiaoHang nhanVienGiaoHang) {
-        this.ma = ma;
-        this.tenDangNhap = tenDangNhap;
-        this.matKhau = matKhau;
-        this.quyen = quyen;
-        this.nhanVien = nhanVien;
-        this.khachHang = khachHang;
-        this.nhanVienGiaoHang = nhanVienGiaoHang;
     }
 
     public Integer getMa() {

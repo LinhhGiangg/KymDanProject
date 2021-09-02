@@ -36,7 +36,7 @@
         <tr *ngFor="let phanTu of danhSach ; let i = index">
           <td>{{phanTu.ma}}</td>
           <td>{{phanTu.rong}} x {{phanTu.dai}} x {{phanTu.cao}}</td>
-          <td>{{phanTu.gia}}</td>
+          <td>{{phanTu.giaHienThi}}</td>
           <td style="width: 150px">{{phanTu.soLuong}}</td>
           <td>
             <a class="edit" title="Sửa" data-toggle="tooltip" [routerLink]="['/danh-sach-san-pham']">

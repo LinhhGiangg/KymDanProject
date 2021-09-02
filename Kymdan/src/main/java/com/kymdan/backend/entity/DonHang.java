@@ -1,6 +1,8 @@
 package com.kymdan.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -9,7 +11,7 @@ import java.util.List;
 @Entity(name = "don_hang")
 public class DonHang {
     @Id
-    @Column(name = "ma", columnDefinition = "VARCHAR(10)")
+    @Column(name = "ma", columnDefinition = "CHAR(10)")
     private String ma;
 
     @Column(name = "nguoi_nhan", columnDefinition = "VARCHAR(50)")
@@ -33,10 +35,8 @@ public class DonHang {
     @Column(name = "cach_thanh_toan", columnDefinition = "VARCHAR(50)")
     private String cachThanhToan;
 
-    // moi quan he
-
     @ManyToOne
-    @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "CHAR(10)")
     private NhanVien nhanVien;
 
     @ManyToOne
@@ -48,33 +48,14 @@ public class DonHang {
     private List<ChiTietDonHang> danhSachChiTietDonHang;
 
     @ManyToOne
-    @JoinColumn(name = "ma_nhan_vien_giao_hang", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @JoinColumn(name = "ma_nhan_vien_giao_hang", referencedColumnName = "ma", columnDefinition = "CHAR(10)")
     private NhanVienGiaoHang nhanVienGiaoHang;
 
-    @OneToOne
-    @JoinColumn(name = "ma_hoa_don", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @OneToOne(mappedBy = "donHang")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     private HoaDon hoaDon;
 
     public DonHang() {
-    }
-
-    public DonHang(String ma, String nguoiNhan, String diaChi, String soDienThoai, LocalDate ngayDat,
-                   LocalDate ngayNhan, String trangThai, String cachThanhToan, NhanVien nhanVien,
-                   KhachHang khachHang, List<ChiTietDonHang> danhSachChiTietDonHang, NhanVienGiaoHang nhanVienGiaoHang,
-                   HoaDon hoaDon) {
-        this.ma = ma;
-        this.nguoiNhan = nguoiNhan;
-        this.diaChi = diaChi;
-        this.soDienThoai = soDienThoai;
-        this.ngayDat = ngayDat;
-        this.ngayNhan = ngayNhan;
-        this.trangThai = trangThai;
-        this.cachThanhToan = cachThanhToan;
-        this.nhanVien = nhanVien;
-        this.khachHang = khachHang;
-        this.danhSachChiTietDonHang = danhSachChiTietDonHang;
-        this.nhanVienGiaoHang = nhanVienGiaoHang;
-        this.hoaDon = hoaDon;
     }
 
     public String getMa() {

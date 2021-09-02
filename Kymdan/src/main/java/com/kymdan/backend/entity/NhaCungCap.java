@@ -8,7 +8,7 @@ import java.util.List;
 @Entity(name = "nha_cung_cap")
 public class NhaCungCap {
     @Id
-    @Column(name = "ma", columnDefinition = "VARCHAR(10)")
+    @Column(name = "ma", columnDefinition = "CHAR(10)")
     private String ma;
 
     @Column(name = "ten", columnDefinition = "VARCHAR(250)")
@@ -23,23 +23,11 @@ public class NhaCungCap {
     @Column(name = "so_dien_thoai", columnDefinition = "VARCHAR(20)")
     private String soDienThoai;
 
-    // moi quan he
-
     @OneToMany(mappedBy = "nhaCungCap")
     @JsonBackReference
     private List<LoaiSanPham> danhSachLoaiSanPham;
 
     public NhaCungCap() {
-    }
-
-    public NhaCungCap(String ma, String ten, String diaChi, String email, String soDienThoai,
-                      List<LoaiSanPham> danhSachLoaiSanPham) {
-        this.ma = ma;
-        this.ten = ten;
-        this.diaChi = diaChi;
-        this.email = email;
-        this.soDienThoai = soDienThoai;
-        this.danhSachLoaiSanPham = danhSachLoaiSanPham;
     }
 
     public String getMa() {

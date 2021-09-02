@@ -6,302 +6,338 @@ insert into kymdan.quyen (ma, ten) values (2, 'Nhân Viên Giao Hàng');
 insert into kymdan.quyen (ma, ten) values (3, 'Khách Hàng');
 
 -- Nhân viên, Nhân viên giao hàng, Khách hàng
-insert into kymdan.nhan_vien (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values ('NV-001', 'Linh Giang', 'Nữ', '1999-08-05', 'Đăk Lăk', '0769555555', 'linhgiang58999@gmail.com');
-insert into kymdan.nhan_vien (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values ('NV-002', 'Nguyen Khang', 'Nam', '1990-01-01', 'Đăk Lăk', '0769333333', 'gianglinh58999@gmail.com');
-insert into kymdan.nhan_vien_giao_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email, ten_cong_ty) values ('NVGH-001', 'Thanh Phong', 'Nam', '1999-05-30', 'Sài Gòn', '0905111111', 'shipper@gmail.com', 'Grab');
-insert into kymdan.nhan_vien_giao_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email, ten_cong_ty) values ('NVGH-002', 'Phong Tran', 'Nam', '1999-05-15', 'Sài Gòn', '0905222222', 'shipper2@gmail.com', 'Bee');
-insert into kymdan.nhan_vien_giao_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email, ten_cong_ty) values ('NVGH-003', 'Tran Duc', 'Nam', '1999-05-05', 'Sài Gòn', '0905333333', 'shipper3@gmail.com', 'Now');
+insert into kymdan.nhan_vien (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values ('NV-0000001', 'Linh Giang', 'Nữ', '1999-08-05', 'Đăk Lăk', '0769555555', 'linhgiang58999@gmail.com');
+insert into kymdan.nhan_vien (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values ('NV-0000002', 'Nguyen Khang', 'Nam', '1990-01-01', 'Đăk Lăk', '0769333333', 'gianglinh58999@gmail.com');
+insert into kymdan.nhan_vien_giao_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email, ten_cong_ty) values ('NVGH-00001', 'Thanh Phong', 'Nam', '1999-05-30', 'Sài Gòn', '0905111111', 'shipper@gmail.com', 'Grab');
+insert into kymdan.nhan_vien_giao_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email, ten_cong_ty) values ('NVGH-00002', 'Phong Tran', 'Nam', '1999-05-15', 'Sài Gòn', '0905222222', 'shipper2@gmail.com', 'Bee');
+insert into kymdan.nhan_vien_giao_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email, ten_cong_ty) values ('NVGH-00003', 'Tran Duc', 'Nam', '1999-05-05', 'Sài Gòn', '0905333333', 'shipper3@gmail.com', 'Now');
 insert into kymdan.khach_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values (1, 'Khoi Nguyen', 'Nam', '1995-05-27', 'Quảng Nam', '0905999999', 'supea@gmail.com');
 insert into kymdan.khach_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values (2, 'Phuong Thao', 'Nữ', '1973-01-01', 'Dak Lak', '0905111111', 'phuongthao@gmail.com');
 
 -- Tài khoản
-insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien) values ('Linh Giang', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 1, 'NV-001');
-insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien) values ('Nguyen Khang', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 1, 'NV-002');
-insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Thanh Phong', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 2, 'NVGH-001');
-insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Phong Tran', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 2, 'NVGH-002');
-insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Tran Duc', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 2, 'NVGH-003');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien) values ('Linh Giang', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 1, 'NV-0000001');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien) values ('Nguyen Khang', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 1, 'NV-0000002');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Thanh Phong', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 2, 'NVGH-00001');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Phong Tran', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 2, 'NVGH-00002');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Tran Duc', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 2, 'NVGH-00003');
 insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_khach_hang) values ('Khoi Nguyen', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 3, 1);
 insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_khach_hang) values ('Phuong Thao', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 3, 2);
 
 -- Loại sản phẩm
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-111', 'Nệm (mattress) KYMDAN Deluxe', 'assets/sanPham11.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Chất liệu TEMPUR® được NASA công nhận,Giúp giảm đau tại các điểm chịu lực,Công nghệ CoolTouch™ giúp vỏ nệm luôn mát mẻ', '2020-06-11', 700, 0);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-222', 'Nệm (mattress) KYMDAN UltimateCare', 'assets/sanPham12.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Chất liệu TEMPUR® nâng đỡ cơ thể,Công nghệ Dynamic Support tăng khả năng đàn hồi,Công nghệ CoolTouch™ giúp vỏ nệm luôn mát mẻ', '2020-07-15', 1204, 0);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-333', 'Nệm (mattress) KYMDAN Deluxe Premium', 'assets/sanPham15.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Ứng dụng công nghệ hiện đại PuroTex,Tích hợp 3 lớp cao su đặc biệt,Lớp phủ sinh học Nanobiotic', '2021-06-05', 1102, 0);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-444', 'Nệm (mattress) KYMDAN Massage', 'assets/sanPham16.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Nâng đỡ 5 vùng cơ thể,Độ thoáng khí tốt,Lõi nệm kháng khuẩn', '2021-07-07', 870, 0);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-555', 'Nệm (mattress) KYMDAN Y Tế', 'assets/sanPham17.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Công nghệ HourGlass Support® độc quyền,Lớp Memory Foam có độ bền cao', '2021-08-07', 210, 0);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-666', 'Nệm (mattress) KYMDAN Premium', 'assets/sanPham1.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Lõi nệm kháng khuẩn,Lớp Memory Foam có độ bền cao', '2021-08-11', 110, 0);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_xem, luot_mua) values ('KD-777', 'Nệm (mattress) KYMDAN Royal', 'assets/sanPham5.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Chống dị ứng,Lớp Memory Foam có độ bền cao', '2021-08-15', 50, 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_mua) values ('KD-0000111', 'Nệm (mattress) KYMDAN Deluxe', 'assets/sanPham11.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Chất liệu TEMPUR® được NASA công nhận,Giúp giảm đau tại các điểm chịu lực,Công nghệ CoolTouch™ giúp vỏ nệm luôn mát mẻ', '2021-03-11', 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_mua) values ('KD-0000222', 'Nệm (mattress) KYMDAN UltimateCare', 'assets/sanPham12.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Chất liệu TEMPUR® nâng đỡ cơ thể,Công nghệ Dynamic Support tăng khả năng đàn hồi,Công nghệ CoolTouch™ giúp vỏ nệm luôn mát mẻ', '2021-03-15', 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_mua) values ('KD-0000333', 'Nệm (mattress) KYMDAN Deluxe Premium', 'assets/sanPham15.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Ứng dụng công nghệ hiện đại PuroTex,Tích hợp 3 lớp cao su đặc biệt,Lớp phủ sinh học Nanobiotic', '2021-08-29', 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_mua) values ('KD-0000444', 'Nệm (mattress) KYMDAN Massage', 'assets/sanPham16.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Nâng đỡ 5 vùng cơ thể,Độ thoáng khí tốt,Lõi nệm kháng khuẩn', '2021-08-30', 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_mua) values ('KD-0000555', 'Nệm (mattress) KYMDAN Y Tế', 'assets/sanPham17.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Công nghệ HourGlass Support® độc quyền,Lớp Memory Foam có độ bền cao', '2021-09-01', 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_mua) values ('KD-0000666', 'Nệm (mattress) KYMDAN Premium', 'assets/sanPham1.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Lõi nệm kháng khuẩn,Lớp Memory Foam có độ bền cao', '2021-09-01', 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_mua) values ('KD-0000777', 'Nệm (mattress) KYMDAN Royal', 'assets/sanPham5.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Chống dị ứng,Lớp Memory Foam có độ bền cao', '2021-09-01', 0);
 
 -- Sản phẩm
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-001', '120', '200', '5', '5', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-002', '140', '200', '5', '0', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-003', '160', '200', '5', '2', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-004', '180', '200', '5', '3', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-005', '200', '200', '5', '5', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-006', '120', '200', '10', '2', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-007', '140', '200', '10', '3', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-008', '160', '200', '10', '5', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-009', '180', '200', '10', '8', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-010', '200', '200', '10', '6', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-011', '120', '200', '15', '5', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-012', '140', '200', '15', '1', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-014', '160', '200', '15', '2', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-015', '180', '200', '15', '6', 'KD-111');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-016', '200', '200', '15', '1', 'KD-111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000001', '120', '200', '5', 5, 'KD-0000111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000002', '140', '200', '5', 0, 'KD-0000111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000003', '160', '200', '5', 2, 'KD-0000111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000004', '180', '200', '5', 3, 'KD-0000111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000005', '200', '200', '5', 5, 'KD-0000111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000006', '120', '200', '10', 2, 'KD-0000111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000007', '140', '200', '10', 3, 'KD-0000111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000008', '160', '200', '10', 5, 'KD-0000111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000009', '180', '200', '10', 8, 'KD-0000111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000010', '200', '200', '10', 6, 'KD-0000111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000011', '120', '200', '15', 5, 'KD-0000111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000012', '140', '200', '15', 3, 'KD-0000111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000013', '160', '200', '15', 2, 'KD-0000111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000014', '180', '200', '15', 6, 'KD-0000111');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000015', '200', '200', '15', 3, 'KD-0000111');
 
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-022', '120', '200', '5', '5', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-023', '140', '200', '5', '7', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-024', '160', '200', '5', '2', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-025', '180', '200', '5', '3', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-026', '120', '200', '10', '2', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-027', '140', '200', '10', '3', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-028', '160', '200', '10', '5', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-029', '180', '200', '10', '8', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-030', '120', '200', '15', '5', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-031', '140', '200', '15', '1', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-032', '160', '200', '15', '5', 'KD-222');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-033', '180', '200', '15', '3', 'KD-222');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000016', '120', '200', '5', 5, 'KD-0000222');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000017', '140', '200', '5', 7, 'KD-0000222');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000018', '160', '200', '5', 2, 'KD-0000222');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000019', '180', '200', '5', 3, 'KD-0000222');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000020', '120', '200', '10', 2, 'KD-0000222');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000021', '140', '200', '10', 3, 'KD-0000222');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000022', '160', '200', '10', 5, 'KD-0000222');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000023', '180', '200', '10', 8, 'KD-0000222');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000024', '120', '200', '15', 5, 'KD-0000222');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000025', '140', '200', '15', 6, 'KD-0000222');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000026', '160', '200', '15', 5, 'KD-0000222');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000027', '180', '200', '15', 3, 'KD-0000222');
 
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-038', '120', '200', '5', '8', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-039', '140', '200', '5', '3', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-040', '160', '200', '5', '5', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-041', '200', '200', '5', '6', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-042', '120', '200', '10', '3', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-043', '140', '200', '10', '6', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-044', '160', '200', '10', '6', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-045', '200', '200', '10', '7', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-046', '120', '200', '15', '6', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-047', '140', '200', '15', '8', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-048', '160', '200', '15', '3', 'KD-333');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-049', '200', '200', '15', '6', 'KD-333');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000028', '120', '200', '5', 8, 'KD-0000333');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000029', '140', '200', '5', 3, 'KD-0000333');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000030', '160', '200', '5', 5, 'KD-0000333');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000031', '200', '200', '5', 6, 'KD-0000333');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000032', '120', '200', '10', 3, 'KD-0000333');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000033', '140', '200', '10', 6, 'KD-0000333');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000034', '160', '200', '10', 5, 'KD-0000333');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000035', '200', '200', '10', 7, 'KD-0000333');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000036', '120', '200', '15', 6, 'KD-0000333');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000037', '140', '200', '15', 8, 'KD-0000333');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000038', '160', '200', '15', 3, 'KD-0000333');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000039', '200', '200', '15', 6, 'KD-0000333');
 
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-055', '120', '200', '5', '5', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-056', '160', '200', '5', '2', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-057', '180', '200', '5', '3', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-058', '200', '200', '5', '5', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-059', '120', '200', '10', '2', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-060', '160', '200', '10', '5', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-061', '180', '200', '10', '8', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-062', '200', '200', '10', '3', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-063', '120', '200', '15', '5', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-064', '160', '200', '15', '7', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-065', '180', '200', '15', '5', 'KD-444');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-066', '200', '200', '15', '1', 'KD-444');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000040', '120', '200', '5', 5, 'KD-0000444');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000041', '160', '200', '5', 2, 'KD-0000444');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000042', '180', '200', '5', 3, 'KD-0000444');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000043', '200', '200', '5', 5, 'KD-0000444');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000044', '120', '200', '10', 2, 'KD-0000444');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000045', '160', '200', '10', 5, 'KD-0000444');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000046', '180', '200', '10', 8, 'KD-0000444');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000047', '200', '200', '10', 3, 'KD-0000444');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000048', '120', '200', '15', 5, 'KD-0000444');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000049', '160', '200', '15', 7, 'KD-0000444');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000050', '180', '200', '15', 5, 'KD-0000444');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000051', '200', '200', '15', 3, 'KD-0000444');
 
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-071', '120', '200', '5', '1', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-072', '140', '200', '5', '3', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-073', '160', '200', '5', '5', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-074', '180', '200', '5', '3', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-075', '120', '200', '10', '7', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-076', '140', '200', '10', '9', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-077', '160', '200', '10', '2', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-078', '180', '200', '10', '8', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-079', '120', '200', '15', '9', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-080', '140', '200', '15', '6', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-081', '160', '200', '15', '9', 'KD-555');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-082', '180', '200', '15', '6', 'KD-555');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000052', '120', '200', '5', 2, 'KD-0000555');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000053', '140', '200', '5', 3, 'KD-0000555');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000054', '160', '200', '5', 5, 'KD-0000555');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000055', '180', '200', '5', 3, 'KD-0000555');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000056', '120', '200', '10', 7, 'KD-0000555');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000057', '140', '200', '10', 9, 'KD-0000555');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000058', '160', '200', '10', 2, 'KD-0000555');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000059', '180', '200', '10', 8, 'KD-0000555');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000060', '120', '200', '15', 9, 'KD-0000555');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000061', '140', '200', '15', 6, 'KD-0000555');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000062', '160', '200', '15', 9, 'KD-0000555');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000063', '180', '200', '15', 6, 'KD-0000555');
 
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-083', '120', '200', '5', '1', 'KD-666');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-084', '140', '200', '5', '3', 'KD-666');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-085', '160', '200', '5', '5', 'KD-666');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-086', '180', '200', '5', '7', 'KD-666');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-087', '120', '200', '10', '7', 'KD-666');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000064', '120', '200', '5', 5, 'KD-0000666');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000065', '140', '200', '5', 3, 'KD-0000666');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000066', '160', '200', '5', 5, 'KD-0000666');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000067', '180', '200', '5', 7, 'KD-0000666');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000068', '120', '200', '10', 6, 'KD-0000666');
 
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-088', '120', '200', '5', '1', 'KD-777');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-089', '140', '200', '5', '3', 'KD-777');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-090', '160', '200', '5', '5', 'KD-777');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-091', '180', '200', '5', '8', 'KD-777');
-insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-092', '120', '200', '10', '7', 'KD-777');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000069', '120', '200', '5', 5, 'KD-0000777');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000070', '140', '200', '5', 3, 'KD-0000777');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000071', '160', '200', '5', 5, 'KD-0000777');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000072', '180', '200', '5', 8, 'KD-0000777');
+insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000073', '120', '200', '10', 7, 'KD-0000777');
 
 -- Chi tiết giá
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('15000000', '2021-07-10', 'SP-001', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('15200000', '2021-08-15', 'SP-001', 'NV-001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (15000000, '2021-07-10', 'SP-0000001', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (15200000, '2021-08-15', 'SP-0000001', 'NV-0000001');
 
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('16300000', '2021-06-15', 'SP-002', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('16700000', '2021-08-15', 'SP-002', 'NV-001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (16300000, '2021-06-15', 'SP-0000002', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (16700000, '2021-08-15', 'SP-0000002', 'NV-0000001');
 
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('17530000', '2021-05-15', 'SP-003', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('17220000', '2021-08-15', 'SP-003', 'NV-001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (17530000, '2021-05-15', 'SP-0000003', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (17220000, '2021-08-15', 'SP-0000003', 'NV-0000001');
 
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('18200000', '2021-05-30', 'SP-004', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('18120000', '2021-08-15', 'SP-004', 'NV-001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (18200000, '2021-05-30', 'SP-0000004', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (18120000, '2021-08-15', 'SP-0000004', 'NV-0000001');
 
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('18900000', '2021-05-27', 'SP-005', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('18860000', '2021-08-15', 'SP-005', 'NV-001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (18900000, '2021-05-27', 'SP-0000005', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (18860000, '2021-08-15', 'SP-0000005', 'NV-0000001');
 
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('16860000', '2021-08-15', 'SP-006', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('17860000', '2021-08-15', 'SP-007', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('18860000', '2021-08-15', 'SP-008', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('19860000', '2021-08-15', 'SP-009', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('20860000', '2021-08-15', 'SP-010', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('17860000', '2021-08-15', 'SP-011', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('18860000', '2021-08-15', 'SP-012', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('19860000', '2021-08-15', 'SP-014', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('20860000', '2021-08-15', 'SP-015', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('21860000', '2021-08-15', 'SP-016', 'NV-001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (16860000, '2021-08-15', 'SP-0000006', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (17860000, '2021-08-15', 'SP-0000007', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (18860000, '2021-08-15', 'SP-0000008', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (19860000, '2021-08-15', 'SP-0000009', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (20860000, '2021-08-15', 'SP-0000010', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (17860000, '2021-08-15', 'SP-0000011', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (18860000, '2021-08-15', 'SP-0000012', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (19860000, '2021-08-15', 'SP-0000013', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (20860000, '2021-08-15', 'SP-0000014', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (21860000, '2021-08-15', 'SP-0000015', 'NV-0000001');
 
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('18560000', '2021-08-12', 'SP-022', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('19460000', '2021-08-12', 'SP-023', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('20560000', '2021-08-12', 'SP-024', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('21060000', '2021-08-12', 'SP-025', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('22040000', '2021-08-12', 'SP-026', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('23160000', '2021-08-12', 'SP-027', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('18460000', '2021-08-12', 'SP-028', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('19510000', '2021-08-12', 'SP-029', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('20860000', '2021-08-12', 'SP-030', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('21690000', '2021-08-12', 'SP-031', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('21950000', '2021-08-12', 'SP-032', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('22430000', '2021-08-12', 'SP-033', 'NV-001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (18560000, '2021-08-12', 'SP-0000016', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (19460000, '2021-08-12', 'SP-0000017', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (20560000, '2021-08-12', 'SP-0000018', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (21060000, '2021-08-12', 'SP-0000019', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (22040000, '2021-08-12', 'SP-0000020', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (23160000, '2021-08-12', 'SP-0000021', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (18460000, '2021-08-12', 'SP-0000022', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (19510000, '2021-08-12', 'SP-0000023', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (20860000, '2021-08-12', 'SP-0000024', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (21690000, '2021-08-12', 'SP-0000025', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (21950000, '2021-08-12', 'SP-0000026', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (22430000, '2021-08-12', 'SP-0000027', 'NV-0000001');
 
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('19860000', '2021-08-15', 'SP-038', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('20860000', '2021-08-15', 'SP-039', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('21860000', '2021-08-15', 'SP-040', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('22860000', '2021-08-15', 'SP-041', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('23860000', '2021-08-15', 'SP-042', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('24860000', '2021-08-15', 'SP-043', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('25860000', '2021-08-15', 'SP-044', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('26860000', '2021-08-15', 'SP-045', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('27860000', '2021-08-15', 'SP-046', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('28860000', '2021-08-15', 'SP-047', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('29860000', '2021-08-15', 'SP-048', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('30860000', '2021-08-15', 'SP-049', 'NV-001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (19860000, '2021-08-15', 'SP-0000028', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (20860000, '2021-08-15', 'SP-0000029', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (21860000, '2021-08-15', 'SP-0000030', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (22860000, '2021-08-15', 'SP-0000031', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (23860000, '2021-08-15', 'SP-0000032', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (24860000, '2021-08-15', 'SP-0000033', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (25860000, '2021-08-15', 'SP-0000034', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (26860000, '2021-08-15', 'SP-0000035', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (27860000, '2021-08-15', 'SP-0000036', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (28860000, '2021-08-15', 'SP-0000037', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (29860000, '2021-08-15', 'SP-0000038', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (30860000, '2021-08-15', 'SP-0000039', 'NV-0000001');
 
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('31860000', '2021-08-15', 'SP-055', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('32860000', '2021-08-15', 'SP-056', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('34860000', '2021-08-15', 'SP-057', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('35860000', '2021-08-15', 'SP-058', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('36860000', '2021-08-15', 'SP-059', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('37860000', '2021-08-15', 'SP-060', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('38860000', '2021-08-15', 'SP-061', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('40860000', '2021-08-15', 'SP-062', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('41860000', '2021-08-15', 'SP-063', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('42860000', '2021-08-15', 'SP-064', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('43860000', '2021-08-15', 'SP-065', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('44860000', '2021-08-15', 'SP-066', 'NV-001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (31860000, '2021-08-15', 'SP-0000040', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (32860000, '2021-08-15', 'SP-0000041', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (34860000, '2021-08-15', 'SP-0000042', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (35860000, '2021-08-15', 'SP-0000043', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (36860000, '2021-08-15', 'SP-0000044', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (37860000, '2021-08-15', 'SP-0000045', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (38860000, '2021-08-15', 'SP-0000046', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (40860000, '2021-08-15', 'SP-0000047', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (41860000, '2021-08-15', 'SP-0000048', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (42860000, '2021-08-15', 'SP-0000049', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (43860000, '2021-08-15', 'SP-0000050', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (44860000, '2021-08-15', 'SP-0000051', 'NV-0000001');
 
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('45860000', '2021-08-15', 'SP-071', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('46860000', '2021-08-15', 'SP-072', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('47760000', '2021-08-15', 'SP-073', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('48860000', '2021-08-15', 'SP-074', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('49860000', '2021-08-15', 'SP-075', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('50860000', '2021-08-15', 'SP-076', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('51860000', '2021-08-15', 'SP-077', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('52860000', '2021-08-15', 'SP-078', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('53860000', '2021-08-15', 'SP-079', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('54660000', '2021-08-15', 'SP-080', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('55560000', '2021-08-15', 'SP-081', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('56860000', '2021-08-15', 'SP-082', 'NV-001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (45860000, '2021-08-15', 'SP-0000052', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (46860000, '2021-08-15', 'SP-0000053', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (47760000, '2021-08-15', 'SP-0000054', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (48860000, '2021-08-15', 'SP-0000055', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (49860000, '2021-08-15', 'SP-0000056', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (50860000, '2021-08-15', 'SP-0000057', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (51860000, '2021-08-15', 'SP-0000058', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (52860000, '2021-08-15', 'SP-0000059', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (53860000, '2021-08-15', 'SP-0000060', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (54660000, '2021-08-15', 'SP-0000061', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (55560000, '2021-08-15', 'SP-0000062', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (56860000, '2021-08-15', 'SP-0000063', 'NV-0000001');
 
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('45860000', '2021-08-15', 'SP-083', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('46860000', '2021-08-15', 'SP-084', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('47760000', '2021-08-15', 'SP-085', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('48860000', '2021-08-15', 'SP-086', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('49860000', '2021-08-15', 'SP-087', 'NV-001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (45860000, '2021-08-15', 'SP-0000064', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (46860000, '2021-08-15', 'SP-0000065', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (47760000, '2021-08-15', 'SP-0000066', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (48860000, '2021-08-15', 'SP-0000067', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (49860000, '2021-08-15', 'SP-0000068', 'NV-0000001');
 
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('45860000', '2021-08-15', 'SP-088', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('46860000', '2021-08-15', 'SP-089', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('47760000', '2021-08-15', 'SP-090', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('48860000', '2021-08-15', 'SP-091', 'NV-001');
-insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values ('49860000', '2021-08-15', 'SP-092', 'NV-001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (45860000, '2021-08-15', 'SP-0000069', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (46860000, '2021-08-15', 'SP-0000070', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (47760000, '2021-08-15', 'SP-0000071', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (48860000, '2021-08-15', 'SP-0000072', 'NV-0000001');
+insert into kymdan.chi_tiet_gia(gia, ngay_thay_doi, ma_san_pham, ma_nhan_vien) values (49860000, '2021-08-15', 'SP-0000073', 'NV-0000001');
 
 -- Khuyến mãi
-insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-111', 'Khuyến mãi đợt 1', 'Mừng ngày Quốc tế lao động', '2021-05-01', '2021-05-05', 'NV-001');
-insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-222', 'Khuyến mãi đợt 2', 'Mừng ngày của Mẹ', '2021-05-08', '2021-05-15', 'NV-001');
-insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-333', 'Khuyến mãi đợt 3', 'Mừng ngày Quốc tế Thiếu Nhi', '2021-06-01', '2021-06-08', 'NV-001');
-insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-555', 'Khuyến mãi đợt 5', 'Khuyến mãi mùa CoVid', '2021-08-01', '2021-08-31', 'NV-001');
-insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-666', 'Khuyến mãi đợt 6', 'Mừng ngày Quốc Khánh', '2021-09-01', '2021-09-05', 'NV-001');
+insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-0000111', 'Khuyến mãi đợt 1', 'Mừng ngày Quốc tế lao động', '2021-05-01', '2021-05-05', 'NV-0000001');
+insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-0000222', 'Khuyến mãi đợt 2', 'Mừng ngày của Mẹ', '2021-05-08', '2021-05-15', 'NV-0000002');
+insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-0000333', 'Khuyến mãi đợt 3', 'Mừng ngày Quốc tế Thiếu Nhi', '2021-06-01', '2021-06-08', 'NV-0000001');
+insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-0000444', 'Khuyến mãi đợt 4', 'Khuyến mãi mùa CoVid', '2021-08-01', '2021-08-31', 'NV-0000002');
+insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-0000555', 'Khuyến mãi đợt 5', 'Mừng ngày Quốc Khánh', '2021-09-01', '2021-09-22', 'NV-0000001');
+insert into kymdan.khuyen_mai(ma, ten, mo_ta, ngay_bat_dau, ngay_ket_thuc, ma_nhan_vien) values ('KM-0000666', 'Khuyến mãi đợt 6', 'Khuyến mãi hậu CoVid', '2021-09-23', '2021-10-23', 'NV-0000002');
 
 -- Chi tiết khuyến mãi
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('5', 'KM-555', 'SP-001');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-002');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-555', 'SP-003');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-005');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-555', 'SP-006');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-041');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-042');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-043');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-044');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('10', 'KM-111', 'SP-045');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-011');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-012');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-014');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-015');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-016');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-055');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-056');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-057');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('15', 'KM-222', 'SP-058');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-022');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-023');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-024');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-025');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-026');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-061');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-062');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-063');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-064');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('9', 'KM-333', 'SP-065');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-027');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-028');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-029');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-030');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-031');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-071');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-072');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-073');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-074');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('25', 'KM-555', 'SP-075');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-007');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-008');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-009');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-010');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-076');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-077');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-078');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-079');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-080');
-insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values ('20', 'KM-666', 'SP-081');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (25, 'KM-0000111', 'SP-0000001');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (10, 'KM-0000111', 'SP-0000003');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (15, 'KM-0000111', 'SP-0000004');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (5, 'KM-0000111', 'SP-0000005');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (20, 'KM-0000111', 'SP-0000006');
 
--- Giỏ hàng
-insert into kymdan.gio_hang(ma, ma_khach_hang) values (1, 1);
-insert into kymdan.chi_tiet_gio_hang(so_luong, ma_gio_hang, ma_san_pham) values (5, 1, 'SP-022');
-insert into kymdan.chi_tiet_gio_hang(so_luong, ma_gio_hang, ma_san_pham) values (2, 1, 'SP-045');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (11, 'KM-0000222', 'SP-0000011');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (15, 'KM-0000222', 'SP-0000012');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (5, 'KM-0000222', 'SP-0000014');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (10, 'KM-0000222', 'SP-0000015');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (7, 'KM-0000222', 'SP-0000016');
+
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (9, 'KM-0000333', 'SP-0000022');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (17, 'KM-0000333', 'SP-0000023');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (15, 'KM-0000333', 'SP-0000024');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (7, 'KM-0000333', 'SP-0000025');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (10, 'KM-0000333', 'SP-0000026');
+
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (25, 'KM-0000444', 'SP-0000001');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (10, 'KM-0000444', 'SP-0000003');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (15, 'KM-0000444', 'SP-0000004');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (5, 'KM-0000444', 'SP-0000005');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (20, 'KM-0000444', 'SP-0000006');
+
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (25, 'KM-0000555', 'SP-0000001');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (21, 'KM-0000555', 'SP-0000003');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (20, 'KM-0000555', 'SP-0000005');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (9, 'KM-0000555', 'SP-0000015');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (7, 'KM-0000555', 'SP-0000017');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (5, 'KM-0000555', 'SP-0000029');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (15, 'KM-0000555', 'SP-0000030');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (10, 'KM-0000555', 'SP-0000031');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (15, 'KM-0000555', 'SP-0000045');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (17, 'KM-0000555', 'SP-0000046');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (9, 'KM-0000555', 'SP-0000047');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (11, 'KM-0000555', 'SP-0000045');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (22, 'KM-0000555', 'SP-0000050');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (10, 'KM-0000555', 'SP-0000051');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (17, 'KM-0000555', 'SP-0000066');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (11, 'KM-0000555', 'SP-0000067');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (25, 'KM-0000555', 'SP-0000069');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (20, 'KM-0000555', 'SP-0000070');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (10, 'KM-0000555', 'SP-0000071');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (17, 'KM-0000555', 'SP-0000072');
+
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (25, 'KM-0000666', 'SP-0000003');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (20, 'KM-0000666', 'SP-0000006');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (22, 'KM-0000666', 'SP-0000007');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (15, 'KM-0000666', 'SP-0000009');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (9, 'KM-0000666', 'SP-0000011');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (10, 'KM-0000666', 'SP-0000015');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (5, 'KM-0000666', 'SP-0000027');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (15, 'KM-0000666', 'SP-0000031');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (10, 'KM-0000666', 'SP-0000033');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (11, 'KM-0000666', 'SP-0000041');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (10, 'KM-0000666', 'SP-0000045');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (22, 'KM-0000666', 'SP-0000049');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (10, 'KM-0000666', 'SP-0000050');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (15, 'KM-0000666', 'SP-0000051');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (17, 'KM-0000666', 'SP-0000065');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (11, 'KM-0000666', 'SP-0000068');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (25, 'KM-0000666', 'SP-0000069');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (20, 'KM-0000666', 'SP-0000072');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (10, 'KM-0000666', 'SP-0000073');
+insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (17, 'KM-0000666', 'SP-0000072');
 
 -- Đơn hàng
-insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang) values ('DH20263406', 'Tiền mặt', 'Quảng Nam', '2021-08-31', '2021-10-22', 'Khoi Nguyen', '0905999999', 'Chờ duyệt', 1);
-insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang) values ('DH32877125', 'Tiền mặt', 'Quảng Nam', '2021-08-21', '2021-10-01', 'Khoi Nguyen', '0905999999', 'Chờ duyệt', 1);
-insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH40023690', 'PayPal', 'Quảng Nam', '2021-08-17', '2021-09-25', 'Khoi Nguyen', '0905999999', 'Đã phân công', 1, 'NV-002', 'NVGH-002');
-insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang) values ('DH41208273', 'Tiền mặt', 'Dak Lak', '2021-08-15', '2021-09-15', 'Phuong Thao', '0905111111', 'Chờ duyệt', 2);
-insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42676093', 'PayPal', 'Dak Lak', '2021-08-12', '2021-09-11', 'Phuong Thao', '0905111111', 'Đã phân công', 2, 'NV-001', 'NVGH-001');
-insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42675093', 'PayPal', 'Sài Gòn', '2021-08-11', '2021-09-09', 'Phuong Thanh', '0905222222', 'Hoàn tất', 2, 'NV-001', 'NVGH-001');
-insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42675095', 'PayPal', 'Đà Nẵng', '2021-08-10', '2021-09-08', 'Thanh Nhi', '0905666666', 'Hoàn tất', 1, 'NV-002', 'NVGH-003');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('19.460.000', 2, 'DH41208273', 'SP-023');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('14.440.000', 3, 'DH41208273', 'SP-001');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('20.560.000', 2, 'DH42676093', 'SP-024');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('35.860.000', 1, 'DH42676093', 'SP-058');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('43.395.000', 3, 'DH20263406', 'SP-088');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('14.632.000', 3, 'DH20263406', 'SP-029');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('18.560.000', 5, 'DH40023690', 'SP-022');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('46.860.000', 2, 'DH40023690', 'SP-085');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('21.860.000', 1, 'DH32877125', 'SP-016');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('15.860.000', 10, 'DH42675093', 'SP-006');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('25.860.000', 18, 'DH42675093', 'SP-045');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('45.860.000', 11, 'DH42675095', 'SP-072');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('50.860.000', 6, 'DH42675095', 'SP-077');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values ('11.860.000', 1, 'DH42675095', 'SP-001');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42675095', 'PayPal', 'Quảng Nam', '2021-08-22', '2021-08-29', 'Thanh Nhi', '0905666666', 'Hoàn tất', 1, 'NV-0000002', 'NVGH-00003');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42675093', 'PayPal', 'Sài Gòn', '2021-08-24', '2021-08-31', 'Phuong Thanh', '0905222222', 'Hoàn tất', 2, 'NV-0000001', 'NVGH-00001');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42676093', 'PayPal', 'Đăk Lăk', '2021-08-27', '2021-09-28', 'Phuong Thao', '0905111111', 'Đã phân công', 2, 'NV-0000001', 'NVGH-00001');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH40023690', 'PayPal', 'Đà Nẵng', '2021-08-28', '2021-09-29', 'Khoi Nguyen', '0905999999', 'Đã phân công', 1, 'NV-0000002', 'NVGH-00002');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang) values ('DH20263406', 'Tiền mặt', 'Quảng Nam', '2021-08-29', '2021-10-09', 'Thanh Nhi', '0905666666', 'Chờ duyệt', 1);
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang) values ('DH32877125', 'Tiền mặt', 'Đà Nẵng', '2021-08-30', '2021-10-10', 'Khoi Nguyen', '0905999999', 'Chờ duyệt', 1);
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang) values ('DH41208273', 'Tiền mặt', 'Đăk Lăk', '2021-08-31', '2021-10-11', 'Phuong Thao', '0905111111', 'Chờ duyệt', 2);
+
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (45860000, 2, 'DH42675095', 'SP-0000072');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (47860000, 1, 'DH42675095', 'SP-0000073');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (14860000, 3, 'DH42675095', 'SP-0000001');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (15860000, 9, 'DH42675093', 'SP-0000006');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (35860000, 2, 'DH42675093', 'SP-0000045');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (20560000, 2, 'DH42676093', 'SP-0000024');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (28860000, 1, 'DH42676093', 'SP-0000038');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (17560000, 5, 'DH40023690', 'SP-0000022');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (45860000, 2, 'DH40023690', 'SP-0000055');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (50395000, 3, 'DH20263406', 'SP-0000058');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (20632000, 3, 'DH20263406', 'SP-0000029');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (17860000, 1, 'DH32877125', 'SP-0000016');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (19460000, 2, 'DH41208273', 'SP-0000023');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (14440000, 3, 'DH41208273', 'SP-0000001');
+
+-- Hóa đơn
+insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD42675095', '0042675095', '2021-08-24', 184160000, 'DH42675095', 'NV-0000002');
+insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD68547213', '0036598741', '2021-08-25', 214460000, 'DH42675093', 'NV-0000001');
+insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD95687432', '0063259874', '2021-08-29', 69980000, 'DH42676093', 'NV-0000001');
+insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD12568347', '0056321478', '2021-08-29', 179520000, 'DH40023690', 'NV-0000002');
 
 DELIMITER //
 CREATE PROCEDURE xem_don_hang(khach_hang int)
 BEGIN
-	SELECT * FROM don_hang where ma_khach_hang = khach_hang order by ngay_dat desc;
+	select * from don_hang where ma_khach_hang = khach_hang order by ngay_dat desc;
 END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE loc_chi_tiet()
+CREATE PROCEDURE loc_chi_tiet_don_hang()
 BEGIN
-	SELECT * FROM chi_tiet_don_hang where ma_don_hang in (
-		 SELECT ma FROM don_hang where datediff(now(), don_hang.ngay_dat) < 30
+	select * from chi_tiet_don_hang where ma_don_hang in (
+		 select ma from don_hang where datediff(now(), don_hang.ngay_dat) < 30
     );
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE xem_loai_moi()
+BEGIN
+	select * from loai_san_pham
+		where datediff(now(), loai_san_pham.ngay_tao) < 30
+		order by ngay_tao desc limit 5;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE kiem_tra_san_pham(san_pham char(10))
+BEGIN
+	select ma from chi_tiet_don_hang
+		where ma_san_pham = san_pham;
 END //
 DELIMITER ;

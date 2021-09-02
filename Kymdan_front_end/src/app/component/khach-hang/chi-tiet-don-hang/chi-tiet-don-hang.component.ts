@@ -25,7 +25,7 @@ export class ChiTietDonHangComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.gia = '';
+    this.gia = 0;
     this.quyen = '';
     this.tongTien = 0;
     this.tienHienThi = '';
@@ -47,10 +47,9 @@ export class ChiTietDonHangComponent implements OnInit {
       () => {
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < this.danhSachChiTiet.length; i++) {
-          this.gia = this.danhSachChiTiet[i].gia.split('.')[0]
-            + this.danhSachChiTiet[i].gia.split('.')[1] + this.danhSachChiTiet[i].gia.split('.')[2];
+          this.gia = this.danhSachChiTiet[i].gia;
           // tslint:disable-next-line:radix
-          this.tongTien += Number.parseInt(this.danhSachChiTiet[i].soLuong) * Number.parseInt(this.gia);
+          this.tongTien += this.danhSachChiTiet[i].soLuong * this.gia;
         }
         this.tienHienThi = this.sanPhamService.hienThiGia(this.tongTien);
       });

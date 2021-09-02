@@ -33,6 +33,7 @@ import {SuaSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuye
 import {PhanCongComponent} from './component/nhan-vien/don-hang/phan-cong/phan-cong.component';
 import {XacNhanGiaoComponent} from './component/nhan-vien-giao-hang/xac-nhan-giao/xac-nhan-giao.component';
 import {XoaSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/xoa-san-pham-khuyen-mai/xoa-san-pham-khuyen-mai.component';
+import {ThongKeComponent} from './component/nhan-vien/thong-ke/thong-ke.component';
 
 const routes: Routes = [
   {path: '', component: TrangChuComponent},
@@ -78,6 +79,8 @@ const routes: Routes = [
   {path: 'xac-nhan-giao', component: XacNhanGiaoComponent},
 
   {path: 'danh-sach-phieu-tra', component: DanhSachPhieuTraComponent},
+
+  {path: 'thong-ke', component: ThongKeComponent},
 
   // Nhân Viên Giao Hàng
   {path: 'chuyen-hang', component: ChuyenHangComponent},

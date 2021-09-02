@@ -17,19 +17,6 @@ public class DonHangDTO {
     public DonHangDTO() {
     }
 
-    public DonHangDTO(String khachHang, String nguoiNhan, String diaChi, String soDienThoai, LocalDate ngayNhan,
-                      String cachThanhToan, String sanPham, String soLuong, String gia) {
-        this.khachHang = khachHang;
-        this.nguoiNhan = nguoiNhan;
-        this.diaChi = diaChi;
-        this.soDienThoai = soDienThoai;
-        this.ngayNhan = ngayNhan;
-        this.cachThanhToan = cachThanhToan;
-        this.sanPham = sanPham;
-        this.soLuong = soLuong;
-        this.gia = gia;
-    }
-
     public String getKhachHang() {
         return khachHang;
     }

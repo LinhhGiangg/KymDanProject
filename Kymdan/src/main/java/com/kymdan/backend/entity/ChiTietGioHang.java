@@ -12,24 +12,15 @@ public class ChiTietGioHang {
     @Column(name = "so_luong", columnDefinition = "INT")
     private Integer soLuong;
 
-    // moi quan he
-
     @ManyToOne
     @JoinColumn(name = "ma_gio_hang", referencedColumnName = "ma", columnDefinition = "INT")
     private GioHang gioHang;
 
     @ManyToOne
-    @JoinColumn(name = "ma_san_pham", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @JoinColumn(name = "ma_san_pham", referencedColumnName = "ma", columnDefinition = "CHAR(10)")
     private SanPham sanPham;
 
     public ChiTietGioHang() {
-    }
-
-    public ChiTietGioHang(Integer ma, Integer soLuong, GioHang gioHang, SanPham sanPham) {
-        this.ma = ma;
-        this.soLuong = soLuong;
-        this.gioHang = gioHang;
-        this.sanPham = sanPham;
     }
 
     public Integer getMa() {

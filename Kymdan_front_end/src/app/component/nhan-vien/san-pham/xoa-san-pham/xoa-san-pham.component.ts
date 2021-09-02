@@ -35,7 +35,7 @@ export class XoaSanPhamComponent implements OnInit {
     this.sanPhamService.xoa(this.ma).subscribe(duLieu => {
       this.thongBao = duLieu.thongBao;
       const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
-        width: '696px',
+        width: '715px',
         height: '195px',
         data: {thongBao: this.thongBao},
         disableClose: true

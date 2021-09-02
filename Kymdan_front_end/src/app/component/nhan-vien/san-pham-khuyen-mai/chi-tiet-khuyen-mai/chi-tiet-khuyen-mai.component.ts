@@ -49,7 +49,7 @@ export class ChiTietKhuyenMaiComponent implements OnInit {
               this.sanPhamService.timGiaBangMaSanPham(this.danhSach[i].sanPham.ma).subscribe(
                 (duLieu) => {
                   this.danhSach[i].gia = duLieu.gia;
-                  this.danhSach[i].gia = this.sanPhamService.hienThiGia(this.danhSach[i].gia);
+                  this.danhSach[i].giaHienThi = this.sanPhamService.hienThiGia(this.danhSach[i].gia);
                 },
                 () => {
                 },
@@ -102,7 +102,7 @@ export class ChiTietKhuyenMaiComponent implements OnInit {
 
   xoa(maChiTiet, maSanPham) {
     const dialogRefDelete = this.dialog.open(XoaSanPhamKhuyenMaiComponent, {
-      width: '690px',
+      width: '715px',
       height: '175px',
       data: {thongTin: this.maKhuyenMai + ',' + maChiTiet + ',' + maSanPham},
       disableClose: true

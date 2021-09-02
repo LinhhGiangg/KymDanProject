@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="391113ff-e529-4d69-911a-7775e8d587ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien-giao-hang/xac-nhan-giao/xac-nhan-giao.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien-giao-hang/xac-nhan-giao/xac-nhan-giao.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien-giao-hang/xac-nhan-giao/xac-nhan-giao.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/don-hang/phan-cong/phan-cong.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/don-hang/phan-cong/phan-cong.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/don-hang/phan-cong/phan-cong.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietPhieuTra.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/PhieuTra.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/thong-ke/thong-ke.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/thong-ke/thong-ke.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/thong-ke/thong-ke.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -17,43 +16,118 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/controllers/KhuyenMaiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/controllers/KhuyenMaiController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/controllers/NhanVienController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/controllers/NhanVienController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/controllers/LoaiSanPhamController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/controllers/LoaiSanPhamController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/ChiTietDatHang.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/ChiTietDatHang.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/ChiTietDonHang.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/ChiTietDonHang.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/ChiTietGia.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/ChiTietGia.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/ChiTietGioHang.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/ChiTietGioHang.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/ChiTietKhuyenMai.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/ChiTietKhuyenMai.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/ChiTietPhieuNhap.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/ChiTietPhieuNhap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/DatHang.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/DatHang.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/DonHang.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/DonHang.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/GioHang.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/GioHang.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/HoaDon.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/HoaDon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/KhachHang.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/KhachHang.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/KhuyenMai.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/KhuyenMai.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/LoaiSanPham.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/LoaiSanPham.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/NhaCungCap.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/NhaCungCap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/NhanVien.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/NhanVien.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/NhanVienGiaoHang.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/NhanVienGiaoHang.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/PhieuNhap.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/PhieuNhap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/Quyen.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/Quyen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/SanPham.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/SanPham.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/TaiKhoan.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/entity/TaiKhoan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/model/DangNhapDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/model/DangNhapDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/model/DonHangDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/model/DonHangDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/model/KhuyenMaiDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/model/KhuyenMaiDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/model/LoaiSanPhamDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/model/LoaiSanPhamDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/model/SanPhamDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/model/SanPhamDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/repository/ChiTietDonHangRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/repository/ChiTietDonHangRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/repository/DonHangRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/repository/DonHangRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/repository/LoaiSanPhamRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/repository/LoaiSanPhamRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/repository/SanPhamRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/repository/SanPhamRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/khach_hang/KhachHangServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/khach_hang/KhachHangServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/khuyen_mai/KhuyenMaiService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/khuyen_mai/KhuyenMaiService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/khuyen_mai/KhuyenMaiServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/khuyen_mai/KhuyenMaiServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/loai_san_pham/LoaiSanPhamService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/loai_san_pham/LoaiSanPhamService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/loai_san_pham/LoaiSanPhamServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/loai_san_pham/LoaiSanPhamServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/nhan_vien/NhanVienService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/nhan_vien/NhanVienService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/nhan_vien/NhanVienServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/nhan_vien/NhanVienServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/tai_khoan/TaiKhoanServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/tai_khoan/TaiKhoanServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/san_pham/SanPhamServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/kymdan/backend/services/san_pham/SanPhamServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/controllers/KhuyenMaiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/controllers/KhuyenMaiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/controllers/NhanVienController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/controllers/NhanVienController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/controllers/LoaiSanPhamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/controllers/LoaiSanPhamController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietDatHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietDatHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietDonHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietDonHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietGia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietGia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietGioHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietGioHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietKhuyenMai.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietKhuyenMai.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietPhieuNhap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/ChiTietPhieuNhap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/DatHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/DatHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/DonHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/DonHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/GioHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/GioHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/HoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/HoaDon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/KhachHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/KhachHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/KhuyenMai.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/KhuyenMai.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/LoaiSanPham.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/LoaiSanPham.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/NhaCungCap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/NhaCungCap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/NhanVien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/NhanVien.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/NhanVienGiaoHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/NhanVienGiaoHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/PhieuNhap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/PhieuNhap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/Quyen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/Quyen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/SanPham.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/SanPham.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/TaiKhoan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/entity/TaiKhoan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/model/DangNhapDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/model/DangNhapDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/model/DonHangDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/model/DonHangDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/model/KhuyenMaiDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/model/KhuyenMaiDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/model/LoaiSanPhamDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/model/LoaiSanPhamDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/model/SanPhamDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/model/SanPhamDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/repository/ChiTietDonHangRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/repository/ChiTietDonHangRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/repository/DonHangRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/repository/DonHangRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/repository/LoaiSanPhamRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/repository/LoaiSanPhamRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/repository/SanPhamRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/repository/SanPhamRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/khach_hang/KhachHangServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/khach_hang/KhachHangServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/khuyen_mai/KhuyenMaiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/khuyen_mai/KhuyenMaiService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/khuyen_mai/KhuyenMaiServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/khuyen_mai/KhuyenMaiServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/loai_san_pham/LoaiSanPhamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/loai_san_pham/LoaiSanPhamService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/loai_san_pham/LoaiSanPhamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/loai_san_pham/LoaiSanPhamServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/nhan_vien/NhanVienService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/nhan_vien/NhanVienService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/nhan_vien/NhanVienServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/nhan_vien/NhanVienServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/san_pham/SanPhamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kymdan/backend/services/san_pham/SanPhamServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/cau-hinh/dang-nhap/dang-nhap.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/cau-hinh/dang-nhap/dang-nhap.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien-giao-hang/chuyen-hang/chuyen-hang.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien-giao-hang/chuyen-hang/chuyen-hang.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/cau-hinh/nav-bar/nav-bar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/cau-hinh/nav-bar/nav-bar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/chi-tiet-don-hang/chi-tiet-don-hang.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/chi-tiet-don-hang/chi-tiet-don-hang.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/danh-sach-loai/danh-sach-loai.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/danh-sach-loai/danh-sach-loai.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/danh-sach-loai/danh-sach-loai.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/danh-sach-loai/danh-sach-loai.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/dat-hang/dat-hang.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/dat-hang/dat-hang.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/dat-hang/dat-hang.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/dat-hang/dat-hang.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/gio-hang/gio-hang.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/gio-hang/gio-hang.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/gio-hang/gio-hang.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/gio-hang/gio-hang.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/mua-hang/mua-hang.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/mua-hang/mua-hang.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/mua-hang/mua-hang.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/khach-hang/mua-hang/mua-hang.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien-giao-hang/chuyen-hang/chuyen-hang.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien-giao-hang/chuyen-hang/chuyen-hang.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien-giao-hang/chuyen-hang/chuyen-hang.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien-giao-hang/chuyen-hang/chuyen-hang.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/don-hang/danh-sach-don-hang/danh-sach-don-hang.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/don-hang/danh-sach-don-hang/danh-sach-don-hang.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/don-hang/danh-sach-don-hang/danh-sach-don-hang.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/don-hang/danh-sach-don-hang/danh-sach-don-hang.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/don-hang/danh-sach-don-hang/danh-sach-don-hang.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/don-hang/danh-sach-don-hang/danh-sach-don-hang.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham-khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham-khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham-khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/sua-san-pham-khuyen-mai/sua-san-pham-khuyen-mai.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham-khuyen-mai/sua-san-pham-khuyen-mai/sua-san-pham-khuyen-mai.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/sua-san-pham-khuyen-mai/sua-san-pham-khuyen-mai.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham-khuyen-mai/sua-san-pham-khuyen-mai/sua-san-pham-khuyen-mai.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/sua-san-pham-khuyen-mai/sua-san-pham-khuyen-mai.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham-khuyen-mai/sua-san-pham-khuyen-mai/sua-san-pham-khuyen-mai.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham-khuyen-mai/them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham-khuyen-mai/them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham-khuyen-mai/them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/service/khuyen-mai.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/service/khuyen-mai.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/service/nhan-vien.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/service/nhan-vien.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/danh-sach-khuyen-mai/danh-sach-khuyen-mai.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/danh-sach-khuyen-mai/danh-sach-khuyen-mai.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/sua-khuyen-mai/sua-khuyen-mai.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/sua-khuyen-mai/sua-khuyen-mai.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/xoa-khuyen-mai/xoa-khuyen-mai.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/khuyen-mai/xoa-khuyen-mai/xoa-khuyen-mai.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/loai-san-pham/quan-ly-loai/quan-ly-loai.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/loai-san-pham/quan-ly-loai/quan-ly-loai.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/phieu-tra/danh-sach-phieu-tra/danh-sach-phieu-tra.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/phieu-tra/danh-sach-phieu-tra/danh-sach-phieu-tra.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham-khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham-khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham-khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham-khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham/danh-sach-san-pham/danh-sach-san-pham.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham/danh-sach-san-pham/danh-sach-san-pham.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham/danh-sach-san-pham/danh-sach-san-pham.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/component/nhan-vien/san-pham/danh-sach-san-pham/danh-sach-san-pham.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/model/ChiTietGioHang.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/model/ChiTietGioHang.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/model/ChiTietKhuyenMai.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/model/KhuyenMai.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/model/LoaiSanPham.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/model/LoaiSanPham.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/model/NhanVien.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/model/SanPham.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/model/SanPham.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/service/loai-san-pham.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/service/loai-san-pham.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/app/service/san-pham.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/app/service/san-pham.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kymdan_front_end/src/polyfills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Kymdan_front_end/src/polyfills.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../first.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../first.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kymdan_database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../kymdan_database.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,6 +197,9 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
@@ -276,6 +353,12 @@
       <workItem from="1630373144943" duration="1286000" />
       <workItem from="1630396361139" duration="6591000" />
       <workItem from="1630420902364" duration="6024000" />
+      <workItem from="1630463341096" duration="5109000" />
+      <workItem from="1630485465914" duration="8913000" />
+      <workItem from="1630549562303" duration="2451000" />
+      <workItem from="1630565133481" duration="9552000" />
+      <workItem from="1630596154367" duration="1269000" />
+      <workItem from="1630598853176" duration="2358000" />
     </task>
     <task id="LOCAL-00001" summary="up begin merge">
       <created>1611823206431</created>
@@ -316,14 +399,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="up 17h25 28/01" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="361" y="72" key="#Project_Structure" timestamp="1630569897496">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="72" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1630569897496" />
     <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1626839618802">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1626839618802" />
-    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1630402482618">
+    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1630597330538">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1630402482618" />
+    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1630597330538" />
     <state x="392" y="339" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1627920737307">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -340,62 +427,62 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1628690209795" />
-    <state x="524" y="116" key="#xdebugger.evaluate" timestamp="1630425891293">
+    <state x="524" y="116" key="#xdebugger.evaluate" timestamp="1630603260941">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="524" y="116" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1630425891293" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1630144947728">
+    <state x="524" y="116" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1630603260941" />
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1630565781454">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1630144947728" />
-    <state width="1493" height="254" key="GridCell.Tab.0.bottom" timestamp="1630428973509">
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1630565781454" />
+    <state width="1493" height="254" key="GridCell.Tab.0.bottom" timestamp="1630605930550">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="254" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1630428973509" />
-    <state width="1493" height="254" key="GridCell.Tab.0.center" timestamp="1630428973509">
+    <state width="1493" height="254" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1630605930550" />
+    <state width="1493" height="254" key="GridCell.Tab.0.center" timestamp="1630605930550">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="254" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1630428973509" />
-    <state width="1493" height="254" key="GridCell.Tab.0.left" timestamp="1630428973509">
+    <state width="1493" height="254" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1630605930550" />
+    <state width="1493" height="254" key="GridCell.Tab.0.left" timestamp="1630605930550">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="254" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1630428973509" />
-    <state width="1493" height="254" key="GridCell.Tab.0.right" timestamp="1630428973509">
+    <state width="1493" height="254" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1630605930550" />
+    <state width="1493" height="254" key="GridCell.Tab.0.right" timestamp="1630605930550">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="254" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1630428973509" />
-    <state width="1493" height="254" key="GridCell.Tab.1.bottom" timestamp="1630428973509">
+    <state width="1493" height="254" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1630605930550" />
+    <state width="1493" height="254" key="GridCell.Tab.1.bottom" timestamp="1630605930551">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="254" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1630428973509" />
-    <state width="1493" height="254" key="GridCell.Tab.1.center" timestamp="1630428973509">
+    <state width="1493" height="254" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1630605930551" />
+    <state width="1493" height="254" key="GridCell.Tab.1.center" timestamp="1630605930551">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="254" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1630428973509" />
-    <state width="1493" height="254" key="GridCell.Tab.1.left" timestamp="1630428973509">
+    <state width="1493" height="254" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1630605930551" />
+    <state width="1493" height="254" key="GridCell.Tab.1.left" timestamp="1630605930551">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="254" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1630428973509" />
-    <state width="1493" height="254" key="GridCell.Tab.1.right" timestamp="1630428973509">
+    <state width="1493" height="254" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1630605930551" />
+    <state width="1493" height="254" key="GridCell.Tab.1.right" timestamp="1630605930551">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="254" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1630428973509" />
-    <state width="1493" height="254" key="GridCell.Tab.2.bottom" timestamp="1630428973509">
+    <state width="1493" height="254" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1630605930551" />
+    <state width="1493" height="254" key="GridCell.Tab.2.bottom" timestamp="1630605930551">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="254" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1630428973509" />
-    <state width="1493" height="254" key="GridCell.Tab.2.center" timestamp="1630428973509">
+    <state width="1493" height="254" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1630605930551" />
+    <state width="1493" height="254" key="GridCell.Tab.2.center" timestamp="1630605930551">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="254" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1630428973509" />
-    <state width="1493" height="254" key="GridCell.Tab.2.left" timestamp="1630428973509">
+    <state width="1493" height="254" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1630605930551" />
+    <state width="1493" height="254" key="GridCell.Tab.2.left" timestamp="1630605930551">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="254" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1630428973509" />
-    <state width="1493" height="254" key="GridCell.Tab.2.right" timestamp="1630428973509">
+    <state width="1493" height="254" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1630605930551" />
+    <state width="1493" height="254" key="GridCell.Tab.2.right" timestamp="1630605930551">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="254" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1630428973509" />
+    <state width="1493" height="254" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1630605930551" />
     <state x="277" y="56" key="SettingsEditor" timestamp="1628732891451">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

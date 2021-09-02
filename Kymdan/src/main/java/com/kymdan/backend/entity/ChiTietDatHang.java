@@ -9,27 +9,18 @@ public class ChiTietDatHang {
     @Column(name = "ma", columnDefinition = "INT")
     private Integer ma;
 
-    @Column(name = "so_luong", columnDefinition = "VARCHAR(5)")
-    private String soLuong;
-
-    // moi quan he
+    @Column(name = "so_luong", columnDefinition = "INT")
+    private Integer soLuong;
 
     @ManyToOne
-    @JoinColumn(name = "ma_dat_hang", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @JoinColumn(name = "ma_dat_hang", referencedColumnName = "ma", columnDefinition = "CHAR(10)")
     private DatHang datHang;
 
     @ManyToOne
-    @JoinColumn(name = "ma_san_pham", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @JoinColumn(name = "ma_san_pham", referencedColumnName = "ma", columnDefinition = "CHAR(10)")
     private SanPham sanPham;
 
     public ChiTietDatHang() {
-    }
-
-    public ChiTietDatHang(Integer ma, String soLuong, DatHang datHang, SanPham sanPham) {
-        this.ma = ma;
-        this.soLuong = soLuong;
-        this.datHang = datHang;
-        this.sanPham = sanPham;
     }
 
     public Integer getMa() {
@@ -40,11 +31,11 @@ public class ChiTietDatHang {
         this.ma = ma;
     }
 
-    public String getSoLuong() {
+    public Integer getSoLuong() {
         return soLuong;
     }
 
-    public void setSoLuong(String soLuong) {
+    public void setSoLuong(Integer soLuong) {
         this.soLuong = soLuong;
     }
 

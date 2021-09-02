@@ -10,31 +10,21 @@ public class ChiTietGia {
     @Column(name = "ma", columnDefinition = "INT")
     private Integer ma;
 
-    @Column(name = "gia", columnDefinition = "VARCHAR(15)")
-    private String gia;
+    @Column(name = "gia", columnDefinition = "INT")
+    private Integer gia;
 
     @Column(name = "ngay_thay_doi", columnDefinition = "DATE")
     private LocalDate ngayThayDoi;
 
-    // moi quan he
-
     @ManyToOne
-    @JoinColumn(name = "ma_san_pham", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @JoinColumn(name = "ma_san_pham", referencedColumnName = "ma", columnDefinition = "CHAR(10)")
     private SanPham sanPham;
 
     @ManyToOne
-    @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "VARCHAR(10)")
+    @JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma", columnDefinition = "CHAR(10)")
     private NhanVien nhanVien;
 
     public ChiTietGia() {
-    }
-
-    public ChiTietGia(Integer ma, String gia, LocalDate ngayThayDoi, SanPham sanPham, NhanVien nhanVien) {
-        this.ma = ma;
-        this.gia = gia;
-        this.ngayThayDoi = ngayThayDoi;
-        this.sanPham = sanPham;
-        this.nhanVien = nhanVien;
     }
 
     public Integer getMa() {
@@ -45,11 +35,11 @@ public class ChiTietGia {
         this.ma = ma;
     }
 
-    public String getGia() {
+    public Integer getGia() {
         return gia;
     }
 
-    public void setGia(String gia) {
+    public void setGia(Integer gia) {
         this.gia = gia;
     }
 

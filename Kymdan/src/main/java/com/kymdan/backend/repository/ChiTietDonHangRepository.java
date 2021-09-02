@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ChiTietDonHangRepository extends JpaRepository<ChiTietDonHang, Integer> {
-    @Query(value = "call loc_chi_tiet()", nativeQuery = true)
-    List<ChiTietDonHang> locChiTiet();
+    @Query(value = "call loc_chi_tiet_don_hang()", nativeQuery = true)
+    List<ChiTietDonHang> locChiTietDonHang();
 }

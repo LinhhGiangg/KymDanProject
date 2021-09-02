@@ -118,11 +118,11 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
     }
 
     @Override
-    public ThongBaoDTO themSanPhamKhuyenMai(String maKhuyenMai, String maSanPham, String giamGia) {
+    public ThongBaoDTO themSanPhamKhuyenMai(String maKhuyenMai, String maSanPham, Integer giamGia) {
         SanPham sanPham = this.sanPhamRepository.findById(maSanPham).orElse(null);
         if (sanPham == null) {
             return new ThongBaoDTO("Sản phẩm này không tồn tại !");
-        } else if (sanPham.getSoLuong().equals("0")) {
+        } else if (sanPham.getSoLuong().equals(0)) {
             return new ThongBaoDTO("Sản phẩm này đã hết hàng !");
         } else if (this.chiTietKhuyenMaiRepository.findByKhuyenMai_MaAndSanPham_Ma(maKhuyenMai, maSanPham) != null) {
             return new ThongBaoDTO("Sản phẩm này đã có trong đợt khuyến mãi !");
@@ -137,7 +137,7 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
     }
 
     @Override
-    public ThongBaoDTO suaSanPhamKhuyenMai(Integer maChiTiet, String giamGia) {
+    public ThongBaoDTO suaSanPhamKhuyenMai(Integer maChiTiet, Integer giamGia) {
         ChiTietKhuyenMai chiTietKhuyenMai = this.chiTietKhuyenMaiRepository.findById(maChiTiet).orElse(null);
         if (chiTietKhuyenMai != null) {
             chiTietKhuyenMai.setGiamGia(giamGia);

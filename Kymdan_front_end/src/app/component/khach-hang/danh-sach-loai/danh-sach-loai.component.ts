@@ -106,9 +106,9 @@ export class DanhSachLoaiComponent implements OnInit {
     this.ngOnInit();
   }
 
-  timTheoTen() {
+  locTheoTen() {
     if (this.tenCanTim !== '') {
-      this.loaiSanPhamService.timTheoTen(this.tenCanTim).subscribe(
+      this.loaiSanPhamService.locTheoTen(this.tenCanTim).subscribe(
         (duLieu) => {
           this.danhSachLoai = duLieu;
         },
@@ -129,15 +129,6 @@ export class DanhSachLoaiComponent implements OnInit {
     this.sanPhamService.locTheoMaLoai(ma).subscribe(
       (duLieu) => {
         if (duLieu.length !== 0) {
-          this.loaiSanPhamService.tangLuotXem(ma).subscribe(
-            (ketQua) => {
-              this.thongBao = ketQua;
-            },
-            () => {
-            },
-            () => {
-            });
-
           this.router.navigate(['mua-hang', {thongTin: ma}]).then(() => {
           });
         } else {

@@ -11,7 +11,7 @@ import java.util.List;
 @Entity(name = "nhan_vien_giao_hang")
 public class NhanVienGiaoHang {
     @Id
-    @Column(name = "ma", columnDefinition = "VARCHAR(10)")
+    @Column(name = "ma", columnDefinition = "CHAR(10)")
     private String ma;
 
     @Column(name = "ten", columnDefinition = "VARCHAR(50)")
@@ -35,8 +35,6 @@ public class NhanVienGiaoHang {
     @Column(name = "ten_cong_ty", columnDefinition = "VARCHAR(250)")
     private String tenCongTy;
 
-    // moi quan he
-
     @OneToOne(mappedBy = "nhanVienGiaoHang", cascade = CascadeType.ALL)
     @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     private TaiKhoan taiKhoan;
@@ -46,21 +44,6 @@ public class NhanVienGiaoHang {
     private List<DonHang> danhSachDonHang;
 
     public NhanVienGiaoHang() {
-    }
-
-    public NhanVienGiaoHang(String ma, String ten, String gioiTinh, LocalDate ngaySinh, String diaChi,
-                            String soDienThoai, String email, String tenCongTy, TaiKhoan taiKhoan,
-                            List<DonHang> danhSachDonHang) {
-        this.ma = ma;
-        this.ten = ten;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
-        this.diaChi = diaChi;
-        this.soDienThoai = soDienThoai;
-        this.email = email;
-        this.tenCongTy = tenCongTy;
-        this.taiKhoan = taiKhoan;
-        this.danhSachDonHang = danhSachDonHang;
     }
 
     public String getMa() {

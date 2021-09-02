@@ -7,9 +7,11 @@ export class ChiTietGioHang {
   hinh: string;
   ten: string;
   kichThuoc: string;
-  gia: string;
-  khuyenMai: string;
+  gia: number;
+  giaHienThi: string;
+  khuyenMai: number;
   soLuong: number;
-  tongTien: string;
+  tongTien: number;
+  tongTienHienThi: string;
   chon: boolean;
 }

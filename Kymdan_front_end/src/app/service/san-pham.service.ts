@@ -17,9 +17,9 @@ export class SanPhamService {
     let hangTrieu;
     let hangNgan;
     // tslint:disable-next-line:radix
-    hangTrieu = (Number.parseInt(thongTin) / 1000000).toString().split('.')[0] + '';
+    hangTrieu = (thongTin / 1000000).toString().split('.')[0] + '';
     // tslint:disable-next-line:radix
-    hangNgan = ((Number.parseInt(thongTin) - Number.parseInt(hangTrieu) * 1000000) / 1000).toString().split('.')[0] + '';
+    hangNgan = ((thongTin - Number.parseInt(hangTrieu) * 1000000) / 1000).toString().split('.')[0] + '';
     if (hangNgan === '0') {
       return hangTrieu + '.000.000'
       // tslint:disable-next-line:radix
