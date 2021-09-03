@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {NhanVienService} from '../../../service/nhan-vien.service';
+import {TaiKhoanService} from '../../../service/tai-khoan.service';
 
 @Component({
   selector: 'app-thong-ke',
@@ -6,14 +8,33 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./thong-ke.component.css']
 })
 export class ThongKeComponent implements OnInit {
-  public duLieu: number[] = [181, 222, 135, 101, 76];
+  public doanhThu = [];
+  public nhanVien;
+  public duLieu: number[] = [];
 
-  public thang: string[] = ['Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9'];
+  public thang: string[] = [];
 
-  constructor() {
+  constructor(
+    public nhanVienService: NhanVienService,
+    public taiKhoanService: TaiKhoanService,
+  ) {
   }
 
   ngOnInit(): void {
+    this.nhanVien = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
+    this.nhanVienService.thongKe(this.nhanVien).subscribe(
+      (duLieu) => {
+        this.doanhThu = duLieu;
+      },
+      () => {
+      },
+      () => {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.doanhThu.length; i++) {
+          this.duLieu.push(this.doanhThu[i][0] / 1000000);
+          this.thang.push('Tháng ' + this.doanhThu[i][1]);
+        }
+      });
   }
 
 }

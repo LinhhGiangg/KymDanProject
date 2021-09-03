@@ -40,7 +40,7 @@ export class DanhSachDonHangComponent implements OnInit {
   phanCongGiaoHang(ma) {
     const dialogRef = this.dialog.open(PhanCongComponent, {
       width: '750px',
-      height: '268px',
+      height: '390px',
       data: {thongTin: ma},
       disableClose: true
     });

@@ -38,7 +38,6 @@ import {GioHangComponent} from './component/khach-hang/gio-hang/gio-hang.compone
 import {LichSuMuaHangComponent} from './component/khach-hang/lich-su-mua-hang/lich-su-mua-hang.component';
 import {ChiTietDonHangComponent} from './component/khach-hang/chi-tiet-don-hang/chi-tiet-don-hang.component';
 import {DanhSachDonHangComponent} from './component/nhan-vien/don-hang/danh-sach-don-hang/danh-sach-don-hang.component';
-import {DanhSachPhieuTraComponent} from './component/nhan-vien/phieu-tra/danh-sach-phieu-tra/danh-sach-phieu-tra.component';
 import {ThemSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component';
 import {SuaSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/sua-san-pham-khuyen-mai/sua-san-pham-khuyen-mai.component';
 import {PhanCongComponent} from './component/nhan-vien/don-hang/phan-cong/phan-cong.component';
@@ -47,6 +46,7 @@ import {XacNhanGiaoComponent} from './component/nhan-vien-giao-hang/xac-nhan-gia
 import {XoaSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/xoa-san-pham-khuyen-mai/xoa-san-pham-khuyen-mai.component';
 import {ThongKeComponent} from './component/nhan-vien/thong-ke/thong-ke.component';
 import {ChartsModule} from '@progress/kendo-angular-charts';
+import {QuenMatKhauComponent} from './component/ca-nhan/quen-mat-khau/quen-mat-khau.component';
 
 @NgModule({
   declarations: [
@@ -80,13 +80,13 @@ import {ChartsModule} from '@progress/kendo-angular-charts';
     LichSuMuaHangComponent,
     ChiTietDonHangComponent,
     DanhSachDonHangComponent,
-    DanhSachPhieuTraComponent,
     ThemSanPhamKhuyenMaiComponent,
     SuaSanPhamKhuyenMaiComponent,
     PhanCongComponent,
     XacNhanGiaoComponent,
     XoaSanPhamKhuyenMaiComponent,
-    ThongKeComponent
+    ThongKeComponent,
+    QuenMatKhauComponent
   ],
   imports: [
     BrowserModule,

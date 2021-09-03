@@ -42,7 +42,7 @@ export class ThemKhuyenMaiComponent implements OnInit {
     }
     this.tenDangNhap = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
     this.formTaoMoi = this.formBuilder.group({
-      ma: ['', [Validators.required, Validators.pattern('^(KM-)[0-9]{3}$')]],
+      ma: ['', [Validators.required, Validators.pattern('^(KM-)[0-9]{7}$')]],
       ten: ['', [Validators.required]],
       moTa: ['', [Validators.required]],
       ngayBatDau: ['', [Validators.required]],

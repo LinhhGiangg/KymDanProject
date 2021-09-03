@@ -33,7 +33,7 @@ export class ThemSanPhamKhuyenMaiComponent implements OnInit {
     });
 
     this.formThem = this.formBuilder.group({
-      maSanPham: ['', [Validators.required, Validators.pattern('^(SP-)[0-9]{3}$')]],
+      maSanPham: ['', [Validators.required, Validators.pattern('^(SP-)[0-9]{7}$')]],
       giamGia: ['', [Validators.required, Validators.pattern('^([1-9]{1})([0-9]?)$')]],
     });
   }

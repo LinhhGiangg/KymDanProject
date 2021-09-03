@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-2"></div>
   <div class="col-sm-8">
-    <form (ngSubmit)="sua()" [formGroup]="formPhanCong">
+    <form (ngSubmit)="phanCong()" [formGroup]="formPhanCong">
 
       <div class="text-center">
         <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" style="color: green" id="add">
@@ -13,11 +13,35 @@
         </mat-error>
       </div>
 
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Mã hóa đơn<sup class="text-danger"> *</sup></mat-label>
+          <input matInput formControlName="maHoaDon">
+          <mat-error *ngIf="formPhanCong.controls.maHoaDon.errors?.required">Mã hóa đơn không đươc để trống.
+          </mat-error>
+          <mat-error *ngIf="formPhanCong.controls.maHoaDon.errors?.pattern">
+            Mã hóa đơn không đúng quy định. Mã hóa đơn có dạng HD-XXXXXXX với X là số từ 0 đến 9.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Mã số thuế<sup class="text-danger"> *</sup></mat-label>
+          <input matInput formControlName="maSoThue">
+          <mat-error *ngIf="formPhanCong.controls.maSoThue.errors?.required">Mã số thuế không đươc để trống.
+          </mat-error>
+          <mat-error *ngIf="formPhanCong.controls.maSoThue.errors?.pattern">
+            Mã số thuế không đúng quy định. Mã hóa đơn có dạng XXXXXXXXXX với X là số từ 0 đến 9.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
       <div>
         <div class="row">
           <mat-form-field>
             <mat-label>Mã đơn hàng</mat-label>
-            <input matInput formControlName="maDonHang" readonly>
+            <input matInput formControlName="donHang" readonly>
           </mat-form-field>
         </div>
 

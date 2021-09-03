@@ -43,15 +43,17 @@ export class PhanCongComponent implements OnInit {
       });
 
     this.formPhanCong = this.formBuilder.group({
-      maDonHang: [this.maDonHang],
+      maHoaDon: ['', [Validators.required, Validators.pattern('^(HD-)[0-9]{7}$')]],
+      maSoThue: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      donHang: [this.maDonHang],
+      nhanVien: [this.nhanVien],
       giaoHang: ['', [Validators.required]],
     });
   }
 
-  sua() {
+  phanCong() {
     if (this.formPhanCong.valid) {
-      const THONG_TIN = this.maDonHang + ',' + this.nhanVien + ',' + this.formPhanCong.value.giaoHang;
-      this.nhanVienService.phanCongGiaoHang(THONG_TIN)
+      this.nhanVienService.phanCongGiaoHang(this.formPhanCong.value)
         .subscribe(ketQua => {
           this.thongBao = ketQua.thongBao;
           if (this.thongBao === 'Thành công !') {

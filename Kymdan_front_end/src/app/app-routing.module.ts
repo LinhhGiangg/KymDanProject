@@ -27,13 +27,13 @@ import {LichSuMuaHangComponent} from './component/khach-hang/lich-su-mua-hang/li
 import {ChiTietDonHangComponent} from './component/khach-hang/chi-tiet-don-hang/chi-tiet-don-hang.component';
 import {DanhSachDonHangComponent} from './component/nhan-vien/don-hang/danh-sach-don-hang/danh-sach-don-hang.component';
 import {ChiTietKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/chi-tiet-khuyen-mai/chi-tiet-khuyen-mai.component';
-import {DanhSachPhieuTraComponent} from './component/nhan-vien/phieu-tra/danh-sach-phieu-tra/danh-sach-phieu-tra.component';
 import {ThemSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component';
 import {SuaSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/sua-san-pham-khuyen-mai/sua-san-pham-khuyen-mai.component';
 import {PhanCongComponent} from './component/nhan-vien/don-hang/phan-cong/phan-cong.component';
 import {XacNhanGiaoComponent} from './component/nhan-vien-giao-hang/xac-nhan-giao/xac-nhan-giao.component';
 import {XoaSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/xoa-san-pham-khuyen-mai/xoa-san-pham-khuyen-mai.component';
 import {ThongKeComponent} from './component/nhan-vien/thong-ke/thong-ke.component';
+import {QuenMatKhauComponent} from './component/ca-nhan/quen-mat-khau/quen-mat-khau.component';
 
 const routes: Routes = [
   {path: '', component: TrangChuComponent},
@@ -44,6 +44,7 @@ const routes: Routes = [
   // Thông tin tài khoản
   {path: 'thong-tin', component: ThongTinComponent},
   {path: 'sua-mat-khau', component: SuaMatKhauComponent},
+  {path: 'quen-mat-khau', component: QuenMatKhauComponent},
 
   // Khách Hàng
   {path: 'danh-sach-loai', component: DanhSachLoaiComponent},
@@ -76,14 +77,12 @@ const routes: Routes = [
 
   {path: 'danh-sach-don-hang', component: DanhSachDonHangComponent},
   {path: 'phan-cong', component: PhanCongComponent},
-  {path: 'xac-nhan-giao', component: XacNhanGiaoComponent},
-
-  {path: 'danh-sach-phieu-tra', component: DanhSachPhieuTraComponent},
 
   {path: 'thong-ke', component: ThongKeComponent},
 
   // Nhân Viên Giao Hàng
   {path: 'chuyen-hang', component: ChuyenHangComponent},
+  {path: 'xac-nhan-giao', component: XacNhanGiaoComponent},
 ];
 
 @NgModule({

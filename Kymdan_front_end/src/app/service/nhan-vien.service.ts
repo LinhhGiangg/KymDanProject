@@ -20,11 +20,15 @@ export class NhanVienService {
     return this.http.get(this.API + '/danhSachNhanVienGiaoHang/' + thongTin);
   }
 
-  phanCongGiaoHang(thongTin): Observable<any> {
-    return this.http.get(this.API + '/phanCongGiaoHang/' + thongTin);
-  }
-
   giaoHangHoanTat(thongTin): Observable<any> {
     return this.http.get(this.API + '/giaoHangHoanTat/' + thongTin);
+  }
+
+  thongKe(thongTin): Observable<any> {
+    return this.http.get(this.API + '/thongKe/' + thongTin);
+  }
+
+  phanCongGiaoHang(thongTin): Observable<any> {
+    return this.http.post(this.API + '/phanCongGiaoHang', thongTin, {headers: {skip: 'true'}});
   }
 }
