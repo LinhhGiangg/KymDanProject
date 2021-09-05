@@ -2,6 +2,9 @@ import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TaiKhoanService} from '../../../service/tai-khoan.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SuaMatKhauComponent} from '../../ca-nhan/sua-mat-khau/sua-mat-khau.component';
+import {MatDialog} from '@angular/material/dialog';
+import {QuenMatKhauComponent} from '../../ca-nhan/quen-mat-khau/quen-mat-khau.component';
 
 @Component({
   selector: 'app-dang-nhap',
@@ -20,6 +23,7 @@ export class DangNhapComponent implements OnInit {
     public activatedRouter: ActivatedRoute,
     public router: Router,
     public el: ElementRef,
+    public dialog: MatDialog
   ) {
   }
 
@@ -78,5 +82,18 @@ export class DangNhapComponent implements OnInit {
         }
       }
     }
+  }
+
+  quenMatKhau() {
+    const dialogRefEdit = this.dialog.open(QuenMatKhauComponent, {
+      width: '655px',
+      height: '225px',
+      data: {thongTin: ''},
+      disableClose: true
+    });
+
+    dialogRefEdit.afterClosed().subscribe(result => {
+      this.ngOnInit()
+    })
   }
 }

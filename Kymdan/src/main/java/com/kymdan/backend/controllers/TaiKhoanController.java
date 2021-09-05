@@ -17,6 +17,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
+
 @RestController
 @RequestMapping("/taiKhoan")
 @CrossOrigin
@@ -97,8 +99,13 @@ public class TaiKhoanController {
     }
 
     @GetMapping("/suaMatKhau/{tenDangNhap}/{matKhauCu}/{matKhauMoi}")
-    public ResponseEntity<?> editPassword(@PathVariable String tenDangNhap, @PathVariable String matKhauCu,
-                                          @PathVariable String matKhauMoi) {
+    public ResponseEntity<?> suaMatKhau(@PathVariable String tenDangNhap, @PathVariable String matKhauCu,
+                                        @PathVariable String matKhauMoi) {
         return ResponseEntity.ok(taiKhoanService.suaMatKhau(tenDangNhap, matKhauCu, matKhauMoi));
+    }
+
+    @GetMapping("/layMatKhau/{mail}")
+    public ResponseEntity<?> layMatKhau(@PathVariable String mail) throws MessagingException {
+        return ResponseEntity.ok(taiKhoanService.layMatKhau(mail));
     }
 }

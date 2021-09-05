@@ -6,12 +6,12 @@ insert into kymdan.quyen (ma, ten) values (2, 'Nhân Viên Giao Hàng');
 insert into kymdan.quyen (ma, ten) values (3, 'Khách Hàng');
 
 -- Nhân viên, Nhân viên giao hàng, Khách hàng
-insert into kymdan.nhan_vien (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values ('NV-0000001', 'Linh Giang', 'Nữ', '1999-08-05', 'Đăk Lăk', '0769555555', 'linhgiang58999@gmail.com');
-insert into kymdan.nhan_vien (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values ('NV-0000002', 'Nguyen Khang', 'Nam', '1990-01-01', 'Đăk Lăk', '0769333333', 'gianglinh58999@gmail.com');
+insert into kymdan.nhan_vien (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values ('NV-0000001', 'Linh Giang', 'Nữ', '1999-08-05', 'Đăk Lăk', '0769555555', 'linhgiang@gmail.com');
+insert into kymdan.nhan_vien (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values ('NV-0000002', 'Nguyen Khang', 'Nam', '1990-01-01', 'Đăk Lăk', '0769333333', 'nguyenkhang@gmail.com');
 insert into kymdan.nhan_vien_giao_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email, ten_cong_ty) values ('NVGH-00001', 'Thanh Phong', 'Nam', '1999-05-30', 'Sài Gòn', '0905111111', 'shipper@gmail.com', 'Grab');
 insert into kymdan.nhan_vien_giao_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email, ten_cong_ty) values ('NVGH-00002', 'Phong Tran', 'Nam', '1999-05-15', 'Sài Gòn', '0905222222', 'shipper2@gmail.com', 'Bee');
 insert into kymdan.nhan_vien_giao_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email, ten_cong_ty) values ('NVGH-00003', 'Tran Duc', 'Nam', '1999-05-05', 'Sài Gòn', '0905333333', 'shipper3@gmail.com', 'Now');
-insert into kymdan.khach_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values (1, 'Khoi Nguyen', 'Nam', '1995-05-27', 'Quảng Nam', '0905999999', 'supea@gmail.com');
+insert into kymdan.khach_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values (1, 'Khoi Nguyen', 'Nam', '1995-05-27', 'Quảng Nam', '0905999999', 'khoinguyen@gmail.com');
 insert into kymdan.khach_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values (2, 'Phuong Thao', 'Nữ', '1973-01-01', 'Dak Lak', '0905111111', 'phuongthao@gmail.com');
 
 -- Tài khoản
@@ -319,7 +319,7 @@ DELIMITER //
 CREATE PROCEDURE xem_don_hang(khach_hang int)
 BEGIN
 	select * from don_hang 
-		where ma_khach_hang = khach_hang 
+		where ma_khach_hang = khach_hang
         order by ngay_dat desc;
 END //
 DELIMITER ;

@@ -8,6 +8,8 @@ import com.kymdan.backend.model.TaiKhoanDTO;
 import com.kymdan.backend.model.ThongTinDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
 
+import javax.mail.MessagingException;
+
 public interface TaiKhoanService {
     ThongBaoDTO taoTaiKhoan(TaiKhoanDTO taiKhoanDTO);
 
@@ -22,4 +24,6 @@ public interface TaiKhoanService {
     ThongBaoDTO suaThongTin(ThongTinDTO thongTinDTO);
 
     ThongBaoDTO suaMatKhau(String tenDangNhap, String matKhauCu, String matKhauMoi);
+
+    ThongBaoDTO layMatKhau(String mail) throws MessagingException;
 }

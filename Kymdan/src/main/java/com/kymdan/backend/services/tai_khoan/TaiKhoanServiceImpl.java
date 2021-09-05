@@ -1,5 +1,6 @@
 package com.kymdan.backend.services.tai_khoan;
 
+import com.kymdan.backend.config.TaoMaNgauNhien;
 import com.kymdan.backend.entity.TaiKhoan;
 import com.kymdan.backend.entity.KhachHang;
 import com.kymdan.backend.entity.NhanVien;
@@ -182,7 +183,6 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
             }
             else {
                 NhanVien nhanVien = this.nhanVienRepository.findByEmail(thongTinDTO.getEmail());
-                System.out.println(thongTinDTO.getNgaySinh());
                 if (!thongTinDTO.getNgaySinh().equals(nhanVien.getNgaySinh())
                         || thongTinDTO.getGioiTinh().equals("có thay đổi")) {
                     nhanVien.setNgaySinh(thongTinDTO.getNgaySinh().plusDays(1));
@@ -214,5 +214,75 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
         }
 
         return thongBaoDTO;
+    }
+
+    @Override
+    public ThongBaoDTO layMatKhau(String mail) throws MessagingException {
+        KhachHang khachHang = this.khachHangRepository.findByEmail(mail);
+
+        if (khachHang != null) {
+            String matKhauMoi = TaoMaNgauNhien.tao(6);
+            TaiKhoan taiKhoan = this.taiKhoanRepository.findByTenDangNhap(khachHang.getTen());
+            if (taiKhoan != null) {
+                taiKhoan.setMatKhau(bcryptEncoder.encode(matKhauMoi));
+                this.taiKhoanRepository.save(taiKhoan);
+            }
+
+            MimeMessage noiDung = this.emailSender.createMimeMessage();
+            MimeMessageHelper hoTro = new MimeMessageHelper(noiDung, true, "utf-8");
+            hoTro.setTo(mail);
+            hoTro.setSubject("Cập nhật mật khẩu mới !");
+            String tieuDe = "<!DOCTYPE html>\n" +
+                    "<html lang=\"en\">\n" +
+                    "<head>\n" +
+                    "  <meta charset=\"UTF-8\">\n" +
+                    "  <title>Mail</title>\n" +
+                    "  <style>\n" +
+                    "    * {\n" +
+                    "      font-family: \"Varela Round\";\n" +
+                    "    }" +
+                    "    .bodyMail {\n" +
+                    "      margin-top: 1%;\n" +
+                    "    }\n" +
+                    "\n" +
+                    "    p {\n" +
+                    "      margin: 1% 0;\n" +
+                    "    }\n" +
+                    "\n" +
+                    "    span {\n" +
+                    "      color: blue;\n" +
+                    "    }\n" +
+                    "\n" +
+                    "    .autoMail {\n" +
+                    "      color: red;\n" +
+                    "    }\n" +
+                    "  </style>\n" +
+                    "</head>\n" +
+                    "<body>\n" +
+                    "<div class=\"container-fluid\">\n" +
+                    "  <div class=\"row\">\n" +
+                    "    <div class=\"col-sm-3\"></div>\n" +
+                    "    <div class=\"col-sm-6 bodyMail\">\n" +
+                    "<div>\n" +
+                    "      <p>Kính gửi quý khách: <span>" + khachHang.getTen() + "</span></p>\n" +
+                    "      <p> Mật khẩu mới của quý khách là : <span>" + matKhauMoi + "</span></p>\n" +
+                    "      <p> Quý khách vui lòng đổi mật khẩu sau khi đăng nhập để đảm bảo tính bảo mật! </p>\n" +
+                    "      <p> Cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi! </p>\n" +
+                    "      <p> Trân trọng! </p>\n" +
+                    "       <img src=\"https://iweb.tatthanh.com.vn/pic/3/blog/images/logo-cong-ty-nem-2.jpg" +
+                    "       \" style=\"width: 50%\">\n" +
+                    "      </div>" +
+                    "    <div class=\"col-sm-3\"></div>\n" +
+                    "  </div>\n" +
+                    "</div>\n" +
+                    "      <p class=\"autoMail\">P/s : Đây là thư thông báo tự động. " +
+                    "      Quý khách vui lòng không trả lời thư này!</p>\n" +
+                    "</body>\n" +
+                    "</html>\n";
+            hoTro.setText(tieuDe, true);
+            this.emailSender.send(noiDung);
+
+            return new ThongBaoDTO("Mật khẩu mới đã được gởi về mail của quý khách !");
+        } else return new ThongBaoDTO("Mail này chưa được đăng ký !");
     }
 }

@@ -46,14 +46,12 @@ public class KhachHangServiceImpl implements KhachHangService {
     @Override
     public List<ChiTietGioHang> danhSachChiTietGioHang(String khachHang) {
         GioHang gioHang = this.gioHangRepository.findByKhachHang_Ten(khachHang);
-        List<ChiTietGioHang> danhSach = this.chiTietGioHangRepository.findAll();
+        List<Integer> danhSachMaChiTiet;
         List<ChiTietGioHang> ketQua = new ArrayList<>();
-
         if (gioHang != null) {
-            for (ChiTietGioHang chiTietGioHang : danhSach) {
-                if (chiTietGioHang.getGioHang().getMa().equals(gioHang.getMa())) {
-                    ketQua.add(chiTietGioHang);
-                }
+            danhSachMaChiTiet = this.gioHangRepository.danhSachChiTietGioHang(gioHang.getMa());
+            for (Integer maChiTiet : danhSachMaChiTiet) {
+                ketQua.add(this.chiTietGioHangRepository.findById(maChiTiet).orElse(null));
             }
         }
 
@@ -79,14 +77,13 @@ public class KhachHangServiceImpl implements KhachHangService {
     @Override
     public ThongBaoDTO luuGioHang(String tenKhachHang, String maSanPham, Integer soLuong) {
         GioHang gioHang = this.gioHangRepository.findByKhachHang_Ten(tenKhachHang);
-        List<ChiTietGioHang> danhSachChiTiet = this.chiTietGioHangRepository.findAll();
+        List<Integer> danhSachMaChiTiet;
         List<ChiTietGioHang> danhSachCungGioHang = new ArrayList<>();
         boolean kiemTra = true;
         if (gioHang != null) {
-            for (ChiTietGioHang chiTietGioHang : danhSachChiTiet) {
-                if (chiTietGioHang.getGioHang().getMa().equals(gioHang.getMa())) {
-                    danhSachCungGioHang.add(chiTietGioHang);
-                }
+            danhSachMaChiTiet = this.gioHangRepository.danhSachChiTietGioHang(gioHang.getMa());
+            for (Integer maChiTiet : danhSachMaChiTiet) {
+                danhSachCungGioHang.add(this.chiTietGioHangRepository.findById(maChiTiet).orElse(null));
             }
 
             for (ChiTietGioHang chiTietGioHang : danhSachCungGioHang) {

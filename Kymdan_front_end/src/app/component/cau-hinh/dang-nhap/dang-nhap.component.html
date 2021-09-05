@@ -36,8 +36,8 @@
                     </div>
                   </div>
                   <div class="pt-3" style="text-align: center">
-                    <button mat-button type="submit">Đăng nhập</button><br>
-                    <p style="color: red" class="mt-3">Quên mật khẩu ?</p>
+                    <button mat-button type="submit" class="mb-3">Đăng nhập</button><br>
+                    <a style="color: red" (click)="quenMatKhau()" [routerLink]="['/dang-nhap']">Quên mật khẩu ?</a>
                   </div>
                 </form>
               </div>

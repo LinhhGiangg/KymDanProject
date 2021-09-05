@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NhanVienService} from '../../../service/nhan-vien.service';
 import {TaiKhoanService} from '../../../service/tai-khoan.service';
+import 'hammerjs';
 
 @Component({
   selector: 'app-thong-ke',

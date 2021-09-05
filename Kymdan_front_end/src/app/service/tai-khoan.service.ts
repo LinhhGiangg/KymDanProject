@@ -56,4 +56,8 @@ export class TaiKhoanService {
   suaMatKhau(tenDangNhap, matKhauCu, matKhauMoi): Observable<any> {
     return this.http.get(this.API + '/suaMatKhau/' + tenDangNhap + '/' + matKhauCu + '/' + matKhauMoi);
   }
+
+  layMatKhau(mail): Observable<any> {
+    return this.http.get(this.API + '/layMatKhau/' + mail);
+  }
 }
