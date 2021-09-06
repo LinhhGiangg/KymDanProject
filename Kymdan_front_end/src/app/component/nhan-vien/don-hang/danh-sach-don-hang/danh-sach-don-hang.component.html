@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="quyen == 'Nhân Viên'">
   <div class="table-responsive">
     <div class="table-wrapper table-striped">
       <div class="table-title">
@@ -29,14 +29,14 @@
         <tr style="font-size: 17px">
           <th>STT</th>
           <th>Mã đơn hàng</th>
-          <th>Khách hàng</th>
-          <th>Địa chỉ</th>
+          <th style="width: 123px">Khách hàng</th>
+          <th style="width: 333px">Địa chỉ</th>
           <th>Ngày đặt</th>
           <th>Ngày nhận</th>
           <th>Thanh toán</th>
           <th>Trạng thái</th>
-          <th>Nhân viên</th>
-          <th>Giao hàng</th>
+          <th style="width: 123px">Nhân viên</th>
+          <th style="width: 123px">Giao hàng</th>
           <th>Thao tác</th>
         </tr>
         </thead>
@@ -77,4 +77,8 @@
   <div style="text-align: center" *ngIf="danhSachLoc.length == 0">
     <h1 style="font-weight: bold; color: red">Chưa có dữ liệu !</h1>
   </div>
+</div>
+
+<div class="container-fluid" *ngIf="quyen != 'Nhân Viên'" style="text-align: center">
+  <img src="assets/404.png" style="width: 45%">
 </div>

@@ -1,5 +1,5 @@
-<div class="container-fluid">
-  <div class="table-responsive" *ngIf="gioHang.length != 0 && quyen === 'Khách Hàng'">
+<div class="container-fluid" *ngIf="quyen === 'Khách Hàng'">
+  <div class="table-responsive" *ngIf="gioHang.length != 0">
     <div class="table-wrapper table-striped">
       <div class="table-title">
         <div class="row">
@@ -16,19 +16,21 @@
         <thead>
         <tr style="font-size: 17px">
           <th>STT</th>
-          <th>Người nhận</th>
-          <th>Địa chỉ</th>
+          <th>Mã đơn hàng</th>
+          <th style="width: 222px">Người nhận</th>
+          <th style="width: 333px">Địa chỉ</th>
           <th>Số điện thoại</th>
           <th>Ngày đặt</th>
           <th>Ngày nhận</th>
           <th>Thanh toán</th>
           <th>Trạng thái</th>
-          <th>Xem</th>
+          <th>Thao tác</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let phanTu of gioHang ; let i = index">
           <td>{{i + 1}}</td>
+          <td>{{phanTu.ma}}</td>
           <td>{{phanTu.nguoiNhan}}</td>
           <td>{{phanTu.diaChi}}</td>
           <td>{{phanTu.soDienThoai}}</td>
@@ -39,6 +41,11 @@
           <td>
             <a [routerLink]="['/danh-sach-san-pham']" (click)="xemChiTietDonHang(phanTu.ma)"
                class="view" title="Xem chi tiết" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+            <a [routerLink]="['/lich-su-mua-hang']" (click)="huyDonHang(phanTu.ma)"
+               *ngIf="phanTu.trangThai == 'Chờ duyệt'"
+               class="delete" title="Hủy đơn hàng" data-toggle="tooltip"><i class="fa fa-times-circle"></i></a>
+            <a [routerLink]="['/lich-su-mua-hang']" *ngIf="phanTu.trangThai != 'Chờ duyệt'"
+               title="Hủy đơn hàng" data-toggle="tooltip"><i class="fa fa-times-circle"></i></a>
           </td>
         </tr>
         </tbody>
@@ -57,8 +64,8 @@
       Mua ngay
     </button>
   </div>
+</div>
 
-  <div style="text-align: center" *ngIf="quyen !== 'Khách Hàng'">
-    <h1 style="color: red">Không tìm thấy trang !</h1>
-  </div>
+<div class="container-fluid" *ngIf="quyen != 'Khách Hàng'" style="text-align: center">
+  <img src="assets/404.png" style="width: 45%">
 </div>

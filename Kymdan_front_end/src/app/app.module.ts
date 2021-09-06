@@ -47,6 +47,8 @@ import {XoaSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuye
 import {ThongKeComponent} from './component/nhan-vien/thong-ke/thong-ke.component';
 import {ChartsModule} from '@progress/kendo-angular-charts';
 import {QuenMatKhauComponent} from './component/ca-nhan/quen-mat-khau/quen-mat-khau.component';
+import {HuyDonHangComponent} from './component/khach-hang/huy-don-hang/huy-don-hang.component';
+import {SaiDuongDanComponent} from './component/cau-hinh/sai-duong-dan/sai-duong-dan.component';
 
 @NgModule({
   declarations: [
@@ -86,14 +88,15 @@ import {QuenMatKhauComponent} from './component/ca-nhan/quen-mat-khau/quen-mat-k
     XacNhanGiaoComponent,
     XoaSanPhamKhuyenMaiComponent,
     ThongKeComponent,
-    QuenMatKhauComponent
+    QuenMatKhauComponent,
+    HuyDonHangComponent,
+    SaiDuongDanComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

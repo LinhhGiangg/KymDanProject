@@ -15,6 +15,7 @@ export class DanhSachDonHangComponent implements OnInit {
   public danhSachLoc = [];
   public thongBao;
   public nhanVien;
+  public quyen;
   public phanLoai;
 
   constructor(
@@ -26,9 +27,21 @@ export class DanhSachDonHangComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.phanLoai = 'Tất cả';
-    this.nhanVien = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
-    this.loc();
+    if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
+      this.phanLoai = 'Tất cả';
+      this.nhanVien = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
+      this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
+      this.danhSachLoc = [];
+      this.nhanVienService.danhSachDonHang(this.nhanVien).subscribe(
+        (duLieu) => {
+          this.danhSach = duLieu;
+        },
+        () => {
+        },
+        () => {
+          this.danhSachLoc = this.danhSach;
+        });
+    }
   }
 
   xemChiTietDonHang(ma) {
@@ -52,23 +65,15 @@ export class DanhSachDonHangComponent implements OnInit {
 
   loc() {
     this.danhSachLoc = [];
-    this.nhanVienService.danhSachDonHang(this.nhanVien).subscribe(
-      (duLieu) => {
-        this.danhSach = duLieu;
-      },
-      () => {
-      },
-      () => {
-        if (this.phanLoai === 'Tất cả') {
-          this.danhSachLoc = this.danhSach;
-        } else {
-          // tslint:disable-next-line:prefer-for-of
-          for (let i = 0; i < this.danhSach.length; i++) {
-            if (this.danhSach[i].trangThai === this.phanLoai) {
-              this.danhSachLoc.push(this.danhSach[i])
-            }
-          }
+    if (this.phanLoai === 'Tất cả') {
+      this.danhSachLoc = this.danhSach;
+    } else {
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < this.danhSach.length; i++) {
+        if (this.danhSach[i].trangThai === this.phanLoai) {
+          this.danhSachLoc.push(this.danhSach[i])
         }
-      });
+      }
+    }
   }
 }

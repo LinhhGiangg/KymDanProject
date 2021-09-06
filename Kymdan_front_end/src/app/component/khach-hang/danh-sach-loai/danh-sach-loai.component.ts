@@ -44,6 +44,7 @@ export class DanhSachLoaiComponent implements OnInit {
           this.danhSachLoai[i].moTa2 = this.danhSachLoai[i].moTa.split(',')[1];
           this.danhSachLoai[i].moTa3 = this.danhSachLoai[i].moTa.split(',')[2];
         }
+        this.danhSachLoai.reverse()
       });
   }
 

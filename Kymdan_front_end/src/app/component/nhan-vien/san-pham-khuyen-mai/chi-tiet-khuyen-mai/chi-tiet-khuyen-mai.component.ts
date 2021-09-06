@@ -7,6 +7,7 @@ import {SanPhamService} from '../../../../service/san-pham.service';
 import {ThemSanPhamKhuyenMaiComponent} from '../them-san-pham-khuyen-mai/them-san-pham-khuyen-mai.component';
 import {SuaSanPhamKhuyenMaiComponent} from '../sua-san-pham-khuyen-mai/sua-san-pham-khuyen-mai.component';
 import {XoaSanPhamKhuyenMaiComponent} from '../xoa-san-pham-khuyen-mai/xoa-san-pham-khuyen-mai.component';
+import {TaiKhoanService} from '../../../../service/tai-khoan.service';
 
 @Component({
   selector: 'app-chi-tiet-khuyen-mai',
@@ -18,9 +19,11 @@ export class ChiTietKhuyenMaiComponent implements OnInit {
   public tenKhuyenMai;
   public danhSach = [];
   public kiemTra = false;
+  public quyen = '';
   public ngayHienTai = new Date();
 
   constructor(
+    public taiKhoanService: TaiKhoanService,
     public khuyenMaiService: KhuyenMaiService,
     public sanPhamService: SanPhamService,
     public formBuilder: FormBuilder,
@@ -31,38 +34,41 @@ export class ChiTietKhuyenMaiComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.kiemTra = false;
-    this.activatedRouter.params.subscribe(duLieu => {
-      this.maKhuyenMai = duLieu.thongTin;
-    });
+    if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
+      this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
+      this.kiemTra = false;
+      this.activatedRouter.params.subscribe(duLieu => {
+        this.maKhuyenMai = duLieu.thongTin;
+      });
 
-    this.khuyenMaiService.timChiTietBangMaKhuyenMai(this.maKhuyenMai)
-      .subscribe(ketQua => {
-          this.danhSach = ketQua;
-        },
-        () => {
-        },
-        () => {
-          if (this.danhSach.length > 0) {
-            // tslint:disable-next-line:prefer-for-of
-            for (let i = 0; i < this.danhSach.length; i++) {
-              this.sanPhamService.timGiaBangMaSanPham(this.danhSach[i].sanPham.ma).subscribe(
-                (duLieu) => {
-                  this.danhSach[i].gia = duLieu.gia;
-                  this.danhSach[i].giaHienThi = this.sanPhamService.hienThiGia(this.danhSach[i].gia);
-                },
-                () => {
-                },
-                () => {
-                });
-            }
-            this.tenKhuyenMai = this.danhSach[0].khuyenMai.ten;
+      this.khuyenMaiService.timChiTietBangMaKhuyenMai(this.maKhuyenMai)
+        .subscribe(ketQua => {
+            this.danhSach = ketQua;
+          },
+          () => {
+          },
+          () => {
+            if (this.danhSach.length > 0) {
+              // tslint:disable-next-line:prefer-for-of
+              for (let i = 0; i < this.danhSach.length; i++) {
+                this.sanPhamService.timGiaBangMaSanPham(this.danhSach[i].sanPham.ma).subscribe(
+                  (duLieu) => {
+                    this.danhSach[i].gia = duLieu.gia;
+                    this.danhSach[i].giaHienThi = this.sanPhamService.hienThiGia(this.danhSach[i].gia);
+                  },
+                  () => {
+                  },
+                  () => {
+                  });
+              }
+              this.tenKhuyenMai = this.danhSach[0].khuyenMai.ten;
 
-            if (Date.parse(this.danhSach[0].khuyenMai.ngayKetThuc) > Date.parse(this.ngayHienTai.toDateString())) {
-              this.kiemTra = true;
+              if (Date.parse(this.danhSach[0].khuyenMai.ngayKetThuc) > Date.parse(this.ngayHienTai.toDateString())) {
+                this.kiemTra = true;
+              }
             }
-          }
-        });
+          });
+    }
   }
 
   themSanPham() {

@@ -8,6 +8,7 @@ import {LoaiSanPham} from '../../../model/LoaiSanPham';
 import {SanPhamService} from '../../../service/san-pham.service';
 import {LoaiSanPhamService} from '../../../service/loai-san-pham.service';
 import {KhachHangService} from '../../../service/khach-hang.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-mua-hang',
@@ -15,6 +16,7 @@ import {KhachHangService} from '../../../service/khach-hang.service';
   styleUrls: ['./mua-hang.component.css']
 })
 export class MuaHangComponent implements OnInit {
+  public formSoLuong: FormGroup;
   public thongBao;
   public quyen = 'Nothing';
   public tenDangNhap;
@@ -32,8 +34,10 @@ export class MuaHangComponent implements OnInit {
   public loaiSanPham = new LoaiSanPham();
   public chiTietGia = null;
   public chiTietKhuyenMai;
+  public kiemTraNhap;
 
   constructor(
+    public formBuilder: FormBuilder,
     public activatedRouter: ActivatedRoute,
     public sanPhamService: SanPhamService,
     public loaiSanPhamService: LoaiSanPhamService,
@@ -46,6 +50,10 @@ export class MuaHangComponent implements OnInit {
 
   ngOnInit(): void {
     this.soLuong = 1;
+    this.formSoLuong = this.formBuilder.group({
+      soLuong: [this.soLuong, [Validators.required, Validators.pattern('^([1-9]{1})([0-9]{0,1})$')]],
+    });
+    this.kiemTraNhap = false;
     if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
       this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
       this.tenDangNhap = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
@@ -123,6 +131,9 @@ export class MuaHangComponent implements OnInit {
   }
 
   chonSanPham(thongTinSanPham) {
+    this.formSoLuong.value.soLuong = 1;
+    this.soLuong = 1;
+    this.kiemTraNhap = false;
     this.sanPhamService.chonSanPham(thongTinSanPham).subscribe(
       (duLieu) => {
         this.sanPham = duLieu;
@@ -186,11 +197,15 @@ export class MuaHangComponent implements OnInit {
     if (soLuong === 1) {
       if (this.soLuong >= 2) {
         this.soLuong = this.soLuong - 1;
+        this.formSoLuong.value.soLuong = this.soLuong;
       }
     } else {
       if (this.soLuong < this.sanPham.soLuong) {
         this.soLuong = this.soLuong + 1;
+        this.formSoLuong.value.soLuong = this.soLuong;
       } else {
+        this.soLuong = this.sanPham.soLuong;
+        this.formSoLuong.value.soLuong = this.soLuong;
         this.hienThongBao('Hiện tại mặt hàng này chỉ còn ' + this.sanPham.soLuong + ' sản phẩm !')
       }
     }
@@ -221,6 +236,11 @@ export class MuaHangComponent implements OnInit {
         this.router.navigate(['/dang-nhap', {thongTin: this.thongTinSanPham + ',' + this.soLuong}]).then(() => {
         });
       }
+      if (this.kiemTraNhap === true) {
+        this.formSoLuong.value.soLuong = this.sanPham.soLuong;
+        this.soLuong = this.sanPham.soLuong;
+        this.kiemTraNhap = false;
+      }
     })
   }
 
@@ -241,5 +261,13 @@ export class MuaHangComponent implements OnInit {
           () => {
           });
       });
+  }
+
+  nhapSoLuong() {
+    this.soLuong = this.formSoLuong.value.soLuong;
+    if (this.soLuong > this.sanPham.soLuong) {
+      this.kiemTraNhap = true;
+      this.hienThongBao('Hiện tại mặt hàng này chỉ còn ' + this.sanPham.soLuong + ' sản phẩm !');
+    }
   }
 }

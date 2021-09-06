@@ -3,6 +3,8 @@ import {TaiKhoanService} from '../../../service/tai-khoan.service';
 import {KhachHangService} from '../../../service/khach-hang.service';
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
+import {XoaSanPhamComponent} from '../../nhan-vien/san-pham/xoa-san-pham/xoa-san-pham.component';
+import {HuyDonHangComponent} from '../huy-don-hang/huy-don-hang.component';
 
 @Component({
   selector: 'app-lich-su-mua-hang',
@@ -24,22 +26,37 @@ export class LichSuMuaHangComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.khachHang = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
-    this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
-    if (this.quyen === 'Khách Hàng') {
-      this.khachHangService.xemDonHang(this.khachHang).subscribe(
-        (duLieu) => {
-          this.gioHang = duLieu;
-        },
-        () => {
-        },
-        () => {
-        });
+    if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
+      this.khachHang = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
+      this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
+      if (this.quyen === 'Khách Hàng') {
+        this.khachHangService.xemDonHang(this.khachHang).subscribe(
+          (duLieu) => {
+            this.gioHang = duLieu;
+          },
+          () => {
+          },
+          () => {
+          });
+      }
     }
   }
 
   xemChiTietDonHang(ma) {
     this.router.navigate(['/chi-tiet-don-hang', {thongTin: ma}]).then(() => {
     });
+  }
+
+  huyDonHang(ma) {
+    const dialogRefDelete = this.dialog.open(HuyDonHangComponent, {
+      width: '715px',
+      height: '175px',
+      data: {thongTin: ma},
+      disableClose: true
+    });
+
+    dialogRefDelete.afterClosed().subscribe(() => {
+      this.ngOnInit()
+    })
   }
 }

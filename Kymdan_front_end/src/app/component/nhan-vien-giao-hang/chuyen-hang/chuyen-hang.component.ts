@@ -16,6 +16,7 @@ export class ChuyenHangComponent implements OnInit {
   public danhSachLoc = [];
   public thongBao;
   public nhanVien;
+  public quyen;
 
   constructor(
     public nhanVienService: NhanVienService,
@@ -27,8 +28,11 @@ export class ChuyenHangComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.nhanVien = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
-    this.loc();
+    if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
+      this.nhanVien = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
+      this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
+      this.loc();
+    }
   }
 
   chuyenTrangThai(ma) {

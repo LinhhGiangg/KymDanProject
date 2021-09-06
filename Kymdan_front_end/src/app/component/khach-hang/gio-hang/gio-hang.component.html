@@ -1,5 +1,5 @@
-<div class="container-fluid">
-  <div class="table-responsive" *ngIf="gioHang.length != 0 && quyen === 'Khách Hàng'">
+<div class="container-fluid" *ngIf="quyen === 'Khách Hàng'">
+  <div class="table-responsive" *ngIf="gioHang.length != 0">
     <div class="table-wrapper table-striped">
       <div class="table-title">
         <div class="row">
@@ -101,8 +101,8 @@
       Mua ngay
     </button>
   </div>
+</div>
 
-  <div style="text-align: center" *ngIf="quyen !== 'Khách Hàng'">
-    <h1 style="color: red">Không tìm thấy trang !</h1>
-  </div>
+<div class="container-fluid" *ngIf="quyen != 'Khách Hàng'" style="text-align: center">
+  <img src="assets/404.png" style="width: 45%">
 </div>

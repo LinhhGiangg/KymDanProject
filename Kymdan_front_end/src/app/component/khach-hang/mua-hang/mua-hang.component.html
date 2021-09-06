@@ -1,4 +1,5 @@
-<div class="container-fluid" style="background-color: rgba(0,128,0,0.15)">
+<div class="container-fluid" *ngIf="quyen == 'Khách Hàng' || quyen == 'Nothing'"
+     style="background-color: rgba(0,128,0,0.15)">
   <div class="row">
     <div class="col-sm-1"></div>
 
@@ -126,13 +127,29 @@
             <div class="row mb-3">
               <div class="col-sm-6">
                 <h3 style="font-weight: bold; margin: 2% 0 0 11%">Số lượng :</h3>
-                <h3 style="font-weight: bold; margin: 2% 0 0 11%">
-                  <i class="fa fa-minus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
-                     (click)="chonSoLuong(1)"></i>
-                  <span class="ml-3 mr-3" style="font-size: 25px; color: green">{{soLuong}}</span>
-                  <i class="fa fa-plus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
-                     (click)="chonSoLuong(2)"></i>
-                </h3>
+                <div class="row">
+                  <h3 style="font-weight: bold; margin: 2% 0 0 15%">
+                    <i class="fa fa-minus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
+                       (click)="chonSoLuong(1)"></i>
+                  </h3>
+
+                  <form class="ml-3 mr-3" [formGroup]="formSoLuong">
+                    <input style="font-size: 25px; color: green; width: 39px"
+                           formControlName="soLuong" [value]="formSoLuong.value.soLuong"
+                           (ngModelChange)="nhapSoLuong()">
+                  </form>
+
+                  <h3 style="font-weight: bold; margin-top: 2%">
+                    <i class="fa fa-plus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
+                       (click)="chonSoLuong(2)"></i>
+                  </h3>
+                </div>
+                <mat-error *ngIf="formSoLuong.controls.soLuong.errors?.required" style="margin-left: 4%">
+                  Số lượng không đươc để trống.
+                </mat-error>
+                <mat-error *ngIf="formSoLuong.controls.soLuong.errors?.pattern" style="margin-left: 12%">
+                  Chỉ được nhập số.
+                </mat-error>
               </div>
               <div class="col-sm-6">
                 <h3 style="font-weight: bold; margin: 2% 0 0 17%">Tình trạng :</h3>
@@ -143,7 +160,7 @@
             </div>
           </div>
 
-          <div class="row justify-content-center mt-5">
+          <div class="row justify-content-center mt-5" *ngIf="formSoLuong.valid">
             <button class="btn-success" *ngIf="quyen !== 'Khách Hàng'"
                     (click)="hienThongBao('Cần đăng nhập trước khi mua sản phẩm !')"
                     style="width: 90%; height: 50px; border-radius: 10px; border: 1px solid green">
@@ -211,4 +228,8 @@
     </div>
     <div class="col-sm-1"></div>
   </div>
+</div>
+
+<div class="container-fluid" *ngIf="quyen != '' && quyen != 'Khách Hàng'" style="text-align: center">
+  <img src="assets/404.png" style="width: 45%">
 </div>

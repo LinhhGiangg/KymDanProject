@@ -2,12 +2,10 @@ package com.kymdan.backend.services.loai_san_pham;
 
 import com.kymdan.backend.entity.ChiTietDonHang;
 import com.kymdan.backend.entity.LoaiSanPham;
-import com.kymdan.backend.entity.SanPham;
 import com.kymdan.backend.model.ThongBaoDTO;
 import com.kymdan.backend.model.LoaiSanPhamDTO;
 import com.kymdan.backend.repository.ChiTietDonHangRepository;
 import com.kymdan.backend.repository.LoaiSanPhamRepository;
-import com.kymdan.backend.repository.SanPhamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,14 +19,11 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
     private LoaiSanPhamRepository loaiSanPhamRepository;
 
     @Autowired
-    private SanPhamRepository sanPhamRepository;
-
-    @Autowired
     private ChiTietDonHangRepository chiTietDonHangRepository;
 
     @Override
     public List<LoaiSanPham> xemTatCa() {
-        return this.loaiSanPhamRepository.findAll();
+        return this.loaiSanPhamRepository.xemTatCa();
     }
 
     @Override
@@ -79,7 +74,7 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
             this.loaiSanPhamRepository.delete(loaiSanPham);
             return new ThongBaoDTO("Xóa thành công !");
         } else {
-            return new ThongBaoDTO("Loại này có sản phẩm đang trưng bày nên không thể xóa !");
+            return new ThongBaoDTO("Loại này đang có sản phẩm trưng bày nên không thể xóa !");
         }
     }
 

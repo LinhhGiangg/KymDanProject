@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="quyen == 'Nhân Viên'">
   <div style="text-align: center">
     <h1>Bảng thống kê doanh thu 5 tháng gần nhất</h1>
   </div>
@@ -15,4 +15,8 @@
       </kendo-chart-series-item>
     </kendo-chart-series>
   </kendo-chart>
+</div>
+
+<div class="container-fluid" *ngIf="quyen != 'Nhân Viên'" style="text-align: center">
+  <img src="assets/404.png" style="width: 45%">
 </div>

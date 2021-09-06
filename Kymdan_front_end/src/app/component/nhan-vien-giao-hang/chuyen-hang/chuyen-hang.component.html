@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="table-responsive">
+  <div class="table-responsive" *ngIf="quyen == 'Nhân Viên Giao Hàng'">
     <div class="table-wrapper table-striped">
       <div class="table-title">
         <div class="row">
@@ -60,7 +60,11 @@
     </div>
   </div>
 
-  <div style="text-align: center" *ngIf="danhSachLoc.length == 0">
+  <div style="text-align: center" *ngIf="danhSachLoc.length == 0 && quyen == 'Nhân Viên Giao Hàng'">
     <h1 style="font-weight: bold; color: red">Chưa có dữ liệu !</h1>
+  </div>
+
+  <div style="text-align: center" *ngIf="quyen != 'Nhân Viên Giao Hàng'">
+    <img src="assets/404.png" style="width: 45%">
   </div>
 </div>

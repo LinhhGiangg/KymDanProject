@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="quyen == 'Nhân Viên'">
   <div class="table-responsive">
     <div class="table-wrapper table-striped">
 
@@ -50,4 +50,8 @@
       <div class="clearfix"></div>
     </div>
   </div>
+</div>
+
+<div class="container-fluid" *ngIf="quyen != 'Nhân Viên'" style="text-align: center">
+  <img src="assets/404.png" style="width: 45%">
 </div>

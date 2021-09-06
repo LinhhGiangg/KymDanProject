@@ -34,6 +34,8 @@ import {XacNhanGiaoComponent} from './component/nhan-vien-giao-hang/xac-nhan-gia
 import {XoaSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/xoa-san-pham-khuyen-mai/xoa-san-pham-khuyen-mai.component';
 import {ThongKeComponent} from './component/nhan-vien/thong-ke/thong-ke.component';
 import {QuenMatKhauComponent} from './component/ca-nhan/quen-mat-khau/quen-mat-khau.component';
+import {HuyDonHangComponent} from './component/khach-hang/huy-don-hang/huy-don-hang.component';
+import {SaiDuongDanComponent} from './component/cau-hinh/sai-duong-dan/sai-duong-dan.component';
 
 const routes: Routes = [
   {path: '', component: TrangChuComponent},
@@ -52,6 +54,7 @@ const routes: Routes = [
   {path: 'dat-hang', component: DatHangComponent},
   {path: 'gio-hang', component: GioHangComponent},
   {path: 'lich-su-mua-hang', component: LichSuMuaHangComponent},
+  {path: 'huy-don-hang', component: HuyDonHangComponent},
   {path: 'chi-tiet-don-hang', component: ChiTietDonHangComponent},
 
   // Nhân Viên
@@ -83,6 +86,9 @@ const routes: Routes = [
   // Nhân Viên Giao Hàng
   {path: 'chuyen-hang', component: ChuyenHangComponent},
   {path: 'xac-nhan-giao', component: XacNhanGiaoComponent},
+
+  // Sai đường dẫn
+  {path: '**', component: SaiDuongDanComponent},
 ];
 
 @NgModule({

@@ -30,6 +30,7 @@ export class DatHangComponent implements OnInit {
   public hienThiPayPal = false;
   public thongTin;
   public thongBao;
+  public kiemTra;
   public xacNhanThanhToan;
   public thongTinDonHang;
   public cachThanhToan = 'Tiền mặt';
@@ -48,55 +49,59 @@ export class DatHangComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.gioHang = [new ChiTietGioHang()];
-    this.xacNhanThanhToan = false;
-    this.tienCanThanhToan = 0;
-    this.tongTienHienThi = '';
-    this.usd = 0;
-    this.duLieuCanLay = 0;
-    this.giaCanLay = 0;
-    this.khuyenMaiCanLay = 0;
+    if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
+      this.kiemTra = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
 
-    this.formDatHang = this.formBuilder.group({
-      ten: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50),
-        // tslint:disable-next-line:max-line-length
-        Validators.pattern('^([aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+(\\s[aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+)*)$')]],
-      soDienThoai: ['', [Validators.required, Validators.pattern('((09|03|07|08|05)+([0-9]{8})\\b)')]],
-      diaChi: ['', [Validators.required]],
-      ngayNhan: ['', [Validators.required]],
-    });
+      this.gioHang = [new ChiTietGioHang()];
+      this.xacNhanThanhToan = false;
+      this.tienCanThanhToan = 0;
+      this.tongTienHienThi = '';
+      this.usd = 0;
+      this.duLieuCanLay = 0;
+      this.giaCanLay = 0;
+      this.khuyenMaiCanLay = 0;
 
-    this.tenKhachHang = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
-    this.khachHangService.timBangTen(this.tenKhachHang)
-      .subscribe(ketQua => {
-          this.khachHang = ketQua;
-          if (this.khachHang != null) {
-            this.formDatHang.patchValue(ketQua);
-          }
-        },
-        () => {
-        },
-        () => {
-        });
+      this.formDatHang = this.formBuilder.group({
+        ten: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50),
+          // tslint:disable-next-line:max-line-length
+          Validators.pattern('^([aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+(\\s[aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+)*)$')]],
+        soDienThoai: ['', [Validators.required, Validators.pattern('((09|03|07|08|05)+([0-9]{8})\\b)')]],
+        diaChi: ['', [Validators.required]],
+        ngayNhan: ['', [Validators.required]],
+      });
 
-    this.activatedRouter.params.subscribe(duLieu => {
-      this.thongTin = duLieu.thongTin;
-      for (let i = 0; i < this.thongTin.split(',').length; i++) {
-        this.duLieuCanLay = 0;
-        this.khachHangService.timChiTietGioHang(this.thongTin.split(',')[i], this.tenKhachHang).subscribe(
-          (ketQua) => {
-            this.duLieuCanLay = ketQua;
+      this.tenKhachHang = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
+      this.khachHangService.timBangTen(this.tenKhachHang)
+        .subscribe(ketQua => {
+            this.khachHang = ketQua;
+            if (this.khachHang != null) {
+              this.formDatHang.patchValue(ketQua);
+            }
           },
           () => {
           },
           () => {
-            this.layDuLieu(i);
-            this.thongTinKhuyenMai(i);
           });
+
+      this.activatedRouter.params.subscribe(duLieu => {
+        this.thongTin = duLieu.thongTin;
+        for (let i = 0; i < this.thongTin.split(',').length; i++) {
+          this.duLieuCanLay = 0;
+          this.khachHangService.timChiTietGioHang(this.thongTin.split(',')[i], this.tenKhachHang).subscribe(
+            (ketQua) => {
+              this.duLieuCanLay = ketQua;
+            },
+            () => {
+            },
+            () => {
+              this.layDuLieu(i);
+              this.thongTinKhuyenMai(i);
+            });
+        }
+      });
+      if (this.hienThiPayPal === false) {
+        this.payPal();
       }
-    });
-    if (this.hienThiPayPal === false) {
-      this.payPal();
     }
   }
 

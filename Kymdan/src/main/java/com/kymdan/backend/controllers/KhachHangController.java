@@ -89,4 +89,10 @@ public class KhachHangController {
         List<ChiTietDonHang> ketQua = this.khachHangService.xemChiTietDonHang(maDonHang);
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
+
+    @GetMapping("/huyDonHang/{maDonHang}")
+    public ResponseEntity<ThongBaoDTO> huyDonHang(@PathVariable String maDonHang) {
+        ThongBaoDTO ketQua = this.khachHangService.huyDonHang(maDonHang);
+        return new ResponseEntity<>(ketQua, HttpStatus.OK);
+    }
 }

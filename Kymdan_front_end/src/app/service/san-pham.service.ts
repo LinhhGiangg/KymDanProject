@@ -14,22 +14,11 @@ export class SanPhamService {
   }
 
   hienThiGia(thongTin) {
-    let hangTrieu;
-    let hangNgan;
-    // tslint:disable-next-line:radix
-    hangTrieu = (thongTin / 1000000).toString().split('.')[0] + '';
-    // tslint:disable-next-line:radix
-    hangNgan = ((thongTin - Number.parseInt(hangTrieu) * 1000000) / 1000).toString().split('.')[0] + '';
-    if (hangNgan === '0') {
-      return hangTrieu + '.000.000'
-      // tslint:disable-next-line:radix
-    } else if (Number.parseInt(hangNgan) < 10) {
-      return hangTrieu + '.00' + hangNgan + '.000';
-      // tslint:disable-next-line:radix
-    } else if (Number.parseInt(hangNgan) < 100) {
-      return hangTrieu + '.0' + hangNgan + '.000';
-    } else {
-      return hangTrieu + '.' + hangNgan + '.000';
+    thongTin = thongTin + '';
+    if (thongTin.length >= 7 && thongTin.length <= 9) {
+      return thongTin.slice(-(thongTin.length), -6) + '.' + thongTin.slice(-6, -3) + '.000';
+    } else if (thongTin.length >= 10 && thongTin.length <= 12) {
+      return thongTin.slice(-(thongTin.length), -9) + '.' + thongTin.slice(-9, -6) + '.' + thongTin.slice(-6, -3) + '.000';
     }
   }
 

@@ -198,15 +198,37 @@ public class KhachHangServiceImpl implements KhachHangService {
 
     @Override
     public List<ChiTietDonHang> xemChiTietDonHang(String maDonHang) {
-        List<ChiTietDonHang> danhSachChiTiet = this.chiTietDonHangRepository.findAll();
+        List<Integer> danhSachMaChiTiet = this.donHangRepository.timChiTietDonHang(maDonHang);
         List<ChiTietDonHang> ketQua = new ArrayList<>();
 
-        for (ChiTietDonHang chiTietDonHang : danhSachChiTiet) {
-            if (chiTietDonHang.getDonHang().getMa().equals(maDonHang)) {
-                ketQua.add(chiTietDonHang);
-            }
+        for (Integer maChiTiet : danhSachMaChiTiet) {
+            ketQua.add(this.chiTietDonHangRepository.findById(maChiTiet).orElse(null));
         }
 
         return ketQua;
+    }
+
+    @Override
+    public ThongBaoDTO huyDonHang(String maDonHang) {
+        List<Integer> danhSachMaChiTiet = this.donHangRepository.timChiTietDonHang(maDonHang);
+        SanPham sanPham;
+        ChiTietDonHang chiTietDonHang;
+
+        for (Integer maChiTiet : danhSachMaChiTiet) {
+            chiTietDonHang = this.chiTietDonHangRepository.findById(maChiTiet).orElse(null);
+            if (chiTietDonHang != null) {
+                sanPham = chiTietDonHang.getSanPham();
+                sanPham.setSoLuong(sanPham.getSoLuong() + chiTietDonHang.getSoLuong());
+                this.sanPhamRepository.save(sanPham);
+            } else return new ThongBaoDTO("Lỗi hệ thống !");
+        }
+
+        DonHang donHang = this.donHangRepository.findById(maDonHang).orElse(null);
+        if (donHang != null) {
+            donHang.setTrangThai("Đã hủy");
+            this.donHangRepository.save(donHang);
+        } else return new ThongBaoDTO("Lỗi hệ thống !");
+
+        return new ThongBaoDTO("Hủy đơn hàng thành công");
     }
 }

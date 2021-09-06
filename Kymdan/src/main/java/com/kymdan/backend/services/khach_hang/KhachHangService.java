@@ -29,4 +29,6 @@ public interface KhachHangService {
     List<DonHang> xemDonHang(String khachHang);
 
     List<ChiTietDonHang> xemChiTietDonHang(String maDonHang);
+
+    ThongBaoDTO huyDonHang(String maDonHang);
 }

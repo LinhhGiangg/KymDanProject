@@ -6,6 +6,7 @@ import {TaoMoiLoaiComponent} from '../tao-moi-loai/tao-moi-loai.component';
 import {SuaLoaiComponent} from '../sua-loai/sua-loai.component';
 import {XoaLoaiComponent} from '../xoa-loai/xoa-loai.component';
 import {Router} from '@angular/router';
+import {TaiKhoanService} from '../../../../service/tai-khoan.service';
 
 @Component({
   selector: 'app-quan-ly-loai',
@@ -15,8 +16,10 @@ import {Router} from '@angular/router';
 export class QuanLyLoaiComponent implements OnInit {
   public danhSachLoai = [new LoaiSanPham()];
   public thongBao;
+  public quyen = '';
 
   constructor(
+    public taiKhoanService: TaiKhoanService,
     public loaiSanPhamService: LoaiSanPhamService,
     public dialog: MatDialog,
     public router: Router,
@@ -24,20 +27,23 @@ export class QuanLyLoaiComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loaiSanPhamService.xemTatCa().subscribe(
-      (duLieu) => {
-        this.danhSachLoai = duLieu;
-      },
-      () => {
-      },
-      () => {
-        // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < this.danhSachLoai.length; i++) {
-          this.danhSachLoai[i].moTa1 = this.danhSachLoai[i].moTa.split(',')[0];
-          this.danhSachLoai[i].moTa2 = this.danhSachLoai[i].moTa.split(',')[1];
-          this.danhSachLoai[i].moTa3 = this.danhSachLoai[i].moTa.split(',')[2];
-        }
-      });
+    if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
+      this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
+      this.loaiSanPhamService.xemTatCa().subscribe(
+        (duLieu) => {
+          this.danhSachLoai = duLieu;
+        },
+        () => {
+        },
+        () => {
+          // tslint:disable-next-line:prefer-for-of
+          for (let i = 0; i < this.danhSachLoai.length; i++) {
+            this.danhSachLoai[i].moTa1 = this.danhSachLoai[i].moTa.split(',')[0];
+            this.danhSachLoai[i].moTa2 = this.danhSachLoai[i].moTa.split(',')[1];
+            this.danhSachLoai[i].moTa3 = this.danhSachLoai[i].moTa.split(',')[2];
+          }
+        });
+    }
   }
 
   taoMoi() {

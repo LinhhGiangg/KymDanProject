@@ -14,7 +14,7 @@ import {ThongBaoComponent} from '../../cau-hinh/thong-bao/thong-bao.component';
 })
 export class ThongTinComponent implements OnInit {
   public tenDangNhap;
-  public quyen;
+  public quyen = '';
   public ngaySinhBanDau;
   public nguoiDung = new TaiKhoan();
   public thongBao;
@@ -33,19 +33,21 @@ export class ThongTinComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formSuaThongTin = this.formBuilder.group({
-      email: [''],
-      soDienThoai: ['', [Validators.required, Validators.pattern('((09|03|07|08|05)+([0-9]{8})\\b)')]],
-      ngaySinh: ['', [Validators.required, this.kiemTraTuoi]],
-      diaChi: ['', [Validators.required]],
-      gioiTinh: ['', [Validators.required]],
-    });
-    this.tenDangNhap = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
-    this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
-    this.taiKhoanService.xemThongTin(this.tenDangNhap, this.quyen).subscribe(duLieu => {
-      this.nguoiDung = duLieu;
-      this.formSuaThongTin.patchValue(duLieu);
-    });
+    if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
+      this.formSuaThongTin = this.formBuilder.group({
+        email: [''],
+        soDienThoai: ['', [Validators.required, Validators.pattern('((09|03|07|08|05)+([0-9]{8})\\b)')]],
+        ngaySinh: ['', [Validators.required, this.kiemTraTuoi]],
+        diaChi: ['', [Validators.required]],
+        gioiTinh: ['', [Validators.required]],
+      });
+      this.tenDangNhap = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
+      this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
+      this.taiKhoanService.xemThongTin(this.tenDangNhap, this.quyen).subscribe(duLieu => {
+        this.nguoiDung = duLieu;
+        this.formSuaThongTin.patchValue(duLieu);
+      });
+    }
   }
 
   suaThongTin() {

@@ -1,4 +1,4 @@
-<div class="container-fluid bg-white">
+<div class="container-fluid bg-white" *ngIf="quyen != ''">
   <div class="row border" style="border-radius: 20px">
     <div class="col-sm-6"><img src="assets/sanPham1.jpg" alt="" style="width: 100%"></div>
     <div class="col-sm-6 pt-3">
@@ -130,4 +130,8 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="container-fluid" *ngIf="quyen == ''" style="text-align: center">
+  <img src="assets/404.png" style="width: 45%">
 </div>

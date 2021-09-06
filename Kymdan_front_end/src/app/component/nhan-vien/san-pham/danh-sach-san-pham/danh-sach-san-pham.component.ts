@@ -6,6 +6,7 @@ import {SanPhamService} from '../../../../service/san-pham.service';
 import {XoaSanPhamComponent} from '../xoa-san-pham/xoa-san-pham.component';
 import {SuaSanPhamComponent} from '../sua-san-pham/sua-san-pham.component';
 import {ThemSanPhamComponent} from '../them-san-pham/them-san-pham.component';
+import {TaiKhoanService} from '../../../../service/tai-khoan.service';
 
 @Component({
   selector: 'app-danh-sach-san-pham',
@@ -17,8 +18,10 @@ export class DanhSachSanPhamComponent implements OnInit {
   public thongBao;
   public maLoai;
   public tenLoai;
+  public quyen = '';
 
   constructor(
+    public taiKhoanService: TaiKhoanService,
     public sanPhamService: SanPhamService,
     public dialog: MatDialog,
     public router: Router,
@@ -27,31 +30,36 @@ export class DanhSachSanPhamComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRouter.params.subscribe(duLieu => {
-      this.maLoai = duLieu.thongTin;
-    });
-
-    this.sanPhamService.locTheoMaLoai(this.maLoai).subscribe(
-      (duLieu) => {
-        this.danhSach = duLieu;
-      },
-      () => {
-      },
-      () => {
-        // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < this.danhSach.length; i++) {
-          this.sanPhamService.timGiaBangMaSanPham(this.danhSach[i].ma).subscribe(
-            (duLieu) => {
-              this.danhSach[i].gia = duLieu.gia;
-              this.danhSach[i].giaHienThi = this.sanPhamService.hienThiGia(this.danhSach[i].gia);
-            },
-            () => {
-            },
-            () => {
-            });
-        }
-        this.tenLoai = this.danhSach[0].loaiSanPham.ten;
+    if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
+      this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
+      this.activatedRouter.params.subscribe(duLieu => {
+        this.maLoai = duLieu.thongTin;
       });
+
+      this.sanPhamService.locTheoMaLoai(this.maLoai).subscribe(
+        (duLieu) => {
+          this.danhSach = duLieu;
+        },
+        () => {
+        },
+        () => {
+          // tslint:disable-next-line:prefer-for-of
+          for (let i = 0; i < this.danhSach.length; i++) {
+            this.sanPhamService.timGiaBangMaSanPham(this.danhSach[i].ma).subscribe(
+              (duLieu) => {
+                this.danhSach[i].gia = duLieu.gia;
+                this.danhSach[i].giaHienThi = this.sanPhamService.hienThiGia(this.danhSach[i].gia);
+              },
+              () => {
+              },
+              () => {
+              });
+          }
+          if (this.danhSach.length > 0) {
+            this.tenLoai = this.danhSach[0].loaiSanPham.ten;
+          }
+        });
+    }
   }
 
   taoMoi() {

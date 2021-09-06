@@ -6,6 +6,7 @@ import {ThemKhuyenMaiComponent} from '../them-khuyen-mai/them-khuyen-mai.compone
 import {SuaKhuyenMaiComponent} from '../sua-khuyen-mai/sua-khuyen-mai.component';
 import {XoaKhuyenMaiComponent} from '../xoa-khuyen-mai/xoa-khuyen-mai.component';
 import {ThongBaoComponent} from '../../../cau-hinh/thong-bao/thong-bao.component';
+import {TaiKhoanService} from '../../../../service/tai-khoan.service';
 
 @Component({
   selector: 'app-danh-sach-khuyen-mai',
@@ -15,9 +16,11 @@ import {ThongBaoComponent} from '../../../cau-hinh/thong-bao/thong-bao.component
 export class DanhSachKhuyenMaiComponent implements OnInit {
   public danhSach = [];
   public thongBao;
+  public quyen = '';
   public ngayHienTai = new Date();
 
   constructor(
+    public taiKhoanService: TaiKhoanService,
     public khuyenMaiService: KhuyenMaiService,
     public dialog: MatDialog,
     public router: Router,
@@ -25,22 +28,25 @@ export class DanhSachKhuyenMaiComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.khuyenMaiService.xemTatCa().subscribe(
-      (duLieu) => {
-        this.danhSach = duLieu;
-      },
-      () => {
-      },
-      () => {
-        // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < this.danhSach.length; i++) {
-          if (Date.parse(this.danhSach[i].ngayBatDau) > Date.parse(this.ngayHienTai.toDateString())) {
-            this.danhSach[i].trangThai = 'Chưa khuyến mãi';
-          } else {
-            this.danhSach[i].trangThai = 'Đã khuyến mãi';
+    if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
+      this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
+      this.khuyenMaiService.xemTatCa().subscribe(
+        (duLieu) => {
+          this.danhSach = duLieu;
+        },
+        () => {
+        },
+        () => {
+          // tslint:disable-next-line:prefer-for-of
+          for (let i = 0; i < this.danhSach.length; i++) {
+            if (Date.parse(this.danhSach[i].ngayBatDau) > Date.parse(this.ngayHienTai.toDateString())) {
+              this.danhSach[i].trangThai = 'Chưa khuyến mãi';
+            } else {
+              this.danhSach[i].trangThai = 'Đã khuyến mãi';
+            }
           }
-        }
-      });
+        });
+    }
   }
 
   taoMoi() {

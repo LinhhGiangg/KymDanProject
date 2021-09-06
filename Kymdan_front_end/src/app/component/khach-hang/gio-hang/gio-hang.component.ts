@@ -13,6 +13,15 @@ import {ThongBaoComponent} from '../../cau-hinh/thong-bao/thong-bao.component';
   styleUrls: ['./gio-hang.component.css']
 })
 export class GioHangComponent implements OnInit {
+  public gioHang = [new ChiTietGioHang()];
+  public thongBao;
+  public khachHang;
+  public quyen = '';
+  public kiemTraMua;
+  public danhSachMua = [];
+  public maCanXoa;
+  public tienCanThanhToan;
+  public tienCanThanhToanHienThi;
 
   constructor(
     public taiKhoanService: TaiKhoanService,
@@ -23,37 +32,29 @@ export class GioHangComponent implements OnInit {
   ) {
   }
 
-  public gioHang = [new ChiTietGioHang()];
-  public thongBao;
-  public khachHang;
-  public quyen;
-  public kiemTraMua;
-  public danhSachMua = [];
-  public maCanXoa;
-  public tienCanThanhToan;
-  public tienCanThanhToanHienThi;
-
   ngOnInit(): void {
-    this.kiemTraMua = false;
-    this.maCanXoa = -1;
-    this.danhSachMua = [];
-    this.khachHang = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
-    this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
-    if (this.quyen === 'Khách Hàng') {
-      this.khachHangService.danhSachChiTietGioHang(this.khachHang).subscribe(
-        (duLieu) => {
-          this.gioHang = duLieu;
-        },
-        () => {
-        },
-        () => {
-          // tslint:disable-next-line:prefer-for-of
-          for (let i = 0; i < this.gioHang.length; i++) {
-            this.thongTinSanPham(i);
-            this.thongTinKhuyenMai(i);
-            this.gioHang[i].chon = false;
-          }
-        });
+    if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
+      this.kiemTraMua = false;
+      this.maCanXoa = -1;
+      this.danhSachMua = [];
+      this.khachHang = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
+      this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
+      if (this.quyen === 'Khách Hàng') {
+        this.khachHangService.danhSachChiTietGioHang(this.khachHang).subscribe(
+          (duLieu) => {
+            this.gioHang = duLieu;
+          },
+          () => {
+          },
+          () => {
+            // tslint:disable-next-line:prefer-for-of
+            for (let i = 0; i < this.gioHang.length; i++) {
+              this.thongTinSanPham(i);
+              this.thongTinKhuyenMai(i);
+              this.gioHang[i].chon = false;
+            }
+          });
+      }
     }
   }
 

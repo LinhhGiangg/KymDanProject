@@ -11,6 +11,7 @@ import 'hammerjs';
 export class ThongKeComponent implements OnInit {
   public doanhThu = [];
   public nhanVien;
+  public quyen;
   public duLieu: number[] = [];
 
   public thang: string[] = [];
@@ -22,20 +23,23 @@ export class ThongKeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.nhanVien = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
-    this.nhanVienService.thongKe(this.nhanVien).subscribe(
-      (duLieu) => {
-        this.doanhThu = duLieu;
-      },
-      () => {
-      },
-      () => {
-        // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < this.doanhThu.length; i++) {
-          this.duLieu.push(this.doanhThu[i][0] / 1000000);
-          this.thang.push('Tháng ' + this.doanhThu[i][1]);
-        }
-      });
+    if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
+      this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
+      this.nhanVien = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
+      this.nhanVienService.thongKe(this.nhanVien).subscribe(
+        (duLieu) => {
+          this.doanhThu = duLieu;
+        },
+        () => {
+        },
+        () => {
+          // tslint:disable-next-line:prefer-for-of
+          for (let i = 0; i < this.doanhThu.length; i++) {
+            this.duLieu.push(this.doanhThu[i][0] / 1000000);
+            this.thang.push('Tháng ' + this.doanhThu[i][1]);
+          }
+        });
+    }
   }
 
 }

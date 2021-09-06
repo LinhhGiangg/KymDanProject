@@ -32,7 +32,7 @@ export class XoaKhuyenMaiComponent implements OnInit {
     this.khuyenMaiService.xoa(this.ma).subscribe(duLieu => {
       this.thongBao = duLieu.thongBao;
       const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
-        width: '696px',
+        width: '715px',
         height: '180px',
         data: {thongBao: this.thongBao},
         disableClose: true
