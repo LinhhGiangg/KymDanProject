@@ -6,6 +6,7 @@ import com.kymdan.backend.entity.HoaDon;
 import com.kymdan.backend.entity.NhanVienGiaoHang;
 import com.kymdan.backend.model.HoaDonDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
+import com.kymdan.backend.model.ThongKeDTO;
 import com.kymdan.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -84,8 +85,10 @@ public class NhanVienServiceImpl implements NhanVienService {
     }
 
     @Override
-    public List<?> thongKe() {
-        return this.nhanVienRepository.thongKe();
+    public List<?> thongKe(ThongKeDTO thongKeDTO) {
+        LocalDate ngayBatDau = thongKeDTO.getNgayBatDau().plusDays(1);
+        LocalDate ngayKetThuc = thongKeDTO.getNgayKetThuc().plusDays(1);
+        return this.nhanVienRepository.thongKe(ngayBatDau, ngayKetThuc);
     }
 
     @Override

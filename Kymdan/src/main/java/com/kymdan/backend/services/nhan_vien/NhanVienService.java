@@ -5,6 +5,7 @@ import com.kymdan.backend.entity.HoaDon;
 import com.kymdan.backend.entity.NhanVienGiaoHang;
 import com.kymdan.backend.model.HoaDonDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
+import com.kymdan.backend.model.ThongKeDTO;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface NhanVienService {
 
     ThongBaoDTO giaoHangHoanTat(String thongTin);
 
-    List<?> thongKe();
+    List<?> thongKe(ThongKeDTO thongKeDTO);
 
     HoaDon timHoaDonBangMaHoaDon(String thongTin);
 

@@ -44,12 +44,13 @@ import {PhanCongComponent} from './component/nhan-vien/don-hang/phan-cong/phan-c
 import {MatRadioModule} from '@angular/material/radio';
 import {XacNhanGiaoComponent} from './component/nhan-vien-giao-hang/xac-nhan-giao/xac-nhan-giao.component';
 import {XoaSanPhamKhuyenMaiComponent} from './component/nhan-vien/san-pham-khuyen-mai/xoa-san-pham-khuyen-mai/xoa-san-pham-khuyen-mai.component';
-import {ThongKeComponent} from './component/nhan-vien/thong-ke/thong-ke.component';
+import {ThongKeComponent} from './component/nhan-vien/doanh-thu/thong-ke/thong-ke.component';
 import {ChartsModule} from '@progress/kendo-angular-charts';
 import {QuenMatKhauComponent} from './component/ca-nhan/quen-mat-khau/quen-mat-khau.component';
 import {HuyDonHangComponent} from './component/khach-hang/huy-don-hang/huy-don-hang.component';
 import {SaiDuongDanComponent} from './component/cau-hinh/sai-duong-dan/sai-duong-dan.component';
 import {HoaDonComponent} from './component/nhan-vien/hoa-don/hoa-don.component';
+import {ChonNgayComponent} from './component/nhan-vien/doanh-thu/chon-ngay/chon-ngay.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import {HoaDonComponent} from './component/nhan-vien/hoa-don/hoa-don.component';
     HuyDonHangComponent,
     SaiDuongDanComponent,
     HoaDonComponent,
+    ChonNgayComponent,
   ],
   imports: [
     BrowserModule,

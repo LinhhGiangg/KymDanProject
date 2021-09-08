@@ -1,0 +1,66 @@
+<div class="container-fluid" *ngIf="quyen == 'Nhân Viên'">
+
+  <div class="mt-3" style="text-align: center">
+    <h1 style="color: green; font-weight: bold">
+      Bảng thống kê doanh thu
+      <span [hidden]="kiemTra"> 6 tháng gần nhất</span>
+      <span [hidden]="!kiemTra"> từ ngày {{ngayBatDauHienThi}} đến ngày {{ngayKetThucHienThi}}</span>
+    </h1>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <h3 style="font-weight: bold; color: green; margin-left: 65px" [hidden]="doanhThu.length == 0">
+        Đơn vị : triệu VND
+      </h3>
+    </div>
+    <div class="col-sm-8"></div>
+    <div class="col-sm-2">
+      <button style="margin-left: 5px" class="btn btn-success" (click)="chonNgay()">
+        Chọn khoảng thời gian
+      </button>
+    </div>
+  </div>
+
+  <kendo-chart [hidden]="doanhThu.length == 0" renderAs="canvas"
+               [popupSettings]="popupSettings">
+
+<!--    <kendo-chart-area [margin]="35">-->
+<!--    </kendo-chart-area>-->
+
+<!--    <kendo-chart-plot-area background="green"> </kendo-chart-plot-area>-->
+
+<!--    <kendo-chart-tooltip> </kendo-chart-tooltip>-->
+
+    <kendo-chart-series>
+      <kendo-chart-series-item [data]="duLieu">
+        <kendo-chart-series-item-labels>
+        </kendo-chart-series-item-labels>
+      </kendo-chart-series-item>
+    </kendo-chart-series>
+
+    <kendo-chart-category-axis>
+      <kendo-chart-category-axis-item [categories]="ngay">
+      </kendo-chart-category-axis-item>
+    </kendo-chart-category-axis>
+
+<!--    <kendo-chart-value-axis>-->
+<!--      <kendo-chart-value-axis-item>-->
+<!--        <kendo-chart-value-axis-item-crosshair>-->
+<!--          <kendo-chart-value-axis-item-crosshair-tooltip>-->
+<!--          </kendo-chart-value-axis-item-crosshair-tooltip>-->
+<!--        </kendo-chart-value-axis-item-crosshair>-->
+<!--      </kendo-chart-value-axis-item>-->
+<!--    </kendo-chart-value-axis>-->
+
+  </kendo-chart>
+  <ng-container #container> </ng-container>
+
+  <div [hidden]="doanhThu.length != 0" style="text-align: center">
+    <h1 style="font-weight: bold; color: red">Chưa có dữ liệu !</h1>
+  </div>
+</div>
+
+<div class="container-fluid" *ngIf="quyen != 'Nhân Viên'" style="text-align: center">
+  <img src="assets/404.png" style="width: 45%">
+</div>

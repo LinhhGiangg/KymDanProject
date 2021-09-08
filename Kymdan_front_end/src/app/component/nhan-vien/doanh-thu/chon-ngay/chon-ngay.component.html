@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <form (ngSubmit)="hoanTatChonNgay()" [formGroup]="formChonNgay">
+
+      <div class="text-center">
+        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" style="color: green" id="add">
+          <strong style="font-size: 25px">Chọn khoảng thời gian thống kê doanh thu</strong>
+        </h3>
+      </div>
+
+      <div>
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Ngày bắt đầu<sup class="text-danger"> *</sup></mat-label>
+            <input matInput [matDatepicker]="ngayBatDau" formControlName="ngayBatDau"
+                   (dateChange)="gioiHanNgayKetThuc(ngayBatDau)" [max]="ngayHienTai">
+            <mat-datepicker-toggle matSuffix [for]="ngayBatDau"></mat-datepicker-toggle>
+            <mat-datepicker #ngayBatDau></mat-datepicker>
+            <mat-error *ngIf="formChonNgay.controls.ngayBatDau.errors?.required">Ngày bắt đầu không đươc để trống.
+            </mat-error>
+            <mat-error *ngIf="formChonNgay.controls.ngayBatDau?.invalid
+                      && !formChonNgay.controls.ngayBatDau.errors?.required
+                      && (formChonNgay.controls.ngayBatDau?.dirty || formChonNgay.controls.ngayBatDau?.touched)">
+              Ngày bắt đầu không được lớn hơn ngày kết thúc hoặc lớn hơn ngày hiện tại.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Ngày kết thúc<sup class="text-danger"> *</sup></mat-label>
+            <input matInput [matDatepicker]="ngayKetThuc" formControlName="ngayKetThuc"
+                   [min]="gioiHanNgay" [max]="ngayHienTai">
+            <mat-datepicker-toggle matSuffix [for]="ngayKetThuc"></mat-datepicker-toggle>
+            <mat-datepicker #ngayKetThuc></mat-datepicker>
+            <mat-error *ngIf="formChonNgay.controls.ngayKetThuc.errors?.required">Ngày kết thúc không đươc để trống.
+            </mat-error>
+            <mat-error *ngIf="formChonNgay.controls.ngayKetThuc?.invalid
+                      && !formChonNgay.controls.ngayKetThuc.errors?.required
+                      && (formChonNgay.controls.ngayKetThuc?.dirty || formChonNgay.controls.ngayKetThuc?.touched)">
+              Ngày kết thúc không đươc nhỏ hơn ngày bắt đầu hoặc lớn hơn ngày hiện tại.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Thống kê</button>
+            <button type="button" class="btn btn-warning ml-3" mat-dialog-close="">Hủy</button>
+          </div>
+          <div class="col-sm-3"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-2"></div>
+</div>

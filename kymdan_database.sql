@@ -15,13 +15,13 @@ insert into kymdan.khach_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_t
 insert into kymdan.khach_hang (ma, ten, gioi_tinh, ngay_sinh, dia_chi, so_dien_thoai, email) values (2, 'Phuong Thao', 'Nữ', '1973-01-01', 'Dak Lak', '0905111111', 'phuongthao@gmail.com');
 
 -- Tài khoản
-insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien) values ('Linh Giang', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 1, 'NV-0000001');
-insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien) values ('Nguyen Khang', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 1, 'NV-0000002');
-insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Thanh Phong', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 2, 'NVGH-00001');
-insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Phong Tran', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 2, 'NVGH-00002');
-insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Tran Duc', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 2, 'NVGH-00003');
-insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_khach_hang) values ('Khoi Nguyen', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 3, 1);
-insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_khach_hang) values ('Phuong Thao', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 3, 2);
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien) values ('Linh Giang', '$2a$10$p.QypqLUDiV7hVx8MJAk7OMAZcv2VdesvHwf3Sn0UZ4MNKzCsl75u', 1, 'NV-0000001');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien) values ('Nguyen Khang', '$2a$10$p.QypqLUDiV7hVx8MJAk7OMAZcv2VdesvHwf3Sn0UZ4MNKzCsl75u', 1, 'NV-0000002');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Thanh Phong', '$2a$10$p.QypqLUDiV7hVx8MJAk7OMAZcv2VdesvHwf3Sn0UZ4MNKzCsl75u', 2, 'NVGH-00001');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Phong Tran', '$2a$10$p.QypqLUDiV7hVx8MJAk7OMAZcv2VdesvHwf3Sn0UZ4MNKzCsl75u', 2, 'NVGH-00002');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_nhan_vien_giao_hang) values ('Tran Duc', '$2a$10$p.QypqLUDiV7hVx8MJAk7OMAZcv2VdesvHwf3Sn0UZ4MNKzCsl75u', 2, 'NVGH-00003');
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_khach_hang) values ('Khoi Nguyen', '$2a$10$p.QypqLUDiV7hVx8MJAk7OMAZcv2VdesvHwf3Sn0UZ4MNKzCsl75u', 3, 1);
+insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_khach_hang) values ('Phuong Thao', '$2a$10$p.QypqLUDiV7hVx8MJAk7OMAZcv2VdesvHwf3Sn0UZ4MNKzCsl75u', 3, 2);
 
 -- Loại sản phẩm
 insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luong_mua) values ('KD-0000111', 'Nệm (mattress) KYMDAN Deluxe', 'assets/sanPham11.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Chất liệu TEMPUR® được NASA công nhận,Giúp giảm đau tại các điểm chịu lực,Công nghệ CoolTouch™ giúp vỏ nệm luôn mát mẻ', '2021-03-11', 0);
@@ -270,12 +270,21 @@ insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) val
 insert into kymdan.chi_tiet_khuyen_mai(giam_gia, ma_khuyen_mai, ma_san_pham) values (17, 'KM-0000666', 'SP-0000072');
 
 -- Đơn hàng
-insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42673487', 'Tiền mặt', 'Quảng Nam', '2021-04-09', '2021-05-05', 'Thanh Nhi', '0905666666', 'Hoàn tất', 1, 'NV-0000002', 'NVGH-00003');
-insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42676531', 'Tiền mặt', 'Sài Gòn', '2021-05-11', '2021-06-07', 'Phuong Thanh', '0905222222', 'Hoàn tất', 2, 'NV-0000001', 'NVGH-00001');
-insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42675095', 'PayPal', 'Quảng Nam', '2021-06-22', '2021-07-29', 'Thanh Nhi', '0905666666', 'Hoàn tất', 1, 'NV-0000002', 'NVGH-00003');
-insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42675093', 'PayPal', 'Sài Gòn', '2021-07-24', '2021-08-31', 'Phuong Thanh', '0905222222', 'Hoàn tất', 2, 'NV-0000001', 'NVGH-00001');
-insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42676093', 'PayPal', 'Đăk Lăk', '2021-08-27', '2021-09-28', 'Phuong Thao', '0905111111', 'Đã phân công', 2, 'NV-0000001', 'NVGH-00001');
-insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH40023690', 'PayPal', 'Đà Nẵng', '2021-09-01', '2021-09-29', 'Khoi Nguyen', '0905999999', 'Đã phân công', 1, 'NV-0000002', 'NVGH-00002');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42673487', 'Tiền mặt', 'Quảng Nam', '2021-04-09', '2021-04-15', 'Thanh Nhi', '0905689666', 'Hoàn tất', 1, 'NV-0000002', 'NVGH-00003');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42673499', 'PayPal', 'Quảng Ninh', '2021-04-20', '2021-04-28', 'Thanh Trúc', '0765606476', 'Hoàn tất', 2, 'NV-0000001', 'NVGH-00001');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42676531', 'Tiền mặt', 'Sài Gòn', '2021-05-11', '2021-05-18', 'Phuong Thanh', '0905222222', 'Hoàn tất', 2, 'NV-0000001', 'NVGH-00001');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42675095', 'Tiền mặt', 'Sài Gòn', '2021-05-12', '2021-05-20', 'Phuong Trang', '0916952275', 'Hoàn tất', 1, 'NV-0000002', 'NVGH-00002');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42675097', 'PayPal', 'Tiền Giang', '2021-06-21', '2021-06-28', 'Thanh Nhi', '0905666666', 'Hoàn tất', 1, 'NV-0000002', 'NVGH-00003');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42675651', 'Tiền mặt', 'Kiên Giang', '2021-06-01', '2021-06-05', 'Song Nhi', '0956655665', 'Hoàn tất', 2, 'NV-0000001', 'NVGH-00001');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42675085', 'Tiền mặt', 'Quảng Nam', '2021-06-30', '2021-07-03', 'Thanh Thao', '0935626999', 'Hoàn tất', 1, 'NV-0000002', 'NVGH-00002');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42675088', 'PayPal', 'Quảng Nam', '2021-07-08', '2021-07-18', 'Trinh Nhan', '0969966575', 'Hoàn tất', 1, 'NV-0000002', 'NVGH-00003');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42675093', 'PayPal', 'Sài Gòn', '2021-07-24', '2021-07-31', 'Phuong Thanh', '0905222222', 'Hoàn tất', 2, 'NV-0000001', 'NVGH-00001');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH42676093', 'Tiền mặt', 'Đăk Lăk', '2021-08-24', '2021-08-29', 'Phuong Thao', '0905135661', 'Hoàn tất', 2, 'NV-0000001', 'NVGH-00001');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH40023690', 'PayPal', 'Đà Nẵng', '2021-09-01', '2021-09-03', 'Thanh Do', '0905994599', 'Đã phân công', 1, 'NV-0000002', 'NVGH-00003');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH40023691', 'Tiền mặt', 'Đà Nẵng', '2021-09-02', '2021-09-04', 'Khoi Nguyen', '0905999945', 'Đã phân công', 2, 'NV-0000002', 'NVGH-00002');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH40023695', 'Tiền mặt', 'Đà Lạt', '2021-09-02', '2021-09-05', 'Khoa Nguyen', '0905999969', 'Đã phân công', 2, 'NV-0000001', 'NVGH-00003');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH40023658', 'PayPal', 'Phan Thiết', '2021-09-03', '2021-09-07', 'Khai Nguyen', '0905999958', 'Đã phân công', 1, 'NV-0000001', 'NVGH-00002');
+insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang, ma_nhan_vien, ma_nhan_vien_giao_hang) values ('DH40023635', 'PayPal', 'Đà Nẵng', '2021-09-08', '2021-09-09', 'Khoi Nguyen', '0905999927', 'Đã phân công', 1, 'NV-0000002', 'NVGH-00001');
 insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang) values ('DH20263406', 'Tiền mặt', 'Quảng Nam', '2021-09-02', '2021-10-09', 'Thanh Nhi', '0905666666', 'Chờ duyệt', 1);
 insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang) values ('DH32877125', 'Tiền mặt', 'Đà Nẵng', '2021-09-02', '2021-10-10', 'Khoi Nguyen', '0905999999', 'Chờ duyệt', 1);
 insert into kymdan.don_hang(ma, cach_thanh_toan, dia_chi, ngay_dat, ngay_nhan, nguoi_nhan, so_dien_thoai, trang_thai, ma_khach_hang) values ('DH41208273', 'Tiền mặt', 'Đăk Lăk', '2021-09-03', '2021-10-11', 'Phuong Thao', '0905111111', 'Chờ duyệt', 2);
@@ -295,7 +304,21 @@ insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) va
 insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (20632000, 3, 'DH20263406', 'SP-0000029');
 insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (17860000, 1, 'DH32877125', 'SP-0000016');
 insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (19460000, 2, 'DH41208273', 'SP-0000023');
-insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (14440000, 3, 'DH41208273', 'SP-0000001');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (42860000, 3, 'DH42675097', 'SP-0000049');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (51860000, 3, 'DH42675097', 'SP-0000058'); 
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (17560000, 3, 'DH42673499', 'SP-0000022');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (20500000, 3, 'DH40023658', 'SP-0000015');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (20560000, 3, 'DH40023658', 'SP-0000024');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (14860000, 3, 'DH40023635', 'SP-0000001');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (51860000, 3, 'DH40023635', 'SP-0000058');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (16870000, 3, 'DH40023635', 'SP-0000007');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (28860000, 3, 'DH40023695', 'SP-0000038');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (51860000, 3, 'DH40023691', 'SP-0000058');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (44860000, 3, 'DH40023691', 'SP-0000051');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (31860000, 3, 'DH42675088', 'SP-0000040');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (32860000, 3, 'DH42675088', 'SP-0000041');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (20860000, 3, 'DH42675085', 'SP-0000014');
+insert into kymdan.chi_tiet_don_hang(gia, so_luong, ma_don_hang, ma_san_pham) values (21860000, 3, 'DH42675651', 'SP-0000015');
 
 -- Hóa đơn
 insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD43379802', '0042671234', '2021-04-11', 222900000, 'DH42673487', 'NV-0000002');
@@ -304,6 +327,16 @@ insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_
 insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD68547213', '0036598741', '2021-07-25', 204240000, 'DH42675093', 'NV-0000001');
 insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD95687432', '0063259874', '2021-08-29', 127700000, 'DH42676093', 'NV-0000001');
 insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD12568347', '0056321478', '2021-09-03', 80980000, 'DH40023690', 'NV-0000002');
+insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD12568398', '0056321475', '2021-08-25', 94720000, 'DH42675097', 'NV-0000002');
+insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD12568397', '0056321476', '2021-04-25', 17560000, 'DH42673499', 'NV-0000001');
+insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD12568396', '0056321469', '2021-09-05', 41060000, 'DH40023658', 'NV-0000001');
+insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD12568395', '0056321477', '2021-09-09', 83590000, 'DH40023635', 'NV-0000001');
+insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD12568394', '0056321470', '2021-09-04', 28860000, 'DH40023695', 'NV-0000002');
+insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD12568393', '0056321472', '2021-09-04', 50720000, 'DH40023691', 'NV-0000002');
+insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD12568392', '0056321475', '2021-07-15', 64720000, 'DH42675088', 'NV-0000001');
+insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD12568391', '0056321459', '2021-07-02', 20860000, 'DH42675085', 'NV-0000002');
+insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD12568586', '0056321454', '2021-06-03', 21860000, 'DH42675651', 'NV-0000002');
+
 
 DELIMITER //
 CREATE PROCEDURE loc_chi_tiet_don_hang()
@@ -333,12 +366,13 @@ END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE thong_ke()
+CREATE PROCEDURE thong_ke(ngay_bat_dau date, ngay_ket_thuc date)
 BEGIN
-	select sum(tong_tien) as doanh_thu, month(ngay_tao) as thang 
+	select sum(tong_tien) as doanh_thu, ngay_tao as ngay 
 		from hoa_don
-        where month(ngay_tao) > (month(now()) - 5)
-		group by thang
-        order by thang;
+        where ngay_tao >= ngay_bat_dau and ngay_tao <= ngay_ket_thuc
+        and ma_don_hang in ( select ma from don_hang where trang_thai = 'Hoàn tất' )
+		group by ngay
+        order by ngay;
 END //
 DELIMITER ;

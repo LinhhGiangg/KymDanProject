@@ -25,7 +25,7 @@ export class NhanVienService {
   }
 
   thongKe(thongTin): Observable<any> {
-    return this.http.get(this.API + '/thongKe/' + thongTin);
+    return this.http.post(this.API + '/thongKe', thongTin, {headers: {skip: 'true'}});
   }
 
   phanCongGiaoHang(thongTin): Observable<any> {

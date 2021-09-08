@@ -132,16 +132,11 @@ public class SanPhamServiceImpl implements SanPhamService {
 
     @Override
     public SanPham timBangKichThuoc(SanPhamDTO sanPhamDTO) {
-        List<SanPham> tatCaSanPham = this.sanPhamRepository.findAll();
-        for (SanPham sanPham : tatCaSanPham) {
-            if (sanPham.getLoaiSanPham().getMa().equals(sanPhamDTO.getMaLoai())
-                    && sanPham.getRong().equals(sanPhamDTO.getKichThuoc().split("x")[0])
-                    && sanPham.getCao().equals(sanPhamDTO.getDoDay())) {
-                return sanPham;
-            }
-        }
+        String maLoai = sanPhamDTO.getMaLoai();
+        String rong = sanPhamDTO.getKichThuoc().split("x")[0];
+        String cao = sanPhamDTO.getDoDay();
 
-        return null;
+        return this.sanPhamRepository.chonSanPham(maLoai, rong, cao);
     }
 
     @Override

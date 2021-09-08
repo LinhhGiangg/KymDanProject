@@ -5,6 +5,7 @@ import com.kymdan.backend.entity.HoaDon;
 import com.kymdan.backend.entity.NhanVienGiaoHang;
 import com.kymdan.backend.model.HoaDonDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
+import com.kymdan.backend.model.ThongKeDTO;
 import com.kymdan.backend.services.nhan_vien.NhanVienService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,10 +38,9 @@ public class NhanVienController {
         return ResponseEntity.ok(this.nhanVienService.giaoHangHoanTat(thongTin));
     }
 
-    @GetMapping("/thongKe/{nhanVien}")
-    public ResponseEntity<List<?>> thongKe() {
-        List<?> ketQua = this.nhanVienService.thongKe();
-        return new ResponseEntity<>(ketQua, HttpStatus.OK);
+    @RequestMapping(value = "/thongKe", method = RequestMethod.POST)
+    public ResponseEntity<List<?>> thongKe(@RequestBody ThongKeDTO thongKeDTO) {
+        return ResponseEntity.ok(this.nhanVienService.thongKe(thongKeDTO));
     }
 
     @PostMapping(value = "/phanCongGiaoHang")
