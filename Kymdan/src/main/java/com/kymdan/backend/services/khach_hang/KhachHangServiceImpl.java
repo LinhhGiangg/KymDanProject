@@ -49,7 +49,7 @@ public class KhachHangServiceImpl implements KhachHangService {
         List<Integer> danhSachMaChiTiet;
         List<ChiTietGioHang> ketQua = new ArrayList<>();
         if (gioHang != null) {
-            danhSachMaChiTiet = this.gioHangRepository.danhSachChiTietGioHang(gioHang.getMa());
+            danhSachMaChiTiet = this.chiTietGioHangRepository.timBangMaGioHang(gioHang.getMa());
             for (Integer maChiTiet : danhSachMaChiTiet) {
                 ketQua.add(this.chiTietGioHangRepository.findById(maChiTiet).orElse(null));
             }
@@ -81,7 +81,7 @@ public class KhachHangServiceImpl implements KhachHangService {
         List<ChiTietGioHang> danhSachCungGioHang = new ArrayList<>();
         boolean kiemTra = true;
         if (gioHang != null) {
-            danhSachMaChiTiet = this.gioHangRepository.danhSachChiTietGioHang(gioHang.getMa());
+            danhSachMaChiTiet = this.chiTietGioHangRepository.timBangMaGioHang(gioHang.getMa());
             for (Integer maChiTiet : danhSachMaChiTiet) {
                 danhSachCungGioHang.add(this.chiTietGioHangRepository.findById(maChiTiet).orElse(null));
             }
@@ -123,10 +123,11 @@ public class KhachHangServiceImpl implements KhachHangService {
 
     @Override
     public ChiTietGioHang timChiTietGioHang(String maSanPham, String khachHang) {
-        List<ChiTietGioHang> danhSachGioHang = this.chiTietGioHangRepository.findAll();
-        for (ChiTietGioHang chiTietGioHang : danhSachGioHang) {
-            if (chiTietGioHang.getGioHang().getKhachHang().getTen().equals(khachHang)
-                    && chiTietGioHang.getSanPham().getMa().equals(maSanPham)) {
+        List<Integer> danhSachMaChiTiet = this.chiTietGioHangRepository.timBangMaSanPham(maSanPham);
+        ChiTietGioHang chiTietGioHang;
+        for (Integer maChiTiet : danhSachMaChiTiet) {
+            chiTietGioHang = this.chiTietGioHangRepository.findById(maChiTiet).orElse(null);
+            if (chiTietGioHang != null && chiTietGioHang.getGioHang().getKhachHang().getTen().equals(khachHang)) {
                 return chiTietGioHang;
             }
         }
@@ -198,7 +199,7 @@ public class KhachHangServiceImpl implements KhachHangService {
 
     @Override
     public List<ChiTietDonHang> xemChiTietDonHang(String maDonHang) {
-        List<Integer> danhSachMaChiTiet = this.donHangRepository.timChiTietDonHang(maDonHang);
+        List<Integer> danhSachMaChiTiet = this.chiTietDonHangRepository.timChiTietDonHang(maDonHang);
         List<ChiTietDonHang> ketQua = new ArrayList<>();
 
         for (Integer maChiTiet : danhSachMaChiTiet) {
@@ -210,7 +211,7 @@ public class KhachHangServiceImpl implements KhachHangService {
 
     @Override
     public ThongBaoDTO huyDonHang(String maDonHang) {
-        List<Integer> danhSachMaChiTiet = this.donHangRepository.timChiTietDonHang(maDonHang);
+        List<Integer> danhSachMaChiTiet = this.chiTietDonHangRepository.timChiTietDonHang(maDonHang);
         SanPham sanPham;
         ChiTietDonHang chiTietDonHang;
 

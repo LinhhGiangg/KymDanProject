@@ -27,8 +27,8 @@ public class LoaiSanPham {
     @Column(name = "hinh3", columnDefinition = "VARCHAR(250)")
     private String hinh3;
 
-    @Column(name = "luot_mua", columnDefinition = "INT")
-    private Integer luotMua;
+    @Column(name = "luong_mua", columnDefinition = "INT")
+    private Integer luongMua;
 
     @Column(name = "ngay_tao", columnDefinition = "DATE")
     private LocalDate ngayTao;
@@ -92,12 +92,12 @@ public class LoaiSanPham {
         this.hinh3 = hinh3;
     }
 
-    public Integer getLuotMua() {
-        return luotMua;
+    public Integer getLuongMua() {
+        return luongMua;
     }
 
-    public void setLuotMua(Integer luotMua) {
-        this.luotMua = luotMua;
+    public void setLuongMua(Integer luongMua) {
+        this.luongMua = luongMua;
     }
 
     public LocalDate getNgayTao() {

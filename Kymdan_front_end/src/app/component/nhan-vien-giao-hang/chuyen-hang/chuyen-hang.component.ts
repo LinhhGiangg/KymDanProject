@@ -60,7 +60,7 @@ export class ChuyenHangComponent implements OnInit {
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < this.danhSach.length; i++) {
           if (this.danhSach[i].nhanVienGiaoHang != null && this.danhSach[i].nhanVienGiaoHang.ten === this.nhanVien) {
-            this.danhSach[i].tienThanhToan = this.sanPhamService.hienThiGia(this.danhSach[i].hoaDon.tongTien);
+            this.danhSach[i].tienThanhToan = this.sanPhamService.tienHienThi(this.danhSach[i].hoaDon.tongTien);
             this.danhSachLoc.push(this.danhSach[i])
           }
         }

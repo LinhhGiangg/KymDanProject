@@ -49,6 +49,15 @@ export class DatHangComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.formDatHang = this.formBuilder.group({
+      ten: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50),
+        // tslint:disable-next-line:max-line-length
+        Validators.pattern('^([aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+(\\s[aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+)*)$')]],
+      soDienThoai: ['', [Validators.required, Validators.pattern('((09|03|07|08|05)+([0-9]{8})\\b)')]],
+      diaChi: ['', [Validators.required]],
+      ngayNhan: ['', [Validators.required]],
+    });
+
     if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
       this.kiemTra = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
 
@@ -60,15 +69,6 @@ export class DatHangComponent implements OnInit {
       this.duLieuCanLay = 0;
       this.giaCanLay = 0;
       this.khuyenMaiCanLay = 0;
-
-      this.formDatHang = this.formBuilder.group({
-        ten: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50),
-          // tslint:disable-next-line:max-line-length
-          Validators.pattern('^([aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+(\\s[aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+)*)$')]],
-        soDienThoai: ['', [Validators.required, Validators.pattern('((09|03|07|08|05)+([0-9]{8})\\b)')]],
-        diaChi: ['', [Validators.required]],
-        ngayNhan: ['', [Validators.required]],
-      });
 
       this.tenKhachHang = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
       this.khachHangService.timBangTen(this.tenKhachHang)
@@ -154,9 +154,9 @@ export class DatHangComponent implements OnInit {
         this.gioHang[i].tongTien = this.gioHang[i].gia * this.gioHang[i].soLuong;
         this.tienCanThanhToan += this.gioHang[i].gia * this.gioHang[i].soLuong;
         this.usd = (this.tienCanThanhToan / 23500).toFixed(2);
-        this.tongTienHienThi = this.sanPhamService.hienThiGia(this.tienCanThanhToan);
-        this.gioHang[i].giaHienThi = this.sanPhamService.hienThiGia(this.gioHang[i].gia);
-        this.gioHang[i].tongTienHienThi = this.sanPhamService.hienThiGia(this.gioHang[i].tongTien);
+        this.tongTienHienThi = this.sanPhamService.tienHienThi(this.tienCanThanhToan);
+        this.gioHang[i].giaHienThi = this.sanPhamService.tienHienThi(this.gioHang[i].gia);
+        this.gioHang[i].tongTienHienThi = this.sanPhamService.tienHienThi(this.gioHang[i].tongTien);
       });
   }
 

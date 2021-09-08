@@ -1,6 +1,7 @@
 package com.kymdan.backend.controllers;
 
 import com.kymdan.backend.entity.DonHang;
+import com.kymdan.backend.entity.HoaDon;
 import com.kymdan.backend.entity.NhanVienGiaoHang;
 import com.kymdan.backend.model.HoaDonDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
@@ -51,5 +52,11 @@ public class NhanVienController {
         } else {
             return ResponseEntity.ok(this.nhanVienService.phanCongGiaoHang(hoaDonDTO));
         }
+    }
+
+    @GetMapping("/danhSachHoaDon/{nhanVien}")
+    public ResponseEntity<List<HoaDon>> danhSachHoaDon() {
+        List<HoaDon> ketQua = this.nhanVienService.danhSachHoaDon();
+        return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
 }

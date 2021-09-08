@@ -3,7 +3,6 @@ import {TaiKhoanService} from '../../../service/tai-khoan.service';
 import {KhachHangService} from '../../../service/khach-hang.service';
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
-import {XoaSanPhamComponent} from '../../nhan-vien/san-pham/xoa-san-pham/xoa-san-pham.component';
 import {HuyDonHangComponent} from '../huy-don-hang/huy-don-hang.component';
 
 @Component({

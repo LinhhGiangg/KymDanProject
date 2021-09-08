@@ -9,6 +9,6 @@ export class LoaiSanPham {
   hinh1: string;
   hinh2: string;
   hinh3: string;
-  luotMua: number;
+  luongMua: number;
   ngayTao: string;
 }

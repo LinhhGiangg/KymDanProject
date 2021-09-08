@@ -31,4 +31,8 @@ export class NhanVienService {
   phanCongGiaoHang(thongTin): Observable<any> {
     return this.http.post(this.API + '/phanCongGiaoHang', thongTin, {headers: {skip: 'true'}});
   }
+
+  danhSachHoaDon(thongTin): Observable<any> {
+    return this.http.get(this.API + '/danhSachHoaDon/' + thongTin);
+  }
 }

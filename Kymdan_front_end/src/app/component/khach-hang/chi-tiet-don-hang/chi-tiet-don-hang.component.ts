@@ -53,11 +53,11 @@ export class ChiTietDonHangComponent implements OnInit {
           // tslint:disable-next-line:prefer-for-of
           for (let i = 0; i < this.danhSachChiTiet.length; i++) {
             this.gia = this.danhSachChiTiet[i].gia;
-            this.danhSachChiTiet[i].giaHienThi = this.sanPhamService.hienThiGia(this.danhSachChiTiet[i].gia);
+            this.danhSachChiTiet[i].giaHienThi = this.sanPhamService.tienHienThi(this.danhSachChiTiet[i].gia);
             // tslint:disable-next-line:radix
             this.tongTien += this.danhSachChiTiet[i].soLuong * this.gia;
           }
-          this.tienHienThi = this.sanPhamService.hienThiGia(this.tongTien);
+          this.tienHienThi = this.sanPhamService.tienHienThi(this.tongTien);
         });
     }
   }

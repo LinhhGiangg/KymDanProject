@@ -6,6 +6,7 @@ import com.kymdan.backend.model.ThongBaoDTO;
 import com.kymdan.backend.model.LoaiSanPhamDTO;
 import com.kymdan.backend.repository.ChiTietDonHangRepository;
 import com.kymdan.backend.repository.LoaiSanPhamRepository;
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +51,7 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
         loaiSanPham.setHinh1(loaiSanPhamDTO.getHinh());
         loaiSanPham.setHinh2("assets/sanPham6.jpg");
         loaiSanPham.setHinh3("assets/sanPham7.jpg");
-        loaiSanPham.setLuotMua(0);
+        loaiSanPham.setLuongMua(0);
         loaiSanPham.setNgayTao(LocalDate.now());
         this.loaiSanPhamRepository.save(loaiSanPham);
 
@@ -90,15 +91,15 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
         List<ChiTietDonHang> danhSachMua = this.chiTietDonHangRepository.locChiTietDonHang();
         List<ChiTietDonHang> mangTam = new ArrayList<>();
         LoaiSanPham loaiSanPham;
-        int luotMua;
+        int luongMua;
         int soDem = 0;
 
         for (; danhSachMua.size() > 0; ) {
             loaiSanPham = danhSachMua.get(0).getSanPham().getLoaiSanPham();
-            loaiSanPham.setLuotMua(danhSachMua.get(0).getSoLuong());
+            loaiSanPham.setLuongMua(danhSachMua.get(0).getSoLuong());
             for (int i = 1; i < danhSachMua.size(); i++) {
                 if (danhSachMua.get(i).getSanPham().getLoaiSanPham().getMa().equals(loaiSanPham.getMa())) {
-                    loaiSanPham.setLuotMua(loaiSanPham.getLuotMua() + danhSachMua.get(i).getSoLuong());
+                    loaiSanPham.setLuongMua(loaiSanPham.getLuongMua() + danhSachMua.get(i).getSoLuong());
                     mangTam.add(danhSachMua.get(i));
                 }
             }
@@ -111,11 +112,11 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
 
         for (; locDanhSach.size() > 0 && soDem < 5; ) {
             loaiSanPham = locDanhSach.get(0);
-            luotMua = loaiSanPham.getLuotMua();
+            luongMua = loaiSanPham.getLuongMua();
             for (LoaiSanPham sanPham : locDanhSach) {
-                if (sanPham.getLuotMua() > luotMua) {
+                if (sanPham.getLuongMua() > luongMua) {
                     loaiSanPham = sanPham;
-                    luotMua = sanPham.getLuotMua();
+                    luongMua = sanPham.getLuongMua();
                 }
             }
             ketQua.add(loaiSanPham);
@@ -128,6 +129,8 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
 
     @Override
     public List<LoaiSanPham> locTheoTen(String kiTu) {
+        kiTu = kiTu.trim().toLowerCase();
+        kiTu = kiTu.replaceAll("\\s+", " ");
         return this.loaiSanPhamRepository.locTheoTen(kiTu);
     }
 }

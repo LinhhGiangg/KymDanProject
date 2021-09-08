@@ -56,7 +56,7 @@ public class NhanVienServiceImpl implements NhanVienService {
             hoaDon.setMaSoThue(hoaDonDTO.getMaSoThue());
             hoaDon.setNgayTao(LocalDate.now());
 
-            List<Integer> danhSach = this.donHangRepository.timChiTietDonHang(donHang.getMa());
+            List<Integer> danhSach = this.chiTietDonHangRepository.timChiTietDonHang(donHang.getMa());
             for (Integer maChiTiet : danhSach) {
                 chiTietDonHang = this.chiTietDonHangRepository.findById(maChiTiet).orElse(null);
                 if (chiTietDonHang != null) {
@@ -96,5 +96,10 @@ public class NhanVienServiceImpl implements NhanVienService {
     @Override
     public HoaDon timHoaDonBangMaSoThue(String thongTin) {
         return this.hoaDonRepository.findByMaSoThue(thongTin);
+    }
+
+    @Override
+    public List<HoaDon> danhSachHoaDon() {
+        return this.hoaDonRepository.danhSachHoaDon();
     }
 }

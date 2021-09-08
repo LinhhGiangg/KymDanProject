@@ -54,7 +54,7 @@ export class ChiTietKhuyenMaiComponent implements OnInit {
                 this.sanPhamService.timGiaBangMaSanPham(this.danhSach[i].sanPham.ma).subscribe(
                   (duLieu) => {
                     this.danhSach[i].gia = duLieu.gia;
-                    this.danhSach[i].giaHienThi = this.sanPhamService.hienThiGia(this.danhSach[i].gia);
+                    this.danhSach[i].giaHienThi = this.sanPhamService.tienHienThi(this.danhSach[i].gia);
                   },
                   () => {
                   },

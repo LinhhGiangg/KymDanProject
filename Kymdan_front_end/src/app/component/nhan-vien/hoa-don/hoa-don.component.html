@@ -1,0 +1,50 @@
+<div class="container-fluid" *ngIf="quyen == 'Nhân Viên'">
+  <div class="table-responsive">
+    <div class="table-wrapper table-striped">
+
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6">
+            <h1 class="text-center" style="font-weight: bold" *ngIf="danhSachHoaDon.length > 0">
+              Danh sách hóa đơn
+            </h1>
+            <h1 class="text-center" style="font-weight: bold" *ngIf="danhSachHoaDon.length == 0">
+              Chưa có dữ liệu !
+            </h1>
+          </div>
+          <div class="col-sm-3"></div>
+        </div>
+      </div>
+
+      <table class="table table-bordered mt-3" *ngIf="danhSachHoaDon.length > 0">
+        <thead>
+        <tr style="font-size: 17px">
+          <th>Số hóa đơn</th>
+          <th>Mã số thuế</th>
+          <th>Ngày tạo</th>
+          <th>Tổng tiền (VND)</th>
+          <th>Mã đơn hàng</th>
+          <th>Nhân Viên</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let phanTu of danhSachHoaDon ; let i = index">
+          <td>{{phanTu.ma}}</td>
+          <td>{{phanTu.maSoThue}}</td>
+          <td>{{phanTu.ngayTao}}</td>
+          <td>{{phanTu.tienHienThi}}</td>
+          <td>{{phanTu.donHang.ma}}</td>
+          <td>{{phanTu.nhanVien.ten}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" *ngIf="quyen != 'Nhân Viên'" style="text-align: center">
+  <img src="assets/404.png" style="width: 45%">
+</div>

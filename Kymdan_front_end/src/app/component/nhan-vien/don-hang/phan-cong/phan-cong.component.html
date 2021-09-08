@@ -15,12 +15,12 @@
 
       <div class="row">
         <mat-form-field>
-          <mat-label>Mã hóa đơn<sup class="text-danger"> *</sup></mat-label>
+          <mat-label>Số hóa đơn<sup class="text-danger"> *</sup></mat-label>
           <input matInput formControlName="maHoaDon">
-          <mat-error *ngIf="formPhanCong.controls.maHoaDon.errors?.required">Mã hóa đơn không đươc để trống.
+          <mat-error *ngIf="formPhanCong.controls.maHoaDon.errors?.required">Số hóa đơn không đươc để trống.
           </mat-error>
           <mat-error *ngIf="formPhanCong.controls.maHoaDon.errors?.pattern">
-            Mã hóa đơn không đúng quy định. Mã hóa đơn có dạng HD-XXXXXXX với X là số từ 0 đến 9.
+            Số hóa đơn không đúng quy định. Mã hóa đơn có dạng HD-XXXXXXX với X là số từ 0 đến 9.
           </mat-error>
         </mat-form-field>
       </div>

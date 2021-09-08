@@ -1,4 +1,4 @@
-<div class="container-fluid bg-white" *ngIf="kiemTra == 'Khách Hàng'">
+<div class="container-fluid bg-white" [hidden]="kiemTra != 'Khách Hàng'">
   <div class="row border" style="border-radius: 20px">
     <div class="col-sm-6 pt-1">
       <div class="row">
@@ -169,7 +169,7 @@
             <i class="fa fa-plus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
                (click)="chonSoLuong(2, i)"></i>
           </div>
-          <!--          <h3 style="margin-top: 1px">Tổng tiền : <span style="color: green">{{phanTu.tongTien}} VND</span></h3>-->
+          <!--<h3 style="margin-top: 1px">Tổng tiền : <span style="color: green">{{phanTu.tongTien}} VND</span></h3>-->
         </div>
       </div>
 
@@ -202,6 +202,6 @@
   </div>
 </div>
 
-<div class="container-fluid" *ngIf="kiemTra != 'Khách Hàng'" style="text-align: center">
+<div class="container-fluid" [hidden]="kiemTra == 'Khách Hàng'" style="text-align: center">
   <img src="assets/404.png" style="width: 45%">
 </div>

@@ -1,6 +1,5 @@
 package com.kymdan.backend.services.san_pham;
 
-import com.kymdan.backend.entity.ChiTietDonHang;
 import com.kymdan.backend.entity.ChiTietGia;
 import com.kymdan.backend.entity.ChiTietKhuyenMai;
 import com.kymdan.backend.entity.SanPham;
@@ -33,16 +32,7 @@ public class SanPhamServiceImpl implements SanPhamService {
 
     @Override
     public List<SanPham> locTheoMaLoai(String maLoai) {
-        List<SanPham> tatCaSanPham = this.sanPhamRepository.findAll();
-        List<SanPham> ketQua = new ArrayList<>();
-
-        for (SanPham sanPham : tatCaSanPham) {
-            if (sanPham.getLoaiSanPham().getMa().equals(maLoai)) {
-                ketQua.add(sanPham);
-            }
-        }
-
-        return ketQua;
+        return this.sanPhamRepository.locTheoMaLoai(maLoai);
     }
 
     @Override
@@ -78,20 +68,11 @@ public class SanPhamServiceImpl implements SanPhamService {
 
     @Override
     public SanPham chonSanPham(String thongTin) {
-        List<SanPham> tatCaSanPham = this.sanPhamRepository.findAll();
         String maLoai = thongTin.split(",")[0];
         String rong = thongTin.split(",")[1];
         String cao = thongTin.split(",")[2];
 
-        for (SanPham sanPham : tatCaSanPham) {
-            if (sanPham.getLoaiSanPham().getMa().equals(maLoai)
-                    && sanPham.getRong().equals(rong)
-                    && sanPham.getCao().equals(cao)) {
-                return sanPham;
-            }
-        }
-
-        return null;
+        return this.sanPhamRepository.chonSanPham(maLoai, rong, cao);
     }
 
     @Override
@@ -165,30 +146,8 @@ public class SanPhamServiceImpl implements SanPhamService {
 
     @Override
     public ChiTietGia timGiaBangMaSanPham(String ma) {
-        List<ChiTietGia> danhSach = this.chiTietGiaRepository.findAll();
-        List<ChiTietGia> danhSachCungSanPham = new ArrayList<>();
-        ChiTietGia ketQua;
-
-        for (ChiTietGia chiTietGia : danhSach) {
-            if (chiTietGia.getSanPham().getMa().equals(ma)) {
-                danhSachCungSanPham.add(chiTietGia);
-            }
-        }
-
-        ketQua = danhSachCungSanPham.get(0);
-        LocalDate ngayGanNhat = ketQua.getNgayThayDoi();
-        for (ChiTietGia chiTietGia : danhSachCungSanPham) {
-            if (chiTietGia.getNgayThayDoi().isAfter(ngayGanNhat)) {
-                ketQua = chiTietGia;
-                ngayGanNhat = chiTietGia.getNgayThayDoi();
-            } else if (chiTietGia.getNgayThayDoi().equals(ngayGanNhat)) {
-                if (chiTietGia.getMa() > ketQua.getMa()) {
-                    ketQua = chiTietGia;
-                }
-            }
-        }
-
-        return ketQua;
+        Integer maChiTietGia = this.sanPhamRepository.timGiaBangMaSanPham(ma);
+        return this.chiTietGiaRepository.findById(maChiTietGia).orElse(null);
     }
 
     @Override

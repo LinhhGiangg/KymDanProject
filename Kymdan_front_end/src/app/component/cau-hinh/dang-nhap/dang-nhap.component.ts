@@ -2,7 +2,6 @@ import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TaiKhoanService} from '../../../service/tai-khoan.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {SuaMatKhauComponent} from '../../ca-nhan/sua-mat-khau/sua-mat-khau.component';
 import {MatDialog} from '@angular/material/dialog';
 import {QuenMatKhauComponent} from '../../ca-nhan/quen-mat-khau/quen-mat-khau.component';
 
@@ -92,7 +91,7 @@ export class DangNhapComponent implements OnInit {
       disableClose: true
     });
 
-    dialogRefEdit.afterClosed().subscribe(result => {
+    dialogRefEdit.afterClosed().subscribe(() => {
       this.ngOnInit()
     })
   }

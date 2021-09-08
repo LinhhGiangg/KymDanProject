@@ -49,6 +49,7 @@ import {ChartsModule} from '@progress/kendo-angular-charts';
 import {QuenMatKhauComponent} from './component/ca-nhan/quen-mat-khau/quen-mat-khau.component';
 import {HuyDonHangComponent} from './component/khach-hang/huy-don-hang/huy-don-hang.component';
 import {SaiDuongDanComponent} from './component/cau-hinh/sai-duong-dan/sai-duong-dan.component';
+import {HoaDonComponent} from './component/nhan-vien/hoa-don/hoa-don.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import {SaiDuongDanComponent} from './component/cau-hinh/sai-duong-dan/sai-duong
     QuenMatKhauComponent,
     HuyDonHangComponent,
     SaiDuongDanComponent,
+    HoaDonComponent,
   ],
   imports: [
     BrowserModule,

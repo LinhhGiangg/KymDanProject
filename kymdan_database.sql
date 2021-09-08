@@ -24,13 +24,13 @@ insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_khach_hang) 
 insert into kymdan.tai_khoan (ten_dang_nhap, mat_khau, ma_quyen, ma_khach_hang) values ('Phuong Thao', '$2a$10$9JSTCvzf.qJkKZui25Nj8uHSp.x3LxcyN9MfWqo8ilU7g8VLn2Fkq', 3, 2);
 
 -- Loại sản phẩm
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_mua) values ('KD-0000111', 'Nệm (mattress) KYMDAN Deluxe', 'assets/sanPham11.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Chất liệu TEMPUR® được NASA công nhận,Giúp giảm đau tại các điểm chịu lực,Công nghệ CoolTouch™ giúp vỏ nệm luôn mát mẻ', '2021-03-11', 0);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_mua) values ('KD-0000222', 'Nệm (mattress) KYMDAN UltimateCare', 'assets/sanPham12.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Chất liệu TEMPUR® nâng đỡ cơ thể,Công nghệ Dynamic Support tăng khả năng đàn hồi,Công nghệ CoolTouch™ giúp vỏ nệm luôn mát mẻ', '2021-03-15', 0);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_mua) values ('KD-0000333', 'Nệm (mattress) KYMDAN Deluxe Premium', 'assets/sanPham15.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Ứng dụng công nghệ hiện đại PuroTex,Tích hợp 3 lớp cao su đặc biệt,Lớp phủ sinh học Nanobiotic', '2021-08-29', 0);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_mua) values ('KD-0000444', 'Nệm (mattress) KYMDAN Massage', 'assets/sanPham16.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Nâng đỡ 5 vùng cơ thể,Độ thoáng khí tốt,Lõi nệm kháng khuẩn', '2021-08-30', 0);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_mua) values ('KD-0000555', 'Nệm (mattress) KYMDAN Y Tế', 'assets/sanPham17.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Công nghệ HourGlass Support® độc quyền,Lớp Memory Foam có độ bền cao', '2021-09-01', 0);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_mua) values ('KD-0000666', 'Nệm (mattress) KYMDAN Premium', 'assets/sanPham1.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Lõi nệm kháng khuẩn,Lớp Memory Foam có độ bền cao', '2021-09-02', 0);
-insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luot_mua) values ('KD-0000777', 'Nệm (mattress) KYMDAN Royal', 'assets/sanPham5.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Chống dị ứng,Lớp Memory Foam có độ bền cao', '2021-09-03', 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luong_mua) values ('KD-0000111', 'Nệm (mattress) KYMDAN Deluxe', 'assets/sanPham11.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Chất liệu TEMPUR® được NASA công nhận,Giúp giảm đau tại các điểm chịu lực,Công nghệ CoolTouch™ giúp vỏ nệm luôn mát mẻ', '2021-03-11', 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luong_mua) values ('KD-0000222', 'Nệm (mattress) KYMDAN UltimateCare', 'assets/sanPham12.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Chất liệu TEMPUR® nâng đỡ cơ thể,Công nghệ Dynamic Support tăng khả năng đàn hồi,Công nghệ CoolTouch™ giúp vỏ nệm luôn mát mẻ', '2021-03-15', 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luong_mua) values ('KD-0000333', 'Nệm (mattress) KYMDAN Deluxe Premium', 'assets/sanPham15.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Ứng dụng công nghệ hiện đại PuroTex,Tích hợp 3 lớp cao su đặc biệt,Lớp phủ sinh học Nanobiotic', '2021-08-29', 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luong_mua) values ('KD-0000444', 'Nệm (mattress) KYMDAN Massage', 'assets/sanPham16.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Nâng đỡ 5 vùng cơ thể,Độ thoáng khí tốt,Lõi nệm kháng khuẩn', '2021-08-30', 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luong_mua) values ('KD-0000555', 'Nệm (mattress) KYMDAN Y Tế', 'assets/sanPham17.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Công nghệ HourGlass Support® độc quyền,Lớp Memory Foam có độ bền cao', '2021-09-01', 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luong_mua) values ('KD-0000666', 'Nệm (mattress) KYMDAN Premium', 'assets/sanPham1.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Lõi nệm kháng khuẩn,Lớp Memory Foam có độ bền cao', '2021-09-02', 0);
+insert into kymdan.loai_san_pham (ma, ten, hinh1, hinh2, hinh3, mo_ta, ngay_tao, luong_mua) values ('KD-0000777', 'Nệm (mattress) KYMDAN Royal', 'assets/sanPham5.jpg', 'assets/sanPham6.jpg', 'assets/sanPham7.jpg', 'Hỗ trợ thêm 3 vùng trọng điểm của cơ thể,Chống dị ứng,Lớp Memory Foam có độ bền cao', '2021-09-03', 0);
 
 -- Sản phẩm
 insert into kymdan.san_pham(ma, rong, dai, cao, so_luong, ma_loai_san_pham) values ('SP-0000001', '120', '200', '5', 5, 'KD-0000111');
@@ -304,15 +304,6 @@ insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_
 insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD68547213', '0036598741', '2021-07-25', 204240000, 'DH42675093', 'NV-0000001');
 insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD95687432', '0063259874', '2021-08-29', 127700000, 'DH42676093', 'NV-0000001');
 insert into kymdan.hoa_don(ma, ma_so_thue, ngay_tao, tong_tien, ma_don_hang, ma_nhan_vien) values ('HD12568347', '0056321478', '2021-09-03', 80980000, 'DH40023690', 'NV-0000002');
-
-DELIMITER //
-CREATE PROCEDURE xem_don_hang(khach_hang int)
-BEGIN
-	select * from don_hang 
-		where ma_khach_hang = khach_hang
-        order by ngay_dat desc;
-END //
-DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE loc_chi_tiet_don_hang()

@@ -7,9 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface DonHangRepository extends JpaRepository<DonHang, String> {
-//    @Query(value = "call xem_don_hang(:maKhachHang)", nativeQuery = true)
-//    List<DonHang> xemDonHang(@Param("maKhachHang") Integer maKhachHang);
-
     @Query(value = "select * from don_hang \n" +
             "where ma_khach_hang = ?1 \n" +
             "order by ngay_dat desc;", nativeQuery = true)
@@ -17,7 +14,4 @@ public interface DonHangRepository extends JpaRepository<DonHang, String> {
 
     @Query(value = "select * from don_hang order by ngay_dat desc", nativeQuery = true)
     List<DonHang> danhSachDonHang();
-
-    @Query(value = "select * from chi_tiet_don_hang where ma_don_hang = ?1", nativeQuery = true)
-    List<Integer> timChiTietDonHang(String maDonHang);
 }

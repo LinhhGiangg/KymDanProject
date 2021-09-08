@@ -12,7 +12,6 @@ import com.kymdan.backend.repository.SanPhamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,23 +31,7 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
 
     @Override
     public List<KhuyenMai> xemTatCa() {
-        List<KhuyenMai> tatCa = this.khuyenMaiRepository.findAll();
-        List<KhuyenMai> ketQua = new ArrayList<>();
-
-        for (int i = 0; i < tatCa.size(); ) {
-            KhuyenMai khuyenMai = tatCa.get(0);
-            LocalDate moiNhat = khuyenMai.getNgayKetThuc();
-            for (KhuyenMai phanTu : tatCa) {
-                if (phanTu.getNgayKetThuc().isAfter(moiNhat)) {
-                    khuyenMai = phanTu;
-                    moiNhat = phanTu.getNgayKetThuc();
-                }
-            }
-            ketQua.add(khuyenMai);
-            tatCa.remove(khuyenMai);
-        }
-
-        return ketQua;
+        return this.khuyenMaiRepository.xemTatCa();
     }
 
     @Override
@@ -107,12 +90,10 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
 
     @Override
     public List<ChiTietKhuyenMai> timChiTietBangMaKhuyenMai(String maKhuyenMai) {
-        List<ChiTietKhuyenMai> tatCa = this.chiTietKhuyenMaiRepository.findAll();
+        List<Integer> danhSachMaChiTiet = this.chiTietKhuyenMaiRepository.timBangMaKhuyenMai(maKhuyenMai);
         List<ChiTietKhuyenMai> ketQua = new ArrayList<>();
-        for (ChiTietKhuyenMai chiTietKhuyenMai : tatCa) {
-            if (chiTietKhuyenMai.getKhuyenMai().getMa().equals(maKhuyenMai)) {
-                ketQua.add(chiTietKhuyenMai);
-            }
+        for (Integer maChiTiet : danhSachMaChiTiet) {
+            ketQua.add(this.chiTietKhuyenMaiRepository.findById(maChiTiet).orElse(null));
         }
         return ketQua;
     }

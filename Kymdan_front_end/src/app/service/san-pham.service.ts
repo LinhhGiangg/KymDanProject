@@ -13,7 +13,7 @@ export class SanPhamService {
   ) {
   }
 
-  hienThiGia(thongTin) {
+  tienHienThi(thongTin) {
     thongTin = thongTin + '';
     if (thongTin.length >= 7 && thongTin.length <= 9) {
       return thongTin.slice(-(thongTin.length), -6) + '.' + thongTin.slice(-6, -3) + '.000';

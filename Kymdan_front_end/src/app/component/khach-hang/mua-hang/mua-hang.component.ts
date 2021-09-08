@@ -50,9 +50,6 @@ export class MuaHangComponent implements OnInit {
 
   ngOnInit(): void {
     this.soLuong = 1;
-    this.formSoLuong = this.formBuilder.group({
-      soLuong: [this.soLuong, [Validators.required, Validators.pattern('^([1-9]{1})([0-9]{0,1})$')]],
-    });
     this.kiemTraNhap = false;
     if (this.taiKhoanService.thongTinNguoiDungHienTai != null) {
       this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
@@ -72,6 +69,10 @@ export class MuaHangComponent implements OnInit {
       } else {
         this.sanPhamDauTien(this.maLoai)
       }
+    });
+
+    this.formSoLuong = this.formBuilder.group({
+      soLuong: [this.soLuong, [Validators.required, Validators.pattern('^([1-9]{1})([0-9]{0,1})$')]],
     });
 
     this.loaiSanPhamService.timBangMaLoai(this.maLoai).subscribe(
@@ -109,7 +110,7 @@ export class MuaHangComponent implements OnInit {
               this.gia = 0;
               this.giaHienThi = '';
               if (this.chiTietGia != null) {
-                this.giaHienThi = this.sanPhamService.hienThiGia(this.chiTietGia.gia);
+                this.giaHienThi = this.sanPhamService.tienHienThi(this.chiTietGia.gia);
                 this.sanPhamService.timKhuyenMaiBangMaSanPham(this.sanPham.ma).subscribe(
                   (duLieu) => {
                     this.chiTietKhuyenMai = duLieu;
@@ -121,7 +122,7 @@ export class MuaHangComponent implements OnInit {
                     this.giaBanHienThi = '';
                     if (this.chiTietKhuyenMai != null) {
                       this.giaBan = this.chiTietGia.gia - this.chiTietGia.gia * this.chiTietKhuyenMai.giamGia / 100;
-                      this.giaBanHienThi = this.sanPhamService.hienThiGia(this.giaBan);
+                      this.giaBanHienThi = this.sanPhamService.tienHienThi(this.giaBan);
                     }
                   });
               }
@@ -131,7 +132,6 @@ export class MuaHangComponent implements OnInit {
   }
 
   chonSanPham(thongTinSanPham) {
-    this.formSoLuong.value.soLuong = 1;
     this.soLuong = 1;
     this.kiemTraNhap = false;
     this.sanPhamService.chonSanPham(thongTinSanPham).subscribe(
@@ -155,7 +155,7 @@ export class MuaHangComponent implements OnInit {
               this.gia = 0;
               this.giaHienThi = '';
               if (this.chiTietGia != null) {
-                this.giaHienThi = this.sanPhamService.hienThiGia(this.chiTietGia.gia);
+                this.giaHienThi = this.sanPhamService.tienHienThi(this.chiTietGia.gia);
                 this.sanPhamService.timKhuyenMaiBangMaSanPham(this.sanPham.ma).subscribe(
                   (duLieu) => {
                     this.chiTietKhuyenMai = duLieu;
@@ -167,7 +167,7 @@ export class MuaHangComponent implements OnInit {
                     this.giaBanHienThi = '';
                     if (this.chiTietKhuyenMai != null) {
                       this.giaBan = this.chiTietGia.gia - this.chiTietGia.gia * this.chiTietKhuyenMai.giamGia / 100;
-                      this.giaBanHienThi = this.sanPhamService.hienThiGia(this.giaBan);
+                      this.giaBanHienThi = this.sanPhamService.tienHienThi(this.giaBan);
                     }
                   });
               }
@@ -180,6 +180,7 @@ export class MuaHangComponent implements OnInit {
   }
 
   chonKichThuoc(kichThuoc) {
+    this.formSoLuong.value.soLuong = 1;
     this.soLuong = 1;
     this.kichThuoc = kichThuoc;
     this.thongTinSanPham = this.maLoai + ',' + this.kichThuoc.split('x')[0] + ',' + this.doDay;
@@ -187,6 +188,7 @@ export class MuaHangComponent implements OnInit {
   }
 
   chonDoDay(doDay) {
+    this.formSoLuong.value.soLuong = 1;
     this.soLuong = 1;
     this.doDay = doDay;
     this.thongTinSanPham = this.maLoai + ',' + this.kichThuoc.split('x')[0] + ',' + this.doDay;

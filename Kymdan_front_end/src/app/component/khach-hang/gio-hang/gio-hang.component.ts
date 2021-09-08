@@ -87,8 +87,8 @@ export class GioHangComponent implements OnInit {
           this.gioHang[i].gia = this.gioHang[i].gia - this.gioHang[i].gia * this.gioHang[i].khuyenMai / 100;
         }
         this.gioHang[i].tongTien = this.gioHang[i].gia * this.gioHang[i].soLuong;
-        this.gioHang[i].giaHienThi = this.sanPhamService.hienThiGia(this.gioHang[i].gia);
-        this.gioHang[i].tongTienHienThi = this.sanPhamService.hienThiGia(this.gioHang[i].tongTien);
+        this.gioHang[i].giaHienThi = this.sanPhamService.tienHienThi(this.gioHang[i].gia);
+        this.gioHang[i].tongTienHienThi = this.sanPhamService.tienHienThi(this.gioHang[i].tongTien);
       },
       () => {
       },
@@ -115,7 +115,7 @@ export class GioHangComponent implements OnInit {
       gia = this.danhSachMua[z].tongTien;
       this.tienCanThanhToan = this.tienCanThanhToan + gia;
     }
-    this.tienCanThanhToanHienThi = this.sanPhamService.hienThiGia(this.tienCanThanhToan);
+    this.tienCanThanhToanHienThi = this.sanPhamService.tienHienThi(this.tienCanThanhToan);
   }
 
   boChonSanPham(i: number) {
@@ -143,7 +143,7 @@ export class GioHangComponent implements OnInit {
       gia = this.danhSachMua[z].tongTien;
       this.tienCanThanhToan = this.tienCanThanhToan + gia;
     }
-    this.tienCanThanhToanHienThi = this.sanPhamService.hienThiGia(this.tienCanThanhToan);
+    this.tienCanThanhToanHienThi = this.sanPhamService.tienHienThi(this.tienCanThanhToan);
   }
 
   chonSoLuong(thayDoi, viTri) {

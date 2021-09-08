@@ -22,4 +22,6 @@ public interface NhanVienService {
     HoaDon timHoaDonBangMaHoaDon(String thongTin);
 
     HoaDon timHoaDonBangMaSoThue(String thongTin);
+
+    List<HoaDon> danhSachHoaDon();
 }
