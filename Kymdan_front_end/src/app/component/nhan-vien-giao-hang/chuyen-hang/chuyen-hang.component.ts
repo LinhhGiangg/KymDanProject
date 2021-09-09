@@ -50,7 +50,7 @@ export class ChuyenHangComponent implements OnInit {
 
   loc() {
     this.danhSachLoc = [];
-    this.nhanVienService.danhSachDonHang(this.nhanVien).subscribe(
+    this.nhanVienService.danhSachDonHang().subscribe(
       (duLieu) => {
         this.danhSach = duLieu;
       },

@@ -48,4 +48,8 @@ export class KhuyenMaiService {
   xoaSanPhamKhuyenMai(maChiTiet): Observable<any> {
     return this.http.get(this.API + '/xoaSanPhamKhuyenMai/' + maChiTiet);
   }
+
+  chonSanPhamKhuyenMai(maKhuyenMai): Observable<any> {
+    return this.http.get(this.API + '/chonSanPhamKhuyenMai/' + maKhuyenMai);
+  }
 }

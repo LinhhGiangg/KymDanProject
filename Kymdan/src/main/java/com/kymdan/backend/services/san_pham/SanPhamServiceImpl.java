@@ -169,4 +169,9 @@ public class SanPhamServiceImpl implements SanPhamService {
 
         return ketQua;
     }
+
+    @Override
+    public List<SanPham> sanPhamTon() {
+        return this.sanPhamRepository.sanPhamTon();
+    }
 }

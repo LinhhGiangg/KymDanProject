@@ -68,10 +68,4 @@ public class LoaiSanPhamController {
         List<LoaiSanPham> ketQua = this.loaiSanPhamService.xemLoaiBanChay();
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
-
-    @GetMapping("/locTheoTen/{kiTu}")
-    public ResponseEntity<List<LoaiSanPham>> locTheoTen(@PathVariable String kiTu) {
-        List<LoaiSanPham> ketQua = this.loaiSanPhamService.locTheoTen(kiTu);
-        return new ResponseEntity<>(ketQua, HttpStatus.OK);
-    }
 }

@@ -133,4 +133,9 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
         this.chiTietKhuyenMaiRepository.deleteById(maChiTiet);
         return new ThongBaoDTO("Xóa thành công !");
     }
+
+    @Override
+    public List<String> chonSanPhamKhuyenMai(String maKhuyenMai) {
+        return this.khuyenMaiRepository.chonSanPhamKhuyenMai(maKhuyenMai);
+    }
 }

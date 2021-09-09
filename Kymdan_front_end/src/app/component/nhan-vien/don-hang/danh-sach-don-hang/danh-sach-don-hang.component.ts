@@ -32,7 +32,7 @@ export class DanhSachDonHangComponent implements OnInit {
       this.nhanVien = this.taiKhoanService.thongTinNguoiDungHienTai.tenDangNhap;
       this.quyen = this.taiKhoanService.thongTinNguoiDungHienTai.quyen;
       this.danhSachLoc = [];
-      this.nhanVienService.danhSachDonHang(this.nhanVien).subscribe(
+      this.nhanVienService.danhSachDonHang().subscribe(
         (duLieu) => {
           this.danhSach = duLieu;
         },

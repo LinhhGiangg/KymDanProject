@@ -24,6 +24,4 @@ public interface LoaiSanPhamService {
     List<LoaiSanPham> xemLoaiMoi();
 
     List<LoaiSanPham> xemLoaiBanChay();
-
-    List<LoaiSanPham> locTheoTen(String kiTu);
 }

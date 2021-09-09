@@ -37,13 +37,13 @@ export class PhanCongComponent implements OnInit {
       this.maDonHang = this.duLieu.thongTin;
     });
 
-    this.nhanVienService.danhSachNhanVienGiaoHang(this.nhanVien)
+    this.nhanVienService.danhSachNhanVienGiaoHang()
       .subscribe(ketQua => {
         this.danhSach = ketQua;
       });
 
     this.formPhanCong = this.formBuilder.group({
-      maHoaDon: ['', [Validators.required, Validators.pattern('^(HD-)[0-9]{7}$')]],
+      maHoaDon: ['', [Validators.required, Validators.pattern('^(HD)[0-9]{8}$')]],
       maSoThue: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       donHang: [this.maDonHang],
       nhanVien: [this.nhanVien],

@@ -12,6 +12,7 @@ import {KhuyenMaiService} from '../../../../service/khuyen-mai.service';
 })
 export class ThemSanPhamKhuyenMaiComponent implements OnInit {
   public formThem: FormGroup;
+  public danhSachSanPham;
   public maKhuyenMai;
   public thongBao;
 
@@ -36,6 +37,15 @@ export class ThemSanPhamKhuyenMaiComponent implements OnInit {
       maSanPham: ['', [Validators.required, Validators.pattern('^(SP-)[0-9]{7}$')]],
       giamGia: ['', [Validators.required, Validators.pattern('^([1-9]{1})([0-9]?)$')]],
     });
+
+    this.khuyenMaiService.chonSanPhamKhuyenMai(this.maKhuyenMai)
+      .subscribe(ketQua => {
+          this.danhSachSanPham = ketQua;
+        },
+        () => {
+        },
+        () => {
+        });
   }
 
   them() {

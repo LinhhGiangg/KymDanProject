@@ -36,7 +36,7 @@ export class ThongKeComponent implements OnInit {
     public dialog: MatDialog,
     container: ViewContainerRef
   ) {
-    this.popupSettings = { appendTo: this.container };
+    this.popupSettings = {appendTo: this.container};
   }
 
   ngOnInit(): void {
@@ -74,7 +74,8 @@ export class ThongKeComponent implements OnInit {
           // tslint:disable-next-line:prefer-for-of
           for (let i = 0; i < this.doanhThu.length; i++) {
             this.duLieu.push(this.doanhThu[i][0] / 1000000);
-            this.ngay.push(this.doanhThu[i][1]);
+            this.ngay.push(this.doanhThu[i][1].split('-')[2] + '/' + this.doanhThu[i][1].split('-')[1]
+              + '/' + this.doanhThu[i][1].split('-')[0]);
           }
         });
     }
@@ -89,6 +90,7 @@ export class ThongKeComponent implements OnInit {
     });
 
     dialogRefAdd.afterClosed().subscribe(() => {
+      location.reload()
     })
   }
 }

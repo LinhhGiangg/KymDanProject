@@ -51,6 +51,7 @@ import {HuyDonHangComponent} from './component/khach-hang/huy-don-hang/huy-don-h
 import {SaiDuongDanComponent} from './component/cau-hinh/sai-duong-dan/sai-duong-dan.component';
 import {HoaDonComponent} from './component/nhan-vien/hoa-don/hoa-don.component';
 import {ChonNgayComponent} from './component/nhan-vien/doanh-thu/chon-ngay/chon-ngay.component';
+import {SanPhamTonComponent} from './component/nhan-vien/san-pham/san-pham-ton/san-pham-ton.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import {ChonNgayComponent} from './component/nhan-vien/doanh-thu/chon-ngay/chon-
     SaiDuongDanComponent,
     HoaDonComponent,
     ChonNgayComponent,
+    SanPhamTonComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,10 +13,11 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class DanhSachLoaiComponent implements OnInit {
   public danhSachLoai = [new LoaiSanPham()];
+  public danhSachLoc = [];
   public viTri;
   public thongBao;
   public tenCanTim = '';
-  public danhSachLoc = false;
+  public kiemTraLoc = false;
   public kiemTraBanChay = false;
 
   constructor(
@@ -29,7 +30,7 @@ export class DanhSachLoaiComponent implements OnInit {
 
   ngOnInit() {
     this.tenCanTim = '';
-    this.danhSachLoc = false;
+    this.kiemTraLoc = false;
     this.kiemTraBanChay = false;
     this.loaiSanPhamService.xemTatCa().subscribe(
       (duLieu) => {
@@ -44,13 +45,13 @@ export class DanhSachLoaiComponent implements OnInit {
           this.danhSachLoai[i].moTa2 = this.danhSachLoai[i].moTa.split(',')[1];
           this.danhSachLoai[i].moTa3 = this.danhSachLoai[i].moTa.split(',')[2];
         }
-        this.danhSachLoai.reverse()
+        this.danhSachLoc = this.danhSachLoai.reverse();
       });
   }
 
   locTheoGia(khoangGia) {
     this.viTri = khoangGia;
-    this.danhSachLoc = true;
+    this.kiemTraLoc = true;
     // this.loaiSanPhamService.locTheoGia(khoangGia).subscribe(
     //   (duLieu) => {
     //     this.danhSachLoai = duLieu;
@@ -82,6 +83,7 @@ export class DanhSachLoaiComponent implements OnInit {
           this.danhSachLoai[i].moTa2 = this.danhSachLoai[i].moTa.split(',')[1];
           this.danhSachLoai[i].moTa3 = this.danhSachLoai[i].moTa.split(',')[2];
         }
+        this.danhSachLoc = this.danhSachLoai;
       });
   }
 
@@ -100,30 +102,34 @@ export class DanhSachLoaiComponent implements OnInit {
           this.danhSachLoai[i].moTa2 = this.danhSachLoai[i].moTa.split(',')[1];
           this.danhSachLoai[i].moTa3 = this.danhSachLoai[i].moTa.split(',')[2];
         }
+        this.danhSachLoc = this.danhSachLoai;
       });
   }
 
-  lamMoi() {
-    this.ngOnInit();
-  }
-
   locTheoTen() {
+    this.danhSachLoc = [];
     if (this.tenCanTim !== '') {
-      this.loaiSanPhamService.locTheoTen(this.tenCanTim).subscribe(
-        (duLieu) => {
-          this.danhSachLoai = duLieu;
-        },
-        () => {
-        },
-        () => {
-          // tslint:disable-next-line:prefer-for-of
-          for (let i = 0; i < this.danhSachLoai.length; i++) {
-            this.danhSachLoai[i].moTa1 = this.danhSachLoai[i].moTa.split(',')[0];
-            this.danhSachLoai[i].moTa2 = this.danhSachLoai[i].moTa.split(',')[1];
-            this.danhSachLoai[i].moTa3 = this.danhSachLoai[i].moTa.split(',')[2];
-          }
-        });
-    } else this.lamMoi()
+      let kiTu;
+      let mangTam;
+      kiTu = this.tenCanTim.trim().toLowerCase();
+      mangTam = kiTu.split(' ');
+      kiTu = '';
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < mangTam.length; i++) {
+        if (mangTam[i] !== '') {
+          if (i === mangTam.length - 1) {
+            kiTu += mangTam[i].trim();
+          } else kiTu += mangTam[i].trim() + ' ';
+        }
+      }
+
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < this.danhSachLoai.length; i++) {
+        if ((this.danhSachLoai[i].ten + '').toLowerCase().indexOf(kiTu) > -1) {
+          this.danhSachLoc.push(this.danhSachLoai[i]);
+        }
+      }
+    } else this.danhSachLoc = this.danhSachLoai;
   }
 
   xemSanPham(ma) {
@@ -151,5 +157,9 @@ export class DanhSachLoaiComponent implements OnInit {
       },
       () => {
       });
+  }
+
+  lamMoi() {
+    this.ngOnInit()
   }
 }

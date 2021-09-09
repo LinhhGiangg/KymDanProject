@@ -27,4 +27,6 @@ public interface KhuyenMaiService {
     ThongBaoDTO suaSanPhamKhuyenMai(Integer maChiTiet, Integer giamGia);
 
     ThongBaoDTO xoaSanPhamKhuyenMai(Integer maChiTiet);
+
+    List<String> chonSanPhamKhuyenMai(String maKhuyenMai);
 }

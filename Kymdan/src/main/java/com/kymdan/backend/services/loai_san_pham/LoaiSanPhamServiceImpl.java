@@ -6,7 +6,6 @@ import com.kymdan.backend.model.ThongBaoDTO;
 import com.kymdan.backend.model.LoaiSanPhamDTO;
 import com.kymdan.backend.repository.ChiTietDonHangRepository;
 import com.kymdan.backend.repository.LoaiSanPhamRepository;
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -125,12 +124,5 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
         }
 
         return ketQua;
-    }
-
-    @Override
-    public List<LoaiSanPham> locTheoTen(String kiTu) {
-        kiTu = kiTu.trim().toLowerCase();
-        kiTu = kiTu.replaceAll("\\s+", " ");
-        return this.loaiSanPhamRepository.locTheoTen(kiTu);
     }
 }

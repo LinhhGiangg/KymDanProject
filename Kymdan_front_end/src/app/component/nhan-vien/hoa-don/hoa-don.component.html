@@ -6,18 +6,37 @@
         <div class="row">
           <div class="col-sm-3"></div>
           <div class="col-sm-6">
-            <h1 class="text-center" style="font-weight: bold" *ngIf="danhSachHoaDon.length > 0">
+            <h1 class="text-center" style="font-weight: bold; color: green" *ngIf="danhSachHoaDon.length > 0">
               Danh sách hóa đơn
-            </h1>
-            <h1 class="text-center" style="font-weight: bold" *ngIf="danhSachHoaDon.length == 0">
-              Chưa có dữ liệu !
             </h1>
           </div>
           <div class="col-sm-3"></div>
         </div>
       </div>
 
-      <table class="table table-bordered mt-3" *ngIf="danhSachHoaDon.length > 0">
+      <div class="row" *ngIf="danhSachHoaDon.length > 0">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6"></div>
+        <div class="col-sm-3">
+          <div class="search-box" style="width: 100%">
+            <div class="input-group">
+              <a class="input-group-addon">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </a>
+              <input type="text" class="form-control" [(ngModel)]="hoaDonCanTim" (ngModelChange)="timKiem()"
+                     placeholder="Tìm kiếm theo số hóa đơn">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="text-center" style="font-weight: bold; color: red" *ngIf="danhSachLoc.length == 0">
+          Chưa có dữ liệu !
+        </h1>
+      </div>
+
+      <table class="table table-bordered mt-3" *ngIf="danhSachLoc.length > 0">
         <thead>
         <tr style="font-size: 17px">
           <th>Số hóa đơn</th>
@@ -29,7 +48,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let phanTu of danhSachHoaDon ; let i = index">
+        <tr *ngFor="let phanTu of danhSachLoc ; let i = index">
           <td>{{phanTu.ma}}</td>
           <td>{{phanTu.maSoThue}}</td>
           <td>{{phanTu.ngayTao}}</td>

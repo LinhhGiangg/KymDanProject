@@ -73,4 +73,10 @@ public class KhuyenMaiController {
     public ResponseEntity<?> xoaSanPhamKhuyenMai(@PathVariable Integer maChiTiet) {
         return ResponseEntity.ok(this.khuyenMaiService.xoaSanPhamKhuyenMai(maChiTiet));
     }
+
+    @GetMapping("/chonSanPhamKhuyenMai/{maKhuyenMai}")
+    public ResponseEntity<List<String>> chonSanPhamKhuyenMai(@PathVariable String maKhuyenMai) {
+        List<String> ketQua = this.khuyenMaiService.chonSanPhamKhuyenMai(maKhuyenMai);
+        return new ResponseEntity<>(ketQua, HttpStatus.OK);
+    }
 }

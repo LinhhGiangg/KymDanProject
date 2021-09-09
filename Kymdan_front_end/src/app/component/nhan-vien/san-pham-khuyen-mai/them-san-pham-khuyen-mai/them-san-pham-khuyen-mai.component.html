@@ -17,12 +17,16 @@
         <div class="row">
           <mat-form-field>
             <mat-label>Mã sản phẩm<sup class="text-danger"> *</sup></mat-label>
-            <input matInput formControlName="maSanPham">
+            <mat-select formControlName="maSanPham">
+              <mat-option *ngFor="let phanTu of danhSachSanPham" [value]="phanTu">
+                {{phanTu}}
+              </mat-option>
+            </mat-select>
             <mat-error *ngIf="formThem.controls.maSanPham.errors?.required">Mã sản phẩm không đươc để trống.
             </mat-error>
-            <mat-error *ngIf="formThem.controls.maSanPham.errors?.pattern">
-              Mã sản phẩm không đúng quy định. Mã sản phẩm có dạng SP-XXXXXXX với X là số từ 0 đến 9.
-            </mat-error>
+<!--            <mat-error *ngIf="formThem.controls.maSanPham.errors?.pattern">-->
+<!--              Mã sản phẩm không đúng quy định. Mã sản phẩm có dạng SP-XXXXXXX với X là số từ 0 đến 9.-->
+<!--            </mat-error>-->
           </mat-form-field>
         </div>
 

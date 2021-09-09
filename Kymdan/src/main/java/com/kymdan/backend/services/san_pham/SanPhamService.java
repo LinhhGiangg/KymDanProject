@@ -28,4 +28,6 @@ public interface SanPhamService {
     ChiTietGia timGiaBangMaSanPham(String ma);
 
     ChiTietKhuyenMai timKhuyenMaiBangMaSanPham(String ma);
+
+    List<SanPham> sanPhamTon();
 }

@@ -21,13 +21,13 @@ public class NhanVienController {
     @Autowired
     NhanVienService nhanVienService;
 
-    @GetMapping("/danhSachDonHang/{nhanVien}")
+    @GetMapping("/danhSachDonHang")
     public ResponseEntity<List<DonHang>> danhSachDonHang() {
         List<DonHang> ketQua = this.nhanVienService.danhSachDonHang();
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
 
-    @GetMapping("/danhSachNhanVienGiaoHang/{nhanVien}")
+    @GetMapping("/danhSachNhanVienGiaoHang")
     public ResponseEntity<List<NhanVienGiaoHang>> danhSachNhanVienGiaoHang() {
         List<NhanVienGiaoHang> ketQua = this.nhanVienService.danhSachNhanVienGiaoHang();
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
@@ -54,7 +54,7 @@ public class NhanVienController {
         }
     }
 
-    @GetMapping("/danhSachHoaDon/{nhanVien}")
+    @GetMapping("/danhSachHoaDon")
     public ResponseEntity<List<HoaDon>> danhSachHoaDon() {
         List<HoaDon> ketQua = this.nhanVienService.danhSachHoaDon();
         return new ResponseEntity<>(ketQua, HttpStatus.OK);

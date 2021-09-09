@@ -12,12 +12,12 @@ export class NhanVienService {
     public http: HttpClient
   ) { }
 
-  danhSachDonHang(thongTin): Observable<any> {
-    return this.http.get(this.API + '/danhSachDonHang/' + thongTin);
+  danhSachDonHang(): Observable<any> {
+    return this.http.get(this.API + '/danhSachDonHang');
   }
 
-  danhSachNhanVienGiaoHang(thongTin): Observable<any> {
-    return this.http.get(this.API + '/danhSachNhanVienGiaoHang/' + thongTin);
+  danhSachNhanVienGiaoHang(): Observable<any> {
+    return this.http.get(this.API + '/danhSachNhanVienGiaoHang');
   }
 
   giaoHangHoanTat(thongTin): Observable<any> {
@@ -32,7 +32,7 @@ export class NhanVienService {
     return this.http.post(this.API + '/phanCongGiaoHang', thongTin, {headers: {skip: 'true'}});
   }
 
-  danhSachHoaDon(thongTin): Observable<any> {
-    return this.http.get(this.API + '/danhSachHoaDon/' + thongTin);
+  danhSachHoaDon(): Observable<any> {
+    return this.http.get(this.API + '/danhSachHoaDon');
   }
 }

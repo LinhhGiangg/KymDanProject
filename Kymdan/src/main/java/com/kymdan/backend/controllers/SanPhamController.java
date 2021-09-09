@@ -78,4 +78,10 @@ public class SanPhamController {
         ChiTietKhuyenMai chiTietKhuyenMai = this.sanPhamService.timKhuyenMaiBangMaSanPham(ma);
         return new ResponseEntity<>(chiTietKhuyenMai, HttpStatus.OK);
     }
+
+    @GetMapping("/sanPhamTon/{thongTin}")
+    public ResponseEntity<List<SanPham>> sanPhamTon() {
+        List<SanPham> ketQua = this.sanPhamService.sanPhamTon();
+        return new ResponseEntity<>(ketQua, HttpStatus.OK);
+    }
 }

@@ -57,4 +57,8 @@ export class SanPhamService {
   timKhuyenMaiBangMaSanPham(ma): Observable<any> {
     return this.http.get(this.API + '/timKhuyenMaiBangMaSanPham/' + ma);
   }
+
+  sanPhamTon(thongTin): Observable<any> {
+    return this.http.get(this.API + '/sanPhamTon/' + thongTin);
+  }
 }

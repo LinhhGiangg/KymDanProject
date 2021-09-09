@@ -26,4 +26,7 @@ public interface SanPhamRepository extends JpaRepository<SanPham, String> {
             "and rong = ?2\n" +
             "and cao = ?3", nativeQuery = true)
     SanPham chonSanPham(String maLoai, String rong, String cao);
+
+    @Query(value = "select * from san_pham order by ma_loai_san_pham", nativeQuery = true)
+    List<SanPham> sanPhamTon();
 }

@@ -16,7 +16,4 @@ public interface LoaiSanPhamRepository extends JpaRepository<LoaiSanPham, String
 
     @Query(value = "call xem_loai_moi()", nativeQuery = true)
     List<LoaiSanPham> xemLoaiMoi();
-
-    @Query(value = "select * from loai_san_pham where ten like  %?1%", nativeQuery = true)
-    List<LoaiSanPham> locTheoTen(String kiTu);
 }

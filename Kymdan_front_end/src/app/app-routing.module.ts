@@ -40,6 +40,7 @@ import {ThongKeComponent} from './component/nhan-vien/doanh-thu/thong-ke/thong-k
 import {HuyDonHangComponent} from './component/khach-hang/huy-don-hang/huy-don-hang.component';
 import {SaiDuongDanComponent} from './component/cau-hinh/sai-duong-dan/sai-duong-dan.component';
 import {HoaDonComponent} from './component/nhan-vien/hoa-don/hoa-don.component';
+import {SanPhamTonComponent} from './component/nhan-vien/san-pham/san-pham-ton/san-pham-ton.component';
 
 const routes: Routes = [
   {path: '', component: TrangChuComponent},
@@ -68,6 +69,7 @@ const routes: Routes = [
   // {path: 'xoa-loai', component: XoaLoaiComponent},
 
   {path: 'danh-sach-san-pham', component: DanhSachSanPhamComponent},
+  {path: 'san-pham-ton', component: SanPhamTonComponent},
   // {path: 'them-san-pham', component: ThemSanPhamComponent},
   // {path: 'sua-san-pham', component: SuaSanPhamComponent},
   // {path: 'xoa-san-pham', component: XoaSanPhamComponent},
