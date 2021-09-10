@@ -126,7 +126,7 @@
 
             <div class="row mb-3">
               <div class="col-sm-6">
-                <h3 style="font-weight: bold; margin: 2% 0 0 11%">Số lượng :</h3>
+                <h3 style="font-weight: bold; margin: 2% 0 0 11%">Số lượng mua :</h3>
                 <div class="row">
                   <h3 style="font-weight: bold; margin: 2% 0 0 15%">
                     <i class="fa fa-minus-square" aria-hidden="true" style="font-size: 25px; color: rgb(179,179,179)"
@@ -145,16 +145,16 @@
                   </h3>
                 </div>
                 <mat-error *ngIf="formSoLuong.controls.soLuong.errors?.required" style="margin-left: 4%">
-                  Số lượng không đươc để trống.
+                  Số lượng mua không đươc để trống.
                 </mat-error>
                 <mat-error *ngIf="formSoLuong.controls.soLuong.errors?.pattern" style="margin-left: 12%">
                   Chỉ được nhập số.
                 </mat-error>
               </div>
               <div class="col-sm-6">
-                <h3 style="font-weight: bold; margin: 2% 0 0 17%">Tình trạng :</h3>
-                <div class="status ml-5">
-                  <h4 style="color: green; margin: 4px 0 0 17px">Còn hàng</h4>
+                <h3 style="font-weight: bold; margin: 2% 0 0 17%">Số lượng tồn :</h3>
+                <div class="ml-5">
+                  <h2 style="color: green">{{sanPham.soLuong}} sản phẩm</h2>
                 </div>
               </div>
             </div>

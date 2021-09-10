@@ -95,4 +95,10 @@ public class KhachHangController {
         ThongBaoDTO ketQua = this.khachHangService.huyDonHang(maDonHang);
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
+
+    @GetMapping("/kiemTraGioHang/{maChiTiet}")
+    public ResponseEntity<ChiTietGioHang> kiemTraGioHang(@PathVariable Integer maChiTiet) {
+        ChiTietGioHang ketQua = this.khachHangService.kiemTraGioHang(maChiTiet);
+        return new ResponseEntity<>(ketQua, HttpStatus.OK);
+    }
 }

@@ -9,6 +9,8 @@ import {SanPhamService} from '../../../../service/san-pham.service';
 })
 export class SanPhamTonComponent implements OnInit {
   public danhSach = [];
+  public danhSachLoai = [];
+  public danhSachHienThi = [];
   public thongBao;
   public quyen = '';
 
@@ -29,6 +31,33 @@ export class SanPhamTonComponent implements OnInit {
         () => {
         },
         () => {
+          let phanTu;
+          let mangViTri = [];
+          let mangDoiTuong = [];
+
+          for (; this.danhSach.length > 0;) {
+            phanTu = this.danhSach[0];
+            mangViTri.push(0);
+            this.danhSachLoai.push(phanTu.loaiSanPham.ten);
+            mangDoiTuong.push(phanTu);
+
+            for (let i = 1; i < this.danhSach.length; i++) {
+              if (this.danhSach[i].loaiSanPham.ten === phanTu.loaiSanPham.ten) {
+                mangDoiTuong.push(this.danhSach[i]);
+                mangViTri.push(i);
+              }
+            }
+
+            this.danhSachHienThi.push(mangDoiTuong);
+
+            // tslint:disable-next-line:prefer-for-of
+            for (let i = 0; i < mangViTri.length; i++) {
+              this.danhSach.splice(mangViTri[i] - i, 1);
+            }
+
+            mangDoiTuong = [];
+            mangViTri = [];
+          }
         });
     }
   }

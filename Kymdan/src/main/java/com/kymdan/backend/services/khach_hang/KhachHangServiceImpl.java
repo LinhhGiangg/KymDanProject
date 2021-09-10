@@ -232,4 +232,9 @@ public class KhachHangServiceImpl implements KhachHangService {
 
         return new ThongBaoDTO("Hủy đơn hàng thành công");
     }
+
+    @Override
+    public ChiTietGioHang kiemTraGioHang(Integer maChiTiet) {
+        return this.chiTietGioHangRepository.findById(maChiTiet).orElse(null);
+    }
 }

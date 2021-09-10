@@ -31,4 +31,6 @@ public interface KhachHangService {
     List<ChiTietDonHang> xemChiTietDonHang(String maDonHang);
 
     ThongBaoDTO huyDonHang(String maDonHang);
+
+    ChiTietGioHang kiemTraGioHang(Integer maChiTiet);
 }

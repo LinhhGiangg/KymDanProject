@@ -6,10 +6,10 @@
         <div class="row">
           <div class="col-sm-3"></div>
           <div class="col-sm-6">
-            <h1 class="text-center" style="font-weight: bold; color: green" *ngIf="danhSach.length > 0">
+            <h1 class="text-center" style="font-weight: bold; color: green" *ngIf="danhSachHienThi.length > 0">
               Thống kê sản phẩm tồn kho
             </h1>
-            <h1 class="text-center" style="font-weight: bold; color: red" *ngIf="danhSach.length == 0">
+            <h1 class="text-center" style="font-weight: bold; color: red" *ngIf="danhSachHienThi.length == 0">
               Chưa có dữ liệu !
             </h1>
           </div>
@@ -17,26 +17,30 @@
         </div>
       </div>
 
-      <table class="table table-bordered mt-3" *ngIf="danhSach.length > 0">
-        <thead>
-        <tr style="font-size: 17px">
-          <th>STT</th>
-          <th>Loại sản phẩm</th>
-          <th>Mã sản phẩm</th>
-          <th>Kích thước (cm)</th>
-          <th>Số lượng tồn</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let phanTu of danhSach ; let i = index">
-          <td>{{i + 1}}</td>
-          <td>{{phanTu.loaiSanPham.ten}}</td>
-          <td>{{phanTu.ma}}</td>
-          <td>{{phanTu.rong}} x {{phanTu.dai}} x {{phanTu.cao}}</td>
-          <td>{{phanTu.soLuong}}</td>
-        </tr>
-        </tbody>
-      </table>
+      <div *ngIf="danhSachHienThi.length > 0">
+        <div *ngFor="let phanTu of danhSachLoai ; let i = index">
+          <h2>{{i + 1}} . {{phanTu}}</h2>
+
+          <table class="table table-bordered mt-3">
+            <thead>
+            <tr style="font-size: 17px">
+              <th style="width: 50px">STT</th>
+              <th>Mã sản phẩm</th>
+              <th>Kích thước (cm)</th>
+              <th>Số lượng tồn</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let phanTu of danhSachHienThi[i] ; let j = index">
+              <td>{{j + 1}}</td>
+              <td>{{phanTu.ma}}</td>
+              <td>{{phanTu.rong}} x {{phanTu.dai}} x {{phanTu.cao}}</td>
+              <td>{{phanTu.soLuong}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
       <div class="clearfix"></div>
     </div>
