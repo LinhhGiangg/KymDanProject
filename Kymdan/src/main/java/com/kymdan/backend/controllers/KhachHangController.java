@@ -1,9 +1,6 @@
 package com.kymdan.backend.controllers;
 
-import com.kymdan.backend.entity.ChiTietDonHang;
-import com.kymdan.backend.entity.ChiTietGioHang;
-import com.kymdan.backend.entity.DonHang;
-import com.kymdan.backend.entity.KhachHang;
+import com.kymdan.backend.entity.*;
 import com.kymdan.backend.model.DonHangDTO;
 import com.kymdan.backend.model.TaiKhoanDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
@@ -96,9 +93,15 @@ public class KhachHangController {
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
 
-    @GetMapping("/kiemTraGioHang/{maChiTiet}")
-    public ResponseEntity<ChiTietGioHang> kiemTraGioHang(@PathVariable Integer maChiTiet) {
-        ChiTietGioHang ketQua = this.khachHangService.kiemTraGioHang(maChiTiet);
+    @GetMapping("/kiemTraGioHang/{thongTin}")
+    public ResponseEntity<ThongBaoDTO> kiemTraGioHang(@PathVariable String thongTin) {
+        ThongBaoDTO ketQua = this.khachHangService.kiemTraGioHang(thongTin);
+        return new ResponseEntity<>(ketQua, HttpStatus.OK);
+    }
+
+    @GetMapping("/kiemTraSoLuongMua/{thongTin}")
+    public ResponseEntity<List<SanPham>> kiemTraSoLuongMua(@PathVariable String thongTin) {
+        List<SanPham> ketQua = this.khachHangService.kiemTraSoLuongMua(thongTin);
         return new ResponseEntity<>(ketQua, HttpStatus.OK);
     }
 }

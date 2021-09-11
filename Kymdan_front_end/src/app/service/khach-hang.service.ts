@@ -54,4 +54,12 @@ export class KhachHangService {
   huyDonHang(maDonHang): Observable<any> {
     return this.http.get(this.API + '/huyDonHang/' + maDonHang);
   }
+
+  kiemTraGioHang(thongTin): Observable<any> {
+    return this.http.get(this.API + '/kiemTraGioHang/' + thongTin);
+  }
+
+  kiemTraSoLuongMua(thongTin): Observable<any> {
+    return this.http.get(this.API + '/kiemTraSoLuongMua/' + thongTin);
+  }
 }

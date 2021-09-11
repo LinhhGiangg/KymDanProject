@@ -95,7 +95,6 @@ export class DatHangComponent implements OnInit {
             },
             () => {
               this.layDuLieu(i);
-              this.thongTinKhuyenMai(i);
             });
         }
       });
@@ -106,22 +105,27 @@ export class DatHangComponent implements OnInit {
   }
 
   private layDuLieu(i: number) {
-    this.chiTiet = new ChiTietGioHang();
-    this.chiTiet.ma = this.duLieuCanLay.ma;
-    this.chiTiet.sanPham = this.duLieuCanLay.sanPham;
-    this.chiTiet.maLoai = this.duLieuCanLay.sanPham.loaiSanPham.ma;
-    this.chiTiet.hinh = this.duLieuCanLay.sanPham.loaiSanPham.hinh1;
-    this.chiTiet.ten = this.duLieuCanLay.sanPham.loaiSanPham.ten;
-    this.chiTiet.kichThuoc = this.duLieuCanLay.sanPham.rong + ' x ' + this.duLieuCanLay.sanPham.dai
-      + ' x ' + this.duLieuCanLay.sanPham.cao;
-    this.chiTiet.gia = 0;
-    this.chiTiet.khuyenMai = 0;
-    this.chiTiet.soLuong = this.duLieuCanLay.soLuong;
-    this.chiTiet.tongTien = 0;
-    if (i === 0) {
-      this.gioHang.pop()
+    if (this.duLieuCanLay != null) {
+      this.chiTiet = new ChiTietGioHang();
+      this.chiTiet.ma = this.duLieuCanLay.ma;
+      this.chiTiet.sanPham = this.duLieuCanLay.sanPham;
+      this.chiTiet.maLoai = this.duLieuCanLay.sanPham.loaiSanPham.ma;
+      this.chiTiet.hinh = this.duLieuCanLay.sanPham.loaiSanPham.hinh1;
+      this.chiTiet.ten = this.duLieuCanLay.sanPham.loaiSanPham.ten;
+      this.chiTiet.kichThuoc = this.duLieuCanLay.sanPham.rong + ' x ' + this.duLieuCanLay.sanPham.dai
+        + ' x ' + this.duLieuCanLay.sanPham.cao;
+      this.chiTiet.gia = 0;
+      this.chiTiet.khuyenMai = 0;
+      this.chiTiet.soLuong = this.duLieuCanLay.soLuong;
+      this.chiTiet.tongTien = 0;
+      if (i === 0) {
+        this.gioHang.pop()
+      }
+      this.gioHang.push(this.chiTiet);
+      this.thongTinKhuyenMai(i);
+    } else {
+      this.hienThongBao('Sản phẩm hiện đang hết hàng hoặc ai đó đã mua trước bạn !')
     }
-    this.gioHang.push(this.chiTiet);
   }
 
   private thongTinKhuyenMai(i: number) {
@@ -169,6 +173,7 @@ export class DatHangComponent implements OnInit {
       if (this.gioHang[viTri].soLuong < this.gioHang[viTri].sanPham.soLuong) {
         this.gioHang[viTri].soLuong = this.gioHang[viTri].soLuong + 1;
       } else {
+        this.gioHang[viTri].soLuong = this.gioHang[viTri].sanPham.soLuong;
         this.hienThongBao('Hiện tại mặt hàng này chỉ còn ' + this.gioHang[viTri].sanPham.soLuong + ' sản phẩm !')
       }
     }
@@ -180,7 +185,41 @@ export class DatHangComponent implements OnInit {
 
   xacNhanThongTin() {
     if (this.formDatHang.valid) {
-      this.xacNhanThanhToan = true;
+      let kiemTra = '';
+      let ketQua = '';
+      let mangTam = [];
+      for (let i = 0; i < this.gioHang.length; i++) {
+        if (i === 0) {
+          kiemTra += this.gioHang[i].ma;
+        } else {
+          kiemTra = kiemTra + ',' + this.gioHang[i].ma;
+        }
+      }
+
+      this.khachHangService.kiemTraGioHang(kiemTra).subscribe(
+        (duLieu) => {
+          ketQua = duLieu.thongBao;
+        },
+        () => {
+        },
+        () => {
+          if (ketQua === 'OK') {
+            this.khachHangService.kiemTraSoLuongMua(kiemTra).subscribe(
+              (duLieu) => {
+                mangTam = duLieu;
+              },
+              () => {
+              },
+              () => {
+                for (let i = 0; i < mangTam.length; i++) {
+                  if (this.gioHang[i].soLuong > mangTam[i].soLuong) {
+                    this.hienThongBao('Sản phẩm không đủ số lượng !')
+                  }
+                }
+              });
+            this.xacNhanThanhToan = true;
+          } else this.hienThongBao('Sản phẩm hiện đang hết hàng hoặc ai đó đã mua trước bạn !')
+        });
     } else {
       for (const thuocTinh of Object.keys(this.formDatHang.controls)) {
         if (this.formDatHang.controls[thuocTinh].invalid) {
@@ -277,17 +316,7 @@ export class DatHangComponent implements OnInit {
   }
 
   hienThongBao(thongTin) {
-    if (thongTin.length > 80) {
-      const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
-        width: '575px',
-        height: '209px',
-        data: {thongBao: thongTin},
-        disableClose: true
-      });
-
-      dialogRefNotice.afterClosed().subscribe(() => {
-      })
-    } else {
+    if (thongTin === 'Sản phẩm không đủ số lượng !') {
       const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
         width: '555px',
         height: '187px',
@@ -296,10 +325,44 @@ export class DatHangComponent implements OnInit {
       });
 
       dialogRefNotice.afterClosed().subscribe(() => {
-        if (this.cachThanhToan === 'PayPal') {
-          this.thanhToan()
-        }
+        location.reload()
       })
+    } else if (this.duLieuCanLay == null || thongTin === 'Sản phẩm hiện đang hết hàng hoặc ai đó đã mua trước bạn !') {
+      const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
+        width: '595px',
+        height: '210px',
+        data: {thongBao: thongTin},
+        disableClose: true
+      });
+
+      dialogRefNotice.afterClosed().subscribe(() => {
+        location.replace('http://localhost:4200/gio-hang')
+      })
+    } else {
+      if (thongTin.length > 80) {
+        const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
+          width: '575px',
+          height: '209px',
+          data: {thongBao: thongTin},
+          disableClose: true
+        });
+
+        dialogRefNotice.afterClosed().subscribe(() => {
+        })
+      } else {
+        const dialogRefNotice = this.dialog.open(ThongBaoComponent, {
+          width: '555px',
+          height: '187px',
+          data: {thongBao: thongTin},
+          disableClose: true
+        });
+
+        dialogRefNotice.afterClosed().subscribe(() => {
+          if (this.cachThanhToan === 'PayPal') {
+            this.thanhToan()
+          }
+        })
+      }
     }
   }
 

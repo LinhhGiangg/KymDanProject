@@ -234,7 +234,25 @@ public class KhachHangServiceImpl implements KhachHangService {
     }
 
     @Override
-    public ChiTietGioHang kiemTraGioHang(Integer maChiTiet) {
-        return this.chiTietGioHangRepository.findById(maChiTiet).orElse(null);
+    public ThongBaoDTO kiemTraGioHang(String thongTin) {
+        for (String maChiTietGioHang : thongTin.split(",")) {
+            if (this.chiTietGioHangRepository.findById(Integer.parseInt(maChiTietGioHang)).orElse(null) == null) {
+                return new ThongBaoDTO("Error");
+            }
+        }
+        return new ThongBaoDTO("OK");
+    }
+
+    @Override
+    public List<SanPham> kiemTraSoLuongMua(String thongTin) {
+        List<SanPham> ketQua = new ArrayList<>();
+        ChiTietGioHang chiTietGioHang;
+        for (String maChiTietGioHang : thongTin.split(",")) {
+            chiTietGioHang = this.chiTietGioHangRepository.findById(Integer.parseInt(maChiTietGioHang)).orElse(null);
+            if (chiTietGioHang != null) {
+                ketQua.add(chiTietGioHang.getSanPham());
+            }
+        }
+        return ketQua;
     }
 }

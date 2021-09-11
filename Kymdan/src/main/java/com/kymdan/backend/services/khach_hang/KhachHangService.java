@@ -1,9 +1,6 @@
 package com.kymdan.backend.services.khach_hang;
 
-import com.kymdan.backend.entity.ChiTietDonHang;
-import com.kymdan.backend.entity.ChiTietGioHang;
-import com.kymdan.backend.entity.DonHang;
-import com.kymdan.backend.entity.KhachHang;
+import com.kymdan.backend.entity.*;
 import com.kymdan.backend.model.DonHangDTO;
 import com.kymdan.backend.model.ThongBaoDTO;
 
@@ -32,5 +29,7 @@ public interface KhachHangService {
 
     ThongBaoDTO huyDonHang(String maDonHang);
 
-    ChiTietGioHang kiemTraGioHang(Integer maChiTiet);
+    ThongBaoDTO kiemTraGioHang(String thongTin);
+
+    List<SanPham> kiemTraSoLuongMua(String thongTin);
 }
